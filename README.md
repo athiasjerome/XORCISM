@@ -7,3 +7,5 @@ The XORCISM repository is home to documentation, utilities and scripts that util
 
 Please visit the XORCISM Web Site for more information about the XORCISM Model.
 http://www.frhack.org/research/xorcism.php
+
+All trademarks and registered trademarks are the property of their respective owners. 
