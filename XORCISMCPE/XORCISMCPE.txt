@@ -1,0 +1,98 @@
+//*******************************************************************
+/// <summary>
+        /// Copyright (C) 2013 Jerome Athias
+        /// Parsing function for a CPE Repository XML file and import the values into an XORCISM database
+        /// This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+        ///
+        /// This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+        ///
+        /// You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+        /// </summary>
+//*******************************************************************
+
+static private void Import_cpe(string filepath)
+        {
+            XORCISMEntities model;
+            model = new XORCISMEntities();
+
+            XmlDocument docXML;
+            docXML = new XmlDocument();
+            try
+            {
+                docXML.Load(filepath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occured :\n" + ex.Message);
+                
+                return;
+            }
+
+            XmlNamespaceManager mgrXML = new XmlNamespaceManager(docXML.NameTable);
+
+            mgrXML.AddNamespace("z", "http://cpe.mitre.org/dictionary/2.0");
+            mgrXML.AddNamespace("meta", "http://scap.nist.gov/schema/cpe-dictionary-metadata/0.2");
+
+            XmlNodeList list;
+            list = docXML.SelectNodes("/z:cpe-list/z:cpe-item", mgrXML);
+
+            foreach (XmlNode node in list)
+            {
+                XmlNode nodeTitle;
+                nodeTitle = node.SelectSingleNode("z:title", mgrXML);
+
+                XmlNode nodeMetadata;
+                nodeMetadata = node.SelectSingleNode("meta:item-metadata", mgrXML);
+
+                XORCISMModel.CPE cpe;
+                string cpeid = node.Attributes["name"].InnerText;
+                cpe = model.CPE.FirstOrDefault(o => o.CPEID == cpeid);
+
+                if (cpe == null)
+                {
+                    // Console.WriteLine(string.Format("CPE [{0}] not found in table CPE", cpeid));
+                    Console.WriteLine(string.Format("Adding new CPE [{0}] in table CPE", cpeid));
+                    try
+                    {
+                        cpe = new CPE();
+                        cpe.CPEID = cpeid;
+                        cpe.Title = nodeTitle.InnerText;
+                        cpe.NVDID = Convert.ToInt32(nodeMetadata.Attributes["nvd-id"].InnerText);
+                        cpe.ModificationDate = DateTime.Parse(nodeMetadata.Attributes["modification-date"].InnerText, new System.Globalization.CultureInfo("EN-us"));
+                        cpe.Status = nodeMetadata.Attributes["status"].InnerText;
+                        //TODO
+                        model.AddToCPE(cpe);
+                    }
+                    catch (Exception exAddToCPE)
+                    {
+                        Console.WriteLine("Exception exAddToCPE " + exAddToCPE.Message + " " + exAddToCPE.InnerException);
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        cpe.Title = nodeTitle.InnerText;    //TODO: Cleaning?
+                        cpe.NVDID = Convert.ToInt32(nodeMetadata.Attributes["nvd-id"].InnerText);
+                        cpe.ModificationDate = DateTime.Parse(nodeMetadata.Attributes["modification-date"].InnerText, new System.Globalization.CultureInfo("EN-us"));
+                        cpe.Status = nodeMetadata.Attributes["status"].InnerText;
+                        //TODO: more?
+                    }
+                    catch(Exception exUpdateCPE)
+                    {
+                        Console.WriteLine("Exception exUpdateCPE " + exUpdateCPE.Message + " " + exUpdateCPE.InnerException);
+                    }
+                }
+            }
+            try
+            {
+                model.SaveChanges();
+            }
+            catch (Exception exCPE)
+            {
+                Console.WriteLine("Exception exCPE " + exCPE.Message + " " + exCPE.InnerException);
+            }
+            //FREE
+            model.Dispose();
+            model = null;
+        }
