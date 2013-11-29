@@ -78,41 +78,41 @@ static private void Import_cve(string filepath)
                 }
 
                 XmlNode node10;
-                node10 = node.SelectSingleNode("vuln:summary", mgr);
+                node10 = node.SelectSingleNode("vuln:summary", mgrXML);
 
                 XmlNode node11;
-                node11 = node.SelectSingleNode("vuln:published-datetime", mgr);
+                node11 = node.SelectSingleNode("vuln:published-datetime", mgrXML);
 
                 XmlNode node12;
-                node12 = node.SelectSingleNode("vuln:last-modified-datetime", mgr);
+                node12 = node.SelectSingleNode("vuln:last-modified-datetime", mgrXML);
 
-                XORCISMModel.VULNERABILITY vs1;
-                //TODO: cve hardcoded => VULRefentialID
-                vs1 = model.VULNERABILITY.FirstOrDefault(o => o.VULReferential == "cve" && o.VULReferentialID == cveid);
-                if (vs1 == null)
+                XORCISMModel.VULNERABILITY oVULN;
+                //TODO: "cve" hardcoded => VULRefentialID
+                oVULN = model.VULNERABILITY.FirstOrDefault(o => o.VULReferential == "cve" && o.VULReferentialID == cveid);
+                if (oVULN == null)
                 {
-                    vs1 = new XORCISMModel.VULNERABILITY();
-
-                    model.AddToVULNERABILITY(vs1);
+                    oVULN = new XORCISMModel.VULNERABILITY();
+					//TODO: TRY/CATCH...
+                    model.AddToVULNERABILITY(oVULN);
                 }
 
-                vs1.VULReferential = "cve";
-                vs1.VULReferentialID = cveid;
-                vs1.VULDescription = node10.InnerText;
-                vs1.VULConsequence = "";
-                vs1.VULSolution = "";
+                oVULN.VULReferential = "cve";
+                oVULN.VULReferentialID = cveid;
+                oVULN.VULDescription = node10.InnerText;
+                oVULN.VULConsequence = "";
+                oVULN.VULSolution = "";
                 //TODO: timestamp...
-                vs1.VULPublishedDate = DateTime.Parse(node11.InnerText, new System.Globalization.CultureInfo("EN-us"));
-                vs1.VULModifiedDate = DateTime.Parse(node12.InnerText, new System.Globalization.CultureInfo("EN-us"));
-                vs1.CVSSBaseScore = baseScore;
-                vs1.CVSSImpactSubscore = impactSubscore;
-                vs1.CVSSExploitabilitySubscore = exploitabilitySubscore;
-                vs1.CVSSMetricAccessVector = accessVector.ToString();
-                vs1.CVSSMetricAccessComplexity = accessComplexity.ToString();
-                vs1.CVSSMetricAuthentication = authentication.ToString();
-                vs1.CVSSMetricConfImpact = confidentialityImpact.ToString();
-                vs1.CVSSMetricIntegImpact = integrityImpact.ToString();
-                vs1.CVSSMetricAvailImpact = availabilityImpact.ToString();
+                oVULN.VULPublishedDate = DateTime.Parse(node11.InnerText, new System.Globalization.CultureInfo("EN-us"));
+                oVULN.VULModifiedDate = DateTime.Parse(node12.InnerText, new System.Globalization.CultureInfo("EN-us"));
+                oVULN.CVSSBaseScore = baseScore;
+                oVULN.CVSSImpactSubscore = impactSubscore;
+                oVULN.CVSSExploitabilitySubscore = exploitabilitySubscore;
+                oVULN.CVSSMetricAccessVector = accessVector.ToString();
+                oVULN.CVSSMetricAccessComplexity = accessComplexity.ToString();
+                oVULN.CVSSMetricAuthentication = authentication.ToString();
+                oVULN.CVSSMetricConfImpact = confidentialityImpact.ToString();
+                oVULN.CVSSMetricIntegImpact = integrityImpact.ToString();
+                oVULN.CVSSMetricAvailImpact = availabilityImpact.ToString();
 
                 // CPEs
 
@@ -129,7 +129,7 @@ static private void Import_cve(string filepath)
 
                     if (cpe == null)
                     {
-						//TODO: TRY/CATCH
+						//TODO: TRY/CATCH...
                         cpe = new CPE();
                         cpe.CPEID = cpeid;
                         cpe.timestamp = DateTimeOffset.Now;
@@ -137,8 +137,8 @@ static private void Import_cve(string filepath)
                         model.SaveChanges();
                     }
 
-                    if (cpe.VULNERABILITY.Contains(vs1) == false)
-                        cpe.VULNERABILITY.Add(vs1);
+                    if (cpe.VULNERABILITY.Contains(oVULN) == false)
+                        cpe.VULNERABILITY.Add(oVULN);	//TODO
                 }
 
                 // CWEs
@@ -149,8 +149,8 @@ static private void Import_cve(string filepath)
                 {
                     string sCWEID;
                     sCWEID = node4.Attributes["id"].InnerText;
-                    //Console.WriteLine("DEBUG CWEID:" + s);
-                    if (s != "")
+                    //Console.WriteLine("DEBUG CWEID:" + sCWEID);
+                    if (sCWEID != "")
                     {
                         XORCISMModel.CWE oCWE = model.CWE.Where(o => o.CWEID == s).FirstOrDefault();
                         if (oCWE == null)
@@ -164,7 +164,7 @@ static private void Import_cve(string filepath)
                                 oCWE.CWEDescriptionSummary = "";
                                 oCWE.CWEDescriptionSummaryClean = "";
                                 oCWE.timestamp = DateTimeOffset.Now;
-                                vs1.CWE.Add(oCWE);
+                                oVULN.CWE.Add(oCWE);
                                 //Console.WriteLine("DEBUG New CWE " + sCWEID);
                             }
                             catch (Exception exAddToVULNERABILITYFORCWE)
@@ -174,7 +174,7 @@ static private void Import_cve(string filepath)
                         }
                         else
                         {
-                            if (vs1.CWE.Contains(oCWE) == true)
+                            if (oVULN.CWE.Contains(oCWE) == true)
                             {
 								//Already in the database
                             }
@@ -182,7 +182,7 @@ static private void Import_cve(string filepath)
                             {
                                 try
                                 {
-                                    vs1.CWE.Add(oCWE);
+                                    oVULN.CWE.Add(oCWE);
                                 }
                                 catch (Exception exAddToVULNERABILITYFORCWE2)
                                 {
@@ -195,7 +195,7 @@ static private void Import_cve(string filepath)
 
                 //References
 
-                vs1.REFERENCE.Clear();
+                oVULN.REFERENCE.Clear();
 
                 XmlNodeList nodes5;
                 nodes5 = node.SelectNodes("vuln:references", mgrXML);
@@ -224,7 +224,7 @@ static private void Import_cve(string filepath)
                     {
                         //TODO
                     }
-                    vs1.REFERENCE.Add(reference);
+                    oVULN.REFERENCE.Add(reference);
 
                     //EXPLOIT
                     
