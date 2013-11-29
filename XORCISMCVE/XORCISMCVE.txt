@@ -1,0 +1,240 @@
+//*******************************************************************
+/// <summary>
+        /// Copyright (C) 2013 Jerome Athias
+        /// Parsing functions for CVE Repository XML file and import the values into an XORCISM database
+        /// This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+        ///
+        /// This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+        ///
+        /// You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+        /// </summary>
+//*******************************************************************
+static private void Import_cve(string filepath)
+        {
+            XORCISMEntities model;
+            model = new XORCISMEntities();
+
+            CVSSCalculator oCVSSCalculator;
+            oCVSSCalculator = new CVSSCalculator();
+
+            XmlDocument docXML;
+            docXML = new XmlDocument();
+            try
+            {
+                docXML.Load(filepath);
+            }
+            catch (Exception exCVE)
+            {
+                Console.WriteLine("Exception " + exCVE.Message+" "+exCVE.InnerException);
+                return;
+            }
+
+
+            XmlNamespaceManager mgrXML = new XmlNamespaceManager(docXML.NameTable);
+            mgrXML.AddNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+            mgrXML.AddNamespace("cvss", "http://scap.nist.gov/schema/cvss-v2/0.2");
+            mgrXML.AddNamespace("cpe-lang", "http://cpe.mitre.org/language/2.0");
+            mgrXML.AddNamespace("vuln", "http://scap.nist.gov/schema/vulnerability/0.4");
+            mgrXML.AddNamespace("z", "http://scap.nist.gov/schema/feed/vulnerability/2.0");
+            mgrXML.AddNamespace("schemaLocation", "http://scap.nist.gov/schema/feed/vulnerability/2.0 http://nvd.nist.gov/schema/nvd-cve-feed_2.0.xsd");
+
+            XmlNodeList nodes;
+            nodes = docXML.SelectNodes("/z:nvd/z:entry", mgrXML);
+
+            foreach (XmlNode node in nodes)
+            {
+                string cveid = node.Attributes["id"].InnerText;
+
+                XmlNode node2;
+                node2 = node.SelectSingleNode("vuln:cvss/cvss:base_metrics", mgrXML);
+
+                if (node2 == null)
+                    continue;
+
+                CVSSCalculator.AccessComplexity accessComplexity = CVSSCalculator.AccessComplexity.Medium;
+                CVSSCalculator.Authentication authentication = CVSSCalculator.Authentication.None;
+                CVSSCalculator.AccessVector accessVector = CVSSCalculator.AccessVector.Local;
+                CVSSCalculator.ConfidentialityImpact confidentialityImpact = CVSSCalculator.ConfidentialityImpact.None;
+                CVSSCalculator.IntegrityImpact integrityImpact = CVSSCalculator.IntegrityImpact.None;
+                CVSSCalculator.AvailabilityImpact availabilityImpact = CVSSCalculator.AvailabilityImpact.None;
+
+                double scoreFromFile = 0.0;
+
+                CultureInfo ci = new CultureInfo("en-US");
+
+                //scores
+
+                double baseScore, impactSubscore, exploitabilitySubscore;
+
+                oCVSSCalculator.Calculate(accessComplexity, authentication, accessVector, confidentialityImpact, integrityImpact, availabilityImpact, out baseScore, out impactSubscore, out exploitabilitySubscore);
+
+                baseScore = Round(baseScore);
+                impactSubscore = Round(impactSubscore);
+                exploitabilitySubscore = Round(exploitabilitySubscore);
+
+                if (baseScore != scoreFromFile)
+                {
+                    //Console.WriteLine("DEBUG "+cveid + " " + scoreFromFile + " " + baseScore);
+                }
+
+                XmlNode node10;
+                node10 = node.SelectSingleNode("vuln:summary", mgr);
+
+                XmlNode node11;
+                node11 = node.SelectSingleNode("vuln:published-datetime", mgr);
+
+                XmlNode node12;
+                node12 = node.SelectSingleNode("vuln:last-modified-datetime", mgr);
+
+                XORCISMModel.VULNERABILITY vs1;
+                //TODO: cve hardcoded => VULRefentialID
+                vs1 = model.VULNERABILITY.FirstOrDefault(o => o.VULReferential == "cve" && o.VULReferentialID == cveid);
+                if (vs1 == null)
+                {
+                    vs1 = new XORCISMModel.VULNERABILITY();
+
+                    model.AddToVULNERABILITY(vs1);
+                }
+
+                vs1.VULReferential = "cve";
+                vs1.VULReferentialID = cveid;
+                vs1.VULDescription = node10.InnerText;
+                vs1.VULConsequence = "";
+                vs1.VULSolution = "";
+                //TODO: timestamp...
+                vs1.VULPublishedDate = DateTime.Parse(node11.InnerText, new System.Globalization.CultureInfo("EN-us"));
+                vs1.VULModifiedDate = DateTime.Parse(node12.InnerText, new System.Globalization.CultureInfo("EN-us"));
+                vs1.CVSSBaseScore = baseScore;
+                vs1.CVSSImpactSubscore = impactSubscore;
+                vs1.CVSSExploitabilitySubscore = exploitabilitySubscore;
+                vs1.CVSSMetricAccessVector = accessVector.ToString();
+                vs1.CVSSMetricAccessComplexity = accessComplexity.ToString();
+                vs1.CVSSMetricAuthentication = authentication.ToString();
+                vs1.CVSSMetricConfImpact = confidentialityImpact.ToString();
+                vs1.CVSSMetricIntegImpact = integrityImpact.ToString();
+                vs1.CVSSMetricAvailImpact = availabilityImpact.ToString();
+
+                // CPEs
+
+                XmlNodeList list;
+                list = node.SelectNodes("vuln:vulnerable-software-list/vuln:product", mgr);
+
+                foreach (XmlNode node4 in list)
+                {
+                    string cpeid;
+                    cpeid = node4.InnerText;
+
+                    XORCISMModel.CPE cpe;
+                    cpe = model.CPE.FirstOrDefault(o => o.CPEID == cpeid);
+
+                    if (cpe == null)
+                    {
+						//TODO: TRY/CATCH
+                        cpe = new CPE();
+                        cpe.CPEID = cpeid;
+                        cpe.timestamp = DateTimeOffset.Now;
+                        model.AddToCPE(cpe);
+                        model.SaveChanges();
+                    }
+
+                    if (cpe.VULNERABILITY.Contains(vs1) == false)
+                        cpe.VULNERABILITY.Add(vs1);
+                }
+
+                // CWEs
+
+                XmlNodeList nodes4;
+                nodes4 = node.SelectNodes("vuln:cwe", mgr);
+                foreach (XmlNode node4 in nodes4)
+                {
+                    string sCWEID;
+                    sCWEID = node4.Attributes["id"].InnerText;
+                    //Console.WriteLine("DEBUG CWEID:" + s);
+                    if (s != "")
+                    {
+                        XORCISMModel.CWE oCWE = model.CWE.Where(o => o.CWEID == s).FirstOrDefault();
+                        if (oCWE == null)
+                        {
+                            try
+                            {
+                                oCWE = new CWE();
+                                oCWE.CWEID = sCWEID;
+                                //TODO: Review
+                                oCWE.CWEName = "";
+                                oCWE.CWEDescriptionSummary = "";
+                                oCWE.CWEDescriptionSummaryClean = "";
+                                oCWE.timestamp = DateTimeOffset.Now;
+                                vs1.CWE.Add(oCWE);
+                                //Console.WriteLine("DEBUG New CWE " + sCWEID);
+                            }
+                            catch (Exception exAddToVULNERABILITYFORCWE)
+                            {
+                                Console.WriteLine("Exception exAddToVULNERABILITYFORCWE  "+ exAddToVULNERABILITYFORCWE.Message+" "+exAddToVULNERABILITYFORCWE.InnerException);
+                            }
+                        }
+                        else
+                        {
+                            if (vs1.CWE.Contains(oCWE) == true)
+                            {
+								//Already in the database
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    vs1.CWE.Add(oCWE);
+                                }
+                                catch (Exception exAddToVULNERABILITYFORCWE2)
+                                {
+                                    Console.WriteLine(""Exception exAddToVULNERABILITYFORCWE2 "+exAddToVULNERABILITYFORCWE2.Message);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //References
+
+                vs1.REFERENCE.Clear();
+
+                XmlNodeList nodes5;
+                nodes5 = node.SelectNodes("vuln:references", mgrXML);
+                foreach (XmlNode node5 in nodes5)
+                {
+                    string source = node5.SelectSingleNode("vuln:source", mgrXML).InnerText;
+                    string title = node5.SelectSingleNode("vuln:reference", mgrXML).InnerText;
+                    string type = node5.Attributes["reference_type"].InnerText;
+                    string url = node5.SelectSingleNode("vuln:reference", mgrXML).Attributes["href"].InnerText;
+
+                    REFERENCE reference;
+                    reference = model.REFERENCE.FirstOrDefault(o => o.Source == source && o.Title == title && o.Url == url);
+
+                    if (reference == null)
+                    {
+                        //TODO: TRY/CATCH...
+                        reference = new REFERENCE();
+                        reference.Source = source;
+                        reference.Title = title;
+                        reference.Type = type;
+                        reference.Url = url;
+
+                        model.AddToREFERENCE(reference);
+                    }
+                    else
+                    {
+                        //TODO
+                    }
+                    vs1.REFERENCE.Add(reference);
+
+                    //EXPLOIT
+                    
+                }
+
+                model.SaveChanges();
+
+            }
+
+            //FREE
+            model.Dispose();
+            model = null;
+        }
