@@ -1,0 +1,1207 @@
+//*******************************************************************
+/// <summary>
+        /// Copyright (C) 2013 Jerome Athias
+        /// Parsing functions for CWE Repository XML file and import the values into an XORCISM database
+        /// This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+        ///
+        /// This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+        ///
+        /// You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+        /// </summary>
+//*******************************************************************
+        static private void Import_cwes(string filepath)
+        {
+            XmlDocument docXML;
+            docXML = new XmlDocument();
+            //TODO: Security controls/checks
+            //TODO: XSD validation
+            //TODO: ...
+            docXML.Load(filepath);
+
+            XmlNodeList nodesCategory;
+            nodesCategory = docXML.SelectNodes("/Weakness_Catalog/Categories/Category");
+            ImportFile_cwe(nodesCategory);
+
+            XmlNodeList nodesWeakness;
+            nodesWeakness = docXML.SelectNodes("/Weakness_Catalog/Weaknesses/Weakness");
+            ImportFile_cwe(nodesWeakness);
+
+            XmlNodeList nodesCompound;
+            nodesCompound = docXML.SelectNodes("/Weakness_Catalog/Compound_Elements/Compound_Element");
+            ImportFile_cwe(nodesCompound);
+
+            //TODO: Free...
+        }
+
+        static private void ImportFile_cwe(XmlNodeList nodes)
+        {
+            XORCISMEntities model;
+            model = new XORCISMEntities();
+
+            foreach (XmlNode nodeCWE in nodes)
+            {
+                string sCWEID = "CWE-" + nodeCWE.Attributes["ID"].InnerText;
+                Console.WriteLine("DEBUG " + sCWEID);
+                string sCWEName = nodeCWE.Attributes["Name"].InnerText;
+                string sCWEStatus = nodeCWE.Attributes["Status"].InnerText;
+                string sCWEAbstraction = string.Empty;
+                //TODO: CWEURL
+                try
+                {
+                    sCWEAbstraction = nodeCWE.Attributes["Weakness_Abstraction"].InnerText;
+                }
+                catch (Exception ex)
+                {
+                    //Console.WriteLine("Exception WeaknessAbstraction: " + ex.Message + " " + ex.InnerException);
+                    //Object reference not set to an instance of an object. 
+                }
+                string sCWEDescription = nodeCWE.ChildNodes[0].ChildNodes[0].InnerText;
+                //Cleaning
+                string sCWEDescriptionClean = sCWEDescription;
+                //Remove CLRF
+                sCWEDescriptionClean = sCWEDescriptionClean.Replace("\r\n", " ");
+                sCWEDescriptionClean = sCWEDescriptionClean.Replace("\n", " ");
+                while (sCWEDescriptionClean.Contains("  "))
+                {
+                    sCWEDescriptionClean = sCWEDescriptionClean.Replace("  ", " ");
+                }
+                string sCWECausalNature = string.Empty;  //TODO
+                string sCWEURL = string.Empty;  //TODO
+
+                var CWEObject = model.CWE.Where(o => o.CWEID == sCWEID).FirstOrDefault();
+                if (CWEObject == null)
+                {
+                    //Adding the CWE
+                    CWE oCWE;
+                    oCWE = new CWE();
+                    oCWE.CWEID = sCWEID;
+                    oCWE.CWEName = sCWEName;
+                    oCWE.CWEStatus = sCWEStatus;
+                    oCWE.CWEAbstraction = sCWEAbstraction;
+                    oCWE.CWEDescriptionSummary = sCWEDescription;
+                    oCWE.CWEDescriptionSummaryClean = sCWEDescriptionClean;
+                    //TODO complete
+                        oCWE.CWECausalNature = sCWECausalNature;
+                    oCWE.VocabularyID = 20;  //TODO: Hardcoded   CWE 2.5
+                    oCWE.timestamp = DateTimeOffset.Now;
+                    //oCWE.CWEURL =   //TODO
+                    model.AddToCWE(oCWE);
+                    CWEObject = oCWE;
+                }
+                else
+                {
+                    //Updating
+                    CWEObject.CWEName = sCWEName;
+                    CWEObject.CWEStatus = sCWEStatus;
+                    CWEObject.CWEAbstraction = sCWEAbstraction;
+                    CWEObject.CWEDescriptionSummary = sCWEDescription;
+                    CWEObject.CWEDescriptionSummaryClean = sCWEDescriptionClean;
+                    //TODO: complete
+                        CWEObject.CWECausalNature = sCWECausalNature;
+                    CWEObject.VocabularyID = 20;  //TODO: Hardcoded   CWE 2.5
+                    CWEObject.timestamp = DateTimeOffset.Now;
+                    //CWEObject.CWEURL =    //TODO
+                }
+
+                model.SaveChanges();
+
+                foreach (XmlNode nodeCWEinfo in nodeCWE)
+                {
+                    Console.WriteLine("DEBUG: nodeCWEinfo: " + nodeCWEinfo.Name);
+                    //TODO
+                    switch (nodeCWEinfo.Name)
+                    {
+                        
+                        case "Relationships":
+                        #region CWERelationships
+                            try
+                            {
+                                foreach (XmlNode nodeCWERelationship in nodeCWEinfo)
+                                {
+                                    bool bCWERelationshipCategory = false;
+                                    string sCWERelationshipNature = "";
+                                    string sCWERelationshipTargetCWEID = "";
+                                    foreach (XmlNode nodeCWERelationshipItem in nodeCWERelationship)
+                                    {
+                                        if (nodeCWERelationshipItem.Name == "Relationship_Target_Form")
+                                        {
+                                            if (nodeCWERelationshipItem.InnerText == "Category")
+                                            {
+                                                bCWERelationshipCategory = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (nodeCWERelationshipItem.Name == "Relationship_Nature")
+                                            {
+                                                sCWERelationshipNature = nodeCWERelationshipItem.InnerText; //ChildOf
+                                            }
+                                            else
+                                            {
+                                                if (nodeCWERelationshipItem.Name == "Relationship_Target_ID")
+                                                {
+                                                    //Check if TargetCWEID exists
+                                                    sCWERelationshipTargetCWEID = "CWE-" + nodeCWERelationshipItem.InnerText; //519
+                                                }
+                                            }
+                                        }
+                                    }
+                                    if (bCWERelationshipCategory)
+                                    {
+                                        CWERELATIONSHIPCATEGORY CWERelationCategory = model.CWERELATIONSHIPCATEGORY.Where(o => o.CWEID == sCWEID && o.RelationshipTargetCWEID == sCWERelationshipTargetCWEID).FirstOrDefault();
+                                        if (CWERelationCategory != null)
+                                        {
+                                            //TODO: Test if same RelationshipNature
+                                            //if not: delete and recreate
+                                        }
+                                        else
+                                        {
+                                            CWERelationCategory = new CWERELATIONSHIPCATEGORY();
+                                            CWERelationCategory.CWEID = sCWEID;
+                                            CWERelationCategory.RelationshipNature = sCWERelationshipNature;
+                                            CWERelationCategory.RelationshipTargetCWEID = sCWERelationshipTargetCWEID;
+                                            model.AddToCWERELATIONSHIPCATEGORY(CWERelationCategory);
+                                            model.SaveChanges();
+                                            Console.WriteLine("DEBUG AddToCWERELATIONSHIPCATEGORY " + sCWEID + " " + sCWERelationshipNature + " " + sCWERelationshipTargetCWEID);
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception exRelationships)
+                            {
+                                Console.WriteLine("Exception exRelationships: " + exRelationships.Message + " " + exRelationships.InnerException);
+                            }
+                            break;
+                        #endregion CWERelationships
+
+                        case "Related_Attack_Patterns":
+                        #region CWERelated_Attack_Patterns
+                            try
+                            {
+                                foreach (XmlNode nodeCWEAttackPattern in nodeCWEinfo)
+                                {
+                                    string sCAPECversion = nodeCWEAttackPattern.Attributes["CAPEC_Version"].InnerText;  //2.1
+                                    foreach (XmlNode nodeCWECAPEC in nodeCWEAttackPattern)
+                                    {
+                                        string sCAPECID = "CAPEC-"+nodeCWECAPEC.InnerText;
+                                        CWEFORCAPEC CWECAPEC = model.CWEFORCAPEC.Where(o => o.CWEID == sCWEID && o.capec_id == sCAPECID).FirstOrDefault();
+                                        if (CWECAPEC != null)
+                                        {
+                                            //NOTE: Already exists. WeaknessRelationship = "Targeted"?
+                                        }
+                                        else
+                                        {
+                                            CWECAPEC = new CWEFORCAPEC();
+                                            CWECAPEC.CWEID = sCWEID;
+                                            CWECAPEC.capec_id = sCAPECID;
+                                            CWECAPEC.WeaknessRelationship = "Targeted";
+                                            try
+                                            {
+
+                                                model.AddToCWEFORCAPEC(CWECAPEC);   //TODO: duplicates
+                                                model.SaveChanges();
+                                                Console.WriteLine("DEBUG: AddToCWEFORCAPEC " + sCWEID + " " + sCAPECID);
+                                            }
+                                            catch (Exception exCWEAttackPattern1)
+                                            {
+                                                Console.WriteLine("Exception exCWEAttackPattern1: " + sCWEID + " " + "CAPEC-" + sCAPECID + " " + exCWEAttackPattern1.Message + " " + exCWEAttackPattern1.InnerException);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception exCWEAttackPattern)
+                            {
+                                Console.WriteLine("Exception exCWEAttackPattern: " + exCWEAttackPattern.Message + " " + exCWEAttackPattern.InnerException);
+                            }
+                            break;
+                        #endregion CWERelated_Attack_Patterns
+
+                        case "Taxonomy_Mappings":
+                        #region CWETaxonomy_Mappings
+                            try
+                            {
+                                foreach (XmlNode nodeCWETaxonomy in nodeCWEinfo)
+                                {
+                                    string sCWEMappedTaxonomyName = string.Empty;
+                                    try
+                                    {
+                                        sCWEMappedTaxonomyName = nodeCWETaxonomy.Attributes["Mapped_Taxonomy_Name"].InnerText;
+                                        //Cleaning
+                                        //Remove CLRF
+                                        sCWEMappedTaxonomyName = sCWEMappedTaxonomyName.Replace("\r\n", " ");
+                                        sCWEMappedTaxonomyName = sCWEMappedTaxonomyName.Replace("\n", " ");
+                                        while (sCWEMappedTaxonomyName.Contains("  "))
+                                        {
+                                            sCWEMappedTaxonomyName = sCWEMappedTaxonomyName.Replace("  ", " ");
+                                        }
+                                        
+                                        Console.WriteLine("DEBUG sCWEMappedTaxonomyName=" + sCWEMappedTaxonomyName);
+                                    }
+                                    catch (Exception exsCWEMappedTaxonomyName)
+                                    {
+                                        Console.WriteLine("Exception exsCWEMappedTaxonomyName: " + exsCWEMappedTaxonomyName.Message + " " + exsCWEMappedTaxonomyName.InnerException);
+                                    }
+                                    VOCABULARY oVocabulary = model.VOCABULARY.Where(o => o.VocabularyName == sCWEMappedTaxonomyName).FirstOrDefault();
+                                    if (oVocabulary != null)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        oVocabulary = new VOCABULARY();
+                                        oVocabulary.VocabularyName = sCWEMappedTaxonomyName;
+                                        try
+                                        {
+                                            model.AddToVOCABULARY(oVocabulary);
+                                            model.SaveChanges();
+                                            Console.WriteLine("DEBUG: AddToVOCABULARY " + sCWEID + " " + sCWEMappedTaxonomyName);
+                                        }
+                                        catch (Exception exAddToVOCABULARY)
+                                        {
+                                            Console.WriteLine("Exception exAddToVOCABULARY: " + exAddToVOCABULARY.Message + " " + exAddToVOCABULARY.InnerException);
+                                        }
+                                    }
+                                    TAXONOMY oTaxonomy = model.TAXONOMY.Where(o => o.TaxonomyName == sCWEMappedTaxonomyName).FirstOrDefault();  //TODO: VocabularyID?
+                                    if (oTaxonomy != null)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        oTaxonomy = new TAXONOMY();
+                                        oTaxonomy.TaxonomyName = sCWEMappedTaxonomyName;
+                                        oTaxonomy.CreatedDate = DateTimeOffset.Now;
+                                        oTaxonomy.timestamp = DateTimeOffset.Now;
+                                        oTaxonomy.VocabularyID = oVocabulary.VocabularyID;
+                                        try
+                                        {
+                                            model.AddToTAXONOMY(oTaxonomy);
+                                            model.SaveChanges();
+                                            Console.WriteLine("DEBUG: AddToTAXONOMY " + sCWEID + " " + sCWEMappedTaxonomyName);
+                                        }
+                                        catch (Exception exAddToTAXONOMY)
+                                        {
+                                            Console.WriteLine("Exception exAddToTAXONOMY: " + exAddToTAXONOMY.Message + " " + exAddToTAXONOMY.InnerException);
+                                        }
+                                    }
+                                    switch(sCWEMappedTaxonomyName)
+                                    //if (sCWEMappedTaxonomyName == "WASC") //2.0
+                                    {
+                                        case "WASC":    //2.0
+                                            #region taxonomywasc
+                                            //http://projects.webappsec.org/w/page/13246975/Threat%20Classification%20Taxonomy%20Cross%20Reference%20View
+                                            foreach (XmlNode nodeCWEWASC in nodeCWETaxonomy)
+                                            {
+                                                //<Mapped_Node_Name>Server Misconfiguration </Mapped_Node_Name>
+                                                //<Mapped_Node_ID>14</Mapped_Node_ID>
+                                                if (nodeCWEWASC.Name == "Mapped_Node_ID")
+                                                {
+                                                
+                                                    string sWASCRefID = nodeCWEWASC.InnerText;
+                                                    if (sWASCRefID.Length < 2)
+                                                    {
+                                                        sWASCRefID = "0" + sWASCRefID;
+                                                    }
+                                                    sWASCRefID = "WASC-" + sWASCRefID;
+                                                    WASC WASCObject = model.WASC.Where(o => o.WASCRefID == sWASCRefID).FirstOrDefault();
+                                                    if (WASCObject == null)
+                                                    {
+                                                        Console.WriteLine("DEBUG Error WASCforCWE unknown: " + sWASCRefID);
+                                                    }
+                                                    else
+                                                    {
+                                                        int iWASCID = WASCObject.WASCID;
+                                                        WASCCWE WASCforCWE = model.WASCCWE.Where(o => o.CWEID == sCWEID && o.WASCID == iWASCID).FirstOrDefault();
+                                                        if (WASCforCWE != null)
+                                                        {
+
+                                                        }
+                                                        else
+                                                        {
+                                                            WASCforCWE = new WASCCWE();
+                                                            WASCforCWE.CWEID = sCWEID;
+                                                            WASCforCWE.WASCID = iWASCID;
+                                                            model.AddToWASCCWE(WASCforCWE);
+                                                            model.SaveChanges();
+                                                            Console.WriteLine("DEBUG AddToWASCCWE " + sCWEID + " " + sWASCRefID);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            #endregion taxonomywasc
+                                            break;
+
+                                        //TODO
+                                        
+                                        case "OWASP Top Ten 2004":
+                                            #region taxonomyowasptop2004
+                                            string sTaxonomyMappedNodeName = string.Empty;
+                                            string sTaxonomyMappedNodeID = string.Empty;
+                                            foreach (XmlNode nodeCWEOWASPTOP2004 in nodeCWETaxonomy)
+                                            {
+                                                switch (nodeCWEOWASPTOP2004.Name)
+                                                {
+                                                    case "Mapped_Node_Name":
+                                                        //Insecure Configuration Management
+                                                        sTaxonomyMappedNodeName = nodeCWEOWASPTOP2004.InnerText;
+                                                        Console.WriteLine("DEBUG " + sCWEID + " sTaxonomyMappedNodeName:" + sTaxonomyMappedNodeName);
+                                                        break;
+                                                    case "Mapped_Node_ID":
+                                                        //A10
+                                                        sTaxonomyMappedNodeID = nodeCWEOWASPTOP2004.InnerText;
+                                                        Console.WriteLine("DEBUG " + sCWEID + " sTaxonomyMappedNodeID:" + sTaxonomyMappedNodeID);
+                                                        //TODO: CWEFOROWASPTOP10
+                                                        OWASPTOP10 oOWASPTOP10 = model.OWASPTOP10.Where(o => o.YearTop10 == 2004 && o.OWASPName == sTaxonomyMappedNodeName).FirstOrDefault();
+                                                        if (oOWASPTOP10 != null)
+                                                        {
+
+                                                        }
+                                                        else
+                                                        {
+                                                            oOWASPTOP10 = new OWASPTOP10();
+                                                            oOWASPTOP10.OWASPName = sTaxonomyMappedNodeName;
+                                                            oOWASPTOP10.YearTop10 = 2004;
+                                                            int iOWASPTOP10Rank = Convert.ToInt32(sTaxonomyMappedNodeID.Replace("A",""));
+                                                            Console.WriteLine("DEBUG AddToOWASPTOP10 2004: " + sTaxonomyMappedNodeName);
+                                                            model.AddToOWASPTOP10(oOWASPTOP10);
+                                                            model.SaveChanges();
+                                                        }
+
+                                                        break;
+                                                    default:
+                                                        Console.WriteLine("DEBUG Missing code for CWETaxonomy_MappingNode: " + sCWEMappedTaxonomyName);
+                                                        break;
+                                                }
+                                            }
+                                            #endregion taxonomyowasptop2004
+                                            break;
+                                        
+
+                                        //TODO
+                                        /*
+                                        case "PLOVER":
+
+                                            break;
+                                        */
+
+                                        default:
+                                            //TODO
+                                            //TAXONOMY  VOCABULARY    (STANDARD)
+
+                                            //REFERENCE
+
+                                            //Console.WriteLine("DEBUG Missing code for CWETaxonomy_Mapping: " + sCWEMappedTaxonomyName);
+
+                                            foreach (XmlNode nodeCWETaxonomyNode in nodeCWETaxonomy)
+                                            {
+                                                string sTaxonomyNodeName=nodeCWETaxonomyNode.InnerText;
+                                                //Cleaning
+                                                //Remove CLRF
+                                                sTaxonomyNodeName = sTaxonomyNodeName.Replace("\r\n", " ");
+                                                sTaxonomyNodeName = sTaxonomyNodeName.Replace("\n", " ");
+                                                while (sTaxonomyNodeName.Contains("  "))
+                                                {
+                                                    sTaxonomyNodeName = sTaxonomyNodeName.Replace("  ", " ");
+                                                }
+
+                                                TAXONOMYNODE oTaxonomyNode = model.TAXONOMYNODE.Where(o => o.TaxonomyID == oTaxonomy.TaxonomyID && o.TaxonomyNodeName == sTaxonomyNodeName).FirstOrDefault();
+                                                if (oTaxonomyNode != null)
+                                                {
+
+                                                }
+                                                else
+                                                {
+                                                    oTaxonomyNode = new TAXONOMYNODE();
+                                                    oTaxonomyNode.TaxonomyID = oTaxonomy.TaxonomyID;
+                                                    oTaxonomyNode.TaxonomyNodeName = sTaxonomyNodeName;
+                                                    oTaxonomyNode.CreatedDate = DateTimeOffset.Now;
+                                                    oTaxonomyNode.timestamp = DateTimeOffset.Now;
+                                                    oTaxonomyNode.VocabularyID = oVocabulary.VocabularyID;
+                                                    try
+                                                    {
+                                                        model.AddToTAXONOMYNODE(oTaxonomyNode);
+                                                        model.SaveChanges();
+                                                        Console.WriteLine("DEBUG AddToTAXONOMYNODE " + sTaxonomyNodeName);
+                                                    }
+                                                    catch (Exception exAddToTAXONOMYNODE)
+                                                    {
+                                                        Console.WriteLine("Exception AddToTAXONOMYNODE " + exAddToTAXONOMYNODE.Message + " " + exAddToTAXONOMYNODE.InnerException);
+                                                    }
+                                                }
+                                                CWETAXONOMYNODE oCWETaxonomyNode = model.CWETAXONOMYNODE.Where(o => o.CWEID == sCWEID && o.CWETaxonomyNodeID == oTaxonomyNode.TaxonomyNodeID).FirstOrDefault();
+                                                if (oCWETaxonomyNode != null)
+                                                {
+
+                                                }
+                                                else
+                                                {
+                                                    oCWETaxonomyNode = new CWETAXONOMYNODE();
+                                                    oCWETaxonomyNode.CWEID = sCWEID;
+                                                    oCWETaxonomyNode.TaxonomyNodeID = oTaxonomyNode.TaxonomyNodeID;
+                                                    oCWETaxonomyNode.CreatedDate = DateTimeOffset.Now;
+                                                    oCWETaxonomyNode.timestamp = DateTimeOffset.Now;
+                                                    oCWETaxonomyNode.VocabularyID = oVocabulary.VocabularyID;
+                                                    try
+                                                    {
+                                                        model.AddToCWETAXONOMYNODE(oCWETaxonomyNode);
+                                                        model.SaveChanges();
+                                                        Console.WriteLine("DEBUG AddToCWETAXONOMYNODE "+sCWEID+" "+oTaxonomyNode.TaxonomyNodeName);
+                                                    }
+                                                    catch (Exception exAddToCWETAXONOMYNODE)
+                                                    {
+                                                        Console.WriteLine("Exception exAddToCWETAXONOMYNODE: " + exAddToCWETAXONOMYNODE.Message + " " + exAddToCWETAXONOMYNODE.InnerException);
+                                                    }
+                                                }
+                                            }
+                                            break;
+                                    }
+                                    /*
+                                    else
+                                    {
+                                        Console.WriteLine("DEBUG Missing code for CWETaxonomy_Mapping: " + sCWEMappedTaxonomyName);
+                                    }
+                                    */
+                                }
+                            }
+                            catch (Exception exCWETaxonomy_Mapping)
+                            {
+                                Console.WriteLine("Exception exCWETaxonomy_Mapping: " + exCWETaxonomy_Mapping.Message + " " + exCWETaxonomy_Mapping.InnerException);
+                            }
+                            break;
+                        #endregion CWETaxonomy_Mappings
+
+                        case "Applicable_Platforms":
+                        #region CWEApplicable_Platforms
+                            try
+                            {
+                                foreach (XmlNode nodeCWEPlatform in nodeCWEinfo)
+                                {
+                                    //<Languages>
+                                    if (nodeCWEPlatform.Name == "Languages")
+                                    {
+                                        foreach (XmlNode nodeCWEPlatformLanguage in nodeCWEPlatform)
+                                        {
+                                            //<Language_Class Language_Class_Description="All"/>
+                                            //<Language Prevalence="Often" Language_Name="C"/>
+                                            //<Language Prevalence="Often" Language_Name="C++"/>
+                                            //<Language Language_Name="Assembly"/>
+                                            //<Language_Class Language_Class_Description="Languages without memory management support"/>
+                                            switch (nodeCWEPlatformLanguage.Name)
+                                            {
+                                                case "Language":
+                                                    CWELANGUAGE oCWELANGUAGE = new CWELANGUAGE();
+                                                    oCWELANGUAGE.CWEID = sCWEID;
+                                                    try
+                                                    {
+                                                        oCWELANGUAGE.Prevalence = nodeCWEPlatformLanguage.Attributes["Prevalence"].InnerText;
+                                                    }
+                                                    catch (Exception exNoPrevalence)
+                                                    {
+
+                                                    }
+                                                    string sLanguage = nodeCWEPlatformLanguage.Attributes["Language_Name"].InnerText;
+                                                    LANGUAGE oLanguage = model.LANGUAGE.Where(o => o.LanguageName == sLanguage).FirstOrDefault();
+                                                    if (oLanguage != null)
+                                                    {
+                                                        oCWELANGUAGE.LanguageID = oLanguage.LanguageID;
+                                                    }
+                                                    else
+                                                    {
+                                                        //Insert a new Language
+                                                        oLanguage = new LANGUAGE();
+                                                        oLanguage.LanguageName = sLanguage;
+                                                        oLanguage.VocabularyID = 20;    //TODO Hardcoded CWE 2.5
+                                                        try
+                                                        {
+                                                            model.AddToLANGUAGE(oLanguage);
+                                                            model.SaveChanges();
+                                                            oCWELANGUAGE.LanguageID = oLanguage.LanguageID;
+                                                            Console.WriteLine("DEBUG: Added Language: " + sLanguage);
+                                                        }
+                                                        catch (Exception exAddToLANGUAGE)
+                                                        {
+                                                            Console.WriteLine("Exception exAddToLANGUAGE " + exAddToLANGUAGE.Message);
+                                                        }
+                                                    }
+                                                    
+                                                    try
+                                                    {
+                                                        model.AddToCWELANGUAGE(oCWELANGUAGE);
+                                                        model.SaveChanges();
+                                                    }
+                                                    catch (Exception exAddToCWELANGUAGE)
+                                                    {
+                                                        Console.WriteLine("Exception exAddToCWELANGUAGE " + exAddToCWELANGUAGE.Message);
+                                                    }
+                                                    break;
+                                                case "Language_Class":
+                                                    string sLanguageClassDescription = nodeCWEPlatformLanguage.Attributes["Language_Class_Description"].InnerText;
+                                                    LANGUAGECLASS oLanguageClass = model.LANGUAGECLASS.Where(o => o.LanguageClassDescription == sLanguageClassDescription).FirstOrDefault();
+                                                    if (oLanguageClass != null)
+                                                    {
+                                                        //TODO CWELANGUAGECLASS
+                                                    }
+                                                    else
+                                                    {
+                                                        oLanguageClass = new LANGUAGECLASS();
+                                                        oLanguageClass.LanguageClassDescription = sLanguageClassDescription;
+                                                        oLanguageClass.VocabularyID = 20;    //TODO Hardcoded CWE 2.5
+                                                        model.AddToLANGUAGECLASS(oLanguageClass);
+                                                        model.SaveChanges();
+                                                    }
+
+                                                    //TODO CWELANGUAGECLASS
+                                                    break;
+                                                default:
+                                                    Console.WriteLine("DEBUG Missing code for nodeCWEPlatformLanguage " + nodeCWEPlatformLanguage.Name);
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception exCWEPlatform)
+                            {
+                                Console.WriteLine("Exception exCWEPlatform: " + exCWEPlatform.Message + " " + exCWEPlatform.InnerException);
+                            }
+                            break;
+                        #endregion CWEApplicable_Platforms
+
+                        case "Alternate_Terms":
+                        #region CWEAlternate_Terms
+                            //TODO
+                            foreach (XmlNode nodeCWEAlternateTerm in nodeCWEinfo)
+                            {
+                                Console.WriteLine("DEBUG: nodeCWEAlternateTerm");
+                                foreach (XmlNode nodeTerm in nodeCWEAlternateTerm)
+                                {
+                                    string sAlternateTerm = nodeTerm.InnerText; //API Abuse
+                                    Console.WriteLine("DEBUG: sAlternateTerm=" + sAlternateTerm);
+                                    CWEALTERNATETERM oCWEAlternateTerm = new CWEALTERNATETERM();
+                                    oCWEAlternateTerm = model.CWEALTERNATETERM.Where(o => o.AlternateTerm == sAlternateTerm).FirstOrDefault();
+                                    if (oCWEAlternateTerm != null)
+                                    {
+                                        //TODO: Check if it is the same VocabularyID
+                                    }
+                                    else
+                                    {
+                                        //TODO
+                                        //ALTERNATETERM
+                                        oCWEAlternateTerm = new CWEALTERNATETERM();
+                                        oCWEAlternateTerm.AlternateTerm = sAlternateTerm;
+                                        oCWEAlternateTerm.CWEID = sCWEID;
+                                        oCWEAlternateTerm.VocabularyID = 20;    //TODO Hardcoded CWE 2.5
+                                        model.AddToCWEALTERNATETERM(oCWEAlternateTerm);
+                                        model.SaveChanges();
+                                        Console.WriteLine("DEBUG: AddToCWEALTERNATETERM " + sAlternateTerm + " " + sCWEID);
+                                    }
+                                }
+                            }
+                            break;
+                        #endregion CWEAlternate_Terms
+
+                        case "Time_of_Introduction":
+                        #region CWETime_Introduction
+                            //TODO
+                            foreach (XmlNode nodeCWEIntroductionPhase in nodeCWEinfo)
+                            {
+                                Console.WriteLine("DEBUG: nodeCWEIntroductionPhase");
+                                string sIntroductionPhase = nodeCWEIntroductionPhase.InnerText; //Architecture and Design
+                                Console.WriteLine("DEBUG: sIntroductionPhase=" + sIntroductionPhase);
+                                CWETIMEOFINTRODUCTION oCWETimeOfIntroduction = new CWETIMEOFINTRODUCTION();
+                                oCWETimeOfIntroduction = model.CWETIMEOFINTRODUCTION.Where(o => o.IntroductoryPhase == sIntroductionPhase).FirstOrDefault();
+                                if (oCWETimeOfIntroduction != null)
+                                {
+                                    //TODO: Check if it is the same VocabularyID
+                                }
+                                else
+                                {
+                                    oCWETimeOfIntroduction = new CWETIMEOFINTRODUCTION();
+                                    oCWETimeOfIntroduction.IntroductoryPhase = sIntroductionPhase;
+                                    oCWETimeOfIntroduction.CWEID = sCWEID;
+                                    oCWETimeOfIntroduction.VocabularyID = 20;    //TODO Hardcoded CWE 2.5
+                                    //TODO: timestamp
+                                    model.AddToCWETIMEOFINTRODUCTION(oCWETimeOfIntroduction);
+                                    model.SaveChanges();
+                                    Console.WriteLine("DEBUG: AddToCWETIMEOFINTRODUCTION " + sIntroductionPhase + " " + sCWEID);
+                                }
+                            }
+                            break;
+                        #endregion CWETime_Introduction
+
+                        case "Likelihood_of_Exploit":
+                        #region CWELikelihood_of_Exploit
+                            try
+                            {
+                                string sLikelihood = nodeCWEinfo.InnerText; //High to Very High
+                                Console.WriteLine("DEBUG: sLikelihood=" + sLikelihood);
+                                EXPLOITLIKELIHOOD oExploitLikelihood = model.EXPLOITLIKELIHOOD.Where(o => o.Likelihood == sLikelihood).FirstOrDefault();
+                                if (oExploitLikelihood != null)
+                                {
+
+                                }
+                                else
+                                {
+                                    oExploitLikelihood = new EXPLOITLIKELIHOOD();
+                                    oExploitLikelihood.Likelihood = sLikelihood;
+                                    //LikelihoodDescription
+                                    oExploitLikelihood.VocabularyID = 20;    //TODO Hardcoded CWE 2.5
+                                    try
+                                    {
+                                        model.AddToEXPLOITLIKELIHOOD(oExploitLikelihood);
+                                        model.SaveChanges();
+                                        Console.WriteLine("DEBUG: AddToEXPLOITLIKELIHOOD " + oExploitLikelihood);
+                                    }
+                                    catch (Exception exAddToEXPLOITLIKELIHOOD)
+                                    {
+                                        Console.WriteLine("Exception AddToEXPLOITLIKELIHOOD " + exAddToEXPLOITLIKELIHOOD.Message + " " + exAddToEXPLOITLIKELIHOOD.InnerException);
+                                    }
+                                }
+                                
+                                EXPLOITLIKELIHOODFORCWE oExploitLikelihoodForCWE = model.EXPLOITLIKELIHOODFORCWE.Where(o => o.ExploitLikelihoodID == oExploitLikelihood.ExploitLikelihoodID && o.CWEID == sCWEID).FirstOrDefault();
+                                if (oExploitLikelihoodForCWE != null)
+                                {
+
+                                }
+                                else
+                                {
+                                    oExploitLikelihoodForCWE = new EXPLOITLIKELIHOODFORCWE();
+                                    oExploitLikelihoodForCWE.CWEID = sCWEID;
+                                    oExploitLikelihoodForCWE.ExploitLikelihoodID = oExploitLikelihood.ExploitLikelihoodID;
+                                    try
+                                    {
+                                        model.AddToEXPLOITLIKELIHOODFORCWE(oExploitLikelihoodForCWE);
+                                        model.SaveChanges();
+                                        Console.WriteLine("DEBUG: AddToEXPLOITLIKELIHOODFORCWE " + sCWEID + " " + sLikelihood);
+                                    }
+                                    catch (Exception exAddToEXPLOITLIKELIHOODFORCWE)
+                                    {
+                                        Console.WriteLine("Exception exAddToEXPLOITLIKELIHOODFORCWE " + exAddToEXPLOITLIKELIHOODFORCWE.Message + " " + exAddToEXPLOITLIKELIHOODFORCWE.InnerException);
+                                    }
+                                }
+                            }
+                            catch (Exception exCWELikelihood_of_Exploit)
+                            {
+                                Console.WriteLine("Exception exCWELikelihood_of_Exploit " + exCWELikelihood_of_Exploit.Message + " " + exCWELikelihood_of_Exploit.InnerException);
+                            }
+                            break;
+                        #endregion CWELikelihood_of_Exploit
+
+                        case "Common_Consequences":
+                        #region CWECommon_Consequences
+                            //TODO: Review this because no "ID" for an ATTACKCONSEQUENCE, could be reclassified as CWECONSEQUENCE
+                            //We will use the rank of the Common_Consequence in the CWE XML file as an ID
+                            //ATTACKCONSEQUENCEFORCWE
+                            ////ATTACKCONSEQUENCESCOPEFORCWE
+                            int iRankConsequence = 0;
+                            foreach (XmlNode nodeCommonConsequence in nodeCWEinfo)
+                            {
+                                iRankConsequence++;
+                                Console.WriteLine("DEBUG: nodeCommonConsequence "+iRankConsequence);
+                                
+                                //TODO: we will have a problem if more than 1 Common_Consequence
+                                ATTACKCONSEQUENCE oAttackConsequence = new ATTACKCONSEQUENCE(); //TODO: could be reclassified as CWECONSEQUENCE
+                                    
+                                ATTACKCONSEQUENCEFORCWE oAttackConsequenceForCWE = model.ATTACKCONSEQUENCEFORCWE.Where(o => o.CWEID == sCWEID).FirstOrDefault();
+                                if (oAttackConsequenceForCWE != null)
+                                {
+                                    //TODO
+                                    oAttackConsequence = model.ATTACKCONSEQUENCE.Where(o => o.AttackConsequenceID == oAttackConsequenceForCWE.AttackConsequenceID).FirstOrDefault();
+
+                                }
+                                else
+                                {
+                                    try
+                                    {
+
+                                        oAttackConsequence.VocabularyID = 20;    //TODO Hardcoded CWE 2.5
+                                        oAttackConsequence.AttackConsequenceID = oAttackConsequenceForCWE.AttackConsequenceID;
+                                        oAttackConsequence.CreatedDate = DateTimeOffset.Now;
+                                        oAttackConsequence.timestamp = DateTimeOffset.Now;
+                                        model.AddToATTACKCONSEQUENCE(oAttackConsequence);
+                                        model.SaveChanges();
+                                        Console.WriteLine("DEBUG AddToATTACKCONSEQUENCE " + sCWEID);
+                                    }
+                                    catch (Exception exAddToATTACKCONSEQUENCE)
+                                    {
+                                        Console.WriteLine("Exception AddToATTACKCONSEQUENCE: " + exAddToATTACKCONSEQUENCE.Message + " " + exAddToATTACKCONSEQUENCE.InnerException);
+                                    }
+
+                                    oAttackConsequenceForCWE = new ATTACKCONSEQUENCEFORCWE();
+                                    oAttackConsequenceForCWE.CWEID = sCWEID;
+                                    oAttackConsequenceForCWE.AttackConsequenceID = oAttackConsequence.AttackConsequenceID;
+                                    oAttackConsequenceForCWE.AttackConsequenceRankForCWE = iRankConsequence;
+                                    oAttackConsequenceForCWE.CreatedDate = DateTimeOffset.Now;
+                                    oAttackConsequenceForCWE.timestamp = DateTimeOffset.Now;
+                                    oAttackConsequenceForCWE.VocabularyID = 20; //TODO: Hardcoded
+                                    
+                                    try
+                                    {
+                                        model.AddToATTACKCONSEQUENCEFORCWE(oAttackConsequenceForCWE);
+                                        model.SaveChanges();
+                                        Console.WriteLine("DEBUG AddToATTACKCONSEQUENCEFORCWE " + sCWEID);
+                                    }
+                                    catch (Exception exAddToATTACKCONSEQUENCEFORCWE)
+                                    {
+                                        Console.WriteLine("Exception exAddToATTACKCONSEQUENCEFORCWE: " + exAddToATTACKCONSEQUENCEFORCWE.Message + " " + exAddToATTACKCONSEQUENCEFORCWE.InnerException);
+                                    }
+                                    //Console.WriteLine("DEBUG: AddToATTACKCONSEQUENCEFORCWE " + sCWEID + " " + oAttackConsequence.AttackConsequenceID);
+                                }
+
+                                //************************************************************************
+                                foreach (XmlNode nodeCommonConsequenceInfo in nodeCommonConsequence)
+                                {
+                                    switch (nodeCommonConsequenceInfo.Name)
+                                    {
+                                        case "Consequence_Scope":
+                                            //NOTE: Could be CWECONSEQUENCESCOPE
+                                            string sConsequenceScope = nodeCommonConsequenceInfo.InnerText;
+                                            //Cleaning
+                                            //Remove CLRF
+                                            sConsequenceScope = sConsequenceScope.Replace("\r\n", " ");
+                                            sConsequenceScope = sConsequenceScope.Replace("\n", " ");
+                                            while (sConsequenceScope.Contains("  "))
+                                            {
+                                                sConsequenceScope = sConsequenceScope.Replace("  ", " ");
+                                            }
+                                            ATTACKCONSEQUENCESCOPE oAttackConsequenceScope = model.ATTACKCONSEQUENCESCOPE.Where(o => o.ConsequenceScope == sConsequenceScope && o.VocabularyID == 20).FirstOrDefault();   //TODO: Hardcoded CWE 2.5 (and maybe dont check the Vocabulary)
+                                            if (oAttackConsequenceScope != null)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                oAttackConsequenceScope = new ATTACKCONSEQUENCESCOPE();
+                                                oAttackConsequenceScope.ConsequenceScope = sConsequenceScope;
+                                                //oAttackConsequenceScope.CreatedDate = DateTimeOffset.Now;
+                                                oAttackConsequenceScope.timestamp = DateTimeOffset.Now;
+                                                oAttackConsequenceScope.VocabularyID = 20;    //TODO Hardcoded CWE 2.5
+                                                try
+                                                {
+                                                    model.AddToATTACKCONSEQUENCESCOPE(oAttackConsequenceScope);
+                                                    model.SaveChanges();
+                                                    Console.WriteLine("DEBUG: AddToATTACKCONSEQUENCESCOPE " + sConsequenceScope + " VocabularyID = 20");
+                                                }
+                                                catch (Exception exAddToATTACKCONSEQUENCESCOPE)
+                                                {
+                                                    Console.WriteLine("Exception exAddToATTACKCONSEQUENCESCOPE " + exAddToATTACKCONSEQUENCESCOPE.Message + " " + exAddToATTACKCONSEQUENCESCOPE.InnerException);
+                                                }
+                                            }
+
+                                            ATTACKCONSEQUENCESCOPEFORATTACKCONSEQUENCE oAttackConsequenceScopeForAttackConsequence = model.ATTACKCONSEQUENCESCOPEFORATTACKCONSEQUENCE.Where(o => o.AttackConsequenceID == oAttackConsequence.AttackConsequenceID && o.AttackConsequenceScopeID == oAttackConsequenceScope.AttackConsequenceScopeID).FirstOrDefault();
+                                            if (oAttackConsequenceScopeForAttackConsequence != null)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                oAttackConsequenceScopeForAttackConsequence = new ATTACKCONSEQUENCESCOPEFORATTACKCONSEQUENCE();
+                                                oAttackConsequenceScopeForAttackConsequence.AttackConsequenceID = oAttackConsequence.AttackConsequenceID;
+                                                oAttackConsequenceScopeForAttackConsequence.AttackConsequenceScopeID = oAttackConsequenceScope.AttackConsequenceScopeID;
+                                                //oAttackConsequenceScopeForAttackConsequence.CreatedDate = DateTimeOffset.Now;
+                                                oAttackConsequenceScopeForAttackConsequence.timestamp = DateTimeOffset.Now;
+                                                //oAttackConsequenceScopeForAttackConsequence.VocabularyID = 20;
+                                                try
+                                                {
+                                                    model.AddToATTACKCONSEQUENCESCOPEFORATTACKCONSEQUENCE(oAttackConsequenceScopeForAttackConsequence);
+                                                    model.SaveChanges();
+                                                    Console.WriteLine("DEBUG: AddToATTACKCONSEQUENCESCOPEFORATTACKCONSEQUENCE " + sCWEID + " " + sConsequenceScope);
+                                                }
+                                                catch (Exception exAddToATTACKCONSEQUENCESCOPEFORATTACKCONSEQUENCE)
+                                                {
+                                                    Console.WriteLine("Exception exAddToATTACKCONSEQUENCESCOPEFORATTACKCONSEQUENCE " + exAddToATTACKCONSEQUENCESCOPEFORATTACKCONSEQUENCE.Message + " " + exAddToATTACKCONSEQUENCESCOPEFORATTACKCONSEQUENCE.InnerException);
+                                                }
+                                            }
+                                            break;
+
+                                        case "Consequence_Technical_Impact":
+                                            //NOTE: Could be CWECONSEQUENCETECHNICALIMPACT
+                                            string sTechnicalImpact = nodeCommonConsequenceInfo.InnerText;
+                                            //Cleaning
+                                            //Remove CLRF
+                                            sTechnicalImpact = sTechnicalImpact.Replace("\r\n", " ");
+                                            sTechnicalImpact = sTechnicalImpact.Replace("\n", " ");
+                                            while (sTechnicalImpact.Contains("  "))
+                                            {
+                                                sTechnicalImpact = sTechnicalImpact.Replace("  ", " ");
+                                            }
+                                            ATTACKTECHNICALIMPACT oAttackTechnicalImpact = model.ATTACKTECHNICALIMPACT.Where(o => o.ConsequenceTechnicalImpact == sTechnicalImpact).FirstOrDefault();   //&& VocabularyID = 20
+                                            if (oAttackTechnicalImpact != null)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                oAttackTechnicalImpact = new ATTACKTECHNICALIMPACT();
+                                                oAttackTechnicalImpact.ConsequenceTechnicalImpact = sTechnicalImpact;
+                                                //oAttackTechnicalImpact.CreatedDate = DateTimeOffset.Now;
+                                                oAttackTechnicalImpact.timestamp = DateTimeOffset.Now;
+                                                oAttackTechnicalImpact.VocabularyID = 20;    //TODO Hardcoded CWE 2.5
+                                                try
+                                                {
+                                                    model.AddToATTACKTECHNICALIMPACT(oAttackTechnicalImpact);
+                                                    model.SaveChanges();
+                                                }
+                                                catch (Exception exAddToATTACKTECHNICALIMPACT)
+                                                {
+                                                    Console.WriteLine("Exception exAddToATTACKTECHNICALIMPACT " + exAddToATTACKTECHNICALIMPACT.Message + " " + exAddToATTACKTECHNICALIMPACT.InnerException);
+                                                }
+                                                Console.WriteLine("DEBUG: AddToATTACKTECHNICALIMPACT " + sTechnicalImpact);
+                                            }
+
+                                            ATTACKTECHNICALIMPACTFORATTACKCONSEQUENCE oAttackTechnicalImpactForAttackConsequence = model.ATTACKTECHNICALIMPACTFORATTACKCONSEQUENCE.Where(o => o.AttackConsequenceID == oAttackConsequence.AttackConsequenceID && o.AttackTechnicalImpactID == oAttackTechnicalImpact.AttackTechnicalImpactID).FirstOrDefault();
+                                            if (oAttackTechnicalImpactForAttackConsequence != null)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                oAttackTechnicalImpactForAttackConsequence = new ATTACKTECHNICALIMPACTFORATTACKCONSEQUENCE();
+                                                oAttackTechnicalImpactForAttackConsequence.AttackConsequenceID=oAttackConsequence.AttackConsequenceID;
+                                                oAttackTechnicalImpactForAttackConsequence.AttackTechnicalImpactID = oAttackTechnicalImpact.AttackTechnicalImpactID;
+                                                //oAttackTechnicalImpactForAttackConsequence.CreatedDate = DateTimeOffset.Now;
+                                                oAttackTechnicalImpactForAttackConsequence.timestamp = DateTimeOffset.Now;
+                                                //oAttackTechnicalImpactForAttackConsequence.VocabularyID = 20;
+                                                try
+                                                {
+                                                    model.AddToATTACKTECHNICALIMPACTFORATTACKCONSEQUENCE(oAttackTechnicalImpactForAttackConsequence);
+                                                    model.SaveChanges();
+                                                    Console.WriteLine("DEBUG: AddToATTACKTECHNICALIMPACTFORATTACKCONSEQUENCE " + sCWEID + " " + sTechnicalImpact);
+                                                }
+                                                catch (Exception exAddToATTACKTECHNICALIMPACTFORATTACKCONSEQUENCE)
+                                                {
+                                                    Console.WriteLine("Exception exAddToATTACKTECHNICALIMPACTFORATTACKCONSEQUENCE " + exAddToATTACKTECHNICALIMPACTFORATTACKCONSEQUENCE.Message + " " + exAddToATTACKTECHNICALIMPACTFORATTACKCONSEQUENCE.InnerException);
+                                                }
+                                            }
+                                            break;
+                                        case "Consequence_Note":
+                                            string sAttackConsequenceNoteText = string.Empty;
+                                            //try
+                                            //{
+                                                sAttackConsequenceNoteText=nodeCommonConsequenceInfo.InnerText;
+                                                sAttackConsequenceNoteText = sAttackConsequenceNoteText.Replace("<Text>","");
+                                                sAttackConsequenceNoteText = sAttackConsequenceNoteText.Replace("</Text>", "");
+                                                //Cleaning
+                                                //Remove CLRF
+                                                sAttackConsequenceNoteText = sAttackConsequenceNoteText.Replace("\r\n", " ");
+                                                sAttackConsequenceNoteText = sAttackConsequenceNoteText.Replace("\n", " ");
+                                                while (sAttackConsequenceNoteText.Contains("  "))
+                                                {
+                                                    sAttackConsequenceNoteText = sAttackConsequenceNoteText.Replace("  ", " ");
+                                                }
+                                                //TODO: Hardcoded VocabularyID
+                                                ATTACKCONSEQUENCENOTE oAttackConsequenceNote = model.ATTACKCONSEQUENCENOTE.Where(o => o.VocabularyID == 20 && o.AttackConsequenceNoteText == sAttackConsequenceNoteText).FirstOrDefault();
+                                                if (oAttackConsequenceNote != null)
+                                                {
+                                                    oAttackConsequenceNote.timestamp = DateTimeOffset.Now;
+                                                    Console.WriteLine("DEBUG ATTACKCONSEQUENCENOTE " + oAttackConsequenceNote.AttackConsequenceNoteID+" "+ sAttackConsequenceNoteText);
+                                                }
+                                                else
+                                                {
+                                                    oAttackConsequenceNote = new ATTACKCONSEQUENCENOTE();
+                                                    oAttackConsequenceNote.AttackConsequenceNoteText = sAttackConsequenceNoteText;
+                                                    oAttackConsequenceNote.CreatedDate = DateTimeOffset.Now;
+                                                    oAttackConsequenceNote.timestamp = DateTimeOffset.Now;
+                                                    oAttackConsequenceNote.VocabularyID = 20;   //TODO: Hardcoded
+                                                    try
+                                                    {
+                                                        model.AddToATTACKCONSEQUENCENOTE(oAttackConsequenceNote);
+                                                        model.SaveChanges();
+                                                        Console.WriteLine("DEBUG AddToATTACKCONSEQUENCENOTE: " + sAttackConsequenceNoteText);
+                                                    }
+                                                    catch (Exception exAddToATTACKCONSEQUENCENOTE)
+                                                    {
+                                                        Console.WriteLine("Exception exAddToATTACKCONSEQUENCENOTE " + exAddToATTACKCONSEQUENCENOTE.Message + " " + exAddToATTACKCONSEQUENCENOTE.InnerException);
+                                                    }
+                                                    
+                                                }
+                                                ATTACKCONSEQUENCENOTES oAttackConsequenceNotes = model.ATTACKCONSEQUENCENOTES.Where(o => o.AttackConsequenceID == oAttackConsequence.AttackConsequenceID && o.AttackConsequenceNoteID == oAttackConsequenceNote.AttackConsequenceNoteID).FirstOrDefault();
+                                                if (oAttackConsequenceNotes != null)
+                                                {
+                                                    oAttackConsequenceNotes.timestamp = DateTimeOffset.Now;
+
+                                                }
+                                                else
+                                                {
+                                                    oAttackConsequenceNotes = new ATTACKCONSEQUENCENOTES();
+                                                    oAttackConsequenceNotes.AttackConsequenceID = oAttackConsequence.AttackConsequenceID;
+                                                    oAttackConsequenceNotes.AttackConsequenceNoteID = oAttackConsequenceNote.AttackConsequenceNoteID;
+                                                    oAttackConsequenceNotes.CreatedDate = DateTimeOffset.Now;
+                                                    oAttackConsequenceNotes.timestamp = DateTimeOffset.Now;
+                                                    oAttackConsequenceNotes.VocabularyID = 20;   //TODO: Hardcoded
+                                                    try
+                                                    {
+                                                        model.AddToATTACKCONSEQUENCENOTES(oAttackConsequenceNotes);
+                                                        model.SaveChanges();
+                                                        Console.WriteLine("DEBUG AddToATTACKCONSEQUENCENOTES");
+                                                    }
+                                                    catch (Exception exAddToATTACKCONSEQUENCENOTES)
+                                                    {
+                                                        Console.WriteLine("Exception exAddToATTACKCONSEQUENCENOTES " + exAddToATTACKCONSEQUENCENOTES.Message + " " + exAddToATTACKCONSEQUENCENOTES.InnerException);
+                                                    }
+                                                    
+                                                }
+                                            /*
+                                            }
+                                            catch (Exception exAttackConsequenceNoteText)
+                                            {
+                                                Console.WriteLine("Exception exAttackConsequenceNoteText: " + exAttackConsequenceNoteText.Message + " " + exAttackConsequenceNoteText.InnerException);
+                                            }
+                                            */
+                                            break;
+                                        default:
+                                            Console.WriteLine("DEBUG: Missing code for nodeCommonConsequenceInfo: " + nodeCommonConsequenceInfo.Name);
+                                            break;
+                                    }
+                                }
+
+                            }
+                            break;
+                        #endregion CWECommon_Consequences
+
+                        /*
+                        case "Detection_Methods":
+                            //TODO
+                            //CWEDETECTIONMETHOD
+                            break;
+                        */
+                        
+                        case "Potential_Mitigations":
+                            //TODO:Review this
+                            #region CWEMitigation
+                            //MITIGATIONSTRATEGYFORMITIGATION
+                            foreach (XmlNode nodeCWEMitigation in nodeCWEinfo)
+                            {
+                                if (nodeCWEMitigation.Name != "Mitigation")
+                                {
+                                    Console.WriteLine("DEBUG: Missing code for Mitigation " + nodeCWEMitigation.Name);
+
+                                }
+                                else
+                                {
+                                    string sCWEMitigationPhaseName = string.Empty;
+                                    MITIGATIONPHASE oMitigationPhase = new MITIGATIONPHASE();
+                                    foreach (XmlNode nodeCWEMitigationInfo in nodeCWEMitigation)
+                                    {
+                                        if (nodeCWEMitigationInfo.Name != "Mitigation_Description")
+                                        {
+                                            if (nodeCWEMitigationInfo.Name == "Mitigation_Phase")
+                                            {
+                                                sCWEMitigationPhaseName = nodeCWEMitigationInfo.InnerText;
+                                                oMitigationPhase = model.MITIGATIONPHASE.Where(o => o.MitigationPhaseName == sCWEMitigationPhaseName).FirstOrDefault();
+                                                if (oMitigationPhase != null)
+                                                {
+
+                                                }
+                                                else
+                                                {
+                                                    oMitigationPhase = new MITIGATIONPHASE();
+                                                    oMitigationPhase.MitigationPhaseName = sCWEMitigationPhaseName;
+                                                    oMitigationPhase.VocabularyID = 20; //TODO: Hardcoded
+                                                    model.AddToMITIGATIONPHASE(oMitigationPhase);
+                                                    model.SaveChanges();
+                                                    Console.WriteLine("DEBUG AddToMITIGATIONPHASE: " + sCWEMitigationPhaseName);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("DEBUG: Missing code for MitigationDescription " + nodeCWEMitigationInfo.Name);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            foreach (XmlNode nodeCWEMitigationDescriptionText in nodeCWEMitigationInfo)
+                                            {
+                                                if (nodeCWEMitigationDescriptionText.Name != "Text")
+                                                {
+                                                    Console.WriteLine("DEBUG: Missing code for nodeCWEMitigationDescriptionText " + nodeCWEMitigationDescriptionText.Name);
+                                                }
+                                                else
+                                                {
+                                                    //TODO
+                                                    //MITIGATIONFORCWE
+                                                    string sCWEMitigationDescription = nodeCWEMitigationDescriptionText.InnerText;
+                                                    //Cleaning
+                                                    string sCWEMitigationDescriptionClean = sCWEMitigationDescription;
+                                                    //Remove CLRF
+                                                    sCWEMitigationDescriptionClean = sCWEMitigationDescriptionClean.Replace("\r\n", " ");
+                                                    sCWEMitigationDescriptionClean = sCWEMitigationDescriptionClean.Replace("\n", " ");
+                                                    while (sCWEMitigationDescriptionClean.Contains("  "))
+                                                    {
+                                                        sCWEMitigationDescriptionClean = sCWEMitigationDescriptionClean.Replace("  ", " ");
+                                                    }
+                                                    MITIGATIONFORCWE oCWEMitigation = model.MITIGATIONFORCWE.Where(o => o.CWEID == sCWEID).FirstOrDefault();
+                                                    if (oCWEMitigation != null)
+                                                    {
+                                                        //TODO: check if it is the good mitigation
+                                                        
+                                                    }
+                                                    else
+                                                    {
+                                                        MITIGATION oMitigation = model.MITIGATION.Where(o => o.SolutionMitigationText == sCWEMitigationDescriptionClean).FirstOrDefault();  //TODO: VocabularyID
+                                                        if (oMitigation != null)
+                                                        {
+                                                            //TODO: check VocabularyID? ...
+                                                            if (sCWEMitigationPhaseName.Trim() != "")
+                                                            {
+                                                                MITIGATIONPHASEFORMITIGATION oMitigationPhaseForMitigation = model.MITIGATIONPHASEFORMITIGATION.Where(o => o.MitigationID == oMitigation.MitigationID && o.MitigationPhaseID == oMitigationPhase.MitigationPhaseID).FirstOrDefault();
+                                                                if (oMitigationPhaseForMitigation != null)
+                                                                {
+                                                                    //TODO: update if needed
+                                                                }
+                                                                else
+                                                                {
+                                                                    oMitigationPhaseForMitigation = new MITIGATIONPHASEFORMITIGATION();
+                                                                    oMitigationPhaseForMitigation.MitigationID = oMitigation.MitigationID;
+                                                                    oMitigationPhaseForMitigation.MitigationPhaseID = oMitigationPhase.MitigationPhaseID;
+                                                                    //TODO: CreatedDate, VocabularyID...
+                                                                    model.AddToMITIGATIONPHASEFORMITIGATION(oMitigationPhaseForMitigation);
+                                                                    model.SaveChanges();
+                                                                    Console.WriteLine("DEBUG AddToMITIGATIONPHASEFORMITIGATION");
+                                                                }
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            oMitigation = new MITIGATION();
+                                                            //oMitigation.MitigationVocabularyID = 20;  //TODO
+                                                            oMitigation.VocabularyID = 20;  //TODO Hardcoded
+                                                            oMitigation.SolutionMitigationText = sCWEMitigationDescriptionClean;
+                                                            //TODO: timestamp...
+                                                            model.AddToMITIGATION(oMitigation);
+                                                            model.SaveChanges();
+                                                            Console.WriteLine("DEBUG AddToMITIGATION: " + sCWEMitigationDescriptionClean);
+                                                        }
+                                                        oCWEMitigation = new MITIGATIONFORCWE();
+                                                        oCWEMitigation.CWEID = sCWEID;
+                                                        oCWEMitigation.MitigationID = oMitigation.MitigationID;
+                                                        model.AddToMITIGATIONFORCWE(oCWEMitigation);
+                                                        model.SaveChanges();
+                                                        Console.WriteLine("DEBUG AddToMITIGATIONFORCWE: " + sCWEID+" "+ sCWEMitigationDescriptionClean);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            break;
+                        #endregion CWEMitigation
+                        
+                        
+                        //TODO
+                        case "Causal_Nature":
+                            //TODO: cleaning
+                            CWEObject.CWECausalNature = nodeCWEinfo.InnerText;  //Explicit
+                            try
+                            {
+                                model.SaveChanges();
+                                Console.WriteLine("DEBUG: CausualNature: " + nodeCWEinfo.InnerText);
+                            }
+                            catch (Exception exCausualNature)
+                            {
+                                Console.WriteLine("Exception exCausualNature " + exCausualNature.Message + " " + exCausualNature.InnerException);
+                            }
+                            break;
+                        
+                        /*
+                        case "Demonstrative_Examples":
+                            //TODO
+                            //CWEDEMONSTRATIVEEXAMPLE
+                            break;
+                        */
+                        /*
+                        case "Observed_Examples":
+                            //TODO
+                            //VULNERABILITYFORCWE
+                            break;
+                        */
+                        /*
+                        case "Theoretical_Notes":
+                            //TODO
+                            //CWETHEORETICALNOTE
+                            break;
+                        */
+                        
+                        case "Affected_Resources":
+                            //TODO
+                            //CWEAFFECTEDRESOURCE
+                            foreach (XmlNode nodeCWEAffectedResource in nodeCWEinfo)
+                            {
+                                Console.WriteLine("DEBUG: nodeCWEAffectedResource");
+                                string sAffectedResource = nodeCWEAffectedResource.InnerText; //Memory
+                                sAffectedResource = sAffectedResource.Replace("\r\n", " ");
+                                sAffectedResource = sAffectedResource.Replace("\n", " ");
+                                while (sAffectedResource.Contains("  "))
+                                {
+                                    sAffectedResource = sAffectedResource.Replace("  ", " ");
+                                }
+                                Console.WriteLine("DEBUG: sAffectedResource=" + sAffectedResource);
+                                AFFECTEDRESOURCE oAffectedResource = new AFFECTEDRESOURCE();
+                                oAffectedResource = model.AFFECTEDRESOURCE.Where(o => o.AffectedResourceName == sAffectedResource).FirstOrDefault();
+                                if (oAffectedResource != null)
+                                {
+                                    //TODO: Check if it is the same VocabularyID
+                                }
+                                else
+                                {
+                                    oAffectedResource = new AFFECTEDRESOURCE();
+                                    oAffectedResource.AffectedResourceName = sAffectedResource;
+                                    //oAffectedResource.CWEID = sCWEID; //TODO
+                                    //oAffectedResource.CreatedDate = DateTimeOffset.Now;   //TODO
+                                    oAffectedResource.timestamp = DateTimeOffset.Now;
+                                    oAffectedResource.VocabularyID = 20;    //TODO Hardcoded CWE 2.5
+                                    try
+                                    {
+                                        model.AddToAFFECTEDRESOURCE(oAffectedResource);
+                                        model.SaveChanges();
+                                        Console.WriteLine("DEBUG: AddToAFFECTEDRESOURCE " + sAffectedResource + " " + sCWEID);
+                                    }
+                                    catch (Exception exAddToAFFECTEDRESOURCE)
+                                    {
+                                        Console.WriteLine("Exception exAddToAFFECTEDRESOURCE " + exAddToAFFECTEDRESOURCE.Message + " " + exAddToAFFECTEDRESOURCE.InnerException);
+                                    }
+                                }
+
+                                CWEAFFECTEDRESOURCE oCWEAffectedResource = new CWEAFFECTEDRESOURCE();
+                                oCWEAffectedResource = model.CWEAFFECTEDRESOURCE.Where(o => o.AffectedResourceID == oAffectedResource.AffectedResourceID && o.CWEID == sCWEID).FirstOrDefault();
+                                if (oAffectedResource != null)
+                                {
+                                    //TODO
+                                }
+                                else
+                                {
+                                    oCWEAffectedResource = new CWEAFFECTEDRESOURCE();
+                                    oCWEAffectedResource.CWEID = sCWEID;
+                                    oCWEAffectedResource.AffectedResourceID = oAffectedResource.AffectedResourceID;
+                                    //oCWEAffectedResource.CreatedDate = DateTimeOffset.Now;
+                                    oCWEAffectedResource.timestamp = DateTimeOffset.Now;
+                                    //oCWEAffectedResource.VocabularyID = 20; //TODO Hardcoded
+                                    try
+                                    {
+                                        model.AddToCWEAFFECTEDRESOURCE(oCWEAffectedResource);
+                                        model.SaveChanges();
+                                        Console.WriteLine("DEBUG: AddToCWEAFFECTEDRESOURCE " + sAffectedResource + " " + sCWEID);
+                                    }
+                                    catch (Exception exAddToCWEAFFECTEDRESOURCE)
+                                    {
+                                        Console.WriteLine("Exception exAddToCWEAFFECTEDRESOURCE " + exAddToCWEAFFECTEDRESOURCE.Message + " " + exAddToCWEAFFECTEDRESOURCE.InnerException);
+                                    }
+                                }
+                            }
+                            break;
+                        
+
+                        default:
+                            Console.WriteLine("DEBUG nodeCWEinfo Missing code for: " + nodeCWEinfo.Name);   //TODO
+                            break;
+                    }
+                }
+
+            }
+
+            //FREE
+            model.Dispose();
+            model = null;
+        }
