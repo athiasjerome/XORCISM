@@ -1,0 +1,5 @@
+https://github.com/CybOXProject/Tools
+https://github.com/MAECProject/utils
+https://github.com/STIXProject/Tools
+http://www.toolswatch.org
+https://github.com/denimgroup/threadfix

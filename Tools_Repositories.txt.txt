@@ -1,3 +1,0 @@
-https://github.com/CybOXProject/Tools
-https://github.com/MAECProject/utils
-https://github.com/STIXProject/Tools
