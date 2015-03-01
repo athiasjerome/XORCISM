@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//using XORCISMModel;
+using XORCISMModel;
 using XATTACKModel;
 
 using Excel = Microsoft.Office.Interop.Excel;   //Requirement
@@ -28,11 +28,12 @@ namespace CAPEC_ThreatModel
         public static int iRowIndex = 1;
         public static Excel.Worksheet xlWorkSheet;
         public static bool bIncludeCWEs = false;  //HARDCODED
+        public static XORCISMEntities model = new XORCISMEntities();
 
         static void Main(string[] args)
         {
-            //XORCISMEntities model = new XORCISMEntities();
-            XATTACKEntities model = new XATTACKEntities();
+            
+            XATTACKEntities attack_model = new XATTACKEntities();
 
             Excel.Application xlApp;
             Excel.Workbook xlWorkBook;
@@ -57,21 +58,21 @@ namespace CAPEC_ThreatModel
             try
             {
                 //TODO HARDCODED
-                ////iAttackPatternID = model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Software").Select(o => o.AttackPatternID).FirstOrDefault();
-                //oAttackPatternMaster = model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Software").FirstOrDefault();
-                //oAttackPatternMaster = model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Supply Chain").FirstOrDefault();
-                //oAttackPatternMaster = model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Hardware").FirstOrDefault();
-                //oAttackPatternMaster = model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Injection").FirstOrDefault();
-                //oAttackPatternMaster = model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Physical Security").FirstOrDefault();
-                //oAttackPatternMaster = model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Social Engineering").FirstOrDefault();
-                //oAttackPatternMaster = model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Phishing").FirstOrDefault();
-                //ListAttackPatterns = model.ATTACKPATTERN.Where(o => o.AttackPatternName.Contains("mail")).ToList();  //.FirstOrDefault();
-                //ListAttackPatterns = model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Brute Force").ToList();  //.FirstOrDefault();
-                //ListAttackPatterns = model.ATTACKPATTERN.Where(o => o.AttackPatternName.Contains("DNS") || o.AttackPatternDescription.Contains("DNS")).ToList();  //.FirstOrDefault();
-                //ListAttackPatterns = model.ATTACKPATTERN.Where(o => o.AttackPatternName.Contains("mail") || o.AttackPatternDescription.Contains("mail")).ToList();  //.FirstOrDefault();
-                //ListAttackPatterns = model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Physical Security").ToList();
-                //ListAttackPatterns = model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Social Information Gathering Attacks").ToList();
-                ListAttackPatterns = model.ATTACKPATTERN.Where(o => o.AttackPatternName.Contains("Spoofing")).ToList();
+                ////iAttackPatternID = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Software").Select(o => o.AttackPatternID).FirstOrDefault();
+                //oAttackPatternMaster = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Software").FirstOrDefault();
+                //oAttackPatternMaster = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Supply Chain").FirstOrDefault();
+                //oAttackPatternMaster = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Hardware").FirstOrDefault();
+                //oAttackPatternMaster = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Injection").FirstOrDefault();
+                //oAttackPatternMaster = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Physical Security").FirstOrDefault();
+                //oAttackPatternMaster = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Social Engineering").FirstOrDefault();
+                //oAttackPatternMaster = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Phishing").FirstOrDefault();
+                //ListAttackPatterns = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName.Contains("mail")).ToList();  //.FirstOrDefault();
+                //ListAttackPatterns = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Brute Force").ToList();  //.FirstOrDefault();
+                //ListAttackPatterns = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName.Contains("DNS") || o.AttackPatternDescription.Contains("DNS")).ToList();  //.FirstOrDefault();
+                //ListAttackPatterns = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName.Contains("mail") || o.AttackPatternDescription.Contains("mail")).ToList();  //.FirstOrDefault();
+                //ListAttackPatterns = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Physical Security").ToList();
+                //ListAttackPatterns = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName == "Social Information Gathering Attacks").ToList();
+                ListAttackPatterns = attack_model.ATTACKPATTERN.Where(o => o.AttackPatternName.Contains("Spoofing")).ToList();
 
             }
             catch(Exception ex)
@@ -134,9 +135,22 @@ namespace CAPEC_ThreatModel
                     foreach (ATTACKPATTERNCWE oAttackPatternCWE in oAttackPatternRelation.ATTACKPATTERN.ATTACKPATTERNCWE)
                     {
                         Console.WriteLine("DEBUG AttackPatternCWEID=" + oAttackPatternCWE.AttackPatternCWEID);
-                        //TODO: now use XORCISMModel v1.0
-                        xlWorkSheet.Cells[iRowIndex, iColumnIndex] = oAttackPatternCWE.CWE.CWEID + " " + oAttackPatternCWE.CWE.CWEName;
-                        iRowIndex++;
+                        string sAttackPatternCWEID=oAttackPatternCWE.AttackPatternCWEID.ToString();
+                        
+                        //Search CWE informations in XORCISM
+                        CWE oCWE = null;
+                        try
+                        {
+                            oCWE = model.CWE.Where(o => o.CWEID == sAttackPatternCWEID).FirstOrDefault();
+                            //xlWorkSheet.Cells[iRowIndex, iColumnIndex] = oAttackPatternCWE.CWE.CWEID + " " + oAttackPatternCWE.CWE.CWEName;
+                            xlWorkSheet.Cells[iRowIndex, iColumnIndex] = oCWE.CWEID + " " + oCWE.CWEName;
+
+                            iRowIndex++;
+                        }
+                        catch(Exception exCWE01)
+                        {
+                            Console.WriteLine("Exception exCWE01 " + exCWE01.Message + " " + exCWE01.InnerException);
+                        }
                     }
                 }
             }
@@ -162,9 +176,23 @@ namespace CAPEC_ThreatModel
                     foreach (ATTACKPATTERNCWE oAttackPatternCWE in oAttackPatternRelation.ATTACKPATTERN1.ATTACKPATTERNCWE)
                     {
                         Console.WriteLine("DEBUG AttackPatternCWEID=" + oAttackPatternCWE.AttackPatternCWEID);
-                        //TODO: now use XORCISMModel v1.0
-                        xlWorkSheet.Cells[iRowIndex, iColumnIndex] = oAttackPatternCWE.CWE.CWEID + " " + oAttackPatternCWE.CWE.CWEName;
-                        iRowIndex++;
+                        string sAttackPatternCWEID = oAttackPatternCWE.AttackPatternCWEID.ToString();
+                        
+                        //xlWorkSheet.Cells[iRowIndex, iColumnIndex] = oAttackPatternCWE.CWE.CWEID + " " + oAttackPatternCWE.CWE.CWEName;
+
+                        //Search CWE informations in XORCISM
+                        CWE oCWE = null;
+                        try
+                        {
+                            oCWE = model.CWE.Where(o => o.CWEID == sAttackPatternCWEID).FirstOrDefault();
+                            xlWorkSheet.Cells[iRowIndex, iColumnIndex] = oCWE.CWEID + " " + oCWE.CWEName;
+
+                            iRowIndex++;
+                        }
+                        catch (Exception exCWE02)
+                        {
+                            Console.WriteLine("Exception exCWE02 " + exCWE02.Message + " " + exCWE02.InnerException);
+                        }
                     }
                 }
             }
@@ -204,9 +232,23 @@ namespace CAPEC_ThreatModel
                     foreach (ATTACKPATTERNCWE oAttackPatternCWE in oAttackPatternRelation.ATTACKPATTERN.ATTACKPATTERNCWE)
                     {
                         Console.WriteLine("DEBUG AttackPatternCWEID=" + oAttackPatternCWE.AttackPatternCWEID);
-                        //TODO: now use XORCISMModel v1.0
-                        xlWorkSheet.Cells[iRowIndex, iColumnIndex] = oAttackPatternCWE.CWE.CWEID + " " + oAttackPatternCWE.CWE.CWEName;
-                        iRowIndex++;
+                        string sAttackPatternCWEID = oAttackPatternCWE.AttackPatternCWEID.ToString();
+
+                        //xlWorkSheet.Cells[iRowIndex, iColumnIndex] = oAttackPatternCWE.CWE.CWEID + " " + oAttackPatternCWE.CWE.CWEName;
+
+                        //Search CWE informations in XORCISM
+                        CWE oCWE = null;
+                        try
+                        {
+                            oCWE = model.CWE.Where(o => o.CWEID == sAttackPatternCWEID).FirstOrDefault();
+                            xlWorkSheet.Cells[iRowIndex, iColumnIndex] = oCWE.CWEID + " " + oCWE.CWEName;
+
+                            iRowIndex++;
+                        }
+                        catch (Exception exCWE03)
+                        {
+                            Console.WriteLine("Exception exCWE03 " + exCWE03.Message + " " + exCWE03.InnerException);
+                        }
                     }
                 }
             }
