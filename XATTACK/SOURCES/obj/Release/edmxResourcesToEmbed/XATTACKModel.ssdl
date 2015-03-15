@@ -1,0 +1,2391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="XATTACKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ATTACKCATEGORY">
+    <Key>
+      <PropertyRef Name="AttackCategoryID" />
+    </Key>
+    <Property Name="AttackCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackCategoryGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="CategoryGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackCategoryName" Type="nvarchar" MaxLength="250" />
+    <Property Name="AttackCategoryDescription" Type="nvarchar(max)" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="VocabularyGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="CreationObjectGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKCATEGORYREFERENCE">
+    <Key>
+      <PropertyRef Name="AttackCategoryReferenceID" />
+    </Key>
+    <Property Name="AttackCategoryReferenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ATTACKCONSEQUENCE">
+    <Key>
+      <PropertyRef Name="AttackConsequenceID" />
+    </Key>
+    <Property Name="AttackConsequenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Consequence" Type="nvarchar(max)" />
+    <Property Name="ConsequenceNote" Type="nvarchar(max)" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKCONSEQUENCETAG">
+    <Key>
+      <PropertyRef Name="AttackConsequenceTagID" />
+    </Key>
+    <Property Name="AttackConsequenceTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackConsequenceID" Type="int" />
+    <Property Name="TagID" Type="int" />
+  </EntityType>
+  <EntityType Name="ATTACKEXAMPLE">
+    <Key>
+      <PropertyRef Name="AttackExampleID" />
+    </Key>
+    <Property Name="AttackExampleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackExampleGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackExampleName" Type="nvarchar" MaxLength="250" />
+    <Property Name="AttackExampleDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="AttackExampleVocabularyID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKEXAMPLEFORATTACKPATTERN">
+    <Key>
+      <PropertyRef Name="AttackExampleForAttackPatternID" />
+    </Key>
+    <Property Name="AttackExampleForAttackPatternID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackExampleID" Type="int" Nullable="false" />
+    <Property Name="AttackExampleGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackPatternID" Type="int" Nullable="false" />
+    <Property Name="AttackPatternGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="capec_id" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKEXECUTIONFLOW">
+    <Key>
+      <PropertyRef Name="AttackExecutionFlowID" />
+    </Key>
+    <Property Name="AttackExecutionFlowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="capec_id" Type="nvarchar" MaxLength="20" />
+    <Property Name="AttackExecutionFlowGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+  </EntityType>
+  <EntityType Name="ATTACKEXECUTIONFLOWPHASE">
+    <Key>
+      <PropertyRef Name="AttackExecutionFlowPhaseID" />
+    </Key>
+    <Property Name="AttackExecutionFlowPhaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackExecutionFlowID" Type="int" />
+    <Property Name="AttackExecutionFlowGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackPhaseID" Type="int" />
+    <Property Name="AttackPhaseGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackPhaseOrder" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKMETHOD">
+    <Key>
+      <PropertyRef Name="AttackMethodID" />
+    </Key>
+    <Property Name="AttackMethodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackMethodGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackMethodTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AttackMethodDescription" Type="nvarchar(max)" />
+    <Property Name="SourceID" Type="int" />
+    <Property Name="SourceGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="VocabularyGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="CreationObjectGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKMETHODDESCRIPTION">
+    <Key>
+      <PropertyRef Name="AttackMethodDescriptionID" />
+    </Key>
+    <Property Name="AttackMethodDescriptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ATTACKMETHODFORATTACKPATTERN">
+    <Key>
+      <PropertyRef Name="AttackPatternMethodID" />
+    </Key>
+    <Property Name="AttackPatternMethodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackMethodID" Type="int" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKMETHODREFERENCE">
+    <Key>
+      <PropertyRef Name="AttackMethodReferenceID" />
+    </Key>
+    <Property Name="AttackMethodReferenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackMethodID" Type="int" />
+    <Property Name="ReferenceID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKMETHODTAG">
+    <Key>
+      <PropertyRef Name="AttackMethodTagID" />
+    </Key>
+    <Property Name="AttackMethodTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackMethodID" Type="int" />
+    <Property Name="TagID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERN">
+    <Key>
+      <PropertyRef Name="AttackPatternID" />
+    </Key>
+    <Property Name="AttackPatternID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="capec_id" Type="nvarchar" MaxLength="20" />
+    <Property Name="category" Type="bit" />
+    <Property Name="AttackPatternName" Type="nvarchar" MaxLength="250" />
+    <Property Name="AttackPatternDescription" Type="nvarchar(max)" />
+    <Property Name="PatternAbstraction" Type="nvarchar" MaxLength="50" />
+    <Property Name="PatternCompleteness" Type="nvarchar" MaxLength="50" />
+    <Property Name="PatternStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="TypicalSeverity" Type="nvarchar" MaxLength="50" />
+    <Property Name="Payload_Activation_Impact" Type="nvarchar" MaxLength="250" />
+    <Property Name="SourceID" Type="int" />
+    <Property Name="SourceGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="RepositoryID" Type="int" />
+    <Property Name="RepositoryGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="VocabularyGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="CreationObjectGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNATTACKCONSEQUENCE">
+    <Key>
+      <PropertyRef Name="AttackPatternAttackConsequenceID" />
+    </Key>
+    <Property Name="AttackPatternAttackConsequenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="AttackPatternGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CAPECAttackConsequenceOrder" Type="int" />
+    <Property Name="AttackConsequenceID" Type="int" />
+    <Property Name="Consequence_Note" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNATTACKCONSEQUENCESCOPE">
+    <Key>
+      <PropertyRef Name="AttackPatternAttackConsequenceScopeID" />
+    </Key>
+    <Property Name="AttackPatternAttackConsequenceScopeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternAttackConsequenceID" Type="int" />
+    <Property Name="AttackScopeID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNATTACKTECHNICALIMPACT">
+    <Key>
+      <PropertyRef Name="AttackPatternAttackTechnicalImpactID" />
+    </Key>
+    <Property Name="AttackPatternAttackTechnicalImpactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternAttackConsequenceID" Type="int" />
+    <Property Name="AttackTechnicalImpactID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNCWE">
+    <Key>
+      <PropertyRef Name="AttackPatternCWEID" />
+    </Key>
+    <Property Name="AttackPatternCWEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="WeaknessRelationship" Type="nvarchar" MaxLength="50" />
+    <Property Name="CWEID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNFORTHREATACTORTTP">
+    <Key>
+      <PropertyRef Name="AttackPatternForThreatActorTTPID" />
+    </Key>
+    <Property Name="AttackPatternForThreatActorTTPID" Type="int" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" Nullable="false" />
+    <Property Name="ThreatActorTTPID" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNINDICATORWARNING">
+    <Key>
+      <PropertyRef Name="AttackPatternIndicatorWarningID" />
+    </Key>
+    <Property Name="AttackPatternIndicatorWarningID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="AttackPatternIndicatorWarningOrder" Type="int" />
+    <Property Name="IndicatorWarningAttack" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNMITIGATION">
+    <Key>
+      <PropertyRef Name="AttackPatternMitigationID" />
+    </Key>
+    <Property Name="AttackPatternMitigationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternMitigationGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="AttackPatternGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="MitigationID" Type="int" />
+    <Property Name="MitigationGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNNOTE">
+    <Key>
+      <PropertyRef Name="AttackPatternNoteID" />
+    </Key>
+    <Property Name="AttackPatternNoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NoteText" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNNOTES">
+    <Key>
+      <PropertyRef Name="AttackPatternNotesID" />
+    </Key>
+    <Property Name="AttackPatternNotesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="NoteOrder" Type="int" />
+    <Property Name="AttackPatternNoteID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNOBFUSCATIONTECHNIQUE">
+    <Key>
+      <PropertyRef Name="AttackPatternObfuscationTechniqueID" />
+    </Key>
+    <Property Name="AttackPatternObfuscationTechniqueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" Nullable="false" />
+    <Property Name="AttackPatternGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="ObfuscationTechniqueID" Type="int" Nullable="false" />
+    <Property Name="ObfuscationTechniqueGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNPROBINGTECHNIQUE">
+    <Key>
+      <PropertyRef Name="AttackPatternProbingTechniqueID" />
+    </Key>
+    <Property Name="AttackPatternProbingTechniqueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="AttackPatternGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackTechniqueID" Type="int" />
+    <Property Name="AttackTechniqueGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="TechniqueID" Type="int" />
+    <Property Name="TechniqueGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNREFERENCE">
+    <Key>
+      <PropertyRef Name="AttackPatternReferenceID" />
+    </Key>
+    <Property Name="AttackPatternReferenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternReferenceGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="AttackPatternGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="ReferenceID" Type="int" />
+    <Property Name="ReferenceGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="Reference_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Local_Reference_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Reference_Section" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNRELATIONSHIP">
+    <Key>
+      <PropertyRef Name="AttackPatternRelationshipID" />
+    </Key>
+    <Property Name="AttackPatternRelationshipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternRefID" Type="int" />
+    <Property Name="AttackPatternRefGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="RelationshipName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Relationship_Description" Type="nvarchar(max)" />
+    <Property Name="AttackPatternSubjectID" Type="int" />
+    <Property Name="AttackPatternSubjectGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNSECURITYCONTROL">
+    <Key>
+      <PropertyRef Name="AttackPatternSecurityControlID" />
+    </Key>
+    <Property Name="AttackPatternSecurityControlID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="SecurityControlID" Type="int" />
+    <Property Name="AttackPatternSecurityControlVocabularyID" Type="int" />
+    <Property Name="AttackPatternSecurityControlOrder" Type="int" />
+    <Property Name="SecurityControlTypeID" Type="int" />
+    <Property Name="SecurityControlType" Type="nvarchar" MaxLength="50" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNTAG">
+    <Key>
+      <PropertyRef Name="AttackPatternTagID" />
+    </Key>
+    <Property Name="AttackPatternTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternTagGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="AttackPatternGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="TagID" Type="int" />
+    <Property Name="TagGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="VocabularyID" Type="int" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNVIEW">
+    <Key>
+      <PropertyRef Name="AttackPatternViewID" />
+    </Key>
+    <Property Name="AttackPatternViewID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternViewGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="ViewVocabularyID" Type="int" />
+    <Property Name="AttackPatternViewName" Type="nvarchar" MaxLength="250" />
+    <Property Name="View_Structure" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttackPatternViewDescription" Type="nvarchar(max)" />
+    <Property Name="View_Filter" Type="nvarchar" MaxLength="50" />
+    <Property Name="ViewStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPATTERNVIEWRELATIONSHIP">
+    <Key>
+      <PropertyRef Name="AttackPatternViewRelationshipID" />
+    </Key>
+    <Property Name="AttackPatternViewRelationshipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternViewID" Type="int" />
+    <Property Name="Ordinal" Type="nvarchar" MaxLength="50" />
+    <Property Name="Relationship_Target_Form" Type="nvarchar" MaxLength="50" />
+    <Property Name="Relationship_Nature" Type="nvarchar" MaxLength="50" />
+    <Property Name="Relationship_Description" Type="nvarchar(max)" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPAYLOAD">
+    <Key>
+      <PropertyRef Name="AttackPayloadID" />
+    </Key>
+    <Property Name="AttackPayloadID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPayloadGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="PayloadText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Payload_Activation_Impact" Type="nvarchar(max)" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="ValidFromdate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPAYLOADENCODER">
+    <Key>
+      <PropertyRef Name="AttackPayloadEncoderID" />
+    </Key>
+    <Property Name="AttackPayloadEncoderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPayloadEncoderName" Type="nvarchar" MaxLength="100" />
+    <Property Name="AttackPayloadEncoderDescription" Type="nvarchar(max)" />
+    <Property Name="AttackPayloadEncoderVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPAYLOADFORATTACKPATTERN">
+    <Key>
+      <PropertyRef Name="AttackPatternPayloadID" />
+    </Key>
+    <Property Name="AttackPatternPayloadID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternPayloadGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackPayloadID" Type="int" Nullable="false" />
+    <Property Name="AttackPayloadGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackPayloadImpactID" Type="int" />
+    <Property Name="AttackPatternID" Type="int" Nullable="false" />
+    <Property Name="AttackPatternGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPAYLOADIMPACT">
+    <Key>
+      <PropertyRef Name="AttackPayloadImpactID" />
+    </Key>
+    <Property Name="AttackPayloadImpactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PayloadActivationImpactDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPAYLOADIMPACTFORATTACKPATTERN">
+    <Key>
+      <PropertyRef Name="AttackPatternPayloadImpactID" />
+    </Key>
+    <Property Name="AttackPatternPayloadImpactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPayloadImpactID" Type="int" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" Nullable="false" />
+    <Property Name="capec_id" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPHASE">
+    <Key>
+      <PropertyRef Name="AttackPhaseID" />
+    </Key>
+    <Property Name="AttackPhaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPhaseGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="PhaseID" Type="int" />
+    <Property Name="AttackPhaseName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttackPhaseDescription" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPHASEFORATTACKPATTERN">
+    <Key>
+      <PropertyRef Name="AttackPatternAttackPhaseID" />
+    </Key>
+    <Property Name="AttackPatternAttackPhaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="AttackPatternGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackPhaseGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackPhaseID" Type="int" />
+    <Property Name="AttackPhaseVocabularyID" Type="int" />
+    <Property Name="AttackPhaseOrder" Type="int" />
+    <Property Name="AttackPhaseDescription" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPREREQUISITE">
+    <Key>
+      <PropertyRef Name="AttackPrerequisiteID" />
+    </Key>
+    <Property Name="AttackPrerequisiteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPrerequisiteGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="PrerequisiteText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKPREREQUISITEFORATTACKPATTERN">
+    <Key>
+      <PropertyRef Name="AttackPatternAttackPrerequisiteID" />
+    </Key>
+    <Property Name="AttackPatternAttackPrerequisiteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPrerequisiteID" Type="int" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPURPOSE">
+    <Key>
+      <PropertyRef Name="AttackPurposeID" />
+    </Key>
+    <Property Name="AttackPurposeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPurposeGUID" Type="nchar" MaxLength="10" />
+    <Property Name="AttackPurposeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AttackPurposeDescription" Type="nvarchar(max)" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKPURPOSEFORATTACKPATTERN">
+    <Key>
+      <PropertyRef Name="AttackPatternPurposeID" />
+    </Key>
+    <Property Name="AttackPatternPurposeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackPurposeID" Type="int" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKRESOURCE">
+    <Key>
+      <PropertyRef Name="AttackResourceID" />
+    </Key>
+    <Property Name="AttackResourceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackResourceText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKRESOURCEFORATTACKPATTERN">
+    <Key>
+      <PropertyRef Name="AttackPatternAttackResourceRequiredID" />
+    </Key>
+    <Property Name="AttackPatternAttackResourceRequiredID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackResourceID" Type="int" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="ConfidenceLevelID" Type="int" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKRESOURCETAG">
+    <Key>
+      <PropertyRef Name="AttackResourceTagID" />
+    </Key>
+    <Property Name="AttackResourceTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackResourceID" Type="int" />
+    <Property Name="TagID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKSCENARIO">
+    <Key>
+      <PropertyRef Name="AttackScenarioID" />
+    </Key>
+    <Property Name="AttackScenarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScenarioID" Type="int" Nullable="false" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKSCOPE">
+    <Key>
+      <PropertyRef Name="AttackScopeID" />
+    </Key>
+    <Property Name="AttackScopeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackScopeGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="ConsequenceScope" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKSTEP">
+    <Key>
+      <PropertyRef Name="AttackStepID" />
+    </Key>
+    <Property Name="AttackStepID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackStepGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackPatternAttackPhaseID" Type="int" />
+    <Property Name="AttackStepVocabularyID" Type="int" />
+    <Property Name="AttackStepOrder" Type="int" />
+    <Property Name="Attack_Step_Title" Type="nvarchar" MaxLength="500" />
+    <Property Name="Attack_Step_Description" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKSTEPINDICATOR">
+    <Key>
+      <PropertyRef Name="AttackStepIndicatorID" />
+    </Key>
+    <Property Name="AttackStepIndicatorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackStepIndicatorGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackStepID" Type="int" />
+    <Property Name="AttackStepGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="IndicatorID" Type="int" />
+    <Property Name="IndicatorGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackStepIndicatorVocabularyID" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttackStepIndicatorType" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttackStepIndicatorDescription" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKSTEPINDICATORENVIRONMENT">
+    <Key>
+      <PropertyRef Name="AttackStepIndicatorEnvironmentID" />
+    </Key>
+    <Property Name="AttackStepIndicatorEnvironmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackStepIndicatorID" Type="int" Nullable="false" />
+    <Property Name="EnvironmentID" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKSTEPINDICATORTAG">
+    <Key>
+      <PropertyRef Name="AttackStepIndicatorTagID" />
+    </Key>
+    <Property Name="AttackStepIndicatorTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackStepIndicatorID" Type="int" />
+    <Property Name="TagID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKSTEPOUTCOME">
+    <Key>
+      <PropertyRef Name="AttackStepOutcomeID" />
+    </Key>
+    <Property Name="AttackStepOutcomeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackStepID" Type="int" />
+    <Property Name="OutcomeVocabularyID" Type="nvarchar" MaxLength="50" />
+    <Property Name="OutcomeType" Type="nvarchar" MaxLength="50" />
+    <Property Name="OutcomeDescription" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKSTEPOUTCOMETAG">
+    <Key>
+      <PropertyRef Name="AttackStepOutcomeTagID" />
+    </Key>
+    <Property Name="AttackStepOutcomeTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackStepOutcomeID" Type="int" />
+    <Property Name="TagID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKSTEPSECURITYCONTROL">
+    <Key>
+      <PropertyRef Name="AttackStepSecurityControlID" />
+    </Key>
+    <Property Name="AttackStepSecurityControlID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackStepID" Type="int" />
+    <Property Name="AttackStepGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="SecurityControlID" Type="int" />
+    <Property Name="SecurityControlGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackStepSecurityControlVocabularyID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKSTEPTAG">
+    <Key>
+      <PropertyRef Name="AttackStepTagID" />
+    </Key>
+    <Property Name="AttackStepTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackStepID" Type="int" />
+    <Property Name="TagID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKSTEPTECHNIQUE">
+    <Key>
+      <PropertyRef Name="AttackStepTechniqueID" />
+    </Key>
+    <Property Name="AttackStepTechniqueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackStepTechniqueGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackStepTechniqueVocabularyID" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttackStepID" Type="int" />
+    <Property Name="AttackTechniqueID" Type="int" />
+    <Property Name="AttackStepTechniqueOrder" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKSTEPTECHNIQUEENVIRONMENT">
+    <Key>
+      <PropertyRef Name="AttackStepTechniqueEnvironmentID" />
+    </Key>
+    <Property Name="AttackStepTechniqueEnvironmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackStepTechniqueID" Type="int" />
+    <Property Name="EnvironmentID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKSTEPTECHNIQUELEVERAGEDPATTERN">
+    <Key>
+      <PropertyRef Name="AttackStepTechniqueLeveragedPatternID" />
+    </Key>
+    <Property Name="AttackStepTechniqueLeveragedPatternID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackStepTechniqueID" Type="int" />
+    <Property Name="AttackStepTechniqueGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackPatternID" Type="int" />
+    <Property Name="AttackPatternGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="LeveragedAttackPatternOrder" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKSURFACE">
+    <Key>
+      <PropertyRef Name="AttackSurfaceID" />
+    </Key>
+    <Property Name="AttackSurfaceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackSurfaceGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackSurfaceName" Type="nvarchar" MaxLength="250" />
+    <Property Name="AttackSurfaceDescription" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ConfidenceLevelID" Type="int" />
+    <Property Name="ConfidenceReasonID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKSURFACECHANGERECORD">
+    <Key>
+      <PropertyRef Name="AttackSurfaceChangeRecordID" />
+    </Key>
+    <Property Name="AttackSurfaceChangeRecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ATTACKSURFACEFORATTACKPATTERN">
+    <Key>
+      <PropertyRef Name="AttackPatternSurfaceID" />
+    </Key>
+    <Property Name="AttackPatternSurfaceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackSurfaceID" Type="int" Nullable="false" />
+    <Property Name="AttackPatternID" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKSURFACEINTERACTIONPOINTS">
+    <Key>
+      <PropertyRef Name="AttackSurfaceInteractionPointsID" />
+    </Key>
+    <Property Name="AttackSurfaceInteractionPointsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ATTACKSURFACELOCALITY">
+    <Key>
+      <PropertyRef Name="AttackSurfaceLocalityID" />
+    </Key>
+    <Property Name="AttackSurfaceLocalityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackSurfaceLocalityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKSURFACELOCALITYFORATTACKSURFACE">
+    <Key>
+      <PropertyRef Name="AttackSurfaceLocalitiesID" />
+    </Key>
+    <Property Name="AttackSurfaceLocalitiesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackSurfaceLocalityID" Type="int" Nullable="false" />
+    <Property Name="AttackSurfaceID" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKSURFACESERVICE">
+    <Key>
+      <PropertyRef Name="AttackSurfaceServiceID" />
+    </Key>
+    <Property Name="AttackSurfaceServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackSurfaceID" Type="int" Nullable="false" />
+    <Property Name="EndPointID" Type="int" />
+    <Property Name="TargetFunctionalServiceID" Type="int" />
+    <Property Name="TargetFunctionalServiceName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKSURFACESERVICEPROTOCOL">
+    <Key>
+      <PropertyRef Name="AttackSurfaceServiceProtocolID" />
+    </Key>
+    <Property Name="AttackSurfaceServiceProtocolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackSurfaceServiceID" Type="int" Nullable="false" />
+    <Property Name="TargetFunctionalServiceProtocolID" Type="int" />
+    <Property Name="ProtocolID" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKSURFACETYPE">
+    <Key>
+      <PropertyRef Name="AttackSurfaceTypeID" />
+    </Key>
+    <Property Name="AttackSurfaceTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackSurfaceTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKSURFACETYPEFORATTACKSURFACE">
+    <Key>
+      <PropertyRef Name="AttackSurfaceTypesID" />
+    </Key>
+    <Property Name="AttackSurfaceTypesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackSurfaceTypeID" Type="int" Nullable="false" />
+    <Property Name="AttackSurfaceID" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+  </EntityType>
+  <EntityType Name="ATTACKTECHNICALIMPACT">
+    <Key>
+      <PropertyRef Name="AttackTechnicalImpactID" />
+    </Key>
+    <Property Name="AttackTechnicalImpactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackTechnicalImpactGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="ImpactID" Type="int" />
+    <Property Name="ConsequenceTechnicalImpact" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKTECHNIQUE">
+    <Key>
+      <PropertyRef Name="AttackTechniqueID" />
+    </Key>
+    <Property Name="AttackTechniqueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackTechniqueGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="TechniqueID" Type="int" />
+    <Property Name="AttackTechniqueName" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackTechniqueDescription" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKTECHNIQUEINDICATOR">
+    <Key>
+      <PropertyRef Name="AttackTechniqueIndicatorID" />
+    </Key>
+    <Property Name="AttackTechniqueIndicatorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackTechniqueID" Type="int" />
+    <Property Name="IndicatorID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKTECHNIQUEREFERENCE">
+    <Key>
+      <PropertyRef Name="AttackTechniqueReferenceID" />
+    </Key>
+    <Property Name="AttackTechniqueReferenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackTechniqueID" Type="int" />
+    <Property Name="ReferenceID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKTECHNIQUETAG">
+    <Key>
+      <PropertyRef Name="AttackTechniqueTagID" />
+    </Key>
+    <Property Name="AttackTechniqueTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackTechniqueID" Type="int" />
+    <Property Name="AttackTechniqueGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="TagID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKTECHNIQUETOOL">
+    <Key>
+      <PropertyRef Name="AttackTechniqueToolID" />
+    </Key>
+    <Property Name="AttackTechniqueToolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackTechniqueID" Type="int" />
+    <Property Name="AttackTechniqueGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackToolID" Type="int" />
+    <Property Name="AttackToolGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="ToolID" Type="int" />
+    <Property Name="ToolGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKTOOL">
+    <Key>
+      <PropertyRef Name="AttackToolID" />
+    </Key>
+    <Property Name="AttackToolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackTooldGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="TooldID" Type="int" />
+    <Property Name="AttackToolTypeID" Type="int" />
+    <Property Name="AttackToolName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AttackToolVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="VersionID" Type="int" />
+    <Property Name="AttackToolDescription" Type="nvarchar(max)" />
+    <Property Name="AttackToolAuthor" Type="nvarchar" MaxLength="100" />
+    <Property Name="AttackToolLink" Type="nvarchar" MaxLength="250" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreationObjectID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKTOOLAUTHENTICATIONTYPE">
+    <Key>
+      <PropertyRef Name="AttackToolAuthenticationTypeID" />
+    </Key>
+    <Property Name="AttackToolAuthenticationTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackToolID" Type="int" />
+    <Property Name="AuthenticationTypeID" Type="int" />
+    <Property Name="AttackToolAuthenticationTypeDescription" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="ConfidenceLevelID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKTOOLDESCRIPTION">
+    <Key>
+      <PropertyRef Name="AttackToolDescriptionID" />
+    </Key>
+    <Property Name="AttackToolDescriptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ATTACKTOOLFORTHREATACTORTTP">
+    <Key>
+      <PropertyRef Name="ThreatActorTTPAttackToolID" />
+    </Key>
+    <Property Name="ThreatActorTTPAttackToolID" Type="int" Nullable="false" />
+    <Property Name="AttackToolID" Type="int" Nullable="false" />
+    <Property Name="ThreatActorTTPID" Type="int" Nullable="false" />
+    <Property Name="notes" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="isEncrypted" Type="bit" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKTOOLMODULE">
+    <Key>
+      <PropertyRef Name="AttackToolModuleID" />
+    </Key>
+    <Property Name="AttackToolModuleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackToolModuleName" Type="nvarchar" MaxLength="250" />
+    <Property Name="AttackToolModuleDescription" Type="nvarchar(max)" />
+    <Property Name="AttackToolModuleVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKTOOLMODULEAUTHENTICATIONTYPE">
+    <Key>
+      <PropertyRef Name="AttackToolModuleAuthenticationTypeID" />
+    </Key>
+    <Property Name="AttackToolModuleAuthenticationTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackToolModuleID" Type="int" />
+    <Property Name="AuthenticationTypeID" Type="int" />
+    <Property Name="AttackToolModuleAuthenticationTypeDescription" Type="nvarchar(max)" />
+    <Property Name="ConfidenceLevelID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+  </EntityType>
+  <EntityType Name="ATTACKTOOLTAG">
+    <Key>
+      <PropertyRef Name="AttackToolTagID" />
+    </Key>
+    <Property Name="AttackToolTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ATTACKTOOLTYPE">
+    <Key>
+      <PropertyRef Name="AttackToolTypeID" />
+    </Key>
+    <Property Name="AttackToolTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackToolTypeGUID" Type="nvarchar" MaxLength="500" />
+    <Property Name="AttackToolTypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AttackToolTypeDescription" Type="nvarchar(max)" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATTACKVECTOR">
+    <Key>
+      <PropertyRef Name="AttackVectorID" />
+    </Key>
+    <Property Name="AttackVectorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttackVectorName" Type="nvarchar" MaxLength="150" />
+    <Property Name="AttackvectorDescription" Type="nvarchar(max)" />
+    <Property Name="VocabularyID" Type="int" />
+    <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="isEncrypted" Type="bit" />
+  </EntityType>
+  <Association Name="FK_ATTACKCONSEQUENCETAG_ATTACKCONSEQUENCE">
+    <End Role="ATTACKCONSEQUENCE" Type="Self.ATTACKCONSEQUENCE" Multiplicity="0..1" />
+    <End Role="ATTACKCONSEQUENCETAG" Type="Self.ATTACKCONSEQUENCETAG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKCONSEQUENCE">
+        <PropertyRef Name="AttackConsequenceID" />
+      </Principal>
+      <Dependent Role="ATTACKCONSEQUENCETAG">
+        <PropertyRef Name="AttackConsequenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKEXAMPLEFORATTACKPATTERN_ATTACKEXAMPLE">
+    <End Role="ATTACKEXAMPLE" Type="Self.ATTACKEXAMPLE" Multiplicity="1" />
+    <End Role="ATTACKEXAMPLEFORATTACKPATTERN" Type="Self.ATTACKEXAMPLEFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKEXAMPLE">
+        <PropertyRef Name="AttackExampleID" />
+      </Principal>
+      <Dependent Role="ATTACKEXAMPLEFORATTACKPATTERN">
+        <PropertyRef Name="AttackExampleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKEXECUTIONFLOWPHASE_ATTACKEXECUTIONFLOW">
+    <End Role="ATTACKEXECUTIONFLOW" Type="Self.ATTACKEXECUTIONFLOW" Multiplicity="0..1" />
+    <End Role="ATTACKEXECUTIONFLOWPHASE" Type="Self.ATTACKEXECUTIONFLOWPHASE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKEXECUTIONFLOW">
+        <PropertyRef Name="AttackExecutionFlowID" />
+      </Principal>
+      <Dependent Role="ATTACKEXECUTIONFLOWPHASE">
+        <PropertyRef Name="AttackExecutionFlowID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKMETHODFORATTACKPATTERN_ATTACKMETHOD">
+    <End Role="ATTACKMETHOD" Type="Self.ATTACKMETHOD" Multiplicity="1" />
+    <End Role="ATTACKMETHODFORATTACKPATTERN" Type="Self.ATTACKMETHODFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKMETHOD">
+        <PropertyRef Name="AttackMethodID" />
+      </Principal>
+      <Dependent Role="ATTACKMETHODFORATTACKPATTERN">
+        <PropertyRef Name="AttackMethodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKMETHODREFERENCE_ATTACKMETHOD">
+    <End Role="ATTACKMETHOD" Type="Self.ATTACKMETHOD" Multiplicity="0..1" />
+    <End Role="ATTACKMETHODREFERENCE" Type="Self.ATTACKMETHODREFERENCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKMETHOD">
+        <PropertyRef Name="AttackMethodID" />
+      </Principal>
+      <Dependent Role="ATTACKMETHODREFERENCE">
+        <PropertyRef Name="AttackMethodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKMETHODTAG_ATTACKMETHOD">
+    <End Role="ATTACKMETHOD" Type="Self.ATTACKMETHOD" Multiplicity="0..1" />
+    <End Role="ATTACKMETHODTAG" Type="Self.ATTACKMETHODTAG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKMETHOD">
+        <PropertyRef Name="AttackMethodID" />
+      </Principal>
+      <Dependent Role="ATTACKMETHODTAG">
+        <PropertyRef Name="AttackMethodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNATTACKCONSEQUENCE_ATTACKCONSEQUENCE">
+    <End Role="ATTACKCONSEQUENCE" Type="Self.ATTACKCONSEQUENCE" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNATTACKCONSEQUENCE" Type="Self.ATTACKPATTERNATTACKCONSEQUENCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKCONSEQUENCE">
+        <PropertyRef Name="AttackConsequenceID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNATTACKCONSEQUENCE">
+        <PropertyRef Name="AttackConsequenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNATTACKCONSEQUENCE_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNATTACKCONSEQUENCE" Type="Self.ATTACKPATTERNATTACKCONSEQUENCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNATTACKCONSEQUENCE">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNCWE_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNCWE" Type="Self.ATTACKPATTERNCWE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNCWE">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNFORTHREATACTORTTP_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="1" />
+    <End Role="ATTACKPATTERNFORTHREATACTORTTP" Type="Self.ATTACKPATTERNFORTHREATACTORTTP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNFORTHREATACTORTTP">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNINDICATORWARNING_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNINDICATORWARNING" Type="Self.ATTACKPATTERNINDICATORWARNING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNINDICATORWARNING">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNMITIGATION_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNMITIGATION" Type="Self.ATTACKPATTERNMITIGATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNMITIGATION">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNNOTES_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNNOTES" Type="Self.ATTACKPATTERNNOTES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNNOTES">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNNOTES_ATTACKPATTERNNOTE">
+    <End Role="ATTACKPATTERNNOTE" Type="Self.ATTACKPATTERNNOTE" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNNOTES" Type="Self.ATTACKPATTERNNOTES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERNNOTE">
+        <PropertyRef Name="AttackPatternNoteID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNNOTES">
+        <PropertyRef Name="AttackPatternNoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNOBFUSCATIONTECHNIQUE_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="1" />
+    <End Role="ATTACKPATTERNOBFUSCATIONTECHNIQUE" Type="Self.ATTACKPATTERNOBFUSCATIONTECHNIQUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNOBFUSCATIONTECHNIQUE">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNPROBINGTECHNIQUE_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNPROBINGTECHNIQUE" Type="Self.ATTACKPATTERNPROBINGTECHNIQUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNPROBINGTECHNIQUE">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNREFERENCE_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNREFERENCE" Type="Self.ATTACKPATTERNREFERENCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNREFERENCE">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNRELATIONSHIP_ATTACKPATTERNREF">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNRELATIONSHIP" Type="Self.ATTACKPATTERNRELATIONSHIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNRELATIONSHIP">
+        <PropertyRef Name="AttackPatternRefID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNRELATIONSHIP_ATTACKPATTERNSUBJECT">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNRELATIONSHIP" Type="Self.ATTACKPATTERNRELATIONSHIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNRELATIONSHIP">
+        <PropertyRef Name="AttackPatternSubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNSECURITYCONTROL_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNSECURITYCONTROL" Type="Self.ATTACKPATTERNSECURITYCONTROL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNSECURITYCONTROL">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNTAG_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNTAG" Type="Self.ATTACKPATTERNTAG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNTAG">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNVIEWRELATIONSHIP_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNVIEWRELATIONSHIP" Type="Self.ATTACKPATTERNVIEWRELATIONSHIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNVIEWRELATIONSHIP">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPATTERNVIEWRELATIONSHIP_ATTACKPATTERNVIEW">
+    <End Role="ATTACKPATTERNVIEW" Type="Self.ATTACKPATTERNVIEW" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNVIEWRELATIONSHIP" Type="Self.ATTACKPATTERNVIEWRELATIONSHIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERNVIEW">
+        <PropertyRef Name="AttackPatternViewID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNVIEWRELATIONSHIP">
+        <PropertyRef Name="AttackPatternViewID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPAYLOADFORATTACKPATTERN_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="1" />
+    <End Role="ATTACKPAYLOADFORATTACKPATTERN" Type="Self.ATTACKPAYLOADFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPAYLOADFORATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPAYLOADFORATTACKPATTERN_ATTACKPAYLOAD">
+    <End Role="ATTACKPAYLOAD" Type="Self.ATTACKPAYLOAD" Multiplicity="1" />
+    <End Role="ATTACKPAYLOADFORATTACKPATTERN" Type="Self.ATTACKPAYLOADFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPAYLOAD">
+        <PropertyRef Name="AttackPayloadID" />
+      </Principal>
+      <Dependent Role="ATTACKPAYLOADFORATTACKPATTERN">
+        <PropertyRef Name="AttackPayloadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPAYLOADIMPACTFORATTACKPATTERN_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="1" />
+    <End Role="ATTACKPAYLOADIMPACTFORATTACKPATTERN" Type="Self.ATTACKPAYLOADIMPACTFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPAYLOADIMPACTFORATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPAYLOADIMPACTFORATTACKPATTERN_ATTACKPAYLOADIMPACT">
+    <End Role="ATTACKPAYLOADIMPACT" Type="Self.ATTACKPAYLOADIMPACT" Multiplicity="1" />
+    <End Role="ATTACKPAYLOADIMPACTFORATTACKPATTERN" Type="Self.ATTACKPAYLOADIMPACTFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPAYLOADIMPACT">
+        <PropertyRef Name="AttackPayloadImpactID" />
+      </Principal>
+      <Dependent Role="ATTACKPAYLOADIMPACTFORATTACKPATTERN">
+        <PropertyRef Name="AttackPayloadImpactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPHASEFORATTACKPATTERN_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPHASEFORATTACKPATTERN" Type="Self.ATTACKPHASEFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPHASEFORATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPHASEFORATTACKPATTERN_ATTACKPHASE">
+    <End Role="ATTACKPHASE" Type="Self.ATTACKPHASE" Multiplicity="0..1" />
+    <End Role="ATTACKPHASEFORATTACKPATTERN" Type="Self.ATTACKPHASEFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPHASE">
+        <PropertyRef Name="AttackPhaseID" />
+      </Principal>
+      <Dependent Role="ATTACKPHASEFORATTACKPATTERN">
+        <PropertyRef Name="AttackPhaseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPREREQUISITEFORCAPEC_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKPREREQUISITEFORATTACKPATTERN" Type="Self.ATTACKPREREQUISITEFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPREREQUISITEFORATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPREREQUISITEFORCAPEC_ATTACKPREREQUISITE">
+    <End Role="ATTACKPREREQUISITE" Type="Self.ATTACKPREREQUISITE" Multiplicity="1" />
+    <End Role="ATTACKPREREQUISITEFORATTACKPATTERN" Type="Self.ATTACKPREREQUISITEFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPREREQUISITE">
+        <PropertyRef Name="AttackPrerequisiteID" />
+      </Principal>
+      <Dependent Role="ATTACKPREREQUISITEFORATTACKPATTERN">
+        <PropertyRef Name="AttackPrerequisiteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPURPOSEFORATTACKPATTERN_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="1" />
+    <End Role="ATTACKPURPOSEFORATTACKPATTERN" Type="Self.ATTACKPURPOSEFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKPURPOSEFORATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKPURPOSEFORATTACKPATTERN_ATTACKPURPOSE">
+    <End Role="ATTACKPURPOSE" Type="Self.ATTACKPURPOSE" Multiplicity="1" />
+    <End Role="ATTACKPURPOSEFORATTACKPATTERN" Type="Self.ATTACKPURPOSEFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPURPOSE">
+        <PropertyRef Name="AttackPurposeID" />
+      </Principal>
+      <Dependent Role="ATTACKPURPOSEFORATTACKPATTERN">
+        <PropertyRef Name="AttackPurposeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKRESOURCEFORCAPEC_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKRESOURCEFORATTACKPATTERN" Type="Self.ATTACKRESOURCEFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKRESOURCEFORATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKRESOURCEFORCAPEC_ATTACKRESOURCE">
+    <End Role="ATTACKRESOURCE" Type="Self.ATTACKRESOURCE" Multiplicity="1" />
+    <End Role="ATTACKRESOURCEFORATTACKPATTERN" Type="Self.ATTACKRESOURCEFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKRESOURCE">
+        <PropertyRef Name="AttackResourceID" />
+      </Principal>
+      <Dependent Role="ATTACKRESOURCEFORATTACKPATTERN">
+        <PropertyRef Name="AttackResourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKRESOURCETAG_ATTACKRESOURCE">
+    <End Role="ATTACKRESOURCE" Type="Self.ATTACKRESOURCE" Multiplicity="0..1" />
+    <End Role="ATTACKRESOURCETAG" Type="Self.ATTACKRESOURCETAG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKRESOURCE">
+        <PropertyRef Name="AttackResourceID" />
+      </Principal>
+      <Dependent Role="ATTACKRESOURCETAG">
+        <PropertyRef Name="AttackResourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSTEP_ATTACKPHASEFORATTACKPATTERN">
+    <End Role="ATTACKPHASEFORATTACKPATTERN" Type="Self.ATTACKPHASEFORATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKSTEP" Type="Self.ATTACKSTEP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPHASEFORATTACKPATTERN">
+        <PropertyRef Name="AttackPatternAttackPhaseID" />
+      </Principal>
+      <Dependent Role="ATTACKSTEP">
+        <PropertyRef Name="AttackPatternAttackPhaseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSTEPINDICATOR_ATTACKSTEP">
+    <End Role="ATTACKSTEP" Type="Self.ATTACKSTEP" Multiplicity="0..1" />
+    <End Role="ATTACKSTEPINDICATOR" Type="Self.ATTACKSTEPINDICATOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSTEP">
+        <PropertyRef Name="AttackStepID" />
+      </Principal>
+      <Dependent Role="ATTACKSTEPINDICATOR">
+        <PropertyRef Name="AttackStepID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSTEPINDICATORENVIRONMENT_ATTACKSTEPINDICATOR">
+    <End Role="ATTACKSTEPINDICATOR" Type="Self.ATTACKSTEPINDICATOR" Multiplicity="1" />
+    <End Role="ATTACKSTEPINDICATORENVIRONMENT" Type="Self.ATTACKSTEPINDICATORENVIRONMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSTEPINDICATOR">
+        <PropertyRef Name="AttackStepIndicatorID" />
+      </Principal>
+      <Dependent Role="ATTACKSTEPINDICATORENVIRONMENT">
+        <PropertyRef Name="AttackStepIndicatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSTEPINDICATORTAG_ATTACKSTEPINDICATOR">
+    <End Role="ATTACKSTEPINDICATOR" Type="Self.ATTACKSTEPINDICATOR" Multiplicity="0..1" />
+    <End Role="ATTACKSTEPINDICATORTAG" Type="Self.ATTACKSTEPINDICATORTAG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSTEPINDICATOR">
+        <PropertyRef Name="AttackStepIndicatorID" />
+      </Principal>
+      <Dependent Role="ATTACKSTEPINDICATORTAG">
+        <PropertyRef Name="AttackStepIndicatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSTEPOUTCOME_ATTACKSTEP">
+    <End Role="ATTACKSTEP" Type="Self.ATTACKSTEP" Multiplicity="0..1" />
+    <End Role="ATTACKSTEPOUTCOME" Type="Self.ATTACKSTEPOUTCOME" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSTEP">
+        <PropertyRef Name="AttackStepID" />
+      </Principal>
+      <Dependent Role="ATTACKSTEPOUTCOME">
+        <PropertyRef Name="AttackStepID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSTEPOUTCOMETAG_ATTACKSTEPOUTCOME">
+    <End Role="ATTACKSTEPOUTCOME" Type="Self.ATTACKSTEPOUTCOME" Multiplicity="0..1" />
+    <End Role="ATTACKSTEPOUTCOMETAG" Type="Self.ATTACKSTEPOUTCOMETAG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSTEPOUTCOME">
+        <PropertyRef Name="AttackStepOutcomeID" />
+      </Principal>
+      <Dependent Role="ATTACKSTEPOUTCOMETAG">
+        <PropertyRef Name="AttackStepOutcomeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSTEPSECURITYCONTROL_ATTACKSTEP">
+    <End Role="ATTACKSTEP" Type="Self.ATTACKSTEP" Multiplicity="0..1" />
+    <End Role="ATTACKSTEPSECURITYCONTROL" Type="Self.ATTACKSTEPSECURITYCONTROL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSTEP">
+        <PropertyRef Name="AttackStepID" />
+      </Principal>
+      <Dependent Role="ATTACKSTEPSECURITYCONTROL">
+        <PropertyRef Name="AttackStepID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSTEPTAG_ATTACKSTEP">
+    <End Role="ATTACKSTEP" Type="Self.ATTACKSTEP" Multiplicity="0..1" />
+    <End Role="ATTACKSTEPTAG" Type="Self.ATTACKSTEPTAG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSTEP">
+        <PropertyRef Name="AttackStepID" />
+      </Principal>
+      <Dependent Role="ATTACKSTEPTAG">
+        <PropertyRef Name="AttackStepID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSTEPTECHNIQUE_ATTACKSTEP">
+    <End Role="ATTACKSTEP" Type="Self.ATTACKSTEP" Multiplicity="0..1" />
+    <End Role="ATTACKSTEPTECHNIQUE" Type="Self.ATTACKSTEPTECHNIQUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSTEP">
+        <PropertyRef Name="AttackStepID" />
+      </Principal>
+      <Dependent Role="ATTACKSTEPTECHNIQUE">
+        <PropertyRef Name="AttackStepID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSTEPTECHNIQUEENVIRONMENT_ATTACKSTEPTECHNIQUE">
+    <End Role="ATTACKSTEPTECHNIQUE" Type="Self.ATTACKSTEPTECHNIQUE" Multiplicity="0..1" />
+    <End Role="ATTACKSTEPTECHNIQUEENVIRONMENT" Type="Self.ATTACKSTEPTECHNIQUEENVIRONMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSTEPTECHNIQUE">
+        <PropertyRef Name="AttackStepTechniqueID" />
+      </Principal>
+      <Dependent Role="ATTACKSTEPTECHNIQUEENVIRONMENT">
+        <PropertyRef Name="AttackStepTechniqueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSTEPTECHNIQUELEVERAGEDPATTERN_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="0..1" />
+    <End Role="ATTACKSTEPTECHNIQUELEVERAGEDPATTERN" Type="Self.ATTACKSTEPTECHNIQUELEVERAGEDPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKSTEPTECHNIQUELEVERAGEDPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSTEPTECHNIQUELEVERAGEDPATTERN_ATTACKSTEPTECHNIQUE">
+    <End Role="ATTACKSTEPTECHNIQUE" Type="Self.ATTACKSTEPTECHNIQUE" Multiplicity="0..1" />
+    <End Role="ATTACKSTEPTECHNIQUELEVERAGEDPATTERN" Type="Self.ATTACKSTEPTECHNIQUELEVERAGEDPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSTEPTECHNIQUE">
+        <PropertyRef Name="AttackStepTechniqueID" />
+      </Principal>
+      <Dependent Role="ATTACKSTEPTECHNIQUELEVERAGEDPATTERN">
+        <PropertyRef Name="AttackStepTechniqueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSURFACEFORATTACKPATTERN_ATTACKPATTERN">
+    <End Role="ATTACKPATTERN" Type="Self.ATTACKPATTERN" Multiplicity="1" />
+    <End Role="ATTACKSURFACEFORATTACKPATTERN" Type="Self.ATTACKSURFACEFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Principal>
+      <Dependent Role="ATTACKSURFACEFORATTACKPATTERN">
+        <PropertyRef Name="AttackPatternID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSURFACEFORATTACKPATTERN_ATTACKSURFACE">
+    <End Role="ATTACKSURFACE" Type="Self.ATTACKSURFACE" Multiplicity="1" />
+    <End Role="ATTACKSURFACEFORATTACKPATTERN" Type="Self.ATTACKSURFACEFORATTACKPATTERN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSURFACE">
+        <PropertyRef Name="AttackSurfaceID" />
+      </Principal>
+      <Dependent Role="ATTACKSURFACEFORATTACKPATTERN">
+        <PropertyRef Name="AttackSurfaceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSURFACELOCALITYFORATTACKSURFACE_ATTACKSURFACE">
+    <End Role="ATTACKSURFACE" Type="Self.ATTACKSURFACE" Multiplicity="1" />
+    <End Role="ATTACKSURFACELOCALITYFORATTACKSURFACE" Type="Self.ATTACKSURFACELOCALITYFORATTACKSURFACE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSURFACE">
+        <PropertyRef Name="AttackSurfaceID" />
+      </Principal>
+      <Dependent Role="ATTACKSURFACELOCALITYFORATTACKSURFACE">
+        <PropertyRef Name="AttackSurfaceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSURFACELOCALITYFORATTACKSURFACE_ATTACKSURFACELOCALITY">
+    <End Role="ATTACKSURFACELOCALITY" Type="Self.ATTACKSURFACELOCALITY" Multiplicity="1" />
+    <End Role="ATTACKSURFACELOCALITYFORATTACKSURFACE" Type="Self.ATTACKSURFACELOCALITYFORATTACKSURFACE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSURFACELOCALITY">
+        <PropertyRef Name="AttackSurfaceLocalityID" />
+      </Principal>
+      <Dependent Role="ATTACKSURFACELOCALITYFORATTACKSURFACE">
+        <PropertyRef Name="AttackSurfaceLocalityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSURFACESERVICE_ATTACKSURFACE">
+    <End Role="ATTACKSURFACE" Type="Self.ATTACKSURFACE" Multiplicity="1" />
+    <End Role="ATTACKSURFACESERVICE" Type="Self.ATTACKSURFACESERVICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSURFACE">
+        <PropertyRef Name="AttackSurfaceID" />
+      </Principal>
+      <Dependent Role="ATTACKSURFACESERVICE">
+        <PropertyRef Name="AttackSurfaceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSURFACESERVICE_ATTACKSURFACESERVICE">
+    <End Role="ATTACKSURFACESERVICE" Type="Self.ATTACKSURFACESERVICE" Multiplicity="1" />
+    <End Role="ATTACKSURFACESERVICE1" Type="Self.ATTACKSURFACESERVICE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSURFACESERVICE">
+        <PropertyRef Name="AttackSurfaceServiceID" />
+      </Principal>
+      <Dependent Role="ATTACKSURFACESERVICE1">
+        <PropertyRef Name="AttackSurfaceServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSURFACESERVICE_ATTACKSURFACESERVICE1">
+    <End Role="ATTACKSURFACESERVICE" Type="Self.ATTACKSURFACESERVICE" Multiplicity="1" />
+    <End Role="ATTACKSURFACESERVICE1" Type="Self.ATTACKSURFACESERVICE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSURFACESERVICE">
+        <PropertyRef Name="AttackSurfaceServiceID" />
+      </Principal>
+      <Dependent Role="ATTACKSURFACESERVICE1">
+        <PropertyRef Name="AttackSurfaceServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSURFACESERVICEPROTOCOL_ATTACKSURFACESERVICE">
+    <End Role="ATTACKSURFACESERVICE" Type="Self.ATTACKSURFACESERVICE" Multiplicity="1" />
+    <End Role="ATTACKSURFACESERVICEPROTOCOL" Type="Self.ATTACKSURFACESERVICEPROTOCOL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSURFACESERVICE">
+        <PropertyRef Name="AttackSurfaceServiceID" />
+      </Principal>
+      <Dependent Role="ATTACKSURFACESERVICEPROTOCOL">
+        <PropertyRef Name="AttackSurfaceServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSURFACETYPEFORATTACKSURFACE_ATTACKSURFACE">
+    <End Role="ATTACKSURFACE" Type="Self.ATTACKSURFACE" Multiplicity="1" />
+    <End Role="ATTACKSURFACETYPEFORATTACKSURFACE" Type="Self.ATTACKSURFACETYPEFORATTACKSURFACE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSURFACE">
+        <PropertyRef Name="AttackSurfaceID" />
+      </Principal>
+      <Dependent Role="ATTACKSURFACETYPEFORATTACKSURFACE">
+        <PropertyRef Name="AttackSurfaceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKSURFACETYPEFORATTACKSURFACE_ATTACKSURFACETYPE">
+    <End Role="ATTACKSURFACETYPE" Type="Self.ATTACKSURFACETYPE" Multiplicity="1" />
+    <End Role="ATTACKSURFACETYPEFORATTACKSURFACE" Type="Self.ATTACKSURFACETYPEFORATTACKSURFACE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKSURFACETYPE">
+        <PropertyRef Name="AttackSurfaceTypeID" />
+      </Principal>
+      <Dependent Role="ATTACKSURFACETYPEFORATTACKSURFACE">
+        <PropertyRef Name="AttackSurfaceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKTECHNIQUEINDICATOR_ATTACKTECHNIQUE">
+    <End Role="ATTACKTECHNIQUE" Type="Self.ATTACKTECHNIQUE" Multiplicity="0..1" />
+    <End Role="ATTACKTECHNIQUEINDICATOR" Type="Self.ATTACKTECHNIQUEINDICATOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKTECHNIQUE">
+        <PropertyRef Name="AttackTechniqueID" />
+      </Principal>
+      <Dependent Role="ATTACKTECHNIQUEINDICATOR">
+        <PropertyRef Name="AttackTechniqueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKTECHNIQUEREFERENCE_ATTACKTECHNIQUE">
+    <End Role="ATTACKTECHNIQUE" Type="Self.ATTACKTECHNIQUE" Multiplicity="0..1" />
+    <End Role="ATTACKTECHNIQUEREFERENCE" Type="Self.ATTACKTECHNIQUEREFERENCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKTECHNIQUE">
+        <PropertyRef Name="AttackTechniqueID" />
+      </Principal>
+      <Dependent Role="ATTACKTECHNIQUEREFERENCE">
+        <PropertyRef Name="AttackTechniqueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKTECHNIQUETAG_ATTACKTECHNIQUE">
+    <End Role="ATTACKTECHNIQUE" Type="Self.ATTACKTECHNIQUE" Multiplicity="0..1" />
+    <End Role="ATTACKTECHNIQUETAG" Type="Self.ATTACKTECHNIQUETAG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKTECHNIQUE">
+        <PropertyRef Name="AttackTechniqueID" />
+      </Principal>
+      <Dependent Role="ATTACKTECHNIQUETAG">
+        <PropertyRef Name="AttackTechniqueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKTECHNIQUETOOL_ATTACKTECHNIQUE">
+    <End Role="ATTACKTECHNIQUE" Type="Self.ATTACKTECHNIQUE" Multiplicity="0..1" />
+    <End Role="ATTACKTECHNIQUETOOL" Type="Self.ATTACKTECHNIQUETOOL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKTECHNIQUE">
+        <PropertyRef Name="AttackTechniqueID" />
+      </Principal>
+      <Dependent Role="ATTACKTECHNIQUETOOL">
+        <PropertyRef Name="AttackTechniqueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKTOOLAUTHENTICATIONTYPE_ATTACKTOOL">
+    <End Role="ATTACKTOOL" Type="Self.ATTACKTOOL" Multiplicity="0..1" />
+    <End Role="ATTACKTOOLAUTHENTICATIONTYPE" Type="Self.ATTACKTOOLAUTHENTICATIONTYPE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKTOOL">
+        <PropertyRef Name="AttackToolID" />
+      </Principal>
+      <Dependent Role="ATTACKTOOLAUTHENTICATIONTYPE">
+        <PropertyRef Name="AttackToolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKTOOLFORTHREATACTORTTP_ATTACKTOOL">
+    <End Role="ATTACKTOOL" Type="Self.ATTACKTOOL" Multiplicity="1" />
+    <End Role="ATTACKTOOLFORTHREATACTORTTP" Type="Self.ATTACKTOOLFORTHREATACTORTTP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKTOOL">
+        <PropertyRef Name="AttackToolID" />
+      </Principal>
+      <Dependent Role="ATTACKTOOLFORTHREATACTORTTP">
+        <PropertyRef Name="AttackToolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACKTOOLMODULEAUTHENTICATIONTYPE_ATTACKTOOLMODULE">
+    <End Role="ATTACKTOOLMODULE" Type="Self.ATTACKTOOLMODULE" Multiplicity="0..1" />
+    <End Role="ATTACKTOOLMODULEAUTHENTICATIONTYPE" Type="Self.ATTACKTOOLMODULEAUTHENTICATIONTYPE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKTOOLMODULE">
+        <PropertyRef Name="AttackToolModuleID" />
+      </Principal>
+      <Dependent Role="ATTACKTOOLMODULEAUTHENTICATIONTYPE">
+        <PropertyRef Name="AttackToolModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CAPECATTACKCONSEQUENCESCOPE_ATTACKPATTERNATTACKCONSEQUENCE">
+    <End Role="ATTACKPATTERNATTACKCONSEQUENCE" Type="Self.ATTACKPATTERNATTACKCONSEQUENCE" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNATTACKCONSEQUENCESCOPE" Type="Self.ATTACKPATTERNATTACKCONSEQUENCESCOPE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERNATTACKCONSEQUENCE">
+        <PropertyRef Name="AttackPatternAttackConsequenceID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNATTACKCONSEQUENCESCOPE">
+        <PropertyRef Name="AttackPatternAttackConsequenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CAPECATTACKTECHNICALIMPACT_CAPECATTACKCONSEQUENCE">
+    <End Role="ATTACKPATTERNATTACKCONSEQUENCE" Type="Self.ATTACKPATTERNATTACKCONSEQUENCE" Multiplicity="0..1" />
+    <End Role="ATTACKPATTERNATTACKTECHNICALIMPACT" Type="Self.ATTACKPATTERNATTACKTECHNICALIMPACT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATTACKPATTERNATTACKCONSEQUENCE">
+        <PropertyRef Name="AttackPatternAttackConsequenceID" />
+      </Principal>
+      <Dependent Role="ATTACKPATTERNATTACKTECHNICALIMPACT">
+        <PropertyRef Name="AttackPatternAttackConsequenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="XATTACKModelStoreContainer">
+    <EntitySet Name="ATTACKCATEGORY" EntityType="Self.ATTACKCATEGORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKCATEGORYREFERENCE" EntityType="Self.ATTACKCATEGORYREFERENCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKCONSEQUENCE" EntityType="Self.ATTACKCONSEQUENCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKCONSEQUENCETAG" EntityType="Self.ATTACKCONSEQUENCETAG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKEXAMPLE" EntityType="Self.ATTACKEXAMPLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKEXAMPLEFORATTACKPATTERN" EntityType="Self.ATTACKEXAMPLEFORATTACKPATTERN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKEXECUTIONFLOW" EntityType="Self.ATTACKEXECUTIONFLOW" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKEXECUTIONFLOWPHASE" EntityType="Self.ATTACKEXECUTIONFLOWPHASE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKMETHOD" EntityType="Self.ATTACKMETHOD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKMETHODDESCRIPTION" EntityType="Self.ATTACKMETHODDESCRIPTION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKMETHODFORATTACKPATTERN" EntityType="Self.ATTACKMETHODFORATTACKPATTERN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKMETHODREFERENCE" EntityType="Self.ATTACKMETHODREFERENCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKMETHODTAG" EntityType="Self.ATTACKMETHODTAG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERN" EntityType="Self.ATTACKPATTERN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNATTACKCONSEQUENCE" EntityType="Self.ATTACKPATTERNATTACKCONSEQUENCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNATTACKCONSEQUENCESCOPE" EntityType="Self.ATTACKPATTERNATTACKCONSEQUENCESCOPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNATTACKTECHNICALIMPACT" EntityType="Self.ATTACKPATTERNATTACKTECHNICALIMPACT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNCWE" EntityType="Self.ATTACKPATTERNCWE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNFORTHREATACTORTTP" EntityType="Self.ATTACKPATTERNFORTHREATACTORTTP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNINDICATORWARNING" EntityType="Self.ATTACKPATTERNINDICATORWARNING" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNMITIGATION" EntityType="Self.ATTACKPATTERNMITIGATION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNNOTE" EntityType="Self.ATTACKPATTERNNOTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNNOTES" EntityType="Self.ATTACKPATTERNNOTES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNOBFUSCATIONTECHNIQUE" EntityType="Self.ATTACKPATTERNOBFUSCATIONTECHNIQUE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNPROBINGTECHNIQUE" EntityType="Self.ATTACKPATTERNPROBINGTECHNIQUE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNREFERENCE" EntityType="Self.ATTACKPATTERNREFERENCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNRELATIONSHIP" EntityType="Self.ATTACKPATTERNRELATIONSHIP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNSECURITYCONTROL" EntityType="Self.ATTACKPATTERNSECURITYCONTROL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNTAG" EntityType="Self.ATTACKPATTERNTAG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNVIEW" EntityType="Self.ATTACKPATTERNVIEW" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPATTERNVIEWRELATIONSHIP" EntityType="Self.ATTACKPATTERNVIEWRELATIONSHIP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPAYLOAD" EntityType="Self.ATTACKPAYLOAD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPAYLOADENCODER" EntityType="Self.ATTACKPAYLOADENCODER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPAYLOADFORATTACKPATTERN" EntityType="Self.ATTACKPAYLOADFORATTACKPATTERN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPAYLOADIMPACT" EntityType="Self.ATTACKPAYLOADIMPACT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPAYLOADIMPACTFORATTACKPATTERN" EntityType="Self.ATTACKPAYLOADIMPACTFORATTACKPATTERN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPHASE" EntityType="Self.ATTACKPHASE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPHASEFORATTACKPATTERN" EntityType="Self.ATTACKPHASEFORATTACKPATTERN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPREREQUISITE" EntityType="Self.ATTACKPREREQUISITE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPREREQUISITEFORATTACKPATTERN" EntityType="Self.ATTACKPREREQUISITEFORATTACKPATTERN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPURPOSE" EntityType="Self.ATTACKPURPOSE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKPURPOSEFORATTACKPATTERN" EntityType="Self.ATTACKPURPOSEFORATTACKPATTERN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKRESOURCE" EntityType="Self.ATTACKRESOURCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKRESOURCEFORATTACKPATTERN" EntityType="Self.ATTACKRESOURCEFORATTACKPATTERN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKRESOURCETAG" EntityType="Self.ATTACKRESOURCETAG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSCENARIO" EntityType="Self.ATTACKSCENARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSCOPE" EntityType="Self.ATTACKSCOPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSTEP" EntityType="Self.ATTACKSTEP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSTEPINDICATOR" EntityType="Self.ATTACKSTEPINDICATOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSTEPINDICATORENVIRONMENT" EntityType="Self.ATTACKSTEPINDICATORENVIRONMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSTEPINDICATORTAG" EntityType="Self.ATTACKSTEPINDICATORTAG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSTEPOUTCOME" EntityType="Self.ATTACKSTEPOUTCOME" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSTEPOUTCOMETAG" EntityType="Self.ATTACKSTEPOUTCOMETAG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSTEPSECURITYCONTROL" EntityType="Self.ATTACKSTEPSECURITYCONTROL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSTEPTAG" EntityType="Self.ATTACKSTEPTAG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSTEPTECHNIQUE" EntityType="Self.ATTACKSTEPTECHNIQUE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSTEPTECHNIQUEENVIRONMENT" EntityType="Self.ATTACKSTEPTECHNIQUEENVIRONMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSTEPTECHNIQUELEVERAGEDPATTERN" EntityType="Self.ATTACKSTEPTECHNIQUELEVERAGEDPATTERN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSURFACE" EntityType="Self.ATTACKSURFACE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSURFACECHANGERECORD" EntityType="Self.ATTACKSURFACECHANGERECORD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSURFACEFORATTACKPATTERN" EntityType="Self.ATTACKSURFACEFORATTACKPATTERN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSURFACEINTERACTIONPOINTS" EntityType="Self.ATTACKSURFACEINTERACTIONPOINTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSURFACELOCALITY" EntityType="Self.ATTACKSURFACELOCALITY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSURFACELOCALITYFORATTACKSURFACE" EntityType="Self.ATTACKSURFACELOCALITYFORATTACKSURFACE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSURFACESERVICE" EntityType="Self.ATTACKSURFACESERVICE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSURFACESERVICEPROTOCOL" EntityType="Self.ATTACKSURFACESERVICEPROTOCOL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSURFACETYPE" EntityType="Self.ATTACKSURFACETYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKSURFACETYPEFORATTACKSURFACE" EntityType="Self.ATTACKSURFACETYPEFORATTACKSURFACE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTECHNICALIMPACT" EntityType="Self.ATTACKTECHNICALIMPACT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTECHNIQUE" EntityType="Self.ATTACKTECHNIQUE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTECHNIQUEINDICATOR" EntityType="Self.ATTACKTECHNIQUEINDICATOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTECHNIQUEREFERENCE" EntityType="Self.ATTACKTECHNIQUEREFERENCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTECHNIQUETAG" EntityType="Self.ATTACKTECHNIQUETAG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTECHNIQUETOOL" EntityType="Self.ATTACKTECHNIQUETOOL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTOOL" EntityType="Self.ATTACKTOOL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTOOLAUTHENTICATIONTYPE" EntityType="Self.ATTACKTOOLAUTHENTICATIONTYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTOOLDESCRIPTION" EntityType="Self.ATTACKTOOLDESCRIPTION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTOOLFORTHREATACTORTTP" EntityType="Self.ATTACKTOOLFORTHREATACTORTTP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTOOLMODULE" EntityType="Self.ATTACKTOOLMODULE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTOOLMODULEAUTHENTICATIONTYPE" EntityType="Self.ATTACKTOOLMODULEAUTHENTICATIONTYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTOOLTAG" EntityType="Self.ATTACKTOOLTAG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKTOOLTYPE" EntityType="Self.ATTACKTOOLTYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATTACKVECTOR" EntityType="Self.ATTACKVECTOR" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ATTACKCONSEQUENCETAG_ATTACKCONSEQUENCE" Association="Self.FK_ATTACKCONSEQUENCETAG_ATTACKCONSEQUENCE">
+      <End Role="ATTACKCONSEQUENCE" EntitySet="ATTACKCONSEQUENCE" />
+      <End Role="ATTACKCONSEQUENCETAG" EntitySet="ATTACKCONSEQUENCETAG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKEXAMPLEFORATTACKPATTERN_ATTACKEXAMPLE" Association="Self.FK_ATTACKEXAMPLEFORATTACKPATTERN_ATTACKEXAMPLE">
+      <End Role="ATTACKEXAMPLE" EntitySet="ATTACKEXAMPLE" />
+      <End Role="ATTACKEXAMPLEFORATTACKPATTERN" EntitySet="ATTACKEXAMPLEFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKEXECUTIONFLOWPHASE_ATTACKEXECUTIONFLOW" Association="Self.FK_ATTACKEXECUTIONFLOWPHASE_ATTACKEXECUTIONFLOW">
+      <End Role="ATTACKEXECUTIONFLOW" EntitySet="ATTACKEXECUTIONFLOW" />
+      <End Role="ATTACKEXECUTIONFLOWPHASE" EntitySet="ATTACKEXECUTIONFLOWPHASE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKMETHODFORATTACKPATTERN_ATTACKMETHOD" Association="Self.FK_ATTACKMETHODFORATTACKPATTERN_ATTACKMETHOD">
+      <End Role="ATTACKMETHOD" EntitySet="ATTACKMETHOD" />
+      <End Role="ATTACKMETHODFORATTACKPATTERN" EntitySet="ATTACKMETHODFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKMETHODREFERENCE_ATTACKMETHOD" Association="Self.FK_ATTACKMETHODREFERENCE_ATTACKMETHOD">
+      <End Role="ATTACKMETHOD" EntitySet="ATTACKMETHOD" />
+      <End Role="ATTACKMETHODREFERENCE" EntitySet="ATTACKMETHODREFERENCE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKMETHODTAG_ATTACKMETHOD" Association="Self.FK_ATTACKMETHODTAG_ATTACKMETHOD">
+      <End Role="ATTACKMETHOD" EntitySet="ATTACKMETHOD" />
+      <End Role="ATTACKMETHODTAG" EntitySet="ATTACKMETHODTAG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNATTACKCONSEQUENCE_ATTACKCONSEQUENCE" Association="Self.FK_ATTACKPATTERNATTACKCONSEQUENCE_ATTACKCONSEQUENCE">
+      <End Role="ATTACKCONSEQUENCE" EntitySet="ATTACKCONSEQUENCE" />
+      <End Role="ATTACKPATTERNATTACKCONSEQUENCE" EntitySet="ATTACKPATTERNATTACKCONSEQUENCE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNATTACKCONSEQUENCE_ATTACKPATTERN" Association="Self.FK_ATTACKPATTERNATTACKCONSEQUENCE_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNATTACKCONSEQUENCE" EntitySet="ATTACKPATTERNATTACKCONSEQUENCE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNCWE_ATTACKPATTERN" Association="Self.FK_ATTACKPATTERNCWE_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNCWE" EntitySet="ATTACKPATTERNCWE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNFORTHREATACTORTTP_ATTACKPATTERN" Association="Self.FK_ATTACKPATTERNFORTHREATACTORTTP_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNFORTHREATACTORTTP" EntitySet="ATTACKPATTERNFORTHREATACTORTTP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNINDICATORWARNING_ATTACKPATTERN" Association="Self.FK_ATTACKPATTERNINDICATORWARNING_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNINDICATORWARNING" EntitySet="ATTACKPATTERNINDICATORWARNING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNMITIGATION_ATTACKPATTERN" Association="Self.FK_ATTACKPATTERNMITIGATION_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNMITIGATION" EntitySet="ATTACKPATTERNMITIGATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNNOTES_ATTACKPATTERN" Association="Self.FK_ATTACKPATTERNNOTES_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNNOTES" EntitySet="ATTACKPATTERNNOTES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNNOTES_ATTACKPATTERNNOTE" Association="Self.FK_ATTACKPATTERNNOTES_ATTACKPATTERNNOTE">
+      <End Role="ATTACKPATTERNNOTE" EntitySet="ATTACKPATTERNNOTE" />
+      <End Role="ATTACKPATTERNNOTES" EntitySet="ATTACKPATTERNNOTES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNOBFUSCATIONTECHNIQUE_ATTACKPATTERN" Association="Self.FK_ATTACKPATTERNOBFUSCATIONTECHNIQUE_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNOBFUSCATIONTECHNIQUE" EntitySet="ATTACKPATTERNOBFUSCATIONTECHNIQUE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNPROBINGTECHNIQUE_ATTACKPATTERN" Association="Self.FK_ATTACKPATTERNPROBINGTECHNIQUE_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNPROBINGTECHNIQUE" EntitySet="ATTACKPATTERNPROBINGTECHNIQUE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNREFERENCE_ATTACKPATTERN" Association="Self.FK_ATTACKPATTERNREFERENCE_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNREFERENCE" EntitySet="ATTACKPATTERNREFERENCE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNRELATIONSHIP_ATTACKPATTERNREF" Association="Self.FK_ATTACKPATTERNRELATIONSHIP_ATTACKPATTERNREF">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNRELATIONSHIP" EntitySet="ATTACKPATTERNRELATIONSHIP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNRELATIONSHIP_ATTACKPATTERNSUBJECT" Association="Self.FK_ATTACKPATTERNRELATIONSHIP_ATTACKPATTERNSUBJECT">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNRELATIONSHIP" EntitySet="ATTACKPATTERNRELATIONSHIP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNSECURITYCONTROL_ATTACKPATTERN" Association="Self.FK_ATTACKPATTERNSECURITYCONTROL_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNSECURITYCONTROL" EntitySet="ATTACKPATTERNSECURITYCONTROL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNTAG_ATTACKPATTERN" Association="Self.FK_ATTACKPATTERNTAG_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNTAG" EntitySet="ATTACKPATTERNTAG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNVIEWRELATIONSHIP_ATTACKPATTERN" Association="Self.FK_ATTACKPATTERNVIEWRELATIONSHIP_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPATTERNVIEWRELATIONSHIP" EntitySet="ATTACKPATTERNVIEWRELATIONSHIP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPATTERNVIEWRELATIONSHIP_ATTACKPATTERNVIEW" Association="Self.FK_ATTACKPATTERNVIEWRELATIONSHIP_ATTACKPATTERNVIEW">
+      <End Role="ATTACKPATTERNVIEW" EntitySet="ATTACKPATTERNVIEW" />
+      <End Role="ATTACKPATTERNVIEWRELATIONSHIP" EntitySet="ATTACKPATTERNVIEWRELATIONSHIP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPAYLOADFORATTACKPATTERN_ATTACKPATTERN" Association="Self.FK_ATTACKPAYLOADFORATTACKPATTERN_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPAYLOADFORATTACKPATTERN" EntitySet="ATTACKPAYLOADFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPAYLOADFORATTACKPATTERN_ATTACKPAYLOAD" Association="Self.FK_ATTACKPAYLOADFORATTACKPATTERN_ATTACKPAYLOAD">
+      <End Role="ATTACKPAYLOAD" EntitySet="ATTACKPAYLOAD" />
+      <End Role="ATTACKPAYLOADFORATTACKPATTERN" EntitySet="ATTACKPAYLOADFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPAYLOADIMPACTFORATTACKPATTERN_ATTACKPATTERN" Association="Self.FK_ATTACKPAYLOADIMPACTFORATTACKPATTERN_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPAYLOADIMPACTFORATTACKPATTERN" EntitySet="ATTACKPAYLOADIMPACTFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPAYLOADIMPACTFORATTACKPATTERN_ATTACKPAYLOADIMPACT" Association="Self.FK_ATTACKPAYLOADIMPACTFORATTACKPATTERN_ATTACKPAYLOADIMPACT">
+      <End Role="ATTACKPAYLOADIMPACT" EntitySet="ATTACKPAYLOADIMPACT" />
+      <End Role="ATTACKPAYLOADIMPACTFORATTACKPATTERN" EntitySet="ATTACKPAYLOADIMPACTFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPHASEFORATTACKPATTERN_ATTACKPATTERN" Association="Self.FK_ATTACKPHASEFORATTACKPATTERN_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPHASEFORATTACKPATTERN" EntitySet="ATTACKPHASEFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPHASEFORATTACKPATTERN_ATTACKPHASE" Association="Self.FK_ATTACKPHASEFORATTACKPATTERN_ATTACKPHASE">
+      <End Role="ATTACKPHASE" EntitySet="ATTACKPHASE" />
+      <End Role="ATTACKPHASEFORATTACKPATTERN" EntitySet="ATTACKPHASEFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPREREQUISITEFORCAPEC_ATTACKPATTERN" Association="Self.FK_ATTACKPREREQUISITEFORCAPEC_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPREREQUISITEFORATTACKPATTERN" EntitySet="ATTACKPREREQUISITEFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPREREQUISITEFORCAPEC_ATTACKPREREQUISITE" Association="Self.FK_ATTACKPREREQUISITEFORCAPEC_ATTACKPREREQUISITE">
+      <End Role="ATTACKPREREQUISITE" EntitySet="ATTACKPREREQUISITE" />
+      <End Role="ATTACKPREREQUISITEFORATTACKPATTERN" EntitySet="ATTACKPREREQUISITEFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPURPOSEFORATTACKPATTERN_ATTACKPATTERN" Association="Self.FK_ATTACKPURPOSEFORATTACKPATTERN_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKPURPOSEFORATTACKPATTERN" EntitySet="ATTACKPURPOSEFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKPURPOSEFORATTACKPATTERN_ATTACKPURPOSE" Association="Self.FK_ATTACKPURPOSEFORATTACKPATTERN_ATTACKPURPOSE">
+      <End Role="ATTACKPURPOSE" EntitySet="ATTACKPURPOSE" />
+      <End Role="ATTACKPURPOSEFORATTACKPATTERN" EntitySet="ATTACKPURPOSEFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKRESOURCEFORCAPEC_ATTACKPATTERN" Association="Self.FK_ATTACKRESOURCEFORCAPEC_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKRESOURCEFORATTACKPATTERN" EntitySet="ATTACKRESOURCEFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKRESOURCEFORCAPEC_ATTACKRESOURCE" Association="Self.FK_ATTACKRESOURCEFORCAPEC_ATTACKRESOURCE">
+      <End Role="ATTACKRESOURCE" EntitySet="ATTACKRESOURCE" />
+      <End Role="ATTACKRESOURCEFORATTACKPATTERN" EntitySet="ATTACKRESOURCEFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKRESOURCETAG_ATTACKRESOURCE" Association="Self.FK_ATTACKRESOURCETAG_ATTACKRESOURCE">
+      <End Role="ATTACKRESOURCE" EntitySet="ATTACKRESOURCE" />
+      <End Role="ATTACKRESOURCETAG" EntitySet="ATTACKRESOURCETAG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSTEP_ATTACKPHASEFORATTACKPATTERN" Association="Self.FK_ATTACKSTEP_ATTACKPHASEFORATTACKPATTERN">
+      <End Role="ATTACKPHASEFORATTACKPATTERN" EntitySet="ATTACKPHASEFORATTACKPATTERN" />
+      <End Role="ATTACKSTEP" EntitySet="ATTACKSTEP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSTEPINDICATOR_ATTACKSTEP" Association="Self.FK_ATTACKSTEPINDICATOR_ATTACKSTEP">
+      <End Role="ATTACKSTEP" EntitySet="ATTACKSTEP" />
+      <End Role="ATTACKSTEPINDICATOR" EntitySet="ATTACKSTEPINDICATOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSTEPINDICATORENVIRONMENT_ATTACKSTEPINDICATOR" Association="Self.FK_ATTACKSTEPINDICATORENVIRONMENT_ATTACKSTEPINDICATOR">
+      <End Role="ATTACKSTEPINDICATOR" EntitySet="ATTACKSTEPINDICATOR" />
+      <End Role="ATTACKSTEPINDICATORENVIRONMENT" EntitySet="ATTACKSTEPINDICATORENVIRONMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSTEPINDICATORTAG_ATTACKSTEPINDICATOR" Association="Self.FK_ATTACKSTEPINDICATORTAG_ATTACKSTEPINDICATOR">
+      <End Role="ATTACKSTEPINDICATOR" EntitySet="ATTACKSTEPINDICATOR" />
+      <End Role="ATTACKSTEPINDICATORTAG" EntitySet="ATTACKSTEPINDICATORTAG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSTEPOUTCOME_ATTACKSTEP" Association="Self.FK_ATTACKSTEPOUTCOME_ATTACKSTEP">
+      <End Role="ATTACKSTEP" EntitySet="ATTACKSTEP" />
+      <End Role="ATTACKSTEPOUTCOME" EntitySet="ATTACKSTEPOUTCOME" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSTEPOUTCOMETAG_ATTACKSTEPOUTCOME" Association="Self.FK_ATTACKSTEPOUTCOMETAG_ATTACKSTEPOUTCOME">
+      <End Role="ATTACKSTEPOUTCOME" EntitySet="ATTACKSTEPOUTCOME" />
+      <End Role="ATTACKSTEPOUTCOMETAG" EntitySet="ATTACKSTEPOUTCOMETAG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSTEPSECURITYCONTROL_ATTACKSTEP" Association="Self.FK_ATTACKSTEPSECURITYCONTROL_ATTACKSTEP">
+      <End Role="ATTACKSTEP" EntitySet="ATTACKSTEP" />
+      <End Role="ATTACKSTEPSECURITYCONTROL" EntitySet="ATTACKSTEPSECURITYCONTROL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSTEPTAG_ATTACKSTEP" Association="Self.FK_ATTACKSTEPTAG_ATTACKSTEP">
+      <End Role="ATTACKSTEP" EntitySet="ATTACKSTEP" />
+      <End Role="ATTACKSTEPTAG" EntitySet="ATTACKSTEPTAG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSTEPTECHNIQUE_ATTACKSTEP" Association="Self.FK_ATTACKSTEPTECHNIQUE_ATTACKSTEP">
+      <End Role="ATTACKSTEP" EntitySet="ATTACKSTEP" />
+      <End Role="ATTACKSTEPTECHNIQUE" EntitySet="ATTACKSTEPTECHNIQUE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSTEPTECHNIQUEENVIRONMENT_ATTACKSTEPTECHNIQUE" Association="Self.FK_ATTACKSTEPTECHNIQUEENVIRONMENT_ATTACKSTEPTECHNIQUE">
+      <End Role="ATTACKSTEPTECHNIQUE" EntitySet="ATTACKSTEPTECHNIQUE" />
+      <End Role="ATTACKSTEPTECHNIQUEENVIRONMENT" EntitySet="ATTACKSTEPTECHNIQUEENVIRONMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSTEPTECHNIQUELEVERAGEDPATTERN_ATTACKPATTERN" Association="Self.FK_ATTACKSTEPTECHNIQUELEVERAGEDPATTERN_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKSTEPTECHNIQUELEVERAGEDPATTERN" EntitySet="ATTACKSTEPTECHNIQUELEVERAGEDPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSTEPTECHNIQUELEVERAGEDPATTERN_ATTACKSTEPTECHNIQUE" Association="Self.FK_ATTACKSTEPTECHNIQUELEVERAGEDPATTERN_ATTACKSTEPTECHNIQUE">
+      <End Role="ATTACKSTEPTECHNIQUE" EntitySet="ATTACKSTEPTECHNIQUE" />
+      <End Role="ATTACKSTEPTECHNIQUELEVERAGEDPATTERN" EntitySet="ATTACKSTEPTECHNIQUELEVERAGEDPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSURFACEFORATTACKPATTERN_ATTACKPATTERN" Association="Self.FK_ATTACKSURFACEFORATTACKPATTERN_ATTACKPATTERN">
+      <End Role="ATTACKPATTERN" EntitySet="ATTACKPATTERN" />
+      <End Role="ATTACKSURFACEFORATTACKPATTERN" EntitySet="ATTACKSURFACEFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSURFACEFORATTACKPATTERN_ATTACKSURFACE" Association="Self.FK_ATTACKSURFACEFORATTACKPATTERN_ATTACKSURFACE">
+      <End Role="ATTACKSURFACE" EntitySet="ATTACKSURFACE" />
+      <End Role="ATTACKSURFACEFORATTACKPATTERN" EntitySet="ATTACKSURFACEFORATTACKPATTERN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSURFACELOCALITYFORATTACKSURFACE_ATTACKSURFACE" Association="Self.FK_ATTACKSURFACELOCALITYFORATTACKSURFACE_ATTACKSURFACE">
+      <End Role="ATTACKSURFACE" EntitySet="ATTACKSURFACE" />
+      <End Role="ATTACKSURFACELOCALITYFORATTACKSURFACE" EntitySet="ATTACKSURFACELOCALITYFORATTACKSURFACE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSURFACELOCALITYFORATTACKSURFACE_ATTACKSURFACELOCALITY" Association="Self.FK_ATTACKSURFACELOCALITYFORATTACKSURFACE_ATTACKSURFACELOCALITY">
+      <End Role="ATTACKSURFACELOCALITY" EntitySet="ATTACKSURFACELOCALITY" />
+      <End Role="ATTACKSURFACELOCALITYFORATTACKSURFACE" EntitySet="ATTACKSURFACELOCALITYFORATTACKSURFACE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSURFACESERVICE_ATTACKSURFACE" Association="Self.FK_ATTACKSURFACESERVICE_ATTACKSURFACE">
+      <End Role="ATTACKSURFACE" EntitySet="ATTACKSURFACE" />
+      <End Role="ATTACKSURFACESERVICE" EntitySet="ATTACKSURFACESERVICE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSURFACESERVICE_ATTACKSURFACESERVICE" Association="Self.FK_ATTACKSURFACESERVICE_ATTACKSURFACESERVICE">
+      <End Role="ATTACKSURFACESERVICE" EntitySet="ATTACKSURFACESERVICE" />
+      <End Role="ATTACKSURFACESERVICE1" EntitySet="ATTACKSURFACESERVICE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSURFACESERVICE_ATTACKSURFACESERVICE1" Association="Self.FK_ATTACKSURFACESERVICE_ATTACKSURFACESERVICE1">
+      <End Role="ATTACKSURFACESERVICE" EntitySet="ATTACKSURFACESERVICE" />
+      <End Role="ATTACKSURFACESERVICE1" EntitySet="ATTACKSURFACESERVICE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSURFACESERVICEPROTOCOL_ATTACKSURFACESERVICE" Association="Self.FK_ATTACKSURFACESERVICEPROTOCOL_ATTACKSURFACESERVICE">
+      <End Role="ATTACKSURFACESERVICE" EntitySet="ATTACKSURFACESERVICE" />
+      <End Role="ATTACKSURFACESERVICEPROTOCOL" EntitySet="ATTACKSURFACESERVICEPROTOCOL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSURFACETYPEFORATTACKSURFACE_ATTACKSURFACE" Association="Self.FK_ATTACKSURFACETYPEFORATTACKSURFACE_ATTACKSURFACE">
+      <End Role="ATTACKSURFACE" EntitySet="ATTACKSURFACE" />
+      <End Role="ATTACKSURFACETYPEFORATTACKSURFACE" EntitySet="ATTACKSURFACETYPEFORATTACKSURFACE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKSURFACETYPEFORATTACKSURFACE_ATTACKSURFACETYPE" Association="Self.FK_ATTACKSURFACETYPEFORATTACKSURFACE_ATTACKSURFACETYPE">
+      <End Role="ATTACKSURFACETYPE" EntitySet="ATTACKSURFACETYPE" />
+      <End Role="ATTACKSURFACETYPEFORATTACKSURFACE" EntitySet="ATTACKSURFACETYPEFORATTACKSURFACE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKTECHNIQUEINDICATOR_ATTACKTECHNIQUE" Association="Self.FK_ATTACKTECHNIQUEINDICATOR_ATTACKTECHNIQUE">
+      <End Role="ATTACKTECHNIQUE" EntitySet="ATTACKTECHNIQUE" />
+      <End Role="ATTACKTECHNIQUEINDICATOR" EntitySet="ATTACKTECHNIQUEINDICATOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKTECHNIQUEREFERENCE_ATTACKTECHNIQUE" Association="Self.FK_ATTACKTECHNIQUEREFERENCE_ATTACKTECHNIQUE">
+      <End Role="ATTACKTECHNIQUE" EntitySet="ATTACKTECHNIQUE" />
+      <End Role="ATTACKTECHNIQUEREFERENCE" EntitySet="ATTACKTECHNIQUEREFERENCE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKTECHNIQUETAG_ATTACKTECHNIQUE" Association="Self.FK_ATTACKTECHNIQUETAG_ATTACKTECHNIQUE">
+      <End Role="ATTACKTECHNIQUE" EntitySet="ATTACKTECHNIQUE" />
+      <End Role="ATTACKTECHNIQUETAG" EntitySet="ATTACKTECHNIQUETAG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKTECHNIQUETOOL_ATTACKTECHNIQUE" Association="Self.FK_ATTACKTECHNIQUETOOL_ATTACKTECHNIQUE">
+      <End Role="ATTACKTECHNIQUE" EntitySet="ATTACKTECHNIQUE" />
+      <End Role="ATTACKTECHNIQUETOOL" EntitySet="ATTACKTECHNIQUETOOL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKTOOLAUTHENTICATIONTYPE_ATTACKTOOL" Association="Self.FK_ATTACKTOOLAUTHENTICATIONTYPE_ATTACKTOOL">
+      <End Role="ATTACKTOOL" EntitySet="ATTACKTOOL" />
+      <End Role="ATTACKTOOLAUTHENTICATIONTYPE" EntitySet="ATTACKTOOLAUTHENTICATIONTYPE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKTOOLFORTHREATACTORTTP_ATTACKTOOL" Association="Self.FK_ATTACKTOOLFORTHREATACTORTTP_ATTACKTOOL">
+      <End Role="ATTACKTOOL" EntitySet="ATTACKTOOL" />
+      <End Role="ATTACKTOOLFORTHREATACTORTTP" EntitySet="ATTACKTOOLFORTHREATACTORTTP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACKTOOLMODULEAUTHENTICATIONTYPE_ATTACKTOOLMODULE" Association="Self.FK_ATTACKTOOLMODULEAUTHENTICATIONTYPE_ATTACKTOOLMODULE">
+      <End Role="ATTACKTOOLMODULE" EntitySet="ATTACKTOOLMODULE" />
+      <End Role="ATTACKTOOLMODULEAUTHENTICATIONTYPE" EntitySet="ATTACKTOOLMODULEAUTHENTICATIONTYPE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CAPECATTACKCONSEQUENCESCOPE_ATTACKPATTERNATTACKCONSEQUENCE" Association="Self.FK_CAPECATTACKCONSEQUENCESCOPE_ATTACKPATTERNATTACKCONSEQUENCE">
+      <End Role="ATTACKPATTERNATTACKCONSEQUENCE" EntitySet="ATTACKPATTERNATTACKCONSEQUENCE" />
+      <End Role="ATTACKPATTERNATTACKCONSEQUENCESCOPE" EntitySet="ATTACKPATTERNATTACKCONSEQUENCESCOPE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CAPECATTACKTECHNICALIMPACT_CAPECATTACKCONSEQUENCE" Association="Self.FK_CAPECATTACKTECHNICALIMPACT_CAPECATTACKCONSEQUENCE">
+      <End Role="ATTACKPATTERNATTACKCONSEQUENCE" EntitySet="ATTACKPATTERNATTACKCONSEQUENCE" />
+      <End Role="ATTACKPATTERNATTACKTECHNICALIMPACT" EntitySet="ATTACKPATTERNATTACKTECHNICALIMPACT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

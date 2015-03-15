@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c8203e7be85d4f6db67d16e0797e10a0" Name="Diagram1">
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKCATEGORY" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKCATEGORYREFERENCE" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKCONSEQUENCE" Width="1.5" PointX="3.75" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKCONSEQUENCETAG" Width="1.5" PointX="6" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKEXAMPLE" Width="1.5" PointX="10.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKEXAMPLEFORATTACKPATTERN" Width="1.5" PointX="13" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKEXECUTIONFLOW" Width="1.5" PointX="5.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKEXECUTIONFLOWPHASE" Width="1.5" PointX="8" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKMETHOD" Width="1.5" PointX="5.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKMETHODDESCRIPTION" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKMETHODFORATTACKPATTERN" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKMETHODREFERENCE" Width="1.5" PointX="8" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKMETHODTAG" Width="1.5" PointX="8" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERN" Width="1.5" PointX="0.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNATTACKCONSEQUENCE" Width="1.5" PointX="6" PointY="53.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNATTACKCONSEQUENCESCOPE" Width="1.5" PointX="8.25" PointY="42" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNATTACKTECHNICALIMPACT" Width="1.5" PointX="8.25" PointY="63.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNCWE" Width="1.5" PointX="3" PointY="43.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNFORTHREATACTORTTP" Width="1.5" PointX="3" PointY="47" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNINDICATORWARNING" Width="1.5" PointX="3" PointY="49.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNMITIGATION" Width="1.5" PointX="3" PointY="53" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNNOTE" Width="1.5" PointX="3.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNNOTES" Width="1.5" PointX="6" PointY="48.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNOBFUSCATIONTECHNIQUE" Width="1.5" PointX="3" PointY="60.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNPROBINGTECHNIQUE" Width="1.5" PointX="3" PointY="64.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNREFERENCE" Width="1.5" PointX="3" PointY="68.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNRELATIONSHIP" Width="1.5" PointX="3" PointY="72.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNSECURITYCONTROL" Width="1.5" PointX="3" PointY="77" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNTAG" Width="1.5" PointX="3" PointY="80.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNVIEW" Width="1.5" PointX="3.75" PointY="85.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPATTERNVIEWRELATIONSHIP" Width="1.5" PointX="6" PointY="58.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPAYLOAD" Width="1.5" PointX="6.75" PointY="67.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPAYLOADENCODER" Width="1.5" PointX="15.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPAYLOADFORATTACKPATTERN" Width="1.5" PointX="9" PointY="53.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPAYLOADIMPACT" Width="1.5" PointX="6.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPAYLOADIMPACTFORATTACKPATTERN" Width="1.5" PointX="9" PointY="49.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPHASE" Width="1.5" PointX="6.75" PointY="71.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPHASEFORATTACKPATTERN" Width="1.5" PointX="9" PointY="58" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPREREQUISITE" Width="1.5" PointX="6.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPREREQUISITEFORATTACKPATTERN" Width="1.5" PointX="9" PointY="45.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPURPOSE" Width="1.5" PointX="3.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKPURPOSEFORATTACKPATTERN" Width="1.5" PointX="6" PointY="44.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKRESOURCE" Width="1.5" PointX="3.75" PointY="89.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKRESOURCEFORATTACKPATTERN" Width="1.5" PointX="6" PointY="62.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKRESOURCETAG" Width="1.5" PointX="6" PointY="89.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSCENARIO" Width="1.5" PointX="15.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSCOPE" Width="1.5" PointX="15.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSTEP" Width="1.5" PointX="11.25" PointY="66" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSTEPINDICATOR" Width="1.5" PointX="13.5" PointY="58.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSTEPINDICATORENVIRONMENT" Width="1.5" PointX="15.75" PointY="57.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSTEPINDICATORTAG" Width="1.5" PointX="15.75" PointY="60.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSTEPOUTCOME" Width="1.5" PointX="13.5" PointY="64.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSTEPOUTCOMETAG" Width="1.5" PointX="15.75" PointY="64.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSTEPSECURITYCONTROL" Width="1.5" PointX="13.5" PointY="68" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSTEPTAG" Width="1.5" PointX="13.5" PointY="71.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSTEPTECHNIQUE" Width="1.5" PointX="13.5" PointY="75.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSTEPTECHNIQUEENVIRONMENT" Width="1.5" PointX="15.75" PointY="75.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSTEPTECHNIQUELEVERAGEDPATTERN" Width="1.5" PointX="18.75" PointY="63" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSURFACE" Width="1.5" PointX="9.75" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSURFACECHANGERECORD" Width="1.5" PointX="4.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSURFACEFORATTACKPATTERN" Width="1.5" PointX="12" PointY="53.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSURFACEINTERACTIONPOINTS" Width="1.5" PointX="15.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSURFACELOCALITY" Width="1.5" PointX="9.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSURFACELOCALITYFORATTACKSURFACE" Width="1.5" PointX="12" PointY="36.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSURFACESERVICE" Width="1.5" PointX="12" PointY="40.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSURFACESERVICEPROTOCOL" Width="1.5" PointX="14.25" PointY="41.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSURFACETYPE" Width="1.5" PointX="12.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKSURFACETYPEFORATTACKSURFACE" Width="1.5" PointX="15" PointY="37.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTECHNICALIMPACT" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTECHNIQUE" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTECHNIQUEINDICATOR" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTECHNIQUEREFERENCE" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTECHNIQUETAG" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTECHNIQUETOOL" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTOOL" Width="1.5" PointX="10.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTOOLAUTHENTICATIONTYPE" Width="1.5" PointX="13" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTOOLDESCRIPTION" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTOOLFORTHREATACTORTTP" Width="1.5" PointX="13" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTOOLMODULE" Width="1.5" PointX="10.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTOOLMODULEAUTHENTICATIONTYPE" Width="1.5" PointX="13" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTOOLTAG" Width="1.5" PointX="17.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKTOOLTYPE" Width="1.5" PointX="17.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XATTACKModel.ATTACKVECTOR" Width="1.5" PointX="6.75" PointY="17.75" IsExpanded="true" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKCONSEQUENCETAG_ATTACKCONSEQUENCE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNATTACKCONSEQUENCE_ATTACKCONSEQUENCE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKEXAMPLEFORATTACKPATTERN_ATTACKEXAMPLE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKEXECUTIONFLOWPHASE_ATTACKEXECUTIONFLOW" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKMETHODFORATTACKPATTERN_ATTACKMETHOD" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKMETHODREFERENCE_ATTACKMETHOD" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKMETHODTAG_ATTACKMETHOD" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNATTACKCONSEQUENCE_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNCWE_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNFORTHREATACTORTTP_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNINDICATORWARNING_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNMITIGATION_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNNOTES_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNOBFUSCATIONTECHNIQUE_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNPROBINGTECHNIQUE_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNREFERENCE_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNRELATIONSHIP_ATTACKPATTERNREF" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNRELATIONSHIP_ATTACKPATTERNSUBJECT" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNSECURITYCONTROL_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNTAG_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNVIEWRELATIONSHIP_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPAYLOADFORATTACKPATTERN_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPAYLOADIMPACTFORATTACKPATTERN_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPHASEFORATTACKPATTERN_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPREREQUISITEFORCAPEC_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPURPOSEFORATTACKPATTERN_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKRESOURCEFORCAPEC_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSTEPTECHNIQUELEVERAGEDPATTERN_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSURFACEFORATTACKPATTERN_ATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_CAPECATTACKCONSEQUENCESCOPE_ATTACKPATTERNATTACKCONSEQUENCE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_CAPECATTACKTECHNICALIMPACT_CAPECATTACKCONSEQUENCE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNNOTES_ATTACKPATTERNNOTE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPATTERNVIEWRELATIONSHIP_ATTACKPATTERNVIEW" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPAYLOADFORATTACKPATTERN_ATTACKPAYLOAD" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPAYLOADIMPACTFORATTACKPATTERN_ATTACKPAYLOADIMPACT" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPHASEFORATTACKPATTERN_ATTACKPHASE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSTEP_ATTACKPHASEFORATTACKPATTERN" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPREREQUISITEFORCAPEC_ATTACKPREREQUISITE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKPURPOSEFORATTACKPATTERN_ATTACKPURPOSE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKRESOURCEFORCAPEC_ATTACKRESOURCE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKRESOURCETAG_ATTACKRESOURCE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSTEPINDICATOR_ATTACKSTEP" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSTEPOUTCOME_ATTACKSTEP" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSTEPSECURITYCONTROL_ATTACKSTEP" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSTEPTAG_ATTACKSTEP" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSTEPTECHNIQUE_ATTACKSTEP" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSTEPINDICATORENVIRONMENT_ATTACKSTEPINDICATOR" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSTEPINDICATORTAG_ATTACKSTEPINDICATOR" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSTEPOUTCOMETAG_ATTACKSTEPOUTCOME" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSTEPTECHNIQUEENVIRONMENT_ATTACKSTEPTECHNIQUE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSTEPTECHNIQUELEVERAGEDPATTERN_ATTACKSTEPTECHNIQUE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSURFACEFORATTACKPATTERN_ATTACKSURFACE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSURFACELOCALITYFORATTACKSURFACE_ATTACKSURFACE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSURFACESERVICE_ATTACKSURFACE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSURFACETYPEFORATTACKSURFACE_ATTACKSURFACE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSURFACELOCALITYFORATTACKSURFACE_ATTACKSURFACELOCALITY" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSURFACESERVICE_ATTACKSURFACESERVICE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSURFACESERVICE_ATTACKSURFACESERVICE1" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSURFACESERVICEPROTOCOL_ATTACKSURFACESERVICE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKSURFACETYPEFORATTACKSURFACE_ATTACKSURFACETYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKTECHNIQUEINDICATOR_ATTACKTECHNIQUE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKTECHNIQUEREFERENCE_ATTACKTECHNIQUE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKTECHNIQUETAG_ATTACKTECHNIQUE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKTECHNIQUETOOL_ATTACKTECHNIQUE" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKTOOLAUTHENTICATIONTYPE_ATTACKTOOL" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKTOOLFORTHREATACTORTTP_ATTACKTOOL" ManuallyRouted="false" />
+        <AssociationConnector Association="XATTACKModel.FK_ATTACKTOOLMODULEAUTHENTICATIONTYPE_ATTACKTOOLMODULE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
