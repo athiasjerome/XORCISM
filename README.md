@@ -8,6 +8,13 @@ The XORCISM repository is home to documentation, utilities and scripts that util
 Please visit the XORCISM Web Site for more information about the XORCISM Model.
 http://www.frhack.org/research/xorcism.php
 
+================
+Getting Started
+Requirements: A Windows machine. MS SQL (Express should be ok) Instance. (Unless you first convert the database schemas/models)
+Create the databases using the Models' SQL scripts
+Compile the solution using Microsoft Visual Studio
+
+
 All trademarks and registered trademarks are the property of their respective owners. 
 
 WARNING: Before using the tools, please edit configurations files and replace credentials (logins/passwords), and use encryption.

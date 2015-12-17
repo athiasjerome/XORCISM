@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="717ab390-152b-4ddc-8f4f-8e78f457aa0e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://1.22.333.4/Hailstorm.WS/ScanService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ScanService1.disco" MetadataType="Disco" ID="f944909b-4cf5-4da4-ad91-b79e930f3ab2" SourceId="1" SourceUrl="http://1.22.333.4/Hailstorm.WS/ScanService.svc?disco" />
+    <MetadataFile FileName="ScanService2.xsd" MetadataType="Schema" ID="62aa8779-f27f-4fb8-9c2e-b6522dd0f3e0" SourceId="1" SourceUrl="http://1.22.333.4/Hailstorm.WS/ScanService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ScanService21.xsd" MetadataType="Schema" ID="9c1177c8-fbe8-45ef-ae10-f71e2547cfba" SourceId="1" SourceUrl="http://1.22.333.4/Hailstorm.WS/ScanService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ScanService1.wsdl" MetadataType="Wsdl" ID="7a61b709-1f8f-47a8-b06b-54939b1723c3" SourceId="1" SourceUrl="http://1.22.333.4/Hailstorm.WS/ScanService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

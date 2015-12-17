@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6667d314b1cc493ebe78589e8cdb5ae4" Name="Diagram1">
+        <EntityTypeShape EntityType="XOVALModel.OPERATORENUMERATION" Width="1.5" PointX="1.5" PointY="16.625" />
+        <EntityTypeShape EntityType="XOVALModel.OVALBEHAVIOR" Width="1.5" PointX="13" PointY="76.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALBEHAVIORFOROVALOBJECT" Width="1.5" PointX="15.25" PointY="81.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALCLASSDIRECTIVES" Width="1.5" PointX="16" PointY="10.5" />
+        <EntityTypeShape EntityType="XOVALModel.OVALCLASSDIRECTIVESFOROVALDIRECTIVES" Width="1.5" PointX="18.25" PointY="10.5" />
+        <EntityTypeShape EntityType="XOVALModel.OVALCLASSENUMERATION" Width="1.5" PointX="0.75" PointY="25.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALCOMPONENTGROUP" Width="1.5" PointX="15.25" PointY="107.5" />
+        <EntityTypeShape EntityType="XOVALModel.OVALCRITERIA" Width="1.5" PointX="0.75" PointY="20" />
+        <EntityTypeShape EntityType="XOVALModel.OVALCRITERIACRITERION" Width="1.5" PointX="18.25" PointY="37.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALCRITERIAEXTENDDEFINITION" Width="1.5" PointX="8.25" PointY="21.25" />
+        <EntityTypeShape EntityType="XOVALModel.OVALCRITERIAFOROVALCRITERIA" Width="1.5" PointX="3" PointY="12.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALCRITERIATYPE" Width="1.5" PointX="8.75" PointY="12.25" />
+        <EntityTypeShape EntityType="XOVALModel.OVALCRITERIATYPEFOROVALDEFINITIONTYPE" Width="1.5" PointX="11" PointY="11" />
+        <EntityTypeShape EntityType="XOVALModel.OVALCRITERION" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALCRITERIONTYPE" Width="1.5" PointX="11" PointY="13.25" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFAULTDIRECTIVES" Width="1.5" PointX="16" PointY="13.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONCCE" Width="1.5" PointX="5.25" PointY="18.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONCHANGE" Width="1.5" PointX="6" PointY="7.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONCHANGES" Width="1.5" PointX="8.25" PointY="25.25" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONCPE" Width="1.5" PointX="5.25" PointY="33.5" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONFAMILY" Width="1.5" PointX="5.25" PointY="11.5" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONORGANISATION" Width="1.5" PointX="5.25" PointY="47.625" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONPLATFORM" Width="1.5" PointX="5.25" PointY="44.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONPRODUCT" Width="1.5" PointX="5.25" PointY="37.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONREFERENCE" Width="1.5" PointX="5.25" PointY="40.625" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONS" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONSTATUS" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONTAG" Width="1.5" PointX="5.25" PointY="15" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONTYPE" Width="1.5" PointX="3" PointY="57" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONTYPEFOROVALSYSTEMTYPE" Width="1.5" PointX="5.25" PointY="64.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITIONVULNERABILITY" Width="1.5" PointX="5.25" PointY="25.875" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDIRECTIVE" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDIRECTIVES" Width="1.5" PointX="18.25" PointY="13" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDIRECTIVESTYPE" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="XOVALModel.OVALENTITYATTRIBUTEGROUP" Width="1.5" PointX="13.75" PointY="24.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALENTITYCOMPLEXBASE" Width="1.5" PointX="16" PointY="4.5" />
+        <EntityTypeShape EntityType="XOVALModel.OVALENTITYSIMPLEBASE" Width="1.5" PointX="16" PointY="7.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALEXTENSIONPOINT" Width="1.5" PointX="8.75" PointY="7.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALEXTENSIONPOINTFOROVALGENERATORTYPE" Width="1.5" PointX="11" PointY="6" />
+        <EntityTypeShape EntityType="XOVALModel.OVALEXTENSIONPOINTFORSYSTEMINFO" Width="1.5" PointX="11" PointY="8.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALFILTER" Width="1.5" PointX="12.75" PointY="1" />
+        <EntityTypeShape EntityType="XOVALModel.OVALFILTERFOROVALSET" Width="1.5" PointX="15" PointY="1.5" />
+        <EntityTypeShape EntityType="XOVALModel.OVALGENERATORTYPE" Width="1.5" PointX="14" PointY="20.875" />
+        <EntityTypeShape EntityType="XOVALModel.OVALITEM" Width="1.5" PointX="3" PointY="52.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALITEMATTRIBUTEGROUP" Width="1.5" PointX="7.75" PointY="1.875" />
+        <EntityTypeShape EntityType="XOVALModel.OVALITEMCOMPLEXBASE" Width="1.5" PointX="10" PointY="1" />
+        <EntityTypeShape EntityType="XOVALModel.OVALITEMFOROVALSYSTEMOBJECT" Width="1.5" PointX="5.25" PointY="53.625" />
+        <EntityTypeShape EntityType="XOVALModel.OVALITEMSIMPLEBASE" Width="1.5" PointX="10" PointY="3.25" />
+        <EntityTypeShape EntityType="XOVALModel.OVALLITERALCOMPONENT" Width="1.5" PointX="15.25" PointY="116.875" />
+        <EntityTypeShape EntityType="XOVALModel.OVALLITERALCOMPONENTFOROVALCOMPONENTGROUP" Width="1.5" PointX="17.5" PointY="107.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALMESSAGETYPE" Width="1.5" PointX="5.25" PointY="57.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALMESSAGETYPEFOROVALSYSTEMOBJECT" Width="1.5" PointX="7.5" PointY="55.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALMESSAGETYPEFOROVALTESTEDITEM" Width="1.5" PointX="7.5" PointY="57.625" />
+        <EntityTypeShape EntityType="XOVALModel.OVALMESSAGETYPEFOROVALTESTTYPE" Width="1.5" PointX="7.5" PointY="59.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALNAMESPACE" Width="1.5" PointX="10.75" PointY="47.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECT" Width="1.5" PointX="13" PointY="80.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECTCOMPONENT" Width="1.5" PointX="15.25" PointY="77.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECTCOMPONENTFOROVALCOMPONENTGROUP" Width="1.5" PointX="17.5" PointY="77.5" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECTDATATYPE" Width="1.5" PointX="10.75" PointY="42.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECTFIELD" Width="1.5" PointX="16" PointY="46.875" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECTFIELDFOROVALOBJECTRECORD" Width="1.5" PointX="18.25" PointY="47.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECTFILE" Width="1.5" PointX="15.25" PointY="96" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECTFOROVALSET" Width="1.5" PointX="15.25" PointY="70.625" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECTFOROVALTEST" Width="1.5" PointX="15.25" PointY="85.25" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECTRECORD" Width="1.5" PointX="13" PointY="42.25" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECTRECORDFOROVALOBJECT" Width="1.5" PointX="15.25" PointY="62.625" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECTTAG" Width="1.5" PointX="15.25" PointY="103.875" />
+        <EntityTypeShape EntityType="XOVALModel.OVALOBJECTWINDOWSREGISTRYKEY" Width="1.5" PointX="15.25" PointY="88.5" />
+        <EntityTypeShape EntityType="XOVALModel.OVALRESULTS" Width="1.5" PointX="18.25" PointY="23.875" />
+        <EntityTypeShape EntityType="XOVALModel.OVALRESULTSTYPE" Width="1.5" PointX="16.25" PointY="18.875" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSET" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSTATE" Width="1.5" PointX="13" PointY="107.875" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSTATECOMPLEXBASE" Width="1.5" PointX="13.75" PointY="29.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSTATEFIELD" Width="1.5" PointX="16" PointY="52.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSTATEFIELDFOROVALSTATERECORD" Width="1.5" PointX="18.25" PointY="52.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSTATEFOROVALTEST" Width="1.5" PointX="15.25" PointY="112.625" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSTATERECORD" Width="1.5" PointX="16" PointY="42" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSTATERECORDFOROVALSTATE" Width="1.5" PointX="18.25" PointY="73.875" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSTATESIMPLEBASE" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSTATETYPE" Width="1.5" PointX="7.75" PointY="15.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSYSTEMCHARACTERISTICS" Width="1.5" PointX="16.25" PointY="21.25" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSYSTEMOBJECT" Width="1.5" PointX="15.25" PointY="99.625" />
+        <EntityTypeShape EntityType="XOVALModel.OVALSYSTEMTYPE" Width="1.5" PointX="18.5" PointY="20.25" />
+        <EntityTypeShape EntityType="XOVALModel.OVALTEST" Width="1.5" PointX="13" PointY="52.5" />
+        <EntityTypeShape EntityType="XOVALModel.OVALTESTDATATYPE" Width="1.5" PointX="10.75" PointY="58.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALTESTEDITEM" Width="1.5" PointX="16.25" PointY="29.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALTESTEDVARIABLE" Width="1.5" PointX="15.25" PointY="36.625" />
+        <EntityTypeShape EntityType="XOVALModel.OVALTESTFOROVALTESTS" Width="1.5" PointX="18.25" PointY="56.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALTESTS" Width="1.5" PointX="16" PointY="26.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALTESTTAG" Width="1.5" PointX="15.25" PointY="74" />
+        <EntityTypeShape EntityType="XOVALModel.OVALTESTTYPE" Width="1.5" PointX="18.5" PointY="43.25" />
+        <EntityTypeShape EntityType="XOVALModel.OVALTESTTYPEFOROVALSYSTEMTYPE" Width="1.5" PointX="20.75" PointY="43.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALVARIABLE" Width="1.5" PointX="13" PointY="46.625" />
+        <EntityTypeShape EntityType="XOVALModel.OVALVARIABLECOMPONENT" Width="1.5" PointX="15.25" PointY="66.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALVARIABLECOMPONENTFOROVALCOMPONENTGROUP" Width="1.5" PointX="17.5" PointY="66.75" />
+        <EntityTypeShape EntityType="XOVALModel.OVALVARIABLEDATATYPE" Width="1.5" PointX="10.75" PointY="52.125" />
+        <EntityTypeShape EntityType="XOVALModel.OVALVARIABLEFOROVALVARIABLES" Width="1.5" PointX="15.25" PointY="39.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALVARIABLES" Width="1.5" PointX="16.25" PointY="16.5" />
+        <EntityTypeShape EntityType="XOVALModel.OVALVARIABLETAG" Width="1.5" PointX="15.25" PointY="57.25" />
+        <EntityTypeShape EntityType="XOVALModel.OVALVARIABLETYPE" Width="1.5" PointX="10.75" PointY="55.375" />
+        <EntityTypeShape EntityType="XOVALModel.OVALVARIABLEVALUE" Width="1.5" PointX="15.25" PointY="32.625" />
+        <EntityTypeShape EntityType="XOVALModel.OVALVARIABLEVALUEFOROVALSYSTEMOBJECT" Width="1.5" PointX="17.5" PointY="100" />
+        <AssociationConnector Association="XOVALModel.FK_OVALCRITERIA_OPERATORENUMERATION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALBEHAVIORFOROVALOBJECT_OVALBEHAVIOR" />
+        <AssociationConnector Association="XOVALModel.FK_OVALBEHAVIORFOROVALOBJECT_OVALOBJECT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALCLASSDIRECTIVESFOROVALDIRECTIVES_OVALCLASSDIRECTIVES" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONTYPE_OVALCLASSENUMERATION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALLITERALCOMPONENTFOROVALCOMPONENTGROUP_OVALCOMPONENTGROUP" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTCOMPONENTFOROVALCOMPONENTGROUP_OVALCOMPONENTGROUP" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLECOMPONENTFOROVALCOMPONENTGROUP_OVALCOMPONENTGROUP" />
+        <AssociationConnector Association="XOVALModel.FK_OVALCRITERIACRITERION_OVALCRITERIA" />
+        <AssociationConnector Association="XOVALModel.FK_OVALCRITERIAEXTENDDEFINITION_OVALCRITERIA" />
+        <AssociationConnector Association="XOVALModel.FK_OVALCRITERIAFOROVALCRITERIA_OVALCRITERIAREF" />
+        <AssociationConnector Association="XOVALModel.FK_OVALCRITERIAFOROVALCRITERIA_OVALCRITERIASUBJECT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALCRITERIACRITERION_OVALTEST" />
+        <AssociationConnector Association="XOVALModel.FK_OVALCRITERIATYPEFOROVALDEFINITIONTYPE_OVALCRITERIATYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDIRECTIVES_OVALDEFAULTDIRECTIVES" />
+        <AssociationConnector Association="XOVALModel.FK_OVALRESULTS_OVALDEFAULTDIRECTIVES" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONCHANGES_OVALDEFINITIONCHANGE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONTYPEFOROVALSYSTEMTYPE_OVALDEFINITIONTYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDIRECTIVES_OVALDIRECTIVEERROR" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDIRECTIVES_OVALDIRECTIVEFALSE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDIRECTIVES_OVALDIRECTIVENOTAPPLICABLE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDIRECTIVES_OVALDIRECTIVENOTEVALUATED" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDIRECTIVES_OVALDIRECTIVETRUE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDIRECTIVES_OVALDIRECTIVEUNKNOWN" />
+        <AssociationConnector Association="XOVALModel.FK_OVALENTITYCOMPLEXBASE_OVALENTITYATTRIBUTEGROUP" />
+        <AssociationConnector Association="XOVALModel.FK_OVALENTITYSIMPLEBASE_OVALENTITYATTRIBUTEGROUP" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTFIELD_OVALENTITYATTRIBUTEGROUP" />
+        <AssociationConnector Association="XOVALModel.FK_OVALSTATEFIELD_OVALENTITYATTRIBUTEGROUP" />
+        <AssociationConnector Association="XOVALModel.FK_OVALEXTENSIONPOINTFOROVALGENERATORTYPE_OVALEXTENSIONPOINT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALEXTENSIONPOINTFORSYSTEMINFO_OVALEXTENSIONPOINT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALFILTERFOROVALSET_OVALFILTER" />
+        <AssociationConnector Association="XOVALModel.FK_OVALRESULTS_OVALGENERATORTYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALSYSTEMCHARACTERISTICS_OVALGENERATORTYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLES_OVALGENERATORTYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALITEMFOROVALSYSTEMOBJECT_OVALITEM" />
+        <AssociationConnector Association="XOVALModel.FK_OVALTESTEDITEM_OVALITEM" />
+        <AssociationConnector Association="XOVALModel.FK_OVALITEMCOMPLEXBASE_OVALITEMATTRIBUTEGROUP" />
+        <AssociationConnector Association="XOVALModel.FK_OVALITEMSIMPLEBASE_OVALITEMATTRIBUTEGROUP" />
+        <AssociationConnector Association="XOVALModel.FK_OVALLITERALCOMPONENTFOROVALCOMPONENTGROUP_OVALLITERALCOMPONENT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALMESSAGETYPEFOROVALSYSTEMOBJECT_OVALMESSAGETYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALMESSAGETYPEFOROVALTESTEDITEM_OVALMESSAGETYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALMESSAGETYPEFOROVALTESTTYPE_OVALMESSAGETYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECT_OVALNAMESPACE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTFIELD_OVALNAMESPACE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTRECORD_OVALNAMESPACE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALSTATE_OVALNAMESPACE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALSTATEFIELD_OVALNAMESPACE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALSTATERECORD_OVALNAMESPACE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALTEST_OVALNAMESPACE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLE_OVALNAMESPACE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTCOMPONENT_OVALOBJECT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTFILE_OVALOBJECT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTFOROVALSET_OVALOBJECT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTFOROVALTEST_OVALOBJECT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTRECORDFOROVALOBJECT_OVALOBJECT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTTAG_OVALOBJECT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTWINDOWSREGISTRYKEY_OVALOBJECT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALSYSTEMOBJECT_OVALOBJECT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLECOMPONENT_OVALOBJECT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTCOMPONENTFOROVALCOMPONENTGROUP_OVALOBJECTCOMPONENT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTRECORD_OVALOBJECTDATATYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTFIELDFOROVALOBJECTRECORD_OVALOBJECTFIELD" />
+        <AssociationConnector Association="XOVALModel.FK_OVALOBJECTRECORDFOROVALOBJECT_OVALOBJECTRECORD" />
+        <AssociationConnector Association="XOVALModel.FK_OVALSTATEFOROVALTEST_OVALSTATE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALSTATERECORDFOROVALSTATE_OVALSTATE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALSTATERECORD_OVALSTATECOMPLEXBASE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALSTATEFIELDFOROVALSTATERECORD_OVALSTATEFIELD" />
+        <AssociationConnector Association="XOVALModel.FK_OVALSTATERECORDFOROVALSTATE_OVALSTATERECORD" />
+        <AssociationConnector Association="XOVALModel.FK_OVALSYSTEMTYPE_OVALSYSTEMCHARACTERISTICS" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLEVALUEFOROVALSYSTEMOBJECT_OVALSYSTEMOBJECT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALTESTTYPEFOROVALSYSTEMTYPE_OVALSYSTEMTYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALTEST_OVALTESTDATATYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALTESTFOROVALTESTS_OVALTEST" />
+        <AssociationConnector Association="XOVALModel.FK_OVALTESTTAG_OVALTEST" />
+        <AssociationConnector Association="XOVALModel.FK_OVALTESTTYPE_OVALTEST" />
+        <AssociationConnector Association="XOVALModel.FK_OVALTESTEDVARIABLE_OVALVARIABLE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALTESTFOROVALTESTS_OVALTESTS" />
+        <AssociationConnector Association="XOVALModel.FK_OVALTESTTYPEFOROVALSYSTEMTYPE_OVALTESTTYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLE_OVALVARIABLEDATATYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLE_OVALVARIABLETYPE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLECOMPONENT_OVALVARIABLE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLECOMPONENT_OVALVARIABLEREF" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLEFOROVALVARIABLES_OVALVARIABLE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLETAG_OVALVARIABLE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLEVALUE_OVALVARIABLE" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLECOMPONENTFOROVALCOMPONENTGROUP_OVALVARIABLECOMPONENT" />
+        <AssociationConnector Association="XOVALModel.FK_OVALVARIABLEVALUEFOROVALSYSTEMOBJECT_OVALVARIABLEVALUE" />
+        <AssociationConnector Association="XOVALModel.OVALCLASSDIRECTIVESFOROVALRESULTS" />
+        <AssociationConnector Association="XOVALModel.OVALCRITERIONTYPEFOROVALCRITERIATYPE" />
+        <AssociationConnector Association="XOVALModel.OVALMESSAGETYPEFOROVALDEFINITIONTYPE" />
+        <AssociationConnector Association="XOVALModel.OVALMESSAGETYPEFOROVALITEM" />
+        <AssociationConnector Association="XOVALModel.OVALSETFOROVALSET" />
+        <AssociationConnector Association="XOVALModel.OVALSYSTEMTYPEFOROVALRESULTSTYPE" />
+        <AssociationConnector Association="XOVALModel.OVALTESTEDITEMFOROVALTESTTYPE" />
+        <AssociationConnector Association="XOVALModel.OVALTESTEDVARIABLEFOROVALTESTTYPE" />
+        <EntityTypeShape EntityType="XOVALModel.OVALDEFINITION" Width="1.5" PointX="3" PointY="21" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITION_OVALCLASSENUMERATION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITION_OVALCRITERIA" />
+        <AssociationConnector Association="XOVALModel.FK_OVALCRITERIAEXTENDDEFINITION_OVALDEFINITION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONCCE_OVALDEFINITION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONCHANGES_OVALDEFINITION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONCPE_OVALDEFINITION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONFAMILY_OVALDEFINITION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONORGANISATION_OVALDEFINITION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONPLATFORM_OVALDEFINITION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONPRODUCT_OVALDEFINITION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONREFERENCE_OVALDEFINITION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONTAG_OVALDEFINITION" />
+        <AssociationConnector Association="XOVALModel.FK_OVALDEFINITIONVULNERABILITY_OVALDEFINITION" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

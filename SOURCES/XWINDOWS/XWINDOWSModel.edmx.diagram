@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4d63b26adda44670b72eb16759196379" Name="Diagram1">
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSCOMPUTERACCOUNT" Width="1.5" PointX="8.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSCRITICALSECTION" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSDRIVER" Width="1.5" PointX="2.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSDRIVETYPE" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSEVENT" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSEVENTLOG" Width="1.5" PointX="9.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSEXECUTABLEFILE" Width="1.5" PointX="5.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSFILE" Width="1.5" PointX="5.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSGROUP" Width="1.5" PointX="16.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSGROUPFORWINDOWSUSERACCOUNT" Width="1.5" PointX="19" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSHANDLE" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSHANDLELIST" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSHANDLELISTHANDLES" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSHANDLETYPE" Width="1.5" PointX="7.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSKERNELHOOK" Width="1.5" PointX="15.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSKERNELOBJECT" Width="1.5" PointX="17.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSMAILSLOT" Width="1.5" PointX="10.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSMEMORYPAGEREGION" Width="1.5" PointX="18.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSMUTEX" Width="1.5" PointX="3.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSMUTEXHANDLE" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSMUTEXSECURITYATTRIBUTE" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSNETWORKROUTEENTRY" Width="1.5" PointX="5.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSNETWORKSHARE" Width="1.5" PointX="18.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSPIPEOBJECT" Width="1.5" PointX="7.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSPREFETCHACCESSEDFILELIST" Width="1.5" PointX="16" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSPREFETCHCHANGERECORD" Width="1.5" PointX="18.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSPREFETCHOBJECT" Width="1.5" PointX="13.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSPRIVILEGE" Width="1.5" PointX="14" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSPROCESS" Width="1.5" PointX="13.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSPROCESSTOKEN" Width="1.5" PointX="16" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSREGISTRYKEYOBJECT" Width="1.5" PointX="13.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSSEMAPHORE" Width="1.5" PointX="9.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSSERVICE" Width="1.5" PointX="18.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSSYSTEM" Width="1.5" PointX="11.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSSYSTEMRESTORE" Width="1.5" PointX="19.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSTASK" Width="1.5" PointX="19.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSTHREAD" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSUSERACCOUNT" Width="1.5" PointX="11" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSUSERACCOUNTCHANGERECORD" Width="1.5" PointX="0.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSUSERACCOUNTPRIVILEGE" Width="1.5" PointX="16.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSVOLUME" Width="1.5" PointX="8.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSVOLUMEATTRIBUTE" Width="1.5" PointX="8.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSVOLUMEATTRIBUTEENUM" Width="1.5" PointX="2.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSVOLUMEATTRIBUTESLIST" Width="1.5" PointX="11" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSVOLUMEENCRYPTION" Width="1.5" PointX="11" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSWAITABLETIMER" Width="1.5" PointX="20.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINDOWSWAITABLETIMEROBJECT" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XWINDOWSModel.WINWAITABLETIMER" Width="1.5" PointX="4.75" PointY="22" IsExpanded="true" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSUSERACCOUNT_WINDOWSCOMPUTERACCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSGROUPFORWINDOWSUSERACCOUNT_WINDOWSGROUP" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLE" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSMUTEXHANDLE_WINDOWSHANDLE" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSTHREAD_WINDOWSHANDLE" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSWAITABLETIMEROBJECT_WINDOWSHANDLE" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLELIST" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSHANDLELIST" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSMUTEXHANDLE_WINDOWSMUTEX" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSMUTEXSECURITYATTRIBUTE_WINDOWSMUTEX" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSPREFETCHACCESSEDFILELIST_WINDOWSPREFETCHOBJECT" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSPRIVILEGE" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSPROCESSTOKEN_WINDOWSPROCESS" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSUSERACCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSUSERACCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUME" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSVOLUMEENCRYPTION_WINDOWSVOLUME" ManuallyRouted="false" />
+        <AssociationConnector Association="XWINDOWSModel.FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUMEATTRIBUTE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,4808 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A1CD35C0-B452-44CF-8B0C-3EDAD275F76C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XORCISMModel</RootNamespace>
+    <AssemblyName>XORCISMModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ACCESSEDDIRECTORYLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCESSEDFILELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCESSEDFILELISTFILES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCESSRECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCESSRECORDEVIDENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCESSRECORDHASH.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCOUNT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCOUNTAUTHENTICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCOUNTAUTHENTICATIONTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCOUNTBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCOUNTCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCOUNTDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCOUNTWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACLENTRY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACRONYM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONACTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONACTIONARGUMENTNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONACTIONTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONALIAS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONARGUMENTNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONASSOCIATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONCOLLECTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONCONTEXT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONDISCOVERYMETHOD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONIMPLEMENTATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONOBJECTASSOCIATIONTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONPLAN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONPOOL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONRELATIONSHIPTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONSTATUS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONTAKEN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONTAKENFORINCIDENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONTAKENFORTHREATCAMPAIGN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIONTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIVATIONFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIVATIONZONE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACTIVATIONZONEFORATTACKPATTERN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADDRESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADDRESSBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADDRESSCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADDRESSCOUNTRY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADDRESSREPUTATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADDRESSWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADVISORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AFFECTEDRESOURCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AGENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ALGEBRAIC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ALGORITHM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ALGORITHMDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ALGORITHMREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ALGORITHMTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ANTIBEHAVIORALANALYSISSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ANTIBEHAVIORALANALYSISTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ANTIBEHAVIORANALYSISPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ANTICODEANALYSISSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ANTICODEANALYSISTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ANTIDETECTIONSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ANTIDETECTIONTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ANTIREMOVALSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ANTIREMOVALTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="API.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APICALL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APIFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APIMEMORYADDRESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APIPLATFORM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONAUTHENTICATIONTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONCATEGORIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONCRITICALITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONCRITICALITYLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONDEPENDENCY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONDOCUMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONFILEEXTENSIONBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONFILEEXTENSIONWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONFILELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONFORORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONMIMEWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONNETWORKZONE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONPERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONPORTWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONSECURITYLABEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONURI.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONURIWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONVERSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPLICATIONWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPROBATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APPROVAL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARCHITECTURALPARADIGM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARCHITECTURALPARADIGMFORTECHNICALCONTEXT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARCHIVEDFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARCHIVEFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARCHIVEFILEFORMAT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARCHIVEFILEFORMATEXTENSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARFASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARFEXTENDEDINFO.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARFEXTENDEDINFOFORARFEXTENDEDINFOS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARFEXTENDEDINFOS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARFOBJECTREF.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARFRELATIONSHIP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARFRELATIONSHIPS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARITHMETICFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARITHMETICOPERATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARPCACHE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARPCACHECHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARPCACHEENTRIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARPCACHEENTRY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARPCACHEENTRYTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARTIFACT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARTIFACTCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARTIFACTHASHVALUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARTIFACTPACKAGING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARTIFACTTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASOBJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Applications.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Paths.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_PersonalizationAllUsers.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_PersonalizationPerUser.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Profile.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Roles.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_SchemaVersions.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Users.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_UsersInRoles.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_WebEvent_Events.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETADDRESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETARPCACHE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETCERTIFICATE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETCERTIFICATEORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETCREDENTIAL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETCRITICALITYLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETCRITICALITYLEVELFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETDEVICE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETFORORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETFORTHREATACTORTTP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETFUNCTIONFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETGEOLOCATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETGROUP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETINFORMATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETLICENSE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETLOCATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETLOCATIONFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETMANAGEMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETMANAGEMENTFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETMEMORYDUMP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETNETWORKZONE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETNETWORKZONERESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETORGANIZATIONALUNIT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETOWNERSHIP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETPERIMETER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETPERIMETERASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETPERIMETERNETWORKZONE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETPERIMETERSECURITYCONTROL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETPHYSICALLOCATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETPLATFORM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETPRODUCT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETRELATIONSHIP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETREPORTCOLLECTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETRISKRATING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETROLE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETROLEFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETSECURITYCONTROL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETSENSOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETSESSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETSYNTHETICID.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETSYNTHETICIDFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETTECHNOLOGY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETVALUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETVALUEFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETVARIETY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETVARIETYFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSETZONE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSOCIATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSOCIATIONRULE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSURANCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSURANCEREQUIREMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ATTACHMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ATTACHMENTREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ATTRIBUTE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ATTRIBUTEVALUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AUDIT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AUDITFINDING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AUDITLOGEVENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AUDITPROCEDURE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AUTHENTICATIONTOKENPROTECTIONMECHANISM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AUTHENTICATIONTOKENPROTECTIONMECHANISMBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AUTHENTICATIONTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AUTHENTICATIONTYPEBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AUTHENTICATIONTYPEDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AUTHENTICATIONTYPEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AUTHOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AVAILABILITYLOSSTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AVAILABILITYVIOLATIONPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AVAILABILITYVIOLATIONSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AVAILABILITYVIOLATIONTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANNER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANNERREGEX.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEGINFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEHAVIOMETRIC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEHAVIOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEHAVIORACTIONCOMPOSITION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEHAVIORALCHARACTERISTIC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEHAVIORASSOCIATEDCODE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEHAVIORCOLLECTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEHAVIORDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEHAVIORDISCOVERYMETHOD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEHAVIORIDMATCHINGPATTERN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEHAVIORIDPATTERN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEHAVIORPURPOSE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BEHAVIORRELATIONSHIPS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIOMETRIC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BREACH.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BREACHDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BREACHEVIDENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BREACHFINDING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BREACHNOTIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BREACHTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BREAK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BROWSER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BROWSERCHARACTERISTIC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BUILDCONFIGURATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BUILDINFORMATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BUILDUTILITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BULLETIN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BUSINESSIMPACT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BUSINESSIMPACTFORBUSINESSRISK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BUSINESSIMPACTFORREGULATORYRISK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BUSINESSPROCESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BUSINESSRISK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BYTERUN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BYTERUNS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CAPABILITYOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CAPABILITYOBJECTIVERELATIONSHIP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CATEGORYDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CATEGORYREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CATEGORYTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCEFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCEFORCPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCEFORTHREATACTORTTP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCEPARAMETER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCEPARAMETERFORCCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCEPARAMETERTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCEREFERENCEFORCCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCERESOURCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCERESOURCEAUTHOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCERESOURCEFORCCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCERESOURCEFORCCEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCETECHNICALMECHANISM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCETECHNICALMECHANISMFORCCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCETECHNICALMECHANISMTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CERTIFICATE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CERTIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CERTIFICATIONSKILL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHANGECONTROL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHANGELOGENTRYTYPEENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHANGEREQUEST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHANGEREQUESTAPPROVAL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHANGEREQUESTCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHAPTER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHARACTER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHARACTERBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHARACTERENCODING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHARACTERISTIC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHARACTERSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHARACTERSETBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHARACTERSETWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHARACTERWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHARSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKENUMERATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKLISTANSWER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKLISTCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKLISTCHAPTER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKLISTQUESTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKLISTQUESTIONCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKLISTQUESTIONSECURITYCONTROL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CIAIMPACTFORATTACKPATTERN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CLASSIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CLASSIFICATIONCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CLASSIFICATIONLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CLASSIFICATIONRESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CLUSTEREDGENODEPAIR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COASTAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODEFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODELANGUAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODELANGUAGES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODELICENSE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODELINE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODELINEFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODELINES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODEPROCESSORTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODEPURPOSE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODEPURPOSEENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODESEGMENTXOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODESNIPPETS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CODETYPEENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COLLECTIONMETHOD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COLLECTIONMETHODDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COLLECTIONMETHODREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COLLECTIONMETHODTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COLSTAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMMAND.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMMANDANDCONTROLPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMMANDANDCONTROLSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMMANDANDCONTROLTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMMANDS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMMONCAPABILITYPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPENSATIONMODEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPILER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPILERINFORMALDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPILERS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPLIANCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPLIANCECATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPLIANCECERTIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPLIANCECHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPLIANCEDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPLIANCEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPLIANCETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPONENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPRESSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPRESSIONMECHANISM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPRESSIONMECHANISMDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPRESSIONMECHANISMTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPRESSIONREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONCATFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONDITION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONDITIONAPPLICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONFIDENCELEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONFIDENCEREASON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONFIDENTIALITYLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONFIGURATIONSETTING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONFIGURATIONSETTINGS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONNECTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONNECTIONFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTACT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTACTTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTENTENUMERATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTEXT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTROL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTROLCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTROLDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTROLREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTROLSTRENGTH.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTROLTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COOKIE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COOKIEAPPLICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COOKIECPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COOKIEFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COOKIENAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COOKIENAMEAPPLICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COOKIENAMEORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COOKIENAMEPRODUCT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COOKIEPERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COOKIESECURITYCONTROL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COUNTFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COUNTRY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COUNTRYLAW.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COUNTRYLOCALE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COUNTRYTELEPHONE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COUNTRYZONE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COURSEOFACTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COURSEOFACTIONTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COURSEOFLAW.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEBANNER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEFILELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEFORAPPLICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEFORFIXACTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEFORORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEFORPLATFORM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEFORPRODUCT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEFORTOOL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEGOOGLEDORK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPELOGICALTEST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEPATCH.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEPORT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPETECHNOLOGY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEURI.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPEWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CREATIONOBJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CREATIONOBJECTHASH.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CREDENTIAL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CREDENTIALACCESSRECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CREDENTIALREPOSITORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CRITICALITYLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CUSTOMOBJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEAFFECTEDFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEAFFECTEDRESOURCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEALTERNATETERM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEALTERNATETERMTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEARCHITECTURALPARADIGM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEATTACKCONSEQUENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEATTACKCONSEQUENCESCOPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEATTACKCONSEQUENCETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEATTACKTECHNICALIMPACT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEDEMONSTRATIVEEXAMPLE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEDETECTIONMETHOD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEEXPLOITATIONFACTOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEFOROWASPTOP10.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEFUNCTIONALAREA.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWELANGUAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWELANGUAGECLASS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEMODEOFINTRODUCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEMODEOFINTRODUCTIONTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEORDINALITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEOS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEOSCLASS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWERELATIONSHIPCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWERELEVANTPROPERTY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWEREPOSITORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWERESEARCHGAP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWETAXONOMYNODE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWETECHNOLOGY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWETHEORETICALNOTE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWETIMEOFINTRODUCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CWETOP25.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATACLASSIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATADICTIONARY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATAEXFILTRATIONPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATAEXFILTRATIONSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATAEXFILTRATIONTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATAFEED.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATAFORMAT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATAMODEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATASEGMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATASIZEUNIT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATATHEFTPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATATHEFTSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATATHEFTTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATATRANSFER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATATRANSFORMATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATATYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATEPRECISION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATERANGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATETIMEFORMAT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATETIMEPRECISION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEBUGGINGACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFENSETOOL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFENSETOOLTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEMONSTRATIVEEXAMPLE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEMONSTRATIVEEXAMPLECODE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEMONSTRATIVEEXAMPLEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEMONSTRATIVEEXAMPLEVULNERABILITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEPENDENCIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEPENDENCY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DESCRIPTIONCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DESCRIPTIONREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DESCRIPTIONTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DESTRUCTIONPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DESTRUCTIONSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DESTRUCTIONTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DETECTABILITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DETECTIONMETHOD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEVICE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEVICEBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEVICECOMPONENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEVICEDRIVERACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEVICETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEVICEWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DICTIONARY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DIGITALSIGNATUREINFO.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DIGITALSIGNATURES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DIRECTORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DIRECTORYACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DIRECTORYLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DISCOVERYMETHOD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DISK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DISKACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DISKPARTITION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DNSACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DNSCACHE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DNSQUERY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DNSRECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOCUMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOCUMENTCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOCUMENTCLASSIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOCUMENTTITLE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOCUMENTVERSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOCXMLDOCUMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAIN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAINBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAINEMAILADDRESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAINNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAINNAMEBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAINNAMECHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAINNAMEREPUTATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAINNAMETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAINORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAINPERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAINTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAINTYPEENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOMAINWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOWNTIME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFFECTIVENESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFFECTTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAIL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILADDRESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILFORORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILFORPERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILHEADER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILHEADERTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILMESSAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILMESSAGEATTACHMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILMESSAGECLASSIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILMESSAGELINK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILMESSAGERESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILMESSAGETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILRECEIVEDLINELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILRECIPIENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILRECIPIENTS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMAILRECIPIENTSLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENCODING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENCODINGALGORITHM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENCRYPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENCRYPTIONALGORITHM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENCRYPTIONKEY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENCRYPTIONMECHANISM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENCRYPTIONREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENDFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENDIANNESSTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENDPOINT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENGINE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENTITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENTITYDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENTITYNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENTITYRESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENTITYTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENTRYPOINT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENTRYVARIABLE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENUMERATIONVERSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENVIRONMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENVIRONMENTVARIABLE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESCAPEREGEXFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVALUATIONMETHOD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTCOLLECTIONMETHOD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTCOMMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTCOMMENTFOREVENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTENDPOINT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTFILTER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTFOREVENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTFORINCIDENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTPROPERTY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTPROPERTYADDRESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTPROPERTYFOREVENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTSIGNATURE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTSUPPRESSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVENTTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVIDENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVIDENCEACCESSRECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVIDENCEACL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVIDENCECATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVIDENCERESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXCELFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXIFTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXISTENCEENUMERATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOIT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITABILITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITACCESSRECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITATIONFACTOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITAUTHOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITFORCPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITFORFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITFORREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITFORTECHNOLOGY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITFORTHREATACTORTTP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITFORURI.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITFORVULNERABILITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITLANGUAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITLIKELIHOOD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITLIKELIHOODFORATTACKPATTERN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITLIKELIHOODFORCWE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITOSINSTRUCTIONMEMORYADDRESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITPARAMETER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITPARAMETERFOREXPLOIT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITPLATFORM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITRESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPLOITTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPOSURELEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXTRACTEDFEATURES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXTRACTEDSTRING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXTRACTEDSTRINGS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FACILITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FACILITYPHYSICALLOCATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FACTORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FACTORYASSURANCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FACTORYCOMPLIANCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FACTORYPOLICY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FAX.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FEED.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIELD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILEACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILECHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILECLASSIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILEDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILEENCRYPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILEEXTENSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILEEXTENSIONBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILEEXTENSIONWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILELISTFILES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILEREPOSITORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILERESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILERESTRICTIONCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILEVERSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILTER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILTERACTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGCATEGORYRACIMATRIX.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGCODE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGEVIDENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGHTTPSESSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGIMPACT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGMATURITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGPERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGRACIMATRIX.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGRECOMMENDATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGSTATUS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FINDINGVULNERABILITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIREWALLRULE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIREWALLRULEADDRESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIREWALLRULECHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIREWALLRULECHANGEREQUEST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIXACTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIXACTIONCOST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIXACTIONFORFIXACTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIXACTIONFORINCIDENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIXACTIONFORVULNERABILITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIXACTIONPATCH.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIXSYSTEM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FLAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FRAMEWORK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FRAMEWORKFORTECHNICALCONTEXT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FRAMEWORKREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FRAUDSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FRAUDTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FREQUENCY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FTPACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCTIONALAREA.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCTIONARGUMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCTIONCHARACTERDELIMITER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCTIONDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCTIONREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCTIONRELATIONSHIP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCTIONRELATIONSHIPREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCTIONS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCTIONTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEOLOCATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GOOGLEDORK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GOOGLEDORKURI.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GROUP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GROUPINGRELATIONSHIP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUIACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUIDELINE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUIDELINEFORATTACKPATTERN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUIDIALOGBOX.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUIOBJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUIWINDOW.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HANDLETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HARDWARE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HASHLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HASHLISTVALUES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HASHNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HASHVALUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HEADER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HEADERDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HEADERREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HEADERTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HIVELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOOKING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOOKINGACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOSTENDPOINT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOSTFIELD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOSTNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPCLIENTREQUEST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPHEADER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPHEADERCPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPHEADERDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPHEADERPRODUCT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPMESSAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPMETHOD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPMETHODENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPREQUESTHEADER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPREQUESTHEADERFIELDS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPREQUESTLINE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPREQUESTRESPONSE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPRESPONSEHEADER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPRESPONSEHEADERFIELDS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPSERVERRESPONSE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPSESSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPSESSIONCOOKIE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HTTPSTATUSLINE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HUMANRISK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ICOMHANDLERACTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IDENTIFICATIONSYSTEM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IDENTIFIER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IDTENTRY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IDTENTRYLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IDTENTRYLISTENTRIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IEXECACTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMAGEFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMAGEFILEEXIFTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMAGEFILEFORMAT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMAGEFILETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMPACT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMPACTQUALIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMPACTRATING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMPORTANCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMPORTANCETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMPORTS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INDICATOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INDICATORENVIRONMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INDICATORID.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INDICATORIDFORINCIDENTIOC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INDICATORTESTMECHANISM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INDICATORTESTMECHANISMCPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INDICATORTESTMECHANISMEVENTFILTER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INDICATORTESTMECHANISMEVENTSUPPRESSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INDICATORTESTMECHANISMRATEFILTER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INDICATORTESTMECHANISMRULE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INDICATORTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INFECTIONPROPAGATIONPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INFECTIONPROPAGATIONSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INFECTIONPROPAGATIONTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INFLUENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INFORMATIONSOURCEROLE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INFORMATIONSOURCETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INFORMATIONTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INFORMATIONTYPEFORTHREATACTORTTP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INFRASTRUCTURE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INJECTIONVECTOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INJECTIONVECTORFORATTACKPATTERN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INSTANCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INSTRUCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INTEGRITYLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INTEGRITYVIOLATIONSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INTEGRITYVIOLATIONTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INTERACTIONLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INTERACTIONPOINTS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INTERACTIONPOINTSECURITYCONTROL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INTERFACE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INTRUSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTIGATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPCACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXDATASET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXMESSAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXMESSAGEHEADER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXOPTIONSTEMPLATERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXOPTIONSTEMPLATERECORDFIELDSPECIFIERS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXOPTIONSTEMPLATERECORDHEADER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXOPTIONSTEMPLATESET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXSETHEADER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXTEMPLATERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXTEMPLATERECORDFIELDSPECIFIER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXTEMPLATERECORDHEADER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPFIXTEMPLATESET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IRCACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISHOWMESSAGEACTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISOCURRENCY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JOB.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KERNELHOOK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KERNELHOOKTYPEENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KEYWORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KILLCHAIN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KILLCHAINFORTHREATACTORTTP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KILLCHAINPHASE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KILLCHAINPHASEFORKILLCHAIN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KILLCHAINPHASEFORTHREATACTORTTP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LABEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LANGUAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LANGUAGECHARACTEREOL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LANGUAGECLASS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LANGUAGEFORAPPLICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LANGUAGEFORTECHNICALCONTEXT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LANGUAGEFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LANGUAGEFUNCTIONREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LANGUAGEFUNCTIONTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LAW.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LIBRARIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LIBRARY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LIBRARYACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LIBRARYDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LIBRARYREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LIBRARYTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LICENSE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LICENSEACCESSRECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LICENSECHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LICENSERESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LICENSETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LINK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LINKTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LINUXPACKAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCALE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCALEDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCALEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCATIONPOINT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCATIONPOINTFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCATIONPOINTFORORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCATIONPOINTFORPERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCATIONREGION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCATIONREGIONFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOGFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOSSDURATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOSSFACTOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOSSFORM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOSSPROPERTY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOSSPROPERTYFORINCIDENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MACHINEACCESSCONTROLPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MACHINEACCESSCONTROLSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MACHINEACCESSCONTROLTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MAINTENANCENOTE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MANAGEMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MATURITYLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MATURITYRATING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MEASURESOURCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MEASURESOURCECONTRIBUTOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MEASURESOURCETOOL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MEASURESOURCETOOLTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MECHANISM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MECHANISMDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MECHANISMREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MECHANISMRELATIONSHIP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MECHANISMTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MEMORYADDRESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MEMORYADDRESSREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MEMORYDUMP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MEMORYOBJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MEMORYSECTIONLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MESSAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MESSAGECONFIDENTIALITYLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MESSAGELEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MESSAGESMS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METADATA.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METHOD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METHODOLOGY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METHODOLOGYCHAPTER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METHODOLOGYDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METHODOLOGYNODE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METHODOLOGYREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METHODOLOGYTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METHODOLOGYTECHNIQUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METHODOLOGYTEST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METRIC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METRICCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METRICCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METRICDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METRICREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="METRICTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MIME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MIMEVERSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MIMEWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MININGSCHEMA.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITIGATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITIGATIONCODE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITIGATIONEFFECTIVENESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITIGATIONFORATTACKPATTERN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITIGATIONFORCWE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITIGATIONPHASE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITIGATIONPHASEFORMITIGATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITIGATIONPHASETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITIGATIONREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITIGATIONSTRATEGY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITIGATIONSTRATEGYFORMITIGATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITIGATIONSTRATEGYTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MMSMESSAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MOBILEDEVICE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MODEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MODELCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MODELDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MODULE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MUTEX.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MUTEXNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MUTEXNAMES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MUTEXTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NAICS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETROUTE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKCONNECTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKCONNECTIONLAYER7.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKFLOW.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKFLOWLABEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKINTERFACE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKPACKET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKROUTE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKROUTEENTRY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKROUTETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKSHARE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKSHAREACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKSOCKET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKSUBNET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKSUBNETROUTES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKZONE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKZONEDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKZONERESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NETWORKZONETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NEURALNETWORK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NOISENESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OBFUSCATIONEASE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OBFUSCATIONTECHNIQUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OBFUSCATIONTECHNIQUETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OBJECTIVECATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OBJECTIVETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OBJECTRELATIONSHIP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OBJECTSTATE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OBJECTTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OBSERVATIONMETHOD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OFFSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ONTOLOGY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OPCODE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OPCODEFORCPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OPERATIONENUMERATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OPERATORENUMERATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATIONACCESSRECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATIONCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATIONDATACLASSIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATIONDOMAINNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATIONFORTHREATACTORTTP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATIONLICENSE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATIONPOLICY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATIONPROJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATIONSCHEDULE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATIONTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATIONTECHNOLOGY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANISATIONWORKINGHOURS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANIZATIONALUNIT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANIZATIONALUNITFORORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANIZATIONALUNITPOLICY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OSCLASS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OSFAMILY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OSFAMILYFOROS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OSFAMILYPLATFORM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OSILAYER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OSILAYERFORATTACKSURFACE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OSINSTRUCTIONMEMORYADDRESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OSPATCH.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OSPATCHLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OSPATCHLEVELPATCH.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OUTPUTFIELD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OWASPTOP10.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OWASPTOP10ATTACKVECTOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OWASPTOP10EXPLOITABILITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OWASPTOP10IMPACT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OWASPTOP10MAPPING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OWASPTOP10REFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OWASPTOP10TOOLINFORMATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OWNERSHIP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PACKAGEINTENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PACKAGING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PACKAGINGCOMPRESSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PACKAGINGENCODING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PACKAGINGENCRYPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PARAGRAPH.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PARAMETER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PARAMETERDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PARAMETERSFORPROVIDER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PARAMETERTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PASSWORDQUESTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PATCH.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PATCHFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PATCHREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PATCHREPOSITORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PATTERNFIELDGROUP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PATTERNTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PAYLOAD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PCAPFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PDFFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERFORMANCEREQUIREMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERIMETER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERIMETERDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERIMETERZONE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERMISSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERMISSIONDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSISTENCEPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSISTENCESTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSISTENCETACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONASSURANCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONCERTIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONDEVICE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONDOMAINNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONFORAPPLICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONFORINCIDENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONFORORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONFORPERSONGROUP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONFORPROJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONFORTHREATACTORTTP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONGEOLOCATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONGROUP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONLICENSE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONPERMISSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONPHYSICALLOCATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONSCHEDULE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONSKILL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERSONWORKINGHOURS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PGPSIGNATURE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHASE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHASEMAPPING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHASETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHONECALL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHONECALLTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHYSICALLOCATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHYSICALLOCATIONASSURANCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHYSICALLOCATIONCLASSIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHYSICALLOCATIONCONTROL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHYSICALLOCATIONDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHYSICALLOCATIONRESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHYSICALLOCATIONSECURITYCONTROL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHYSICALLOCATIONTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHYSIOLOGICALCHARACTERISTIC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PIPEOBJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PKI.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLAN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLATFORM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLATFORMFORCCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLATFORMFORTECHNICALCONTEXT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLATFORMMAPPING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLATFORMSPECIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLATFORMSPECIFICATIONIDENTIFIERS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLATFORMTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLUGIN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLUGINPARAMETER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLUGINREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLUGINTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLUGINVERSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POLICY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POLICYTERM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POLICYTERMFORPOLICY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFOREXPLOIT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFORVULNERABILITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POSSIBLERESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POSTALADDRESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PREVALENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRIORITYLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRIVACYNOTIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRIVACYRULE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRIVILEGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRIVILEGEESCALATIONPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRIVILEGEESCALATIONSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRIVILEGEESCALATIONTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRIVILEGESFORROLE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROBINGSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROBINGTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROBINGTECHNIQUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROBINGTECHNIQUEFORATTACKPATTERN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROCEDURE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROCESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROCESSACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROCESSMEMORYACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROCESSORTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROCESSORTYPEMAPPING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROCESSTHREADACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTCATEGORYFORPRODUCT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTEXPLOIT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTFILELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTMAPPING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTPATCH.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTPLATFORM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTPORT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="PROJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROJECTDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROJECTFINDING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROJECTFORAPPLICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROJECTMAPPING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROJECTMETHODOLOGY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROJECTPERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROJECTTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROJECTTASK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROJECTTASKFINDING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROJECTTASKPERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROJECTTECHNIQUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PROPERTYTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROTOCOL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROTOCOLCOMMAND.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROTOCOLFORPROTOCOL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROTOCOLHEADER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROTOCOLHEADERS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROTOCOLREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROVIDER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROVIDERSFORACCOUNT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RACIMATRIX.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RACITASK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RATEFILTER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RAWARTIFACT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RAWARTIFACTDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RAWARTIFACTTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REASON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RECOMMENDATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RECOMMENDATIONAUDITPROCEDURE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RECOMMENDATIONCCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RECOMMENDATIONTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RECOMMENDATIONTIP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REFERENCEAUTHOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REFERENCECATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REFERENCECATEGORYTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REFERENCECHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REFERENCEDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REFERENCEMAPPING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REFERENCETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGEX.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGEXCAPTUREFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGEXLANGUAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGEXREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGIONALREGISTRY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGISTER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGISTRYACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGISTRYDATATYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGISTRYDATATYPEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGISTRYDATATYPESENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGISTRYHIVEENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGISTRYSUBKEYS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGISTRYSUBKEYSKEYS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGISTRYVALUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGISTRYVALUES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGISTRYVALUESREGISTRYVALUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGULAREXPRESSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGULATORYRISK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RELATIONSHIPTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RELIABILITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RELIABILITYREASON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REMOTEMACHINEMANIPULATIONSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REMOTEMACHINEMANIPULATIONTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPORT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPORTREQUEST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPORTREQUESTS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPORTS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPOSITORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPOSITORYRESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPUTATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REQUIREMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REQUIREMENTCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REQUIREMENTDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REQUIREMENTMAPPING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RESULTENUMERATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RISKRATING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROLE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROPCHAIN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROPCHAINREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROPGADGET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROPGADGETFORROPCHAIN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROPGADGETINSTRUCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROPGADGETTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RSAPUBLICKEY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RSAPUBLICKEYACCESSRECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RULE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RULECATEGORIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RULECATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RULEPRODUCT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RULEPROTOCOL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RULEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCENARIO.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCENARIOFOROWASPTOP10.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCHEDULE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCHEMA.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCORINGFORMULA.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCORINGSTATUS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCORINGSYSTEM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCORINGSYSTEMDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCORINGSYSTEMREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCORINGSYSTEMTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCRIPT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCRIPTDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCRIPTTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCRIPTVERSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECONDARYOPERATIONPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECONDARYOPERATIONSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECONDARYOPERATIONTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECTIONDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECTIONREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECTIONTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYATTRIBUTE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYATTRIBUTECATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYATTRIBUTESTATE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYATTRIBUTEVARIETY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCHANGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCOMPROMISEENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLENVIRONMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLFAMILY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLFAMILYTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLFORHUMANRISK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLMAPPING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLPRIORITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLSTRENGTH.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLTEST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLTOOL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYCONTROLTYPETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYDEGRADATIONPROPERTIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYDEGRADATIONSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYDEGRADATIONTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYDOMAIN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYDOMAINMATURITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYDOMAINOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYDOMAINPROCESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYDOMAINTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYEVALUATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYLABEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYLABELREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYMARKING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYMETRIC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYMETRICDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYMETRICREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYMETRICTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYNOTIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYPRINCIPLE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYPRINCIPLEDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYPRINCIPLEFORATTACKPATTERN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYPRINCIPLEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYPRINCIPLETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYPROCESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYPROCESSMATURITYLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYPROGRAM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYPROGRAMPROJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYPROGRAMTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYREQUIREMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYREQUIREMENTCONTROL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYREQUIREMENTFORATTACKPATTERN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYREQUIREMENTMAPPING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYREQUIREMENTTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYREQUIREMENTTEST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITYRISKANALYSIS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SEMAPHORE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SENSOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SENSORTOOL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SERVICEACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SERVICECATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SESSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SESSIONCOOKIE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SESSIONCOOKIEATTRIBUTEVALUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SESSIONCRON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SETOPERATOR.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SEVERITYLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SHELLCODE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SIDTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SIGNAL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SIGNATURE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SIGNATURECPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SIGNATUREEXPLOIT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SIGNATUREMALWAREINSTANCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SIGNATUREREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SIGNATURETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SIGNATURETYPEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SIMPLEDATATYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SKILL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SKILLCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SKILLCATEGORYTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SKILLLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SKILLTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SMSMESSAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SOCKETACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SOCKETADDRESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SOFTWARE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SOFTWARECHARACTERISTIC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SOFTWAREFILELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SOFTWARELICENSE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SOURCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SOURCECLASS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SOURCETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPLITFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPYINGSTRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPYINGTACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SSDTENTRY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STAGE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STAGECATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STAGEDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARDCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARDLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARDOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARDORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARDREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARDRELATIONSHIP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARDSECTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARDSECTIONMAPPING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARDSECURITYREQUIREMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARDSECURITYREQUIREMENTLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARDTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STANDARDVOCABULARY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STARTUPINFO.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STATUS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STRATEGICOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STRATEGY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STRUCTUREDAUTHENTICATIONMECHANISM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SUBCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SUBJECTPUBLICKEY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SUBSTRINGFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SUPPLYCHAIN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SUPPLYCHAINASSURANCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SUPPLYCHAINCOMPLIANCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SUPPRESSIONTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SUSPECTEDMALICIOUSREASON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SWENTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SWIDTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SWIDTAGCPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYNCHRONIZATIONACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYSTEM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYSTEMACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYSTEMINFO.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYSTEMINFOFOROVALSYSTEMCHARACTERISTICS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYSTEMTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYSTEMTYPEFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYSTEMTYPEFORTHREATACTORTTP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TACTIC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TACTICALOBJECTIVE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TACTICCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAGBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAGCLASSIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAGFORASSET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAGRESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAGTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TARGET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TARGETEDPLATFORMS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TARGETEDPLATFORMSPECIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TARGETS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKACTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKACTIONLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKACTIONTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKATTACHMENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKFLAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKFORPROJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKPERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKPRIORITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKPRIORITYENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKSTATUS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKSTATUSENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKTRIGGER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TASKTRIGGERFREQUENCY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAXONOMY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAXONOMYNODE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAXONOMYREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCPSTATE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNICALCONTEXT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNIQUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNIQUECATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNIQUEDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNIQUEREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNIQUEREFERENCETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNIQUERESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNIQUESTEP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNIQUETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNOLOGY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNOLOGYDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNOLOGYTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECHNOLOGYURI.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TELEPHONE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TELEPHONECALL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TELEPHONEFORORGANISATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TELEPHONEFORPERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TELEPHONETAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TEST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TESTMECHANISMEFFICACY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TESTMECHANISMID.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THEORETICALNOTE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREADRUNNINGSTATUS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TICKET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TICKETCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TICKETCHANGEREQUEST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TICKETNOTIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TICKETRACIMATRIX.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIMEDIFFERENCEFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIMELINE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIMEPRECISION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIMESHEET.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIMESHEETPERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIMEUNIT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TITLE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOKEN.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLACCESSRECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLCODE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLCOMPENSATIONMODEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLCONFIGURATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLINFORMATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLINFORMATIONDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLINFORMATIONFORTOOL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLINFORMATIONREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLLICENSE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLREFERENCETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLREPOSITORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLTECHNOLOGY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOOLUSERAGENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRAINING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRAININGFORPERSON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRANSACTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRANSFORMATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TREND.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRIGGERFREQUENCYENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRIGGERLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRIGGERTYPEENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRUSTLEVEL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRUSTREASON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UNIDIRECTIONALFLOWRECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UNIQUEFUNCTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UNIT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UNIXFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UNIXNETWORKROUTEENTRY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UNIXPIPEOBJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UNIXPROCESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UNIXUSERACCOUNT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UNIXVOLUME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="URGENCY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="URIOBJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="URITYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="URL.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="URLHISTORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="URLHISTORYENTRIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="URLHISTORYENTRY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USAGETYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USECASE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USECASECATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USECASEFORBUSINESSRISK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USECASEFORREGULATORYRISK.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USERACCOUNT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USERACCOUNTTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USERACTIONNAME.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USERAGENT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USERAGENTBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USERAGENTCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USERSESSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VALIDITY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VALUE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VALUEBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VALUEGROUP.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VALUEMAPPING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VALUEWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VARIABLE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VERSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEWPORT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VOCABULARY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VOCABULARYCATEGORIES.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VOCABULARYCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VOCABULARYCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VOCABULARYDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VOCABULARYREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VOCABULARYTAG.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VOCABULARYVERSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VOLUMEOBJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VULNERABLECONFIGURATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VULNERABLECONFIGURATIONCPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WAITABLETIMERTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WAITABLETIMERTYPEENUM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WAIVER.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WAIVERREASON.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WARNING.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WARNINGCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WASC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WASCCWE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WASCFORCAPEC.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WASCREFERENCE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WASCTHREATTYPE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WEAKNESS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WEAKNESSCWE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WHOISCHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WHOISOBJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WORDBLACKLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WORDFILE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WORDLIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WORDLISTCATEGORY.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WORDLISTWORDS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WORDWHITELIST.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WORKINGHOURS.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X509CERTIFICATE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X509CERTIFICATEACCESSRECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X509CERTIFICATECHANGERECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X509CERTIFICATENONSTANDARDEXTENSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X509CERTIFICATEOBJECT.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X509CERTIFICATESTANDARDEXTENSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X509NONSTANDARDEXTENSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X509SIGNATURE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X509V3EXTENSION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X509V3EXTENSIONACCESSRECORD.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X509V3EXTENSIONPOLICYTERM.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XORCISMModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XORCISMModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XORCISMModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XORCISMModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XORCISMModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ZONE.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZONECLASSIFICATION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZONEDESCRIPTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZONERESTRICTION.cs">
+      <DependentUpon>XORCISMModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="XORCISMModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>XORCISMModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
+    <None Include="XORCISMModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XORCISMModel.edmx</DependentUpon>
+      <LastGenOutput>XORCISMModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="XORCISMModel.edmx.diagram">
+      <DependentUpon>XORCISMModel.edmx</DependentUpon>
+    </None>
+    <None Include="XORCISMModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XORCISMModel.edmx</DependentUpon>
+      <LastGenOutput>XORCISMModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

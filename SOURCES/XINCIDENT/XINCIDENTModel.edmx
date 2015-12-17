@@ -1,0 +1,1616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="XINCIDENTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="INCIDENT">
+          <Key>
+            <PropertyRef Name="IncidentID" />
+          </Key>
+          <Property Name="IncidentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="source_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="IncidentCategoryID" Type="int" />
+          <Property Name="publication_status" Type="nvarchar" MaxLength="50" />
+          <Property Name="datetime_reported" Type="datetimeoffset" Precision="7" />
+          <Property Name="start_datetime" Type="datetimeoffset" Precision="7" />
+          <Property Name="end_datetime" Type="datetimeoffset" Precision="7" />
+          <Property Name="detect_datetime" Type="datetimeoffset" Precision="7" />
+          <Property Name="confirmed" Type="bit" />
+          <Property Name="security_compromise" Type="nvarchar" MaxLength="100" />
+          <Property Name="exercise" Type="bit" />
+          <Property Name="ProjectID" Type="int" />
+          <Property Name="exercise_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="import_datetime" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="IncidentStatusID" Type="int" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="status_description" Type="nvarchar(max)" />
+          <Property Name="synopsis" Type="nvarchar(max)" />
+          <Property Name="summary" Type="nvarchar(max)" />
+          <Property Name="impact" Type="nvarchar" MaxLength="250" />
+          <Property Name="confidence" Type="nvarchar" MaxLength="50" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="locations_affected" Type="int" />
+          <Property Name="IncidentDiscoveryMethodID" Type="int" />
+          <Property Name="control_failure" Type="nvarchar(max)" />
+          <Property Name="corrective_action" Type="nvarchar(max)" />
+          <Property Name="AlternativeID" Type="nvarchar" MaxLength="100" />
+          <Property Name="isEncrypted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="INCIDENTCATEGORY">
+          <Key>
+            <PropertyRef Name="IncidentCategoryID" />
+          </Key>
+          <Property Name="IncidentCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentCategoryGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="IncidentCategoryName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IncidentCategoryDescription" Type="nvarchar(max)" />
+          <Property Name="VocabularyID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="INCIDENTCATEGORYDESCRIPTION">
+          <Key>
+            <PropertyRef Name="IncidentCategoryDescriptionID" />
+          </Key>
+          <Property Name="IncidentCategoryDescriptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentCategoryID" Type="int" Nullable="false" />
+          <Property Name="IncidentCategoryGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="DescriptionID" Type="int" Nullable="false" />
+          <Property Name="DescriptionGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreationObjectID" Type="int" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="VocabularyID" Type="int" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="INCIDENTCATEGORYRACIMATRIX">
+          <Key>
+            <PropertyRef Name="IncidentCategoryRACIMatrixID" />
+          </Key>
+          <Property Name="IncidentCategoryRACIMatrixID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INCIDENTCOMPROMISE">
+          <Key>
+            <PropertyRef Name="IncidentCompromiseID" />
+          </Key>
+          <Property Name="IncidentCompromiseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentCompromiseGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="SecurityCompromise" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VocabularyID" Type="int" />
+          <Property Name="documentation" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreationObjectID" Type="int" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="INCIDENTDISCOVERYMETHOD">
+          <Key>
+            <PropertyRef Name="IncidentDiscoveryMethodID" />
+          </Key>
+          <Property Name="IncidentDiscoveryMethodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiscoveryMethodID" Type="int" />
+          <Property Name="IncidentDiscoveryMethodName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IncidentDiscoveryMethodDescription" Type="nvarchar(max)" />
+          <Property Name="VocabularyID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="INCIDENTEFFECT">
+          <Key>
+            <PropertyRef Name="IncidentEffectID" />
+          </Key>
+          <Property Name="IncidentEffectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentEffectGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="PossibleEffect" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IncidentEffectDescription" Type="nvarchar(max)" />
+          <Property Name="VocabularyID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreationObjectID" Type="int" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="INCIDENTFORASSET">
+          <Key>
+            <PropertyRef Name="AssetIncidentID" />
+          </Key>
+          <Property Name="AssetIncidentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetIncidentGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="AssetID" Type="int" Nullable="false" />
+          <Property Name="AssetGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="AssetIncidentRelationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetIncidentDescription" Type="nvarchar(max)" />
+          <Property Name="IncidentID" Type="int" Nullable="false" />
+          <Property Name="IncidentGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreationObjectID" Type="int" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="isEncrypted" Type="bit" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="VocabularyID" Type="int" />
+        </EntityType>
+        <EntityType Name="INCIDENTFORINCIDENT">
+          <Key>
+            <PropertyRef Name="IncidentRefID" />
+            <PropertyRef Name="IncidentSubjectID" />
+          </Key>
+          <Property Name="IncidentRefID" Type="int" Nullable="false" />
+          <Property Name="relationshiptype" Type="nvarchar" MaxLength="50" />
+          <Property Name="relationshipscope" Type="nvarchar" MaxLength="50" />
+          <Property Name="IncidentSubjectID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="INCIDENTFORPERSON">
+          <Key>
+            <PropertyRef Name="IncidentID" />
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="IncidentID" Type="int" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="relationshiptype" Type="nvarchar" MaxLength="50" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="INCIDENTFORTHREATCAMPAIGN">
+          <Key>
+            <PropertyRef Name="IncidentID" />
+            <PropertyRef Name="CampaignID" />
+          </Key>
+          <Property Name="IncidentID" Type="int" Nullable="false" />
+          <Property Name="CampaignID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INCIDENTID">
+          <Key>
+            <PropertyRef Name="IncidentIDID" />
+          </Key>
+          <Property Name="IncidentIDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="instance" Type="nvarchar" MaxLength="50" />
+          <Property Name="restriction" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACT">
+          <Key>
+            <PropertyRef Name="IncidentImpactID" />
+          </Key>
+          <Property Name="IncidentImpactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentID" Type="int" Nullable="false" />
+          <Property Name="IncidentImpactRatingID" Type="int" />
+          <Property Name="IncidentImpactLossVarietyID" Type="int" />
+          <Property Name="IncidentImpactLossRatingID" Type="int" />
+          <Property Name="overall_amount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="overall_min_amount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="overall_max_amount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="iso_currency_code" Type="nvarchar" MaxLength="3" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="IncidentImpactAvailabilityVarietyID" Type="int" />
+          <Property Name="IncidentImpactAvailabilityDurationLossID" Type="int" />
+          <Property Name="IncidentImpactIntegrityVarietyID" Type="int" />
+          <Property Name="IncidentImpactConfidentialityStateID" Type="int" />
+          <Property Name="IncidentImpactConfidentialityVarietyID" Type="int" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTAVAILABILITYLOSSDURATION">
+          <Key>
+            <PropertyRef Name="IncidentImpactAvailabilityLossDurationID" />
+          </Key>
+          <Property Name="IncidentImpactAvailabilityLossDurationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LossDuration" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LossDurationDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="VocabularyID" Type="int" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTAVAILABILITYVARIETY">
+          <Key>
+            <PropertyRef Name="IncidentImpactAvailabilityVarietyID" />
+          </Key>
+          <Property Name="IncidentImpactAvailabilityVarietyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentImpactAvailabilityVarietyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IncidentImpactAvailabilityVarietyDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTCONFIDENTIALITYSTATE">
+          <Key>
+            <PropertyRef Name="IncidentImpactConfidentialityStateID" />
+          </Key>
+          <Property Name="IncidentImpactConfidentialityStateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentImpactConfidentialityStateName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IncidentImpactConfidentialityStateDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTCONFIDENTIALITYVARIETY">
+          <Key>
+            <PropertyRef Name="IncidentImpactConfidentialityVarietyID" />
+          </Key>
+          <Property Name="IncidentImpactConfidentialityVarietyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentImpactConfidentialityVarietyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IncidentImpactConfidentialityVarietyDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTINTEGRITYVARIETY">
+          <Key>
+            <PropertyRef Name="IncidentImpactIntegrityVarietyID" />
+          </Key>
+          <Property Name="IncidentImpactIntegrityVarietyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentImpactIntegrityVarietyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IncidentImpactIntegrityVarietyDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTLOSSPROPERTY">
+          <Key>
+            <PropertyRef Name="IncidentImpactLossPropertyID" />
+          </Key>
+          <Property Name="IncidentImpactLossPropertyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentImpactLossPropertyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="VocabularyID" Type="int" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTLOSSRATING">
+          <Key>
+            <PropertyRef Name="IncidentImpactLossRatingID" />
+          </Key>
+          <Property Name="IncidentImpactLossRatingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentImpactLossRatingName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IncidentImpactLossRatingDescription" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTLOSSVARIETY">
+          <Key>
+            <PropertyRef Name="IncidentImpactLossVarietyID" />
+          </Key>
+          <Property Name="IncidentImpactLossVarietyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentImpactLossVarietyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IncidentImpactLossVarietyDescription" Type="nvarchar(max)" />
+          <Property Name="VocabularyID" Type="int" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTRATING">
+          <Key>
+            <PropertyRef Name="IncidentImpactRatingID" />
+          </Key>
+          <Property Name="IncidentImpactRatingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentImpactRatingName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IncidentImpactRatingDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="INCIDENTINQUIRY">
+          <Key>
+            <PropertyRef Name="IncidentIQID" />
+          </Key>
+          <Property Name="IncidentIQID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentInquiryIntentID" Type="int" />
+          <Property Name="purpose" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="format" Type="nvarchar" MaxLength="50" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="lang" Type="nvarchar" MaxLength="50" />
+          <Property Name="restriction" Type="nvarchar" MaxLength="50" />
+          <Property Name="IODEFversion" Type="nvarchar" MaxLength="50" />
+          <Property Name="formatid" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="INCIDENTINQUIRYINTENT">
+          <Key>
+            <PropertyRef Name="IncidentInquiryIntentID" />
+          </Key>
+          <Property Name="IncidentInquiryIntentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageIntent" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PackageIntentDescription" Type="nvarchar(max)" />
+          <Property Name="VocabularyID" Type="int" />
+        </EntityType>
+        <EntityType Name="INCIDENTIOC">
+          <Key>
+            <PropertyRef Name="IncidentIOCID" />
+          </Key>
+          <Property Name="IncidentIOCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentID" Type="int" Nullable="false" />
+          <Property Name="comment" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="IncidentIOCTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INCIDENTIOCFORTHREATCAMPAIGN">
+          <Key>
+            <PropertyRef Name="IncidentIOCID" />
+            <PropertyRef Name="ThreatCampaignID" />
+          </Key>
+          <Property Name="IncidentIOCID" Type="int" Nullable="false" />
+          <Property Name="ThreatCampaignID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INCIDENTIOCTYPE">
+          <Key>
+            <PropertyRef Name="IncidentIOCTypeID" />
+          </Key>
+          <Property Name="IncidentIOCTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IndicatorTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IndicatorTypeDocumentaion" Type="nvarchar(max)" />
+          <Property Name="VocabularyID" Type="int" />
+        </EntityType>
+        <EntityType Name="INCIDENTIOCTYPEFORINDICATOR">
+          <Key>
+            <PropertyRef Name="IncidentIOCTypeID" />
+            <PropertyRef Name="IndicatorID" />
+          </Key>
+          <Property Name="IncidentIOCTypeID" Type="int" Nullable="false" />
+          <Property Name="IndicatorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INCIDENTREGISTRYHANDLE">
+          <Key>
+            <PropertyRef Name="IncidentRegistryHandleID" />
+          </Key>
+          <Property Name="IncidentRegistryHandleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="registry" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INCIDENTSTATUS">
+          <Key>
+            <PropertyRef Name="IncidentStatusID" />
+          </Key>
+          <Property Name="IncidentStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentStatusGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="IncidentStatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IncidentStatusDescription" Type="nvarchar(max)" />
+          <Property Name="VocabularyID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="INCIDENTTIMELINE">
+          <Key>
+            <PropertyRef Name="IncidentTimelineID" />
+          </Key>
+          <Property Name="IncidentTimelineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentID" Type="int" Nullable="false" />
+          <Property Name="investigationDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="incidentDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="TimetoCompromiseValue" Type="int" />
+          <Property Name="TimetoCompromiseUnit" Type="nvarchar" MaxLength="10" />
+          <Property Name="TimetoExfiltrationValue" Type="int" />
+          <Property Name="TimetoExfiltrationUnit" Type="nvarchar" MaxLength="10" />
+          <Property Name="TimetoDiscoveryValue" Type="int" />
+          <Property Name="TimetoDiscoveryUnit" Type="nvarchar" MaxLength="10" />
+          <Property Name="TimetoContainmentValue" Type="int" />
+          <Property Name="TimetoContainmentUnit" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="INCIDENTTIMELINEUNIT">
+          <Key>
+            <PropertyRef Name="IncidentTimelineUnitID" />
+          </Key>
+          <Property Name="IncidentTimelineUnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeUnit" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="VocabularyID" Type="int" />
+        </EntityType>
+        <Association Name="FK_INCIDENTCATEGORYDESCRIPTION_INCIDENTCATEGORY">
+          <End Role="INCIDENTCATEGORY" Type="Self.INCIDENTCATEGORY" Multiplicity="1" />
+          <End Role="INCIDENTCATEGORYDESCRIPTION" Type="Self.INCIDENTCATEGORYDESCRIPTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENTCATEGORY">
+              <PropertyRef Name="IncidentCategoryID" />
+            </Principal>
+            <Dependent Role="INCIDENTCATEGORYDESCRIPTION">
+              <PropertyRef Name="IncidentCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTFORASSET_INCIDENT">
+          <End Role="INCIDENT" Type="Self.INCIDENT" Multiplicity="1" />
+          <End Role="INCIDENTFORASSET" Type="Self.INCIDENTFORASSET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENT">
+              <PropertyRef Name="IncidentID" />
+            </Principal>
+            <Dependent Role="INCIDENTFORASSET">
+              <PropertyRef Name="IncidentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTFORINCIDENT_INCIDENTREF">
+          <End Role="INCIDENT" Type="Self.INCIDENT" Multiplicity="1" />
+          <End Role="INCIDENTFORINCIDENT" Type="Self.INCIDENTFORINCIDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENT">
+              <PropertyRef Name="IncidentID" />
+            </Principal>
+            <Dependent Role="INCIDENTFORINCIDENT">
+              <PropertyRef Name="IncidentRefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTFORINCIDENT_INCIDENTSUBJECT">
+          <End Role="INCIDENT" Type="Self.INCIDENT" Multiplicity="1" />
+          <End Role="INCIDENTFORINCIDENT" Type="Self.INCIDENTFORINCIDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENT">
+              <PropertyRef Name="IncidentID" />
+            </Principal>
+            <Dependent Role="INCIDENTFORINCIDENT">
+              <PropertyRef Name="IncidentSubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTFORTHREATCAMPAIGN_INCIDENT">
+          <End Role="INCIDENT" Type="Self.INCIDENT" Multiplicity="1" />
+          <End Role="INCIDENTFORTHREATCAMPAIGN" Type="Self.INCIDENTFORTHREATCAMPAIGN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENT">
+              <PropertyRef Name="IncidentID" />
+            </Principal>
+            <Dependent Role="INCIDENTFORTHREATCAMPAIGN">
+              <PropertyRef Name="IncidentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTIOC_INCIDENT">
+          <End Role="INCIDENT" Type="Self.INCIDENT" Multiplicity="1" />
+          <End Role="INCIDENTIOC" Type="Self.INCIDENTIOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENT">
+              <PropertyRef Name="IncidentID" />
+            </Principal>
+            <Dependent Role="INCIDENTIOC">
+              <PropertyRef Name="IncidentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTIOCFORTHREATCAMPAIGN_INCIDENTIOC">
+          <End Role="INCIDENTIOC" Type="Self.INCIDENTIOC" Multiplicity="1" />
+          <End Role="INCIDENTIOCFORTHREATCAMPAIGN" Type="Self.INCIDENTIOCFORTHREATCAMPAIGN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENTIOC">
+              <PropertyRef Name="IncidentIOCID" />
+            </Principal>
+            <Dependent Role="INCIDENTIOCFORTHREATCAMPAIGN">
+              <PropertyRef Name="IncidentIOCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTIOCTYPEFORINDICATOR_INCIDENTIOCTYPE">
+          <End Role="INCIDENTIOCTYPE" Type="Self.INCIDENTIOCTYPE" Multiplicity="1" />
+          <End Role="INCIDENTIOCTYPEFORINDICATOR" Type="Self.INCIDENTIOCTYPEFORINDICATOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENTIOCTYPE">
+              <PropertyRef Name="IncidentIOCTypeID" />
+            </Principal>
+            <Dependent Role="INCIDENTIOCTYPEFORINDICATOR">
+              <PropertyRef Name="IncidentIOCTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTTIMELINE_INCIDENT">
+          <End Role="INCIDENT" Type="Self.INCIDENT" Multiplicity="1" />
+          <End Role="INCIDENTTIMELINE" Type="Self.INCIDENTTIMELINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENT">
+              <PropertyRef Name="IncidentID" />
+            </Principal>
+            <Dependent Role="INCIDENTTIMELINE">
+              <PropertyRef Name="IncidentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="XINCIDENTModelStoreContainer">
+          <EntitySet Name="INCIDENT" EntityType="Self.INCIDENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTCATEGORY" EntityType="Self.INCIDENTCATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTCATEGORYDESCRIPTION" EntityType="Self.INCIDENTCATEGORYDESCRIPTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTCATEGORYRACIMATRIX" EntityType="Self.INCIDENTCATEGORYRACIMATRIX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTCOMPROMISE" EntityType="Self.INCIDENTCOMPROMISE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTDISCOVERYMETHOD" EntityType="Self.INCIDENTDISCOVERYMETHOD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTEFFECT" EntityType="Self.INCIDENTEFFECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTFORASSET" EntityType="Self.INCIDENTFORASSET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTFORINCIDENT" EntityType="Self.INCIDENTFORINCIDENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTFORPERSON" EntityType="Self.INCIDENTFORPERSON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTFORTHREATCAMPAIGN" EntityType="Self.INCIDENTFORTHREATCAMPAIGN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTID" EntityType="Self.INCIDENTID" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIMPACT" EntityType="Self.INCIDENTIMPACT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIMPACTAVAILABILITYLOSSDURATION" EntityType="Self.INCIDENTIMPACTAVAILABILITYLOSSDURATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIMPACTAVAILABILITYVARIETY" EntityType="Self.INCIDENTIMPACTAVAILABILITYVARIETY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIMPACTCONFIDENTIALITYSTATE" EntityType="Self.INCIDENTIMPACTCONFIDENTIALITYSTATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIMPACTCONFIDENTIALITYVARIETY" EntityType="Self.INCIDENTIMPACTCONFIDENTIALITYVARIETY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIMPACTINTEGRITYVARIETY" EntityType="Self.INCIDENTIMPACTINTEGRITYVARIETY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIMPACTLOSSPROPERTY" EntityType="Self.INCIDENTIMPACTLOSSPROPERTY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIMPACTLOSSRATING" EntityType="Self.INCIDENTIMPACTLOSSRATING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIMPACTLOSSVARIETY" EntityType="Self.INCIDENTIMPACTLOSSVARIETY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIMPACTRATING" EntityType="Self.INCIDENTIMPACTRATING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTINQUIRY" EntityType="Self.INCIDENTINQUIRY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTINQUIRYINTENT" EntityType="Self.INCIDENTINQUIRYINTENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIOC" EntityType="Self.INCIDENTIOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIOCFORTHREATCAMPAIGN" EntityType="Self.INCIDENTIOCFORTHREATCAMPAIGN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIOCTYPE" EntityType="Self.INCIDENTIOCTYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTIOCTYPEFORINDICATOR" EntityType="Self.INCIDENTIOCTYPEFORINDICATOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTREGISTRYHANDLE" EntityType="Self.INCIDENTREGISTRYHANDLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTSTATUS" EntityType="Self.INCIDENTSTATUS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTTIMELINE" EntityType="Self.INCIDENTTIMELINE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INCIDENTTIMELINEUNIT" EntityType="Self.INCIDENTTIMELINEUNIT" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_INCIDENTCATEGORYDESCRIPTION_INCIDENTCATEGORY" Association="Self.FK_INCIDENTCATEGORYDESCRIPTION_INCIDENTCATEGORY">
+            <End Role="INCIDENTCATEGORY" EntitySet="INCIDENTCATEGORY" />
+            <End Role="INCIDENTCATEGORYDESCRIPTION" EntitySet="INCIDENTCATEGORYDESCRIPTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTFORASSET_INCIDENT" Association="Self.FK_INCIDENTFORASSET_INCIDENT">
+            <End Role="INCIDENT" EntitySet="INCIDENT" />
+            <End Role="INCIDENTFORASSET" EntitySet="INCIDENTFORASSET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTFORINCIDENT_INCIDENTREF" Association="Self.FK_INCIDENTFORINCIDENT_INCIDENTREF">
+            <End Role="INCIDENT" EntitySet="INCIDENT" />
+            <End Role="INCIDENTFORINCIDENT" EntitySet="INCIDENTFORINCIDENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTFORINCIDENT_INCIDENTSUBJECT" Association="Self.FK_INCIDENTFORINCIDENT_INCIDENTSUBJECT">
+            <End Role="INCIDENT" EntitySet="INCIDENT" />
+            <End Role="INCIDENTFORINCIDENT" EntitySet="INCIDENTFORINCIDENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTFORTHREATCAMPAIGN_INCIDENT" Association="Self.FK_INCIDENTFORTHREATCAMPAIGN_INCIDENT">
+            <End Role="INCIDENT" EntitySet="INCIDENT" />
+            <End Role="INCIDENTFORTHREATCAMPAIGN" EntitySet="INCIDENTFORTHREATCAMPAIGN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTIOC_INCIDENT" Association="Self.FK_INCIDENTIOC_INCIDENT">
+            <End Role="INCIDENT" EntitySet="INCIDENT" />
+            <End Role="INCIDENTIOC" EntitySet="INCIDENTIOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTIOCFORTHREATCAMPAIGN_INCIDENTIOC" Association="Self.FK_INCIDENTIOCFORTHREATCAMPAIGN_INCIDENTIOC">
+            <End Role="INCIDENTIOC" EntitySet="INCIDENTIOC" />
+            <End Role="INCIDENTIOCFORTHREATCAMPAIGN" EntitySet="INCIDENTIOCFORTHREATCAMPAIGN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTIOCTYPEFORINDICATOR_INCIDENTIOCTYPE" Association="Self.FK_INCIDENTIOCTYPEFORINDICATOR_INCIDENTIOCTYPE">
+            <End Role="INCIDENTIOCTYPE" EntitySet="INCIDENTIOCTYPE" />
+            <End Role="INCIDENTIOCTYPEFORINDICATOR" EntitySet="INCIDENTIOCTYPEFORINDICATOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTTIMELINE_INCIDENT" Association="Self.FK_INCIDENTTIMELINE_INCIDENT">
+            <End Role="INCIDENT" EntitySet="INCIDENT" />
+            <End Role="INCIDENTTIMELINE" EntitySet="INCIDENTTIMELINE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="XINCIDENTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="INCIDENT">
+          <Key>
+            <PropertyRef Name="IncidentID" />
+          </Key>
+          <Property Name="IncidentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="source_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IncidentCategoryID" Type="Int32" />
+          <Property Name="publication_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="datetime_reported" Type="DateTimeOffset" Precision="7" />
+          <Property Name="start_datetime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="end_datetime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="detect_datetime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="confirmed" Type="Boolean" />
+          <Property Name="security_compromise" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="exercise" Type="Boolean" />
+          <Property Name="ProjectID" Type="Int32" />
+          <Property Name="exercise_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="import_datetime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="IncidentStatusID" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="synopsis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="impact" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="confidence" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="locations_affected" Type="Int32" />
+          <Property Name="IncidentDiscoveryMethodID" Type="Int32" />
+          <Property Name="control_failure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="corrective_action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AlternativeID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="INCIDENTFORASSET" Relationship="Self.FK_INCIDENTFORASSET_INCIDENT" FromRole="INCIDENT" ToRole="INCIDENTFORASSET" />
+          <NavigationProperty Name="INCIDENTFORINCIDENT" Relationship="Self.FK_INCIDENTFORINCIDENT_INCIDENTREF" FromRole="INCIDENT" ToRole="INCIDENTFORINCIDENT" />
+          <NavigationProperty Name="INCIDENTFORINCIDENT1" Relationship="Self.FK_INCIDENTFORINCIDENT_INCIDENTSUBJECT" FromRole="INCIDENT" ToRole="INCIDENTFORINCIDENT" />
+          <NavigationProperty Name="INCIDENTFORTHREATCAMPAIGN" Relationship="Self.FK_INCIDENTFORTHREATCAMPAIGN_INCIDENT" FromRole="INCIDENT" ToRole="INCIDENTFORTHREATCAMPAIGN" />
+          <NavigationProperty Name="INCIDENTIOC" Relationship="Self.FK_INCIDENTIOC_INCIDENT" FromRole="INCIDENT" ToRole="INCIDENTIOC" />
+          <NavigationProperty Name="INCIDENTTIMELINE" Relationship="Self.FK_INCIDENTTIMELINE_INCIDENT" FromRole="INCIDENT" ToRole="INCIDENTTIMELINE" />
+        </EntityType>
+        <EntityType Name="INCIDENTCATEGORY">
+          <Key>
+            <PropertyRef Name="IncidentCategoryID" />
+          </Key>
+          <Property Name="IncidentCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentCategoryGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="IncidentCategoryName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IncidentCategoryDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <NavigationProperty Name="INCIDENTCATEGORYDESCRIPTION1" Relationship="Self.FK_INCIDENTCATEGORYDESCRIPTION_INCIDENTCATEGORY" FromRole="INCIDENTCATEGORY" ToRole="INCIDENTCATEGORYDESCRIPTION" />
+        </EntityType>
+        <EntityType Name="INCIDENTCATEGORYDESCRIPTION">
+          <Key>
+            <PropertyRef Name="IncidentCategoryDescriptionID" />
+          </Key>
+          <Property Name="IncidentCategoryDescriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="IncidentCategoryGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionID" Type="Int32" Nullable="false" />
+          <Property Name="DescriptionGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreationObjectID" Type="Int32" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <NavigationProperty Name="INCIDENTCATEGORY" Relationship="Self.FK_INCIDENTCATEGORYDESCRIPTION_INCIDENTCATEGORY" FromRole="INCIDENTCATEGORYDESCRIPTION" ToRole="INCIDENTCATEGORY" />
+        </EntityType>
+        <EntityType Name="INCIDENTCATEGORYRACIMATRIX">
+          <Key>
+            <PropertyRef Name="IncidentCategoryRACIMatrixID" />
+          </Key>
+          <Property Name="IncidentCategoryRACIMatrixID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="INCIDENTCOMPROMISE">
+          <Key>
+            <PropertyRef Name="IncidentCompromiseID" />
+          </Key>
+          <Property Name="IncidentCompromiseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentCompromiseGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityCompromise" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <Property Name="documentation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreationObjectID" Type="Int32" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="INCIDENTDISCOVERYMETHOD">
+          <Key>
+            <PropertyRef Name="IncidentDiscoveryMethodID" />
+          </Key>
+          <Property Name="IncidentDiscoveryMethodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiscoveryMethodID" Type="Int32" />
+          <Property Name="IncidentDiscoveryMethodName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IncidentDiscoveryMethodDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="INCIDENTEFFECT">
+          <Key>
+            <PropertyRef Name="IncidentEffectID" />
+          </Key>
+          <Property Name="IncidentEffectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentEffectGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PossibleEffect" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IncidentEffectDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreationObjectID" Type="Int32" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="INCIDENTFORASSET">
+          <Key>
+            <PropertyRef Name="AssetIncidentID" />
+          </Key>
+          <Property Name="AssetIncidentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetIncidentGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AssetID" Type="Int32" Nullable="false" />
+          <Property Name="AssetGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AssetIncidentRelationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetIncidentDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IncidentID" Type="Int32" Nullable="false" />
+          <Property Name="IncidentGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreationObjectID" Type="Int32" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <NavigationProperty Name="INCIDENT" Relationship="Self.FK_INCIDENTFORASSET_INCIDENT" FromRole="INCIDENTFORASSET" ToRole="INCIDENT" />
+        </EntityType>
+        <EntityType Name="INCIDENTFORINCIDENT">
+          <Key>
+            <PropertyRef Name="IncidentRefID" />
+            <PropertyRef Name="IncidentSubjectID" />
+          </Key>
+          <Property Name="IncidentRefID" Type="Int32" Nullable="false" />
+          <Property Name="relationshiptype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="relationshipscope" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IncidentSubjectID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="INCIDENT" Relationship="Self.FK_INCIDENTFORINCIDENT_INCIDENTREF" FromRole="INCIDENTFORINCIDENT" ToRole="INCIDENT" />
+          <NavigationProperty Name="INCIDENT1" Relationship="Self.FK_INCIDENTFORINCIDENT_INCIDENTSUBJECT" FromRole="INCIDENTFORINCIDENT" ToRole="INCIDENT" />
+        </EntityType>
+        <EntityType Name="INCIDENTFORPERSON">
+          <Key>
+            <PropertyRef Name="IncidentID" />
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="IncidentID" Type="Int32" Nullable="false" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="relationshiptype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="INCIDENTFORTHREATCAMPAIGN">
+          <Key>
+            <PropertyRef Name="IncidentID" />
+            <PropertyRef Name="CampaignID" />
+          </Key>
+          <Property Name="IncidentID" Type="Int32" Nullable="false" />
+          <Property Name="CampaignID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="INCIDENT" Relationship="Self.FK_INCIDENTFORTHREATCAMPAIGN_INCIDENT" FromRole="INCIDENTFORTHREATCAMPAIGN" ToRole="INCIDENT" />
+        </EntityType>
+        <EntityType Name="INCIDENTID">
+          <Key>
+            <PropertyRef Name="IncidentIDID" />
+          </Key>
+          <Property Name="IncidentIDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="instance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="restriction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACT">
+          <Key>
+            <PropertyRef Name="IncidentImpactID" />
+          </Key>
+          <Property Name="IncidentImpactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentID" Type="Int32" Nullable="false" />
+          <Property Name="IncidentImpactRatingID" Type="Int32" />
+          <Property Name="IncidentImpactLossVarietyID" Type="Int32" />
+          <Property Name="IncidentImpactLossRatingID" Type="Int32" />
+          <Property Name="overall_amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="overall_min_amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="overall_max_amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="iso_currency_code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="IncidentImpactAvailabilityVarietyID" Type="Int32" />
+          <Property Name="IncidentImpactAvailabilityDurationLossID" Type="Int32" />
+          <Property Name="IncidentImpactIntegrityVarietyID" Type="Int32" />
+          <Property Name="IncidentImpactConfidentialityStateID" Type="Int32" />
+          <Property Name="IncidentImpactConfidentialityVarietyID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTAVAILABILITYLOSSDURATION">
+          <Key>
+            <PropertyRef Name="IncidentImpactAvailabilityLossDurationID" />
+          </Key>
+          <Property Name="IncidentImpactAvailabilityLossDurationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LossDuration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LossDurationDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VocabularyID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTAVAILABILITYVARIETY">
+          <Key>
+            <PropertyRef Name="IncidentImpactAvailabilityVarietyID" />
+          </Key>
+          <Property Name="IncidentImpactAvailabilityVarietyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentImpactAvailabilityVarietyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IncidentImpactAvailabilityVarietyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTCONFIDENTIALITYSTATE">
+          <Key>
+            <PropertyRef Name="IncidentImpactConfidentialityStateID" />
+          </Key>
+          <Property Name="IncidentImpactConfidentialityStateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentImpactConfidentialityStateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IncidentImpactConfidentialityStateDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTCONFIDENTIALITYVARIETY">
+          <Key>
+            <PropertyRef Name="IncidentImpactConfidentialityVarietyID" />
+          </Key>
+          <Property Name="IncidentImpactConfidentialityVarietyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentImpactConfidentialityVarietyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IncidentImpactConfidentialityVarietyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTINTEGRITYVARIETY">
+          <Key>
+            <PropertyRef Name="IncidentImpactIntegrityVarietyID" />
+          </Key>
+          <Property Name="IncidentImpactIntegrityVarietyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentImpactIntegrityVarietyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IncidentImpactIntegrityVarietyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTLOSSPROPERTY">
+          <Key>
+            <PropertyRef Name="IncidentImpactLossPropertyID" />
+          </Key>
+          <Property Name="IncidentImpactLossPropertyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentImpactLossPropertyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VocabularyID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTLOSSRATING">
+          <Key>
+            <PropertyRef Name="IncidentImpactLossRatingID" />
+          </Key>
+          <Property Name="IncidentImpactLossRatingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentImpactLossRatingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IncidentImpactLossRatingDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTLOSSVARIETY">
+          <Key>
+            <PropertyRef Name="IncidentImpactLossVarietyID" />
+          </Key>
+          <Property Name="IncidentImpactLossVarietyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentImpactLossVarietyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IncidentImpactLossVarietyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VocabularyID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="INCIDENTIMPACTRATING">
+          <Key>
+            <PropertyRef Name="IncidentImpactRatingID" />
+          </Key>
+          <Property Name="IncidentImpactRatingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentImpactRatingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IncidentImpactRatingDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="INCIDENTINQUIRY">
+          <Key>
+            <PropertyRef Name="IncidentIQID" />
+          </Key>
+          <Property Name="IncidentIQID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentInquiryIntentID" Type="Int32" />
+          <Property Name="purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="format" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="lang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="restriction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IODEFversion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="formatid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="INCIDENTINQUIRYINTENT">
+          <Key>
+            <PropertyRef Name="IncidentInquiryIntentID" />
+          </Key>
+          <Property Name="IncidentInquiryIntentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageIntent" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PackageIntentDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VocabularyID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="INCIDENTIOC">
+          <Key>
+            <PropertyRef Name="IncidentIOCID" />
+          </Key>
+          <Property Name="IncidentIOCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentID" Type="Int32" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="IncidentIOCTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="INCIDENT" Relationship="Self.FK_INCIDENTIOC_INCIDENT" FromRole="INCIDENTIOC" ToRole="INCIDENT" />
+          <NavigationProperty Name="INCIDENTIOCFORTHREATCAMPAIGN" Relationship="Self.FK_INCIDENTIOCFORTHREATCAMPAIGN_INCIDENTIOC" FromRole="INCIDENTIOC" ToRole="INCIDENTIOCFORTHREATCAMPAIGN" />
+        </EntityType>
+        <EntityType Name="INCIDENTIOCFORTHREATCAMPAIGN">
+          <Key>
+            <PropertyRef Name="IncidentIOCID" />
+            <PropertyRef Name="ThreatCampaignID" />
+          </Key>
+          <Property Name="IncidentIOCID" Type="Int32" Nullable="false" />
+          <Property Name="ThreatCampaignID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="INCIDENTIOC" Relationship="Self.FK_INCIDENTIOCFORTHREATCAMPAIGN_INCIDENTIOC" FromRole="INCIDENTIOCFORTHREATCAMPAIGN" ToRole="INCIDENTIOC" />
+        </EntityType>
+        <EntityType Name="INCIDENTIOCTYPE">
+          <Key>
+            <PropertyRef Name="IncidentIOCTypeID" />
+          </Key>
+          <Property Name="IncidentIOCTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IndicatorTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IndicatorTypeDocumentaion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <NavigationProperty Name="INCIDENTIOCTYPEFORINDICATOR" Relationship="Self.FK_INCIDENTIOCTYPEFORINDICATOR_INCIDENTIOCTYPE" FromRole="INCIDENTIOCTYPE" ToRole="INCIDENTIOCTYPEFORINDICATOR" />
+        </EntityType>
+        <EntityType Name="INCIDENTIOCTYPEFORINDICATOR">
+          <Key>
+            <PropertyRef Name="IncidentIOCTypeID" />
+            <PropertyRef Name="IndicatorID" />
+          </Key>
+          <Property Name="IncidentIOCTypeID" Type="Int32" Nullable="false" />
+          <Property Name="IndicatorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="INCIDENTIOCTYPE" Relationship="Self.FK_INCIDENTIOCTYPEFORINDICATOR_INCIDENTIOCTYPE" FromRole="INCIDENTIOCTYPEFORINDICATOR" ToRole="INCIDENTIOCTYPE" />
+        </EntityType>
+        <EntityType Name="INCIDENTREGISTRYHANDLE">
+          <Key>
+            <PropertyRef Name="IncidentRegistryHandleID" />
+          </Key>
+          <Property Name="IncidentRegistryHandleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="registry" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INCIDENTSTATUS">
+          <Key>
+            <PropertyRef Name="IncidentStatusID" />
+          </Key>
+          <Property Name="IncidentStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentStatusGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IncidentStatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IncidentStatusDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="INCIDENTTIMELINE">
+          <Key>
+            <PropertyRef Name="IncidentTimelineID" />
+          </Key>
+          <Property Name="IncidentTimelineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentID" Type="Int32" Nullable="false" />
+          <Property Name="investigationDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="incidentDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="TimetoCompromiseValue" Type="Int32" />
+          <Property Name="TimetoCompromiseUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TimetoExfiltrationValue" Type="Int32" />
+          <Property Name="TimetoExfiltrationUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TimetoDiscoveryValue" Type="Int32" />
+          <Property Name="TimetoDiscoveryUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TimetoContainmentValue" Type="Int32" />
+          <Property Name="TimetoContainmentUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="INCIDENT" Relationship="Self.FK_INCIDENTTIMELINE_INCIDENT" FromRole="INCIDENTTIMELINE" ToRole="INCIDENT" />
+        </EntityType>
+        <EntityType Name="INCIDENTTIMELINEUNIT">
+          <Key>
+            <PropertyRef Name="IncidentTimelineUnitID" />
+          </Key>
+          <Property Name="IncidentTimelineUnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VocabularyID" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_INCIDENTFORASSET_INCIDENT">
+          <End Role="INCIDENT" Type="Self.INCIDENT" Multiplicity="1" />
+          <End Role="INCIDENTFORASSET" Type="Self.INCIDENTFORASSET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENT">
+              <PropertyRef Name="IncidentID" />
+            </Principal>
+            <Dependent Role="INCIDENTFORASSET">
+              <PropertyRef Name="IncidentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTFORINCIDENT_INCIDENTREF">
+          <End Role="INCIDENT" Type="Self.INCIDENT" Multiplicity="1" />
+          <End Role="INCIDENTFORINCIDENT" Type="Self.INCIDENTFORINCIDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENT">
+              <PropertyRef Name="IncidentID" />
+            </Principal>
+            <Dependent Role="INCIDENTFORINCIDENT">
+              <PropertyRef Name="IncidentRefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTFORINCIDENT_INCIDENTSUBJECT">
+          <End Role="INCIDENT" Type="Self.INCIDENT" Multiplicity="1" />
+          <End Role="INCIDENTFORINCIDENT" Type="Self.INCIDENTFORINCIDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENT">
+              <PropertyRef Name="IncidentID" />
+            </Principal>
+            <Dependent Role="INCIDENTFORINCIDENT">
+              <PropertyRef Name="IncidentSubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTFORTHREATCAMPAIGN_INCIDENT">
+          <End Role="INCIDENT" Type="Self.INCIDENT" Multiplicity="1" />
+          <End Role="INCIDENTFORTHREATCAMPAIGN" Type="Self.INCIDENTFORTHREATCAMPAIGN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENT">
+              <PropertyRef Name="IncidentID" />
+            </Principal>
+            <Dependent Role="INCIDENTFORTHREATCAMPAIGN">
+              <PropertyRef Name="IncidentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTIOC_INCIDENT">
+          <End Role="INCIDENT" Type="Self.INCIDENT" Multiplicity="1" />
+          <End Role="INCIDENTIOC" Type="Self.INCIDENTIOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENT">
+              <PropertyRef Name="IncidentID" />
+            </Principal>
+            <Dependent Role="INCIDENTIOC">
+              <PropertyRef Name="IncidentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTTIMELINE_INCIDENT">
+          <End Role="INCIDENT" Type="Self.INCIDENT" Multiplicity="1" />
+          <End Role="INCIDENTTIMELINE" Type="Self.INCIDENTTIMELINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENT">
+              <PropertyRef Name="IncidentID" />
+            </Principal>
+            <Dependent Role="INCIDENTTIMELINE">
+              <PropertyRef Name="IncidentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTCATEGORYDESCRIPTION_INCIDENTCATEGORY">
+          <End Role="INCIDENTCATEGORY" Type="Self.INCIDENTCATEGORY" Multiplicity="1" />
+          <End Role="INCIDENTCATEGORYDESCRIPTION" Type="Self.INCIDENTCATEGORYDESCRIPTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENTCATEGORY">
+              <PropertyRef Name="IncidentCategoryID" />
+            </Principal>
+            <Dependent Role="INCIDENTCATEGORYDESCRIPTION">
+              <PropertyRef Name="IncidentCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTIOCFORTHREATCAMPAIGN_INCIDENTIOC">
+          <End Role="INCIDENTIOC" Type="Self.INCIDENTIOC" Multiplicity="1" />
+          <End Role="INCIDENTIOCFORTHREATCAMPAIGN" Type="Self.INCIDENTIOCFORTHREATCAMPAIGN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENTIOC">
+              <PropertyRef Name="IncidentIOCID" />
+            </Principal>
+            <Dependent Role="INCIDENTIOCFORTHREATCAMPAIGN">
+              <PropertyRef Name="IncidentIOCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INCIDENTIOCTYPEFORINDICATOR_INCIDENTIOCTYPE">
+          <End Role="INCIDENTIOCTYPE" Type="Self.INCIDENTIOCTYPE" Multiplicity="1" />
+          <End Role="INCIDENTIOCTYPEFORINDICATOR" Type="Self.INCIDENTIOCTYPEFORINDICATOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INCIDENTIOCTYPE">
+              <PropertyRef Name="IncidentIOCTypeID" />
+            </Principal>
+            <Dependent Role="INCIDENTIOCTYPEFORINDICATOR">
+              <PropertyRef Name="IncidentIOCTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="XINCIDENTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="INCIDENT" EntityType="Self.INCIDENT" />
+          <EntitySet Name="INCIDENTCATEGORY" EntityType="Self.INCIDENTCATEGORY" />
+          <EntitySet Name="INCIDENTCATEGORYDESCRIPTION" EntityType="Self.INCIDENTCATEGORYDESCRIPTION" />
+          <EntitySet Name="INCIDENTCATEGORYRACIMATRIX" EntityType="Self.INCIDENTCATEGORYRACIMATRIX" />
+          <EntitySet Name="INCIDENTCOMPROMISE" EntityType="Self.INCIDENTCOMPROMISE" />
+          <EntitySet Name="INCIDENTDISCOVERYMETHOD" EntityType="Self.INCIDENTDISCOVERYMETHOD" />
+          <EntitySet Name="INCIDENTEFFECT" EntityType="Self.INCIDENTEFFECT" />
+          <EntitySet Name="INCIDENTFORASSET" EntityType="Self.INCIDENTFORASSET" />
+          <EntitySet Name="INCIDENTFORINCIDENT" EntityType="Self.INCIDENTFORINCIDENT" />
+          <EntitySet Name="INCIDENTFORPERSON" EntityType="Self.INCIDENTFORPERSON" />
+          <EntitySet Name="INCIDENTFORTHREATCAMPAIGN" EntityType="Self.INCIDENTFORTHREATCAMPAIGN" />
+          <EntitySet Name="INCIDENTID" EntityType="Self.INCIDENTID" />
+          <EntitySet Name="INCIDENTIMPACT" EntityType="Self.INCIDENTIMPACT" />
+          <EntitySet Name="INCIDENTIMPACTAVAILABILITYLOSSDURATION" EntityType="Self.INCIDENTIMPACTAVAILABILITYLOSSDURATION" />
+          <EntitySet Name="INCIDENTIMPACTAVAILABILITYVARIETY" EntityType="Self.INCIDENTIMPACTAVAILABILITYVARIETY" />
+          <EntitySet Name="INCIDENTIMPACTCONFIDENTIALITYSTATE" EntityType="Self.INCIDENTIMPACTCONFIDENTIALITYSTATE" />
+          <EntitySet Name="INCIDENTIMPACTCONFIDENTIALITYVARIETY" EntityType="Self.INCIDENTIMPACTCONFIDENTIALITYVARIETY" />
+          <EntitySet Name="INCIDENTIMPACTINTEGRITYVARIETY" EntityType="Self.INCIDENTIMPACTINTEGRITYVARIETY" />
+          <EntitySet Name="INCIDENTIMPACTLOSSPROPERTY" EntityType="Self.INCIDENTIMPACTLOSSPROPERTY" />
+          <EntitySet Name="INCIDENTIMPACTLOSSRATING" EntityType="Self.INCIDENTIMPACTLOSSRATING" />
+          <EntitySet Name="INCIDENTIMPACTLOSSVARIETY" EntityType="Self.INCIDENTIMPACTLOSSVARIETY" />
+          <EntitySet Name="INCIDENTIMPACTRATING" EntityType="Self.INCIDENTIMPACTRATING" />
+          <EntitySet Name="INCIDENTINQUIRY" EntityType="Self.INCIDENTINQUIRY" />
+          <EntitySet Name="INCIDENTINQUIRYINTENT" EntityType="Self.INCIDENTINQUIRYINTENT" />
+          <EntitySet Name="INCIDENTIOC" EntityType="Self.INCIDENTIOC" />
+          <EntitySet Name="INCIDENTIOCFORTHREATCAMPAIGN" EntityType="Self.INCIDENTIOCFORTHREATCAMPAIGN" />
+          <EntitySet Name="INCIDENTIOCTYPE" EntityType="Self.INCIDENTIOCTYPE" />
+          <EntitySet Name="INCIDENTIOCTYPEFORINDICATOR" EntityType="Self.INCIDENTIOCTYPEFORINDICATOR" />
+          <EntitySet Name="INCIDENTREGISTRYHANDLE" EntityType="Self.INCIDENTREGISTRYHANDLE" />
+          <EntitySet Name="INCIDENTSTATUS" EntityType="Self.INCIDENTSTATUS" />
+          <EntitySet Name="INCIDENTTIMELINE" EntityType="Self.INCIDENTTIMELINE" />
+          <EntitySet Name="INCIDENTTIMELINEUNIT" EntityType="Self.INCIDENTTIMELINEUNIT" />
+          <AssociationSet Name="FK_INCIDENTFORASSET_INCIDENT" Association="Self.FK_INCIDENTFORASSET_INCIDENT">
+            <End Role="INCIDENT" EntitySet="INCIDENT" />
+            <End Role="INCIDENTFORASSET" EntitySet="INCIDENTFORASSET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTFORINCIDENT_INCIDENTREF" Association="Self.FK_INCIDENTFORINCIDENT_INCIDENTREF">
+            <End Role="INCIDENT" EntitySet="INCIDENT" />
+            <End Role="INCIDENTFORINCIDENT" EntitySet="INCIDENTFORINCIDENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTFORINCIDENT_INCIDENTSUBJECT" Association="Self.FK_INCIDENTFORINCIDENT_INCIDENTSUBJECT">
+            <End Role="INCIDENT" EntitySet="INCIDENT" />
+            <End Role="INCIDENTFORINCIDENT" EntitySet="INCIDENTFORINCIDENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTFORTHREATCAMPAIGN_INCIDENT" Association="Self.FK_INCIDENTFORTHREATCAMPAIGN_INCIDENT">
+            <End Role="INCIDENT" EntitySet="INCIDENT" />
+            <End Role="INCIDENTFORTHREATCAMPAIGN" EntitySet="INCIDENTFORTHREATCAMPAIGN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTIOC_INCIDENT" Association="Self.FK_INCIDENTIOC_INCIDENT">
+            <End Role="INCIDENT" EntitySet="INCIDENT" />
+            <End Role="INCIDENTIOC" EntitySet="INCIDENTIOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTTIMELINE_INCIDENT" Association="Self.FK_INCIDENTTIMELINE_INCIDENT">
+            <End Role="INCIDENT" EntitySet="INCIDENT" />
+            <End Role="INCIDENTTIMELINE" EntitySet="INCIDENTTIMELINE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTCATEGORYDESCRIPTION_INCIDENTCATEGORY" Association="Self.FK_INCIDENTCATEGORYDESCRIPTION_INCIDENTCATEGORY">
+            <End Role="INCIDENTCATEGORY" EntitySet="INCIDENTCATEGORY" />
+            <End Role="INCIDENTCATEGORYDESCRIPTION" EntitySet="INCIDENTCATEGORYDESCRIPTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTIOCFORTHREATCAMPAIGN_INCIDENTIOC" Association="Self.FK_INCIDENTIOCFORTHREATCAMPAIGN_INCIDENTIOC">
+            <End Role="INCIDENTIOC" EntitySet="INCIDENTIOC" />
+            <End Role="INCIDENTIOCFORTHREATCAMPAIGN" EntitySet="INCIDENTIOCFORTHREATCAMPAIGN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INCIDENTIOCTYPEFORINDICATOR_INCIDENTIOCTYPE" Association="Self.FK_INCIDENTIOCTYPEFORINDICATOR_INCIDENTIOCTYPE">
+            <End Role="INCIDENTIOCTYPE" EntitySet="INCIDENTIOCTYPE" />
+            <End Role="INCIDENTIOCTYPEFORINDICATOR" EntitySet="INCIDENTIOCTYPEFORINDICATOR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="XINCIDENTModelStoreContainer" CdmEntityContainer="XINCIDENTEntities">
+          <EntitySetMapping Name="INCIDENT">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENT">
+              <MappingFragment StoreEntitySet="INCIDENT">
+                <ScalarProperty Name="IncidentID" ColumnName="IncidentID" />
+                <ScalarProperty Name="source_id" ColumnName="source_id" />
+                <ScalarProperty Name="IncidentCategoryID" ColumnName="IncidentCategoryID" />
+                <ScalarProperty Name="publication_status" ColumnName="publication_status" />
+                <ScalarProperty Name="datetime_reported" ColumnName="datetime_reported" />
+                <ScalarProperty Name="start_datetime" ColumnName="start_datetime" />
+                <ScalarProperty Name="end_datetime" ColumnName="end_datetime" />
+                <ScalarProperty Name="detect_datetime" ColumnName="detect_datetime" />
+                <ScalarProperty Name="confirmed" ColumnName="confirmed" />
+                <ScalarProperty Name="security_compromise" ColumnName="security_compromise" />
+                <ScalarProperty Name="exercise" ColumnName="exercise" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="exercise_name" ColumnName="exercise_name" />
+                <ScalarProperty Name="import_datetime" ColumnName="import_datetime" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="IncidentStatusID" ColumnName="IncidentStatusID" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="status_description" ColumnName="status_description" />
+                <ScalarProperty Name="synopsis" ColumnName="synopsis" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="impact" ColumnName="impact" />
+                <ScalarProperty Name="confidence" ColumnName="confidence" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="locations_affected" ColumnName="locations_affected" />
+                <ScalarProperty Name="IncidentDiscoveryMethodID" ColumnName="IncidentDiscoveryMethodID" />
+                <ScalarProperty Name="control_failure" ColumnName="control_failure" />
+                <ScalarProperty Name="corrective_action" ColumnName="corrective_action" />
+                <ScalarProperty Name="AlternativeID" ColumnName="AlternativeID" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTCATEGORY">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTCATEGORY">
+              <MappingFragment StoreEntitySet="INCIDENTCATEGORY">
+                <ScalarProperty Name="IncidentCategoryID" ColumnName="IncidentCategoryID" />
+                <ScalarProperty Name="IncidentCategoryGUID" ColumnName="IncidentCategoryGUID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="IncidentCategoryName" ColumnName="IncidentCategoryName" />
+                <ScalarProperty Name="IncidentCategoryDescription" ColumnName="IncidentCategoryDescription" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTCATEGORYDESCRIPTION">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTCATEGORYDESCRIPTION">
+              <MappingFragment StoreEntitySet="INCIDENTCATEGORYDESCRIPTION">
+                <ScalarProperty Name="IncidentCategoryDescriptionID" ColumnName="IncidentCategoryDescriptionID" />
+                <ScalarProperty Name="IncidentCategoryID" ColumnName="IncidentCategoryID" />
+                <ScalarProperty Name="IncidentCategoryGUID" ColumnName="IncidentCategoryGUID" />
+                <ScalarProperty Name="DescriptionID" ColumnName="DescriptionID" />
+                <ScalarProperty Name="DescriptionGUID" ColumnName="DescriptionGUID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="CreationObjectID" ColumnName="CreationObjectID" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTCATEGORYRACIMATRIX">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTCATEGORYRACIMATRIX">
+              <MappingFragment StoreEntitySet="INCIDENTCATEGORYRACIMATRIX">
+                <ScalarProperty Name="IncidentCategoryRACIMatrixID" ColumnName="IncidentCategoryRACIMatrixID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTCOMPROMISE">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTCOMPROMISE">
+              <MappingFragment StoreEntitySet="INCIDENTCOMPROMISE">
+                <ScalarProperty Name="IncidentCompromiseID" ColumnName="IncidentCompromiseID" />
+                <ScalarProperty Name="IncidentCompromiseGUID" ColumnName="IncidentCompromiseGUID" />
+                <ScalarProperty Name="SecurityCompromise" ColumnName="SecurityCompromise" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+                <ScalarProperty Name="documentation" ColumnName="documentation" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreationObjectID" ColumnName="CreationObjectID" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTDISCOVERYMETHOD">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTDISCOVERYMETHOD">
+              <MappingFragment StoreEntitySet="INCIDENTDISCOVERYMETHOD">
+                <ScalarProperty Name="IncidentDiscoveryMethodID" ColumnName="IncidentDiscoveryMethodID" />
+                <ScalarProperty Name="DiscoveryMethodID" ColumnName="DiscoveryMethodID" />
+                <ScalarProperty Name="IncidentDiscoveryMethodName" ColumnName="IncidentDiscoveryMethodName" />
+                <ScalarProperty Name="IncidentDiscoveryMethodDescription" ColumnName="IncidentDiscoveryMethodDescription" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTEFFECT">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTEFFECT">
+              <MappingFragment StoreEntitySet="INCIDENTEFFECT">
+                <ScalarProperty Name="IncidentEffectID" ColumnName="IncidentEffectID" />
+                <ScalarProperty Name="IncidentEffectGUID" ColumnName="IncidentEffectGUID" />
+                <ScalarProperty Name="PossibleEffect" ColumnName="PossibleEffect" />
+                <ScalarProperty Name="IncidentEffectDescription" ColumnName="IncidentEffectDescription" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreationObjectID" ColumnName="CreationObjectID" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTFORASSET">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTFORASSET">
+              <MappingFragment StoreEntitySet="INCIDENTFORASSET">
+                <ScalarProperty Name="AssetIncidentID" ColumnName="AssetIncidentID" />
+                <ScalarProperty Name="AssetIncidentGUID" ColumnName="AssetIncidentGUID" />
+                <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+                <ScalarProperty Name="AssetGUID" ColumnName="AssetGUID" />
+                <ScalarProperty Name="AssetIncidentRelationship" ColumnName="AssetIncidentRelationship" />
+                <ScalarProperty Name="AssetIncidentDescription" ColumnName="AssetIncidentDescription" />
+                <ScalarProperty Name="IncidentID" ColumnName="IncidentID" />
+                <ScalarProperty Name="IncidentGUID" ColumnName="IncidentGUID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreationObjectID" ColumnName="CreationObjectID" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTFORINCIDENT">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTFORINCIDENT">
+              <MappingFragment StoreEntitySet="INCIDENTFORINCIDENT">
+                <ScalarProperty Name="IncidentRefID" ColumnName="IncidentRefID" />
+                <ScalarProperty Name="relationshiptype" ColumnName="relationshiptype" />
+                <ScalarProperty Name="relationshipscope" ColumnName="relationshipscope" />
+                <ScalarProperty Name="IncidentSubjectID" ColumnName="IncidentSubjectID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTFORPERSON">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTFORPERSON">
+              <MappingFragment StoreEntitySet="INCIDENTFORPERSON">
+                <ScalarProperty Name="IncidentID" ColumnName="IncidentID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="relationshiptype" ColumnName="relationshiptype" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTFORTHREATCAMPAIGN">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTFORTHREATCAMPAIGN">
+              <MappingFragment StoreEntitySet="INCIDENTFORTHREATCAMPAIGN">
+                <ScalarProperty Name="IncidentID" ColumnName="IncidentID" />
+                <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTID">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTID">
+              <MappingFragment StoreEntitySet="INCIDENTID">
+                <ScalarProperty Name="IncidentIDID" ColumnName="IncidentIDID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="instance" ColumnName="instance" />
+                <ScalarProperty Name="restriction" ColumnName="restriction" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIMPACT">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIMPACT">
+              <MappingFragment StoreEntitySet="INCIDENTIMPACT">
+                <ScalarProperty Name="IncidentImpactID" ColumnName="IncidentImpactID" />
+                <ScalarProperty Name="IncidentID" ColumnName="IncidentID" />
+                <ScalarProperty Name="IncidentImpactRatingID" ColumnName="IncidentImpactRatingID" />
+                <ScalarProperty Name="IncidentImpactLossVarietyID" ColumnName="IncidentImpactLossVarietyID" />
+                <ScalarProperty Name="IncidentImpactLossRatingID" ColumnName="IncidentImpactLossRatingID" />
+                <ScalarProperty Name="overall_amount" ColumnName="overall_amount" />
+                <ScalarProperty Name="overall_min_amount" ColumnName="overall_min_amount" />
+                <ScalarProperty Name="overall_max_amount" ColumnName="overall_max_amount" />
+                <ScalarProperty Name="iso_currency_code" ColumnName="iso_currency_code" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="IncidentImpactAvailabilityVarietyID" ColumnName="IncidentImpactAvailabilityVarietyID" />
+                <ScalarProperty Name="IncidentImpactAvailabilityDurationLossID" ColumnName="IncidentImpactAvailabilityDurationLossID" />
+                <ScalarProperty Name="IncidentImpactIntegrityVarietyID" ColumnName="IncidentImpactIntegrityVarietyID" />
+                <ScalarProperty Name="IncidentImpactConfidentialityStateID" ColumnName="IncidentImpactConfidentialityStateID" />
+                <ScalarProperty Name="IncidentImpactConfidentialityVarietyID" ColumnName="IncidentImpactConfidentialityVarietyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIMPACTAVAILABILITYLOSSDURATION">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIMPACTAVAILABILITYLOSSDURATION">
+              <MappingFragment StoreEntitySet="INCIDENTIMPACTAVAILABILITYLOSSDURATION">
+                <ScalarProperty Name="IncidentImpactAvailabilityLossDurationID" ColumnName="IncidentImpactAvailabilityLossDurationID" />
+                <ScalarProperty Name="LossDuration" ColumnName="LossDuration" />
+                <ScalarProperty Name="LossDurationDescription" ColumnName="LossDurationDescription" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIMPACTAVAILABILITYVARIETY">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIMPACTAVAILABILITYVARIETY">
+              <MappingFragment StoreEntitySet="INCIDENTIMPACTAVAILABILITYVARIETY">
+                <ScalarProperty Name="IncidentImpactAvailabilityVarietyID" ColumnName="IncidentImpactAvailabilityVarietyID" />
+                <ScalarProperty Name="IncidentImpactAvailabilityVarietyName" ColumnName="IncidentImpactAvailabilityVarietyName" />
+                <ScalarProperty Name="IncidentImpactAvailabilityVarietyDescription" ColumnName="IncidentImpactAvailabilityVarietyDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIMPACTCONFIDENTIALITYSTATE">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIMPACTCONFIDENTIALITYSTATE">
+              <MappingFragment StoreEntitySet="INCIDENTIMPACTCONFIDENTIALITYSTATE">
+                <ScalarProperty Name="IncidentImpactConfidentialityStateID" ColumnName="IncidentImpactConfidentialityStateID" />
+                <ScalarProperty Name="IncidentImpactConfidentialityStateName" ColumnName="IncidentImpactConfidentialityStateName" />
+                <ScalarProperty Name="IncidentImpactConfidentialityStateDescription" ColumnName="IncidentImpactConfidentialityStateDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIMPACTCONFIDENTIALITYVARIETY">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIMPACTCONFIDENTIALITYVARIETY">
+              <MappingFragment StoreEntitySet="INCIDENTIMPACTCONFIDENTIALITYVARIETY">
+                <ScalarProperty Name="IncidentImpactConfidentialityVarietyID" ColumnName="IncidentImpactConfidentialityVarietyID" />
+                <ScalarProperty Name="IncidentImpactConfidentialityVarietyName" ColumnName="IncidentImpactConfidentialityVarietyName" />
+                <ScalarProperty Name="IncidentImpactConfidentialityVarietyDescription" ColumnName="IncidentImpactConfidentialityVarietyDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIMPACTINTEGRITYVARIETY">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIMPACTINTEGRITYVARIETY">
+              <MappingFragment StoreEntitySet="INCIDENTIMPACTINTEGRITYVARIETY">
+                <ScalarProperty Name="IncidentImpactIntegrityVarietyID" ColumnName="IncidentImpactIntegrityVarietyID" />
+                <ScalarProperty Name="IncidentImpactIntegrityVarietyName" ColumnName="IncidentImpactIntegrityVarietyName" />
+                <ScalarProperty Name="IncidentImpactIntegrityVarietyDescription" ColumnName="IncidentImpactIntegrityVarietyDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIMPACTLOSSPROPERTY">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIMPACTLOSSPROPERTY">
+              <MappingFragment StoreEntitySet="INCIDENTIMPACTLOSSPROPERTY">
+                <ScalarProperty Name="IncidentImpactLossPropertyID" ColumnName="IncidentImpactLossPropertyID" />
+                <ScalarProperty Name="IncidentImpactLossPropertyName" ColumnName="IncidentImpactLossPropertyName" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIMPACTLOSSRATING">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIMPACTLOSSRATING">
+              <MappingFragment StoreEntitySet="INCIDENTIMPACTLOSSRATING">
+                <ScalarProperty Name="IncidentImpactLossRatingID" ColumnName="IncidentImpactLossRatingID" />
+                <ScalarProperty Name="IncidentImpactLossRatingName" ColumnName="IncidentImpactLossRatingName" />
+                <ScalarProperty Name="IncidentImpactLossRatingDescription" ColumnName="IncidentImpactLossRatingDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIMPACTLOSSVARIETY">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIMPACTLOSSVARIETY">
+              <MappingFragment StoreEntitySet="INCIDENTIMPACTLOSSVARIETY">
+                <ScalarProperty Name="IncidentImpactLossVarietyID" ColumnName="IncidentImpactLossVarietyID" />
+                <ScalarProperty Name="IncidentImpactLossVarietyName" ColumnName="IncidentImpactLossVarietyName" />
+                <ScalarProperty Name="IncidentImpactLossVarietyDescription" ColumnName="IncidentImpactLossVarietyDescription" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIMPACTRATING">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIMPACTRATING">
+              <MappingFragment StoreEntitySet="INCIDENTIMPACTRATING">
+                <ScalarProperty Name="IncidentImpactRatingID" ColumnName="IncidentImpactRatingID" />
+                <ScalarProperty Name="IncidentImpactRatingName" ColumnName="IncidentImpactRatingName" />
+                <ScalarProperty Name="IncidentImpactRatingDescription" ColumnName="IncidentImpactRatingDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTINQUIRY">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTINQUIRY">
+              <MappingFragment StoreEntitySet="INCIDENTINQUIRY">
+                <ScalarProperty Name="IncidentIQID" ColumnName="IncidentIQID" />
+                <ScalarProperty Name="IncidentInquiryIntentID" ColumnName="IncidentInquiryIntentID" />
+                <ScalarProperty Name="purpose" ColumnName="purpose" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="format" ColumnName="format" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+                <ScalarProperty Name="restriction" ColumnName="restriction" />
+                <ScalarProperty Name="IODEFversion" ColumnName="IODEFversion" />
+                <ScalarProperty Name="formatid" ColumnName="formatid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTINQUIRYINTENT">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTINQUIRYINTENT">
+              <MappingFragment StoreEntitySet="INCIDENTINQUIRYINTENT">
+                <ScalarProperty Name="IncidentInquiryIntentID" ColumnName="IncidentInquiryIntentID" />
+                <ScalarProperty Name="PackageIntent" ColumnName="PackageIntent" />
+                <ScalarProperty Name="PackageIntentDescription" ColumnName="PackageIntentDescription" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIOC">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIOC">
+              <MappingFragment StoreEntitySet="INCIDENTIOC">
+                <ScalarProperty Name="IncidentIOCID" ColumnName="IncidentIOCID" />
+                <ScalarProperty Name="IncidentID" ColumnName="IncidentID" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="IncidentIOCTypeID" ColumnName="IncidentIOCTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIOCFORTHREATCAMPAIGN">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIOCFORTHREATCAMPAIGN">
+              <MappingFragment StoreEntitySet="INCIDENTIOCFORTHREATCAMPAIGN">
+                <ScalarProperty Name="IncidentIOCID" ColumnName="IncidentIOCID" />
+                <ScalarProperty Name="ThreatCampaignID" ColumnName="ThreatCampaignID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIOCTYPE">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIOCTYPE">
+              <MappingFragment StoreEntitySet="INCIDENTIOCTYPE">
+                <ScalarProperty Name="IncidentIOCTypeID" ColumnName="IncidentIOCTypeID" />
+                <ScalarProperty Name="IndicatorTypeName" ColumnName="IndicatorTypeName" />
+                <ScalarProperty Name="IndicatorTypeDocumentaion" ColumnName="IndicatorTypeDocumentaion" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTIOCTYPEFORINDICATOR">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTIOCTYPEFORINDICATOR">
+              <MappingFragment StoreEntitySet="INCIDENTIOCTYPEFORINDICATOR">
+                <ScalarProperty Name="IncidentIOCTypeID" ColumnName="IncidentIOCTypeID" />
+                <ScalarProperty Name="IndicatorID" ColumnName="IndicatorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTREGISTRYHANDLE">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTREGISTRYHANDLE">
+              <MappingFragment StoreEntitySet="INCIDENTREGISTRYHANDLE">
+                <ScalarProperty Name="IncidentRegistryHandleID" ColumnName="IncidentRegistryHandleID" />
+                <ScalarProperty Name="registry" ColumnName="registry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTSTATUS">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTSTATUS">
+              <MappingFragment StoreEntitySet="INCIDENTSTATUS">
+                <ScalarProperty Name="IncidentStatusID" ColumnName="IncidentStatusID" />
+                <ScalarProperty Name="IncidentStatusGUID" ColumnName="IncidentStatusGUID" />
+                <ScalarProperty Name="IncidentStatusName" ColumnName="IncidentStatusName" />
+                <ScalarProperty Name="IncidentStatusDescription" ColumnName="IncidentStatusDescription" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTTIMELINE">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTTIMELINE">
+              <MappingFragment StoreEntitySet="INCIDENTTIMELINE">
+                <ScalarProperty Name="IncidentTimelineID" ColumnName="IncidentTimelineID" />
+                <ScalarProperty Name="IncidentID" ColumnName="IncidentID" />
+                <ScalarProperty Name="investigationDate" ColumnName="investigationDate" />
+                <ScalarProperty Name="incidentDate" ColumnName="incidentDate" />
+                <ScalarProperty Name="TimetoCompromiseValue" ColumnName="TimetoCompromiseValue" />
+                <ScalarProperty Name="TimetoCompromiseUnit" ColumnName="TimetoCompromiseUnit" />
+                <ScalarProperty Name="TimetoExfiltrationValue" ColumnName="TimetoExfiltrationValue" />
+                <ScalarProperty Name="TimetoExfiltrationUnit" ColumnName="TimetoExfiltrationUnit" />
+                <ScalarProperty Name="TimetoDiscoveryValue" ColumnName="TimetoDiscoveryValue" />
+                <ScalarProperty Name="TimetoDiscoveryUnit" ColumnName="TimetoDiscoveryUnit" />
+                <ScalarProperty Name="TimetoContainmentValue" ColumnName="TimetoContainmentValue" />
+                <ScalarProperty Name="TimetoContainmentUnit" ColumnName="TimetoContainmentUnit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INCIDENTTIMELINEUNIT">
+            <EntityTypeMapping TypeName="XINCIDENTModel.INCIDENTTIMELINEUNIT">
+              <MappingFragment StoreEntitySet="INCIDENTTIMELINEUNIT">
+                <ScalarProperty Name="IncidentTimelineUnitID" ColumnName="IncidentTimelineUnitID" />
+                <ScalarProperty Name="TimeUnit" ColumnName="TimeUnit" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

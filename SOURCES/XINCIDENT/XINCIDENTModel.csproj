@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E5F2AA7E-08E6-4FF8-BC99-B1014B5CEC13}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XINCIDENTModel</RootNamespace>
+    <AssemblyName>XINCIDENTModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="INCIDENT.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTCATEGORY.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTCATEGORYDESCRIPTION.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTCATEGORYRACIMATRIX.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTCOMPROMISE.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTDISCOVERYMETHOD.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTEFFECT.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTFORASSET.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTFORINCIDENT.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTFORPERSON.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTFORTHREATCAMPAIGN.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTID.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIMPACT.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIMPACTAVAILABILITYLOSSDURATION.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIMPACTAVAILABILITYVARIETY.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIMPACTCONFIDENTIALITYSTATE.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIMPACTCONFIDENTIALITYVARIETY.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIMPACTINTEGRITYVARIETY.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIMPACTLOSSPROPERTY.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIMPACTLOSSRATING.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIMPACTLOSSVARIETY.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIMPACTRATING.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTINQUIRY.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTINQUIRYINTENT.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIOC.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIOCFORTHREATCAMPAIGN.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIOCTYPE.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTIOCTYPEFORINDICATOR.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTREGISTRYHANDLE.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTSTATUS.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTTIMELINE.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INCIDENTTIMELINEUNIT.cs">
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XINCIDENTModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XINCIDENTModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XINCIDENTModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XINCIDENTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XINCIDENTModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XINCIDENTModel.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="XINCIDENTModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>XINCIDENTModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="XINCIDENTModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XINCIDENTModel.edmx</DependentUpon>
+      <LastGenOutput>XINCIDENTModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="XINCIDENTModel.edmx.diagram">
+      <DependentUpon>XINCIDENTModel.edmx</DependentUpon>
+    </None>
+    <None Include="XINCIDENTModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XINCIDENTModel.edmx</DependentUpon>
+      <LastGenOutput>XINCIDENTModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

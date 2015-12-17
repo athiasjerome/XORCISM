@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4f60ace2f2cf4e938a66cec1cf14f48a" Name="Diagram1" DisplayType="true">
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENT" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTCATEGORY" Width="1.5" PointX="5.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTCATEGORYDESCRIPTION" Width="1.5" PointX="8" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTCATEGORYRACIMATRIX" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTCOMPROMISE" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTDISCOVERYMETHOD" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTEFFECT" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTFORASSET" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTFORINCIDENT" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTFORPERSON" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTFORTHREATCAMPAIGN" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTID" Width="1.5" PointX="11.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIMPACT" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIMPACTAVAILABILITYLOSSDURATION" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIMPACTAVAILABILITYVARIETY" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIMPACTCONFIDENTIALITYSTATE" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIMPACTCONFIDENTIALITYVARIETY" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIMPACTINTEGRITYVARIETY" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIMPACTLOSSPROPERTY" Width="1.5" PointX="13.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIMPACTLOSSRATING" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIMPACTLOSSVARIETY" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIMPACTRATING" Width="1.5" PointX="5.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTINQUIRY" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTINQUIRYINTENT" Width="1.5" PointX="7.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIOC" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIOCFORTHREATCAMPAIGN" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIOCTYPE" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTIOCTYPEFORINDICATOR" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTREGISTRYHANDLE" Width="1.5" PointX="9.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTSTATUS" Width="1.5" PointX="15.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTTIMELINE" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XINCIDENTModel.INCIDENTTIMELINEUNIT" Width="1.5" PointX="11.75" PointY="15.75" IsExpanded="true" />
+        <AssociationConnector Association="XINCIDENTModel.FK_INCIDENTFORASSET_INCIDENT" ManuallyRouted="false" />
+        <AssociationConnector Association="XINCIDENTModel.FK_INCIDENTFORINCIDENT_INCIDENTREF" ManuallyRouted="false" />
+        <AssociationConnector Association="XINCIDENTModel.FK_INCIDENTFORINCIDENT_INCIDENTSUBJECT" ManuallyRouted="false" />
+        <AssociationConnector Association="XINCIDENTModel.FK_INCIDENTFORTHREATCAMPAIGN_INCIDENT" ManuallyRouted="false" />
+        <AssociationConnector Association="XINCIDENTModel.FK_INCIDENTIOC_INCIDENT" ManuallyRouted="false" />
+        <AssociationConnector Association="XINCIDENTModel.FK_INCIDENTTIMELINE_INCIDENT" ManuallyRouted="false" />
+        <AssociationConnector Association="XINCIDENTModel.FK_INCIDENTCATEGORYDESCRIPTION_INCIDENTCATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="XINCIDENTModel.FK_INCIDENTIOCFORTHREATCAMPAIGN_INCIDENTIOC" ManuallyRouted="false" />
+        <AssociationConnector Association="XINCIDENTModel.FK_INCIDENTIOCTYPEFORINDICATOR_INCIDENTIOCTYPE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

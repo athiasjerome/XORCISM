@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0FD2F2DF-C41A-49C7-967E-1D12E7461E6D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XTHREATModel</RootNamespace>
+    <AssemblyName>XTHREATModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="THREATACTION.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTIONCATEGORY.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTIONFORINCIDENT.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTIONLOCATION.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTIONLOCATIONFORTHREATACTIONCATEGORY.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTIONTARGET.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTIONVARIETY.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTIONVARIETYFORTHREATACTORTTP.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTIONVECTOR.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTOR.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORADDRESS.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORCHANGERECORD.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTOREMAILADDRESS.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORFORINCIDENT.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORFORTHREATCAMPAIGN.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORGROUP.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORGROUPTACTIC.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORINFRASTRUCTURE.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORINFRASTRUCTUREFORTHREATACTOR.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORINFRASTRUCTUREFORTHREATACTORTTP.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORPAOS.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORROLE.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORSKILLFORATTACKPATTERN.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORSOPHISTICATION.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORTACTIC.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORTAG.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORTTP.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORTTPFORINCIDENT.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORTTPFORINDICATOR.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORTTPFORTHREATACTORTTP.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATACTORVARIETY.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATAGENT.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATAGENTCATEGORY.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATAGENTCHANGERECORD.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATAGENTFOROWASPTOP10.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATAGENTTAG.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGN.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNCHANGERECORD.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNDESCRIPTION.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNFORTHREATCAMPAIGN.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNMETHODOLOGY.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNNAME.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNNAMEFORTHREATCAMPAIGN.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNREFERENCE.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNSOURCE.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNSTATUS.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNTAG.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNTECHNIQUE.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNTOOL.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCAMPAIGNTYPE.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCATEGORY.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCATEGORYDESCRIPTION.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCATEGORYREFERENCE.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATCATEGORYTAG.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATINTENDEDEFFECT.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATINTENDEDEFFECTFORINCIDENT.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATINTENDEDEFFECTFORTHREATACTORTTP.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATINTENDEDEFFECTFORTHREATCAMPAIGN.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATMOTIVE.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATMOTIVEDESCRIPTION.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATMOTIVEFORTHREATACTOR.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATMOTIVETAG.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATTYPE.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THREATTYPEDESCRIPTION.cs">
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XTHREATModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XTHREATModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XTHREATModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XTHREATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XTHREATModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XTHREATModel.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="XTHREATModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>XTHREATModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="XTHREATModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XTHREATModel.edmx</DependentUpon>
+      <LastGenOutput>XTHREATModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="XTHREATModel.edmx.diagram">
+      <DependentUpon>XTHREATModel.edmx</DependentUpon>
+    </None>
+    <None Include="XTHREATModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XTHREATModel.edmx</DependentUpon>
+      <LastGenOutput>XTHREATModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

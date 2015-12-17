@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B95BE848-9F61-4E11-BC7E-CC36A2B7AA7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XWINDOWSModel</RootNamespace>
+    <AssemblyName>XWINDOWSModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WINDOWSCOMPUTERACCOUNT.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSCRITICALSECTION.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSDRIVER.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSDRIVETYPE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSEVENT.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSEVENTLOG.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSEXECUTABLEFILE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSFILE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSGROUP.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSGROUPFORWINDOWSUSERACCOUNT.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSHANDLE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSHANDLELIST.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSHANDLELISTHANDLES.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSHANDLETYPE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSKERNELHOOK.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSKERNELOBJECT.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSMAILSLOT.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSMEMORYPAGEREGION.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSMUTEX.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSMUTEXHANDLE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSMUTEXSECURITYATTRIBUTE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSNETWORKROUTEENTRY.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSNETWORKSHARE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSPIPEOBJECT.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSPREFETCHACCESSEDFILELIST.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSPREFETCHCHANGERECORD.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSPREFETCHOBJECT.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSPRIVILEGE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSPROCESS.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSPROCESSTOKEN.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSREGISTRYKEYOBJECT.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSSEMAPHORE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSSERVICE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSSYSTEM.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSSYSTEMRESTORE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSTASK.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSTHREAD.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSUSERACCOUNT.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSUSERACCOUNTCHANGERECORD.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSUSERACCOUNTPRIVILEGE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSVOLUME.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSVOLUMEATTRIBUTE.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSVOLUMEATTRIBUTEENUM.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSVOLUMEATTRIBUTESLIST.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSVOLUMEENCRYPTION.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSWAITABLETIMER.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINDOWSWAITABLETIMEROBJECT.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WINWAITABLETIMER.cs">
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XWINDOWSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XWINDOWSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XWINDOWSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XWINDOWSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XWINDOWSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XWINDOWSModel.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="XWINDOWSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>XWINDOWSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="XWINDOWSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XWINDOWSModel.edmx</DependentUpon>
+      <LastGenOutput>XWINDOWSModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="XWINDOWSModel.edmx.diagram">
+      <DependentUpon>XWINDOWSModel.edmx</DependentUpon>
+    </None>
+    <None Include="XWINDOWSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XWINDOWSModel.edmx</DependentUpon>
+      <LastGenOutput>XWINDOWSModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

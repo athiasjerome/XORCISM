@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0CB0E1C7-CE6B-47FA-BE7C-AFD844C6C1C6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XOVALModel</RootNamespace>
+    <AssemblyName>XOVALModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OPERATORENUMERATION.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALBEHAVIOR.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALBEHAVIORFOROVALOBJECT.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALCLASSDIRECTIVES.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALCLASSDIRECTIVESFOROVALDIRECTIVES.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALCLASSENUMERATION.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALCOMPONENTGROUP.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALCRITERIA.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALCRITERIACRITERION.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALCRITERIAEXTENDDEFINITION.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALCRITERIAFOROVALCRITERIA.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALCRITERIATYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALCRITERIATYPEFOROVALDEFINITIONTYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALCRITERION.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALCRITERIONTYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFAULTDIRECTIVES.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITION.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONCCE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONCHANGE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONCHANGES.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONCPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONFAMILY.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONORGANISATION.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONPLATFORM.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONPRODUCT.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONREFERENCE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONS.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONSTATUS.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONTAG.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONTYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONTYPEFOROVALSYSTEMTYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDEFINITIONVULNERABILITY.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDIRECTIVE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDIRECTIVES.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALDIRECTIVESTYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALENTITYATTRIBUTEGROUP.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALENTITYCOMPLEXBASE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALENTITYSIMPLEBASE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALEXTENSIONPOINT.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALEXTENSIONPOINTFOROVALGENERATORTYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALEXTENSIONPOINTFORSYSTEMINFO.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALFILTER.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALFILTERFOROVALSET.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALGENERATORTYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALITEM.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALITEMATTRIBUTEGROUP.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALITEMCOMPLEXBASE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALITEMFOROVALSYSTEMOBJECT.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALITEMSIMPLEBASE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALLITERALCOMPONENT.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALLITERALCOMPONENTFOROVALCOMPONENTGROUP.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALMESSAGETYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALMESSAGETYPEFOROVALSYSTEMOBJECT.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALMESSAGETYPEFOROVALTESTEDITEM.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALMESSAGETYPEFOROVALTESTTYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALNAMESPACE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECT.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECTCOMPONENT.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECTCOMPONENTFOROVALCOMPONENTGROUP.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECTDATATYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECTFIELD.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECTFIELDFOROVALOBJECTRECORD.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECTFILE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECTFOROVALSET.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECTFOROVALTEST.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECTRECORD.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECTRECORDFOROVALOBJECT.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECTTAG.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALOBJECTWINDOWSREGISTRYKEY.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALRESULTS.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALRESULTSTYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSET.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSTATE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSTATECOMPLEXBASE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSTATEFIELD.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSTATEFIELDFOROVALSTATERECORD.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSTATEFOROVALTEST.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSTATERECORD.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSTATERECORDFOROVALSTATE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSTATESIMPLEBASE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSTATETYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSYSTEMCHARACTERISTICS.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSYSTEMOBJECT.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALSYSTEMTYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALTEST.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALTESTDATATYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALTESTEDITEM.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALTESTEDVARIABLE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALTESTFOROVALTESTS.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALTESTS.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALTESTTAG.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALTESTTYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALTESTTYPEFOROVALSYSTEMTYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALVARIABLE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALVARIABLECOMPONENT.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALVARIABLECOMPONENTFOROVALCOMPONENTGROUP.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALVARIABLEDATATYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALVARIABLEFOROVALVARIABLES.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALVARIABLES.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALVARIABLETAG.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALVARIABLETYPE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALVARIABLEVALUE.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OVALVARIABLEVALUEFOROVALSYSTEMOBJECT.cs">
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XOVALModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XOVALModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XOVALModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XOVALModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XOVALModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XOVALModel.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="XOVALModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>XOVALModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
+    <None Include="XOVALModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XOVALModel.edmx</DependentUpon>
+      <LastGenOutput>XOVALModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="XOVALModel.edmx.diagram">
+      <DependentUpon>XOVALModel.edmx</DependentUpon>
+    </None>
+    <None Include="XOVALModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XOVALModel.edmx</DependentUpon>
+      <LastGenOutput>XOVALModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0dc8b5eff6264515b625eda69ada6bea" Name="Diagram1">
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTION" Width="1.5" PointX="25.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTIONCATEGORY" Width="1.5" PointX="18.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTIONFORINCIDENT" Width="1.5" PointX="28" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTIONLOCATION" Width="1.5" PointX="21.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTIONLOCATIONFORTHREATACTIONCATEGORY" Width="1.5" PointX="24" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTIONTARGET" Width="1.5" PointX="21" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTIONVARIETY" Width="1.5" PointX="21" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTIONVARIETYFORTHREATACTORTTP" Width="1.5" PointX="23.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTIONVECTOR" Width="1.5" PointX="21" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTOR" Width="1.5" PointX="13.75" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORADDRESS" Width="1.5" PointX="16" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORCHANGERECORD" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTOREMAILADDRESS" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORFORINCIDENT" Width="1.5" PointX="16" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORFORTHREATCAMPAIGN" Width="1.5" PointX="16" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORGROUP" Width="1.5" PointX="13.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORGROUPTACTIC" Width="1.5" PointX="16" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORINFRASTRUCTURE" Width="1.5" PointX="11.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORINFRASTRUCTUREFORTHREATACTOR" Width="1.5" PointX="16" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORINFRASTRUCTUREFORTHREATACTORTTP" Width="1.5" PointX="14" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORPAOS" Width="1.5" PointX="5.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORROLE" Width="1.5" PointX="7.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORSKILLFORATTACKPATTERN" Width="1.5" PointX="15.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORSOPHISTICATION" Width="1.5" PointX="10.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORTACTIC" Width="1.5" PointX="5.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORTAG" Width="1.5" PointX="5.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORTTP" Width="1.5" PointX="8.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORTTPFORINCIDENT" Width="1.5" PointX="11" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORTTPFORINDICATOR" Width="1.5" PointX="11" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORTTPFORTHREATACTORTTP" Width="1.5" PointX="11" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATACTORVARIETY" Width="1.5" PointX="7.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATAGENT" Width="1.5" PointX="5.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATAGENTCATEGORY" Width="1.5" PointX="16.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATAGENTCHANGERECORD" Width="1.5" PointX="18.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATAGENTFOROWASPTOP10" Width="1.5" PointX="8" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATAGENTTAG" Width="1.5" PointX="8" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGN" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNCHANGERECORD" Width="1.5" PointX="0.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNDESCRIPTION" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNFORTHREATCAMPAIGN" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNMETHODOLOGY" Width="1.5" PointX="2.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNNAME" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNNAMEFORTHREATCAMPAIGN" Width="1.5" PointX="6" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNREFERENCE" Width="1.5" PointX="3" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNSOURCE" Width="1.5" PointX="4.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNSTATUS" Width="1.5" PointX="18.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNTAG" Width="1.5" PointX="3" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNTECHNIQUE" Width="1.5" PointX="13.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNTOOL" Width="1.5" PointX="6.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCAMPAIGNTYPE" Width="1.5" PointX="20.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCATEGORY" Width="1.5" PointX="21.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCATEGORYDESCRIPTION" Width="1.5" PointX="24" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCATEGORYREFERENCE" Width="1.5" PointX="24" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATCATEGORYTAG" Width="1.5" PointX="24" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATINTENDEDEFFECT" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATINTENDEDEFFECTFORINCIDENT" Width="1.5" PointX="3" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATINTENDEDEFFECTFORTHREATACTORTTP" Width="1.5" PointX="11" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATINTENDEDEFFECTFORTHREATCAMPAIGN" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATMOTIVE" Width="1.5" PointX="16.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATMOTIVEDESCRIPTION" Width="1.5" PointX="18.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATMOTIVEFORTHREATACTOR" Width="1.5" PointX="19" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATMOTIVETAG" Width="1.5" PointX="5.75" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATTYPE" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTHREATModel.THREATTYPEDESCRIPTION" Width="1.5" PointX="8" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTIONFORINCIDENT_THREATACTION" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTIONLOCATIONFORTHREATACTIONCATEGORY_THREATACTIONCATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTIONTARGET_THREATACTIONCATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTIONVARIETY_THREATACTIONCATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTIONVECTOR_THREATACTIONCATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTIONLOCATIONFORTHREATACTIONCATEGORY_THREATACTIONLOCATION" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTIONVARIETYFORTHREATACTORTTP_THREATACTIONVARIETY" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTORADDRESS_THREATACTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTORFORINCIDENT_THREATACTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTORFORTHREATCAMPAIGN_THREATACTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTORINFRASTRUCTUREFORTHREATACTOR_THREATACTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATMOTIVEFORTHREATACTOR_THREATACTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTORGROUPTACTIC_THREATACTORGROUP" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTORINFRASTRUCTUREFORTHREATACTOR_THREATACTORINFRASTRUCTURE" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTORINFRASTRUCTUREFORTHREATACTORTTP_THREATACTORINFRASTRUCTURE" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTORINFRASTRUCTUREFORTHREATACTORTTP_THREATACTORTTP" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTORTTPFORINCIDENT_THREATACTORTTP" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTORTTPFORINDICATOR_THREATACTORTTP" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTORTTPFORTHREATACTORTTP_THREATACTORTTP" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATACTORTTPFORTHREATACTORTTP_THREATACTORTTPREF" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATINTENDEDEFFECTFORTHREATACTORTTP_THREATACTORTTP" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATAGENTFOROWASPTOP10_THREATAGENT" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATAGENTTAG_THREATAGENT" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATCAMPAIGNDESCRIPTION_THREATCAMPAIGN" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATCAMPAIGNFORTHREATCAMPAIGN_THREATCAMPAIGNREF" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATCAMPAIGNFORTHREATCAMPAIGN_THREATCAMPAIGNSUBJECT" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATCAMPAIGNNAMEFORTHREATCAMPAIGN_THREATCAMPAIGN" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATCAMPAIGNREFERENCE_THREATCAMPAIGN" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATCAMPAIGNTAG_THREATCAMPAIGN" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATINTENDEDEFFECTFORTHREATCAMPAIGN_THREATCAMPAIGN" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATCAMPAIGNNAMEFORTHREATCAMPAIGN_THREATCAMPAIGNNAME" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATCATEGORYDESCRIPTION_THREATCATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATCATEGORYREFERENCE_THREATCATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATCATEGORYTAG_THREATCATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATINTENDEDEFFECTFORINCIDENT_THREATINTENDEDEFFECT" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATINTENDEDEFFECTFORTHREATACTORTTP_THREATINTENDEDEFFECT" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATINTENDEDEFFECTFORTHREATCAMPAIGN_THREATINTENDEDEFFECT" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATMOTIVEFORTHREATACTOR_THREATMOTIVE" ManuallyRouted="false" />
+        <AssociationConnector Association="XTHREATModel.FK_THREATTYPEDESCRIPTION_THREATTYPE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.cenzic.com/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ScanService" targetNamespace="http://www.cenzic.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="basicHttpEndpoint_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:OptimizedMimeSerialization xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.cenzic.com/Imports">
+      <xsd:import schemaLocation="http://1.22.333.4/Hailstorm.WS/ScanService.svc?xsd=xsd0" namespace="http://www.cenzic.com/" />
+      <xsd:import schemaLocation="http://1.22.333.4/Hailstorm.WS/ScanService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IScanService_QueueAssessmentRun_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueueAssessmentRun" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_QueueAssessmentRun_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueueAssessmentRunResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatus" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetTitanStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTitanStatus" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetTitanStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTitanStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetUpdatedStatuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUpdatedStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetUpdatedStatuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUpdatedStatusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_UpdateGetStatusesReferenceTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGetStatusesReferenceTime" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_UpdateGetStatusesReferenceTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGetStatusesReferenceTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetResults_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetResults" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetResults_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReport" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetCompressedResults_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompressedResults" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetCompressedResults_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompressedResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_TerminateAssessmentRun_InputMessage">
+    <wsdl:part name="parameters" element="tns:TerminateAssessmentRun" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_TerminateAssessmentRun_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TerminateAssessmentRunResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_DeleteAssessmentRunData_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAssessmentRunData" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_DeleteAssessmentRunData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAssessmentRunDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_DeleteApplicationData_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteApplicationData" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_DeleteApplicationData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteApplicationDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetDbTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDbTime" />
+  </wsdl:message>
+  <wsdl:message name="IScanService_GetDbTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDbTimeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IScanService">
+    <wsdl:operation name="QueueAssessmentRun">
+      <wsdl:input wsaw:Action="http://www.cenzic.com/IScanService/QueueAssessmentRun" message="tns:IScanService_QueueAssessmentRun_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.cenzic.com/IScanService/QueueAssessmentRunResponse" message="tns:IScanService_QueueAssessmentRun_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <wsdl:input wsaw:Action="http://www.cenzic.com/IScanService/GetStatus" message="tns:IScanService_GetStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.cenzic.com/IScanService/GetStatusResponse" message="tns:IScanService_GetStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTitanStatus">
+      <wsdl:input wsaw:Action="http://www.cenzic.com/IScanService/GetTitanStatus" message="tns:IScanService_GetTitanStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.cenzic.com/IScanService/GetTitanStatusResponse" message="tns:IScanService_GetTitanStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdatedStatuses">
+      <wsdl:input wsaw:Action="http://www.cenzic.com/IScanService/GetUpdatedStatuses" message="tns:IScanService_GetUpdatedStatuses_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.cenzic.com/IScanService/GetUpdatedStatusesResponse" message="tns:IScanService_GetUpdatedStatuses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGetStatusesReferenceTime">
+      <wsdl:input wsaw:Action="http://www.cenzic.com/IScanService/UpdateGetStatusesReferenceTime" message="tns:IScanService_UpdateGetStatusesReferenceTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.cenzic.com/IScanService/UpdateGetStatusesReferenceTimeResponse" message="tns:IScanService_UpdateGetStatusesReferenceTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResults">
+      <wsdl:input wsaw:Action="http://www.cenzic.com/IScanService/GetResults" message="tns:IScanService_GetResults_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.cenzic.com/IScanService/GetResultsResponse" message="tns:IScanService_GetResults_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <wsdl:input wsaw:Action="http://www.cenzic.com/IScanService/GetReport" message="tns:IScanService_GetReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.cenzic.com/IScanService/GetReportResponse" message="tns:IScanService_GetReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompressedResults">
+      <wsdl:input wsaw:Action="http://www.cenzic.com/IScanService/GetCompressedResults" message="tns:IScanService_GetCompressedResults_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.cenzic.com/IScanService/GetCompressedResultsResponse" message="tns:IScanService_GetCompressedResults_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TerminateAssessmentRun">
+      <wsdl:input wsaw:Action="http://www.cenzic.com/IScanService/TerminateAssessmentRun" message="tns:IScanService_TerminateAssessmentRun_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.cenzic.com/IScanService/TerminateAssessmentRunResponse" message="tns:IScanService_TerminateAssessmentRun_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAssessmentRunData">
+      <wsdl:input wsaw:Action="http://www.cenzic.com/IScanService/DeleteAssessmentRunData" message="tns:IScanService_DeleteAssessmentRunData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.cenzic.com/IScanService/DeleteAssessmentRunDataResponse" message="tns:IScanService_DeleteAssessmentRunData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteApplicationData">
+      <wsdl:input wsaw:Action="http://www.cenzic.com/IScanService/DeleteApplicationData" message="tns:IScanService_DeleteApplicationData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.cenzic.com/IScanService/DeleteApplicationDataResponse" message="tns:IScanService_DeleteApplicationData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDbTime">
+      <wsdl:input wsaw:Action="http://www.cenzic.com/IScanService/GetDbTime" message="tns:IScanService_GetDbTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.cenzic.com/IScanService/GetDbTimeResponse" message="tns:IScanService_GetDbTime_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="basicHttpEndpoint" type="tns:IScanService">
+    <wsp:PolicyReference URI="#basicHttpEndpoint_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueueAssessmentRun">
+      <soap:operation soapAction="http://www.cenzic.com/IScanService/QueueAssessmentRun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <soap:operation soapAction="http://www.cenzic.com/IScanService/GetStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTitanStatus">
+      <soap:operation soapAction="http://www.cenzic.com/IScanService/GetTitanStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdatedStatuses">
+      <soap:operation soapAction="http://www.cenzic.com/IScanService/GetUpdatedStatuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGetStatusesReferenceTime">
+      <soap:operation soapAction="http://www.cenzic.com/IScanService/UpdateGetStatusesReferenceTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResults">
+      <soap:operation soapAction="http://www.cenzic.com/IScanService/GetResults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <soap:operation soapAction="http://www.cenzic.com/IScanService/GetReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompressedResults">
+      <soap:operation soapAction="http://www.cenzic.com/IScanService/GetCompressedResults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminateAssessmentRun">
+      <soap:operation soapAction="http://www.cenzic.com/IScanService/TerminateAssessmentRun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAssessmentRunData">
+      <soap:operation soapAction="http://www.cenzic.com/IScanService/DeleteAssessmentRunData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteApplicationData">
+      <soap:operation soapAction="http://www.cenzic.com/IScanService/DeleteApplicationData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDbTime">
+      <soap:operation soapAction="http://www.cenzic.com/IScanService/GetDbTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ScanService">
+    <wsdl:port name="basicHttpEndpoint" binding="tns:basicHttpEndpoint">
+      <soap:address location="http://1.22.333.4/Hailstorm.WS/ScanService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

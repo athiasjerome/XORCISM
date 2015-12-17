@@ -1,0 +1,2626 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="XWINDOWSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="WINDOWSCOMPUTERACCOUNT">
+          <Key>
+            <PropertyRef Name="WindowsComputerAccountID" />
+          </Key>
+          <Property Name="WindowsComputerAccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreationObjectID" Type="int" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="WINDOWSCRITICALSECTION">
+          <Key>
+            <PropertyRef Name="WindowsCriticalSectionID" />
+          </Key>
+          <Property Name="WindowsCriticalSectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSDRIVER">
+          <Key>
+            <PropertyRef Name="WindowsDriverID" />
+          </Key>
+          <Property Name="WindowsDriverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSDRIVETYPE">
+          <Key>
+            <PropertyRef Name="WindowsDriveTypeID" />
+          </Key>
+          <Property Name="WindowsDriveTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsDriveTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WindowsDriveTypeDescription" Type="nvarchar(max)" />
+          <Property Name="VocabularyID" Type="int" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="WINDOWSEVENT">
+          <Key>
+            <PropertyRef Name="WindowsEventID" />
+          </Key>
+          <Property Name="WindowsEventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSEVENTLOG">
+          <Key>
+            <PropertyRef Name="WindowsEventLogID" />
+          </Key>
+          <Property Name="WindowsEventLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSEXECUTABLEFILE">
+          <Key>
+            <PropertyRef Name="WindowsExecutableFileID" />
+          </Key>
+          <Property Name="WindowsExecutableFileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSFILE">
+          <Key>
+            <PropertyRef Name="WindowsFileID" />
+          </Key>
+          <Property Name="WindowsFileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsFileGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="FileID" Type="int" />
+          <Property Name="isEncrypted" Type="bit" />
+          <Property Name="suspected_malicious" Type="bit" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="WINDOWSGROUP">
+          <Key>
+            <PropertyRef Name="WindowsGroupID" />
+          </Key>
+          <Property Name="WindowsGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsGroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="WINDOWSGROUPFORWINDOWSUSERACCOUNT">
+          <Key>
+            <PropertyRef Name="WindowsGroupWindowsUserAccountID" />
+          </Key>
+          <Property Name="WindowsGroupWindowsUserAccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsGroupID" Type="int" Nullable="false" />
+          <Property Name="WindowsUserAccountID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="WINDOWSHANDLE">
+          <Key>
+            <PropertyRef Name="WindowsHandleID" />
+          </Key>
+          <Property Name="WindowsHandleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsHandleObjectID" Type="int" />
+          <Property Name="WindowsHandleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="HandleTypeID" Type="int" />
+          <Property Name="Object_Address" Type="int" />
+          <Property Name="Access_Mask" Type="int" />
+          <Property Name="Pointer_Count" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="int" />
+          <Property Name="CollectionMethodID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSHANDLELIST">
+          <Key>
+            <PropertyRef Name="WindowsHandleListID" />
+          </Key>
+          <Property Name="WindowsHandleListID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="int" />
+          <Property Name="CollectionMethodID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSHANDLELISTHANDLES">
+          <Key>
+            <PropertyRef Name="WindowsHandleListHandlesID" />
+          </Key>
+          <Property Name="WindowsHandleListHandlesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsHandleListID" Type="int" Nullable="false" />
+          <Property Name="WindowsHandleID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="int" />
+          <Property Name="CollectionMethodID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSHANDLETYPE">
+          <Key>
+            <PropertyRef Name="WindowsHandleTypeID" />
+          </Key>
+          <Property Name="WindowsHandleTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HandleTypeID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="VocabularyID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSKERNELHOOK">
+          <Key>
+            <PropertyRef Name="WindowsKernelHookID" />
+          </Key>
+          <Property Name="WindowsKernelHookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Digital_Signature_Hooking" Type="nvarchar(max)" />
+          <Property Name="DigitalSignatureInfoHookingID" Type="int" />
+          <Property Name="Digital_Signature_Hooked" Type="nvarchar(max)" />
+          <Property Name="DigitalSignatureInfoHookedID" Type="int" />
+          <Property Name="Hooking_Address" Type="int" />
+          <Property Name="Hook_Description" Type="nvarchar(max)" />
+          <Property Name="Hooked_Function" Type="nvarchar" MaxLength="100" />
+          <Property Name="FunctionHookedID" Type="int" />
+          <Property Name="Hooked_Module" Type="nvarchar" MaxLength="100" />
+          <Property Name="ModuleHookedID" Type="int" />
+          <Property Name="Hooking_Module" Type="nvarchar" MaxLength="100" />
+          <Property Name="KernelHookID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="int" />
+          <Property Name="CollectionMethodID" Type="int" />
+          <Property Name="DetectionMethodID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSKERNELOBJECT">
+          <Key>
+            <PropertyRef Name="WindowsKernelObjectID" />
+          </Key>
+          <Property Name="WindowsKernelObjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDTEntryListID" Type="int" />
+          <Property Name="SSDTEntryListID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="int" />
+          <Property Name="CollectionMethodID" Type="int" />
+          <Property Name="CollectionToolID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSMAILSLOT">
+          <Key>
+            <PropertyRef Name="WindowsMailslotID" />
+          </Key>
+          <Property Name="WindowsMailslotID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSMEMORYPAGEREGION">
+          <Key>
+            <PropertyRef Name="WindowsMemoryPageRegionID" />
+          </Key>
+          <Property Name="WindowsMemoryPageRegionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSMUTEX">
+          <Key>
+            <PropertyRef Name="WindowsMutexID" />
+          </Key>
+          <Property Name="WindowsMutexID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsHandleID" Type="int" />
+          <Property Name="MutexID" Type="int" />
+          <Property Name="Security_Attributes" Type="nvarchar(max)" />
+          <Property Name="WindowsMutexDescription" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="VocabularyID" Type="int" />
+          <Property Name="ConfidenceLevelID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSMUTEXHANDLE">
+          <Key>
+            <PropertyRef Name="WindowsMutexHandleID" />
+          </Key>
+          <Property Name="WindowsMutexHandleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsMutexID" Type="int" Nullable="false" />
+          <Property Name="WindowsHandleID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="VocabularyID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSMUTEXSECURITYATTRIBUTE">
+          <Key>
+            <PropertyRef Name="WindowsMutexSecurityAttributeID" />
+          </Key>
+          <Property Name="WindowsMutexSecurityAttributeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsMutexID" Type="int" Nullable="false" />
+          <Property Name="SecurityAttributeID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="VocabularyID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSNETWORKROUTEENTRY">
+          <Key>
+            <PropertyRef Name="WindowsNetworkRouteEntryID" />
+          </Key>
+          <Property Name="WindowsNetworkRouteEntryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSNETWORKSHARE">
+          <Key>
+            <PropertyRef Name="WindowsNetworkShareID" />
+          </Key>
+          <Property Name="WindowsNetworkShareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSPIPEOBJECT">
+          <Key>
+            <PropertyRef Name="WindowsPipeObjectID" />
+          </Key>
+          <Property Name="WindowsPipeObjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PipeObjectID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSPREFETCHACCESSEDFILELIST">
+          <Key>
+            <PropertyRef Name="WindowsPrefetchObjectAccessedFileListID" />
+          </Key>
+          <Property Name="WindowsPrefetchObjectAccessedFileListID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsPrefetchObjectID" Type="int" Nullable="false" />
+          <Property Name="AccessedFileListID" Type="int" Nullable="false" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="WINDOWSPREFETCHCHANGERECORD">
+          <Key>
+            <PropertyRef Name="WindowsPrefetchChangeRecordID" />
+          </Key>
+          <Property Name="WindowsPrefetchChangeRecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSPREFETCHOBJECT">
+          <Key>
+            <PropertyRef Name="WindowsPrefetchObjectID" />
+          </Key>
+          <Property Name="WindowsPrefetchObjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Application_File_Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="FileID" Type="int" />
+          <Property Name="CPEName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Prefetch_Hash" Type="nchar" MaxLength="8" />
+          <Property Name="Times_Executed" Type="bigint" />
+          <Property Name="First_Run" Type="datetimeoffset" Precision="7" />
+          <Property Name="Last_Run" Type="datetimeoffset" Precision="7" />
+          <Property Name="VolumeObjectID" Type="int" />
+          <Property Name="WindowsVolumeID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="WINDOWSPRIVILEGE">
+          <Key>
+            <PropertyRef Name="WindowsPrivilegeID" />
+          </Key>
+          <Property Name="WindowsPrivilegeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrivilegeID" Type="int" />
+          <Property Name="User_Right" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+          <Property Name="VocabularyID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSPROCESS">
+          <Key>
+            <PropertyRef Name="WindowsProcessID" />
+          </Key>
+          <Property Name="WindowsProcessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProcessID" Type="int" />
+          <Property Name="WindowsProcessGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="aslr_enabled" Type="bit" />
+          <Property Name="dep_enabled" Type="bit" />
+          <Property Name="isEncrypted" Type="bit" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="WINDOWSPROCESSTOKEN">
+          <Key>
+            <PropertyRef Name="WindowsProcessTokenID" />
+          </Key>
+          <Property Name="WindowsProcessTokenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsProcessID" Type="int" Nullable="false" />
+          <Property Name="TokenID" Type="int" Nullable="false" />
+          <Property Name="IntegrityLevelID" Type="int" />
+          <Property Name="ConfidenceLevelID" Type="int" />
+          <Property Name="VocabularyID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="WINDOWSREGISTRYKEYOBJECT">
+          <Key>
+            <PropertyRef Name="WindowsRegistryKeyObjectID" />
+          </Key>
+          <Property Name="WindowsRegistryKeyObjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hive" Type="nvarchar" MaxLength="500" />
+          <Property Name="operation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Full_Key" Type="nvarchar" MaxLength="500" />
+          <Property Name="RegistryHiveID" Type="int" />
+          <Property Name="Number_Values" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="comment" Type="nvarchar(max)" />
+          <Property Name="RegistryValuesID" Type="int" />
+          <Property Name="Modified_Time" Type="datetimeoffset" Precision="7" />
+          <Property Name="Creator_Username" Type="nvarchar" MaxLength="100" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="UserAccountID" Type="int" />
+          <Property Name="WindowsUserAccountID" Type="int" />
+          <Property Name="WindowsHandleListID" Type="int" />
+          <Property Name="Number_Subkeys" Type="int" />
+          <Property Name="RegistrySubkeysID" Type="int" />
+          <Property Name="ByteRunsID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="int" />
+          <Property Name="CollectionMethodID" Type="int" />
+          <Property Name="isEncrypted" Type="bit" />
+          <Property Name="VocabularyID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSSEMAPHORE">
+          <Key>
+            <PropertyRef Name="WindowsSemaphoreID" />
+          </Key>
+          <Property Name="WindowsSemaphoreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SemaphoreID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSSERVICE">
+          <Key>
+            <PropertyRef Name="WindowsServiceID" />
+          </Key>
+          <Property Name="WindowsServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSSYSTEM">
+          <Key>
+            <PropertyRef Name="WindowsSystemID" />
+          </Key>
+          <Property Name="WindowsSystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SystemID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSSYSTEMRESTORE">
+          <Key>
+            <PropertyRef Name="WindowsSystemRestoreID" />
+          </Key>
+          <Property Name="WindowsSystemRestoreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Restore_Point_Description" Type="nvarchar(max)" />
+          <Property Name="Restore_Point_Full_Path" Type="nvarchar" MaxLength="500" />
+          <Property Name="Restore_Point_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Restore_Point_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="ACL_Change_SID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ACL_Change_Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Backup_File_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Change_Event" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChangeLog_Entry_Flags" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChangeLog_Entry_Sequence_Number" Type="int" />
+          <Property Name="ChangeLog_Entry_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Change_Log_File_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created" Type="datetimeoffset" Precision="7" />
+          <Property Name="File_Attributes" Type="nvarchar" MaxLength="50" />
+          <Property Name="New_File_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Original_File_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Original_Short_File_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Process_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Registry_Hive_List" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="WINDOWSTASK">
+          <Key>
+            <PropertyRef Name="WindowsTaskID" />
+          </Key>
+          <Property Name="WindowsTaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskID" Type="int" />
+          <Property Name="SessionCronID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaskStatusID" Type="int" />
+          <Property Name="Priority" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaskPriorityID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Application_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplicationID" Type="int" />
+          <Property Name="CPEName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Parameters" Type="nvarchar(max)" />
+          <Property Name="Flags" Type="nvarchar(max)" />
+          <Property Name="Account_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="Account_Run_Level" Type="nvarchar" MaxLength="50" />
+          <Property Name="Account_Logon_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Creator" Type="nvarchar" MaxLength="50" />
+          <Property Name="Creation_Date" Type="datetimeoffset" Precision="7" />
+          <Property Name="Most_Recent_Run_Time" Type="datetimeoffset" Precision="7" />
+          <Property Name="Exit_Code" Type="int" />
+          <Property Name="Max_Run_Time" Type="int" />
+          <Property Name="Next_Run_Time" Type="datetimeoffset" Precision="7" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="Working_Directory" Type="nvarchar" MaxLength="500" />
+          <Property Name="DirectoryID" Type="int" />
+          <Property Name="Work_Item_Data" Type="nvarchar(max)" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="WINDOWSTHREAD">
+          <Key>
+            <PropertyRef Name="WindowsThreadID" />
+          </Key>
+          <Property Name="WindowsThreadID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Thread_ID" Type="int" />
+          <Property Name="WindowsHandleID" Type="int" />
+          <Property Name="ThreadRunningStatusID" Type="int" />
+          <Property Name="Running_Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Context" Type="nvarchar(max)" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="Creation_Flags" Type="nvarchar" MaxLength="50" />
+          <Property Name="Creation_Time" Type="datetimeoffset" Precision="7" />
+          <Property Name="Start_Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartMemoryAddressID" Type="int" />
+          <Property Name="Parameter_Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParameterMemoryAddressID" Type="int" />
+          <Property Name="Security_Attributes" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stack_Size" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="WINDOWSUSERACCOUNT">
+          <Key>
+            <PropertyRef Name="WindowsUserAccountID" />
+          </Key>
+          <Property Name="WindowsUserAccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsUserAccountGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="UserAccountID" Type="int" />
+          <Property Name="WindowsComputerAccountID" Type="int" />
+          <Property Name="Security_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Security_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreationObjectID" Type="int" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="TrustLevelID" Type="int" />
+          <Property Name="TrustReasonID" Type="int" />
+          <Property Name="isEncrypted" Type="bit" />
+          <Property Name="suspected_malicious" Type="bit" />
+          <Property Name="SuspectedMaliciousReasonID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSUSERACCOUNTCHANGERECORD">
+          <Key>
+            <PropertyRef Name="WindowsUserAccountChangeRecordID" />
+          </Key>
+          <Property Name="WindowsUserAccountChangeRecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSUSERACCOUNTPRIVILEGE">
+          <Key>
+            <PropertyRef Name="WindowsUserAccountPrivilegeID" />
+          </Key>
+          <Property Name="WindowsUserAccountPrivilegeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsUserAccountID" Type="int" Nullable="false" />
+          <Property Name="WindowsPrivilegeID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="int" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="WINDOWSVOLUME">
+          <Key>
+            <PropertyRef Name="WindowsVolumeID" />
+          </Key>
+          <Property Name="WindowsVolumeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsVolumeGUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="VolumeObjectID" Type="int" />
+          <Property Name="Drive_Letter" Type="nvarchar" MaxLength="5" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="WINDOWSVOLUMEATTRIBUTE">
+          <Key>
+            <PropertyRef Name="WindowsVolumeAttributeID" />
+          </Key>
+          <Property Name="WindowsVolumeAttributeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttributeID" Type="int" />
+        </EntityType>
+        <EntityType Name="WINDOWSVOLUMEATTRIBUTEENUM">
+          <Key>
+            <PropertyRef Name="WindowsVolumeAttributeEnumID" />
+          </Key>
+          <Property Name="WindowsVolumeAttributeEnumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsVolumeAttributeEnumValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WindowsVolumeAttributeEnumDescription" Type="nvarchar(max)" />
+          <Property Name="VocabularyID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="WINDOWSVOLUMEATTRIBUTESLIST">
+          <Key>
+            <PropertyRef Name="WindowsVolumeAttributesListID" />
+          </Key>
+          <Property Name="WindowsVolumeAttributesListID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsVolumeID" Type="int" Nullable="false" />
+          <Property Name="WindowsVolumeAttributeID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="WINDOWSVOLUMEENCRYPTION">
+          <Key>
+            <PropertyRef Name="WindowsVolumeEncryptionID" />
+          </Key>
+          <Property Name="WindowsVolumeEncryptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsVolumeID" Type="int" Nullable="false" />
+          <Property Name="EncryptionID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="int" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="WINDOWSWAITABLETIMER">
+          <Key>
+            <PropertyRef Name="WindowsWaitableTimerID" />
+          </Key>
+          <Property Name="WindowsWaitableTimerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WINDOWSWAITABLETIMEROBJECT">
+          <Key>
+            <PropertyRef Name="WindowsWaitableTimerObjectID" />
+          </Key>
+          <Property Name="WindowsWaitableTimerObjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WindowsHandleID" Type="int" />
+          <Property Name="WindowsWaitableTimerObjectName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Security_Attributes" Type="nvarchar(max)" />
+          <Property Name="WaitableTimerTypeID" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="timestamp" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="isEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="WINWAITABLETIMER">
+          <Key>
+            <PropertyRef Name="WinWaitableTimerID" />
+          </Key>
+          <Property Name="WinWaitableTimerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_WINDOWSGROUPFORWINDOWSUSERACCOUNT_WINDOWSGROUP">
+          <End Role="WINDOWSGROUP" Type="Self.WINDOWSGROUP" Multiplicity="1" />
+          <End Role="WINDOWSGROUPFORWINDOWSUSERACCOUNT" Type="Self.WINDOWSGROUPFORWINDOWSUSERACCOUNT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSGROUP">
+              <PropertyRef Name="WindowsGroupID" />
+            </Principal>
+            <Dependent Role="WINDOWSGROUPFORWINDOWSUSERACCOUNT">
+              <PropertyRef Name="WindowsGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLE">
+          <End Role="WINDOWSHANDLE" Type="Self.WINDOWSHANDLE" Multiplicity="1" />
+          <End Role="WINDOWSHANDLELISTHANDLES" Type="Self.WINDOWSHANDLELISTHANDLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSHANDLE">
+              <PropertyRef Name="WindowsHandleID" />
+            </Principal>
+            <Dependent Role="WINDOWSHANDLELISTHANDLES">
+              <PropertyRef Name="WindowsHandleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLELIST">
+          <End Role="WINDOWSHANDLELIST" Type="Self.WINDOWSHANDLELIST" Multiplicity="1" />
+          <End Role="WINDOWSHANDLELISTHANDLES" Type="Self.WINDOWSHANDLELISTHANDLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSHANDLELIST">
+              <PropertyRef Name="WindowsHandleListID" />
+            </Principal>
+            <Dependent Role="WINDOWSHANDLELISTHANDLES">
+              <PropertyRef Name="WindowsHandleListID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSMUTEXHANDLE_WINDOWSHANDLE">
+          <End Role="WINDOWSHANDLE" Type="Self.WINDOWSHANDLE" Multiplicity="1" />
+          <End Role="WINDOWSMUTEXHANDLE" Type="Self.WINDOWSMUTEXHANDLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSHANDLE">
+              <PropertyRef Name="WindowsHandleID" />
+            </Principal>
+            <Dependent Role="WINDOWSMUTEXHANDLE">
+              <PropertyRef Name="WindowsHandleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSMUTEXHANDLE_WINDOWSMUTEX">
+          <End Role="WINDOWSMUTEX" Type="Self.WINDOWSMUTEX" Multiplicity="1" />
+          <End Role="WINDOWSMUTEXHANDLE" Type="Self.WINDOWSMUTEXHANDLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSMUTEX">
+              <PropertyRef Name="WindowsMutexID" />
+            </Principal>
+            <Dependent Role="WINDOWSMUTEXHANDLE">
+              <PropertyRef Name="WindowsMutexID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSMUTEXSECURITYATTRIBUTE_WINDOWSMUTEX">
+          <End Role="WINDOWSMUTEX" Type="Self.WINDOWSMUTEX" Multiplicity="1" />
+          <End Role="WINDOWSMUTEXSECURITYATTRIBUTE" Type="Self.WINDOWSMUTEXSECURITYATTRIBUTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSMUTEX">
+              <PropertyRef Name="WindowsMutexID" />
+            </Principal>
+            <Dependent Role="WINDOWSMUTEXSECURITYATTRIBUTE">
+              <PropertyRef Name="WindowsMutexID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSPREFETCHACCESSEDFILELIST_WINDOWSPREFETCHOBJECT">
+          <End Role="WINDOWSPREFETCHOBJECT" Type="Self.WINDOWSPREFETCHOBJECT" Multiplicity="1" />
+          <End Role="WINDOWSPREFETCHACCESSEDFILELIST" Type="Self.WINDOWSPREFETCHACCESSEDFILELIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSPREFETCHOBJECT">
+              <PropertyRef Name="WindowsPrefetchObjectID" />
+            </Principal>
+            <Dependent Role="WINDOWSPREFETCHACCESSEDFILELIST">
+              <PropertyRef Name="WindowsPrefetchObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSPROCESSTOKEN_WINDOWSPROCESS">
+          <End Role="WINDOWSPROCESS" Type="Self.WINDOWSPROCESS" Multiplicity="1" />
+          <End Role="WINDOWSPROCESSTOKEN" Type="Self.WINDOWSPROCESSTOKEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSPROCESS">
+              <PropertyRef Name="WindowsProcessID" />
+            </Principal>
+            <Dependent Role="WINDOWSPROCESSTOKEN">
+              <PropertyRef Name="WindowsProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSHANDLELIST">
+          <End Role="WINDOWSHANDLELIST" Type="Self.WINDOWSHANDLELIST" Multiplicity="0..1" />
+          <End Role="WINDOWSREGISTRYKEYOBJECT" Type="Self.WINDOWSREGISTRYKEYOBJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSHANDLELIST">
+              <PropertyRef Name="WindowsHandleListID" />
+            </Principal>
+            <Dependent Role="WINDOWSREGISTRYKEYOBJECT">
+              <PropertyRef Name="WindowsHandleListID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSUSERACCOUNT">
+          <End Role="WINDOWSUSERACCOUNT" Type="Self.WINDOWSUSERACCOUNT" Multiplicity="0..1" />
+          <End Role="WINDOWSREGISTRYKEYOBJECT" Type="Self.WINDOWSREGISTRYKEYOBJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSUSERACCOUNT">
+              <PropertyRef Name="WindowsUserAccountID" />
+            </Principal>
+            <Dependent Role="WINDOWSREGISTRYKEYOBJECT">
+              <PropertyRef Name="WindowsUserAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSTHREAD_WINDOWSHANDLE">
+          <End Role="WINDOWSHANDLE" Type="Self.WINDOWSHANDLE" Multiplicity="0..1" />
+          <End Role="WINDOWSTHREAD" Type="Self.WINDOWSTHREAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSHANDLE">
+              <PropertyRef Name="WindowsHandleID" />
+            </Principal>
+            <Dependent Role="WINDOWSTHREAD">
+              <PropertyRef Name="WindowsHandleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSUSERACCOUNT_WINDOWSCOMPUTERACCOUNT">
+          <End Role="WINDOWSCOMPUTERACCOUNT" Type="Self.WINDOWSCOMPUTERACCOUNT" Multiplicity="0..1" />
+          <End Role="WINDOWSUSERACCOUNT" Type="Self.WINDOWSUSERACCOUNT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSCOMPUTERACCOUNT">
+              <PropertyRef Name="WindowsComputerAccountID" />
+            </Principal>
+            <Dependent Role="WINDOWSUSERACCOUNT">
+              <PropertyRef Name="WindowsComputerAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSPRIVILEGE">
+          <End Role="WINDOWSPRIVILEGE" Type="Self.WINDOWSPRIVILEGE" Multiplicity="1" />
+          <End Role="WINDOWSUSERACCOUNTPRIVILEGE" Type="Self.WINDOWSUSERACCOUNTPRIVILEGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSPRIVILEGE">
+              <PropertyRef Name="WindowsPrivilegeID" />
+            </Principal>
+            <Dependent Role="WINDOWSUSERACCOUNTPRIVILEGE">
+              <PropertyRef Name="WindowsPrivilegeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSUSERACCOUNT">
+          <End Role="WINDOWSUSERACCOUNT" Type="Self.WINDOWSUSERACCOUNT" Multiplicity="1" />
+          <End Role="WINDOWSUSERACCOUNTPRIVILEGE" Type="Self.WINDOWSUSERACCOUNTPRIVILEGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSUSERACCOUNT">
+              <PropertyRef Name="WindowsUserAccountID" />
+            </Principal>
+            <Dependent Role="WINDOWSUSERACCOUNTPRIVILEGE">
+              <PropertyRef Name="WindowsUserAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUME">
+          <End Role="WINDOWSVOLUME" Type="Self.WINDOWSVOLUME" Multiplicity="1" />
+          <End Role="WINDOWSVOLUMEATTRIBUTESLIST" Type="Self.WINDOWSVOLUMEATTRIBUTESLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSVOLUME">
+              <PropertyRef Name="WindowsVolumeID" />
+            </Principal>
+            <Dependent Role="WINDOWSVOLUMEATTRIBUTESLIST">
+              <PropertyRef Name="WindowsVolumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUMEATTRIBUTE">
+          <End Role="WINDOWSVOLUMEATTRIBUTE" Type="Self.WINDOWSVOLUMEATTRIBUTE" Multiplicity="1" />
+          <End Role="WINDOWSVOLUMEATTRIBUTESLIST" Type="Self.WINDOWSVOLUMEATTRIBUTESLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSVOLUMEATTRIBUTE">
+              <PropertyRef Name="WindowsVolumeAttributeID" />
+            </Principal>
+            <Dependent Role="WINDOWSVOLUMEATTRIBUTESLIST">
+              <PropertyRef Name="WindowsVolumeAttributeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSVOLUMEENCRYPTION_WINDOWSVOLUME">
+          <End Role="WINDOWSVOLUME" Type="Self.WINDOWSVOLUME" Multiplicity="1" />
+          <End Role="WINDOWSVOLUMEENCRYPTION" Type="Self.WINDOWSVOLUMEENCRYPTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSVOLUME">
+              <PropertyRef Name="WindowsVolumeID" />
+            </Principal>
+            <Dependent Role="WINDOWSVOLUMEENCRYPTION">
+              <PropertyRef Name="WindowsVolumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSWAITABLETIMEROBJECT_WINDOWSHANDLE">
+          <End Role="WINDOWSHANDLE" Type="Self.WINDOWSHANDLE" Multiplicity="0..1" />
+          <End Role="WINDOWSWAITABLETIMEROBJECT" Type="Self.WINDOWSWAITABLETIMEROBJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSHANDLE">
+              <PropertyRef Name="WindowsHandleID" />
+            </Principal>
+            <Dependent Role="WINDOWSWAITABLETIMEROBJECT">
+              <PropertyRef Name="WindowsHandleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="XWINDOWSModelStoreContainer">
+          <EntitySet Name="WINDOWSCOMPUTERACCOUNT" EntityType="Self.WINDOWSCOMPUTERACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSCRITICALSECTION" EntityType="Self.WINDOWSCRITICALSECTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSDRIVER" EntityType="Self.WINDOWSDRIVER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSDRIVETYPE" EntityType="Self.WINDOWSDRIVETYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSEVENT" EntityType="Self.WINDOWSEVENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSEVENTLOG" EntityType="Self.WINDOWSEVENTLOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSEXECUTABLEFILE" EntityType="Self.WINDOWSEXECUTABLEFILE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSFILE" EntityType="Self.WINDOWSFILE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSGROUP" EntityType="Self.WINDOWSGROUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSGROUPFORWINDOWSUSERACCOUNT" EntityType="Self.WINDOWSGROUPFORWINDOWSUSERACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSHANDLE" EntityType="Self.WINDOWSHANDLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSHANDLELIST" EntityType="Self.WINDOWSHANDLELIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSHANDLELISTHANDLES" EntityType="Self.WINDOWSHANDLELISTHANDLES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSHANDLETYPE" EntityType="Self.WINDOWSHANDLETYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSKERNELHOOK" EntityType="Self.WINDOWSKERNELHOOK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSKERNELOBJECT" EntityType="Self.WINDOWSKERNELOBJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSMAILSLOT" EntityType="Self.WINDOWSMAILSLOT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSMEMORYPAGEREGION" EntityType="Self.WINDOWSMEMORYPAGEREGION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSMUTEX" EntityType="Self.WINDOWSMUTEX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSMUTEXHANDLE" EntityType="Self.WINDOWSMUTEXHANDLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSMUTEXSECURITYATTRIBUTE" EntityType="Self.WINDOWSMUTEXSECURITYATTRIBUTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSNETWORKROUTEENTRY" EntityType="Self.WINDOWSNETWORKROUTEENTRY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSNETWORKSHARE" EntityType="Self.WINDOWSNETWORKSHARE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSPIPEOBJECT" EntityType="Self.WINDOWSPIPEOBJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSPREFETCHACCESSEDFILELIST" EntityType="Self.WINDOWSPREFETCHACCESSEDFILELIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSPREFETCHCHANGERECORD" EntityType="Self.WINDOWSPREFETCHCHANGERECORD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSPREFETCHOBJECT" EntityType="Self.WINDOWSPREFETCHOBJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSPRIVILEGE" EntityType="Self.WINDOWSPRIVILEGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSPROCESS" EntityType="Self.WINDOWSPROCESS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSPROCESSTOKEN" EntityType="Self.WINDOWSPROCESSTOKEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSREGISTRYKEYOBJECT" EntityType="Self.WINDOWSREGISTRYKEYOBJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSSEMAPHORE" EntityType="Self.WINDOWSSEMAPHORE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSSERVICE" EntityType="Self.WINDOWSSERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSSYSTEM" EntityType="Self.WINDOWSSYSTEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSSYSTEMRESTORE" EntityType="Self.WINDOWSSYSTEMRESTORE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSTASK" EntityType="Self.WINDOWSTASK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSTHREAD" EntityType="Self.WINDOWSTHREAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSUSERACCOUNT" EntityType="Self.WINDOWSUSERACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSUSERACCOUNTCHANGERECORD" EntityType="Self.WINDOWSUSERACCOUNTCHANGERECORD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSUSERACCOUNTPRIVILEGE" EntityType="Self.WINDOWSUSERACCOUNTPRIVILEGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSVOLUME" EntityType="Self.WINDOWSVOLUME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSVOLUMEATTRIBUTE" EntityType="Self.WINDOWSVOLUMEATTRIBUTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSVOLUMEATTRIBUTEENUM" EntityType="Self.WINDOWSVOLUMEATTRIBUTEENUM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSVOLUMEATTRIBUTESLIST" EntityType="Self.WINDOWSVOLUMEATTRIBUTESLIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSVOLUMEENCRYPTION" EntityType="Self.WINDOWSVOLUMEENCRYPTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSWAITABLETIMER" EntityType="Self.WINDOWSWAITABLETIMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINDOWSWAITABLETIMEROBJECT" EntityType="Self.WINDOWSWAITABLETIMEROBJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WINWAITABLETIMER" EntityType="Self.WINWAITABLETIMER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_WINDOWSGROUPFORWINDOWSUSERACCOUNT_WINDOWSGROUP" Association="Self.FK_WINDOWSGROUPFORWINDOWSUSERACCOUNT_WINDOWSGROUP">
+            <End Role="WINDOWSGROUP" EntitySet="WINDOWSGROUP" />
+            <End Role="WINDOWSGROUPFORWINDOWSUSERACCOUNT" EntitySet="WINDOWSGROUPFORWINDOWSUSERACCOUNT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLE" Association="Self.FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLE">
+            <End Role="WINDOWSHANDLE" EntitySet="WINDOWSHANDLE" />
+            <End Role="WINDOWSHANDLELISTHANDLES" EntitySet="WINDOWSHANDLELISTHANDLES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLELIST" Association="Self.FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLELIST">
+            <End Role="WINDOWSHANDLELIST" EntitySet="WINDOWSHANDLELIST" />
+            <End Role="WINDOWSHANDLELISTHANDLES" EntitySet="WINDOWSHANDLELISTHANDLES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSMUTEXHANDLE_WINDOWSHANDLE" Association="Self.FK_WINDOWSMUTEXHANDLE_WINDOWSHANDLE">
+            <End Role="WINDOWSHANDLE" EntitySet="WINDOWSHANDLE" />
+            <End Role="WINDOWSMUTEXHANDLE" EntitySet="WINDOWSMUTEXHANDLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSMUTEXHANDLE_WINDOWSMUTEX" Association="Self.FK_WINDOWSMUTEXHANDLE_WINDOWSMUTEX">
+            <End Role="WINDOWSMUTEX" EntitySet="WINDOWSMUTEX" />
+            <End Role="WINDOWSMUTEXHANDLE" EntitySet="WINDOWSMUTEXHANDLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSMUTEXSECURITYATTRIBUTE_WINDOWSMUTEX" Association="Self.FK_WINDOWSMUTEXSECURITYATTRIBUTE_WINDOWSMUTEX">
+            <End Role="WINDOWSMUTEX" EntitySet="WINDOWSMUTEX" />
+            <End Role="WINDOWSMUTEXSECURITYATTRIBUTE" EntitySet="WINDOWSMUTEXSECURITYATTRIBUTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSPREFETCHACCESSEDFILELIST_WINDOWSPREFETCHOBJECT" Association="Self.FK_WINDOWSPREFETCHACCESSEDFILELIST_WINDOWSPREFETCHOBJECT">
+            <End Role="WINDOWSPREFETCHOBJECT" EntitySet="WINDOWSPREFETCHOBJECT" />
+            <End Role="WINDOWSPREFETCHACCESSEDFILELIST" EntitySet="WINDOWSPREFETCHACCESSEDFILELIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSPROCESSTOKEN_WINDOWSPROCESS" Association="Self.FK_WINDOWSPROCESSTOKEN_WINDOWSPROCESS">
+            <End Role="WINDOWSPROCESS" EntitySet="WINDOWSPROCESS" />
+            <End Role="WINDOWSPROCESSTOKEN" EntitySet="WINDOWSPROCESSTOKEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSHANDLELIST" Association="Self.FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSHANDLELIST">
+            <End Role="WINDOWSHANDLELIST" EntitySet="WINDOWSHANDLELIST" />
+            <End Role="WINDOWSREGISTRYKEYOBJECT" EntitySet="WINDOWSREGISTRYKEYOBJECT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSUSERACCOUNT" Association="Self.FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSUSERACCOUNT">
+            <End Role="WINDOWSUSERACCOUNT" EntitySet="WINDOWSUSERACCOUNT" />
+            <End Role="WINDOWSREGISTRYKEYOBJECT" EntitySet="WINDOWSREGISTRYKEYOBJECT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSTHREAD_WINDOWSHANDLE" Association="Self.FK_WINDOWSTHREAD_WINDOWSHANDLE">
+            <End Role="WINDOWSHANDLE" EntitySet="WINDOWSHANDLE" />
+            <End Role="WINDOWSTHREAD" EntitySet="WINDOWSTHREAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSUSERACCOUNT_WINDOWSCOMPUTERACCOUNT" Association="Self.FK_WINDOWSUSERACCOUNT_WINDOWSCOMPUTERACCOUNT">
+            <End Role="WINDOWSCOMPUTERACCOUNT" EntitySet="WINDOWSCOMPUTERACCOUNT" />
+            <End Role="WINDOWSUSERACCOUNT" EntitySet="WINDOWSUSERACCOUNT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSPRIVILEGE" Association="Self.FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSPRIVILEGE">
+            <End Role="WINDOWSPRIVILEGE" EntitySet="WINDOWSPRIVILEGE" />
+            <End Role="WINDOWSUSERACCOUNTPRIVILEGE" EntitySet="WINDOWSUSERACCOUNTPRIVILEGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSUSERACCOUNT" Association="Self.FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSUSERACCOUNT">
+            <End Role="WINDOWSUSERACCOUNT" EntitySet="WINDOWSUSERACCOUNT" />
+            <End Role="WINDOWSUSERACCOUNTPRIVILEGE" EntitySet="WINDOWSUSERACCOUNTPRIVILEGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUME" Association="Self.FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUME">
+            <End Role="WINDOWSVOLUME" EntitySet="WINDOWSVOLUME" />
+            <End Role="WINDOWSVOLUMEATTRIBUTESLIST" EntitySet="WINDOWSVOLUMEATTRIBUTESLIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUMEATTRIBUTE" Association="Self.FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUMEATTRIBUTE">
+            <End Role="WINDOWSVOLUMEATTRIBUTE" EntitySet="WINDOWSVOLUMEATTRIBUTE" />
+            <End Role="WINDOWSVOLUMEATTRIBUTESLIST" EntitySet="WINDOWSVOLUMEATTRIBUTESLIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSVOLUMEENCRYPTION_WINDOWSVOLUME" Association="Self.FK_WINDOWSVOLUMEENCRYPTION_WINDOWSVOLUME">
+            <End Role="WINDOWSVOLUME" EntitySet="WINDOWSVOLUME" />
+            <End Role="WINDOWSVOLUMEENCRYPTION" EntitySet="WINDOWSVOLUMEENCRYPTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSWAITABLETIMEROBJECT_WINDOWSHANDLE" Association="Self.FK_WINDOWSWAITABLETIMEROBJECT_WINDOWSHANDLE">
+            <End Role="WINDOWSHANDLE" EntitySet="WINDOWSHANDLE" />
+            <End Role="WINDOWSWAITABLETIMEROBJECT" EntitySet="WINDOWSWAITABLETIMEROBJECT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="XWINDOWSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="WINDOWSCOMPUTERACCOUNT">
+          <Key>
+            <PropertyRef Name="WindowsComputerAccountID" />
+          </Key>
+          <Property Name="WindowsComputerAccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreationObjectID" Type="Int32" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="WINDOWSUSERACCOUNT" Relationship="Self.FK_WINDOWSUSERACCOUNT_WINDOWSCOMPUTERACCOUNT" FromRole="WINDOWSCOMPUTERACCOUNT" ToRole="WINDOWSUSERACCOUNT" />
+        </EntityType>
+        <EntityType Name="WINDOWSCRITICALSECTION">
+          <Key>
+            <PropertyRef Name="WindowsCriticalSectionID" />
+          </Key>
+          <Property Name="WindowsCriticalSectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSDRIVER">
+          <Key>
+            <PropertyRef Name="WindowsDriverID" />
+          </Key>
+          <Property Name="WindowsDriverID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSDRIVETYPE">
+          <Key>
+            <PropertyRef Name="WindowsDriveTypeID" />
+          </Key>
+          <Property Name="WindowsDriveTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsDriveTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WindowsDriveTypeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="WINDOWSEVENT">
+          <Key>
+            <PropertyRef Name="WindowsEventID" />
+          </Key>
+          <Property Name="WindowsEventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSEVENTLOG">
+          <Key>
+            <PropertyRef Name="WindowsEventLogID" />
+          </Key>
+          <Property Name="WindowsEventLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSEXECUTABLEFILE">
+          <Key>
+            <PropertyRef Name="WindowsExecutableFileID" />
+          </Key>
+          <Property Name="WindowsExecutableFileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSFILE">
+          <Key>
+            <PropertyRef Name="WindowsFileID" />
+          </Key>
+          <Property Name="WindowsFileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsFileGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FileID" Type="Int32" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <Property Name="suspected_malicious" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="WINDOWSGROUP">
+          <Key>
+            <PropertyRef Name="WindowsGroupID" />
+          </Key>
+          <Property Name="WindowsGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="WINDOWSGROUPFORWINDOWSUSERACCOUNT" Relationship="Self.FK_WINDOWSGROUPFORWINDOWSUSERACCOUNT_WINDOWSGROUP" FromRole="WINDOWSGROUP" ToRole="WINDOWSGROUPFORWINDOWSUSERACCOUNT" />
+        </EntityType>
+        <EntityType Name="WINDOWSGROUPFORWINDOWSUSERACCOUNT">
+          <Key>
+            <PropertyRef Name="WindowsGroupWindowsUserAccountID" />
+          </Key>
+          <Property Name="WindowsGroupWindowsUserAccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsGroupID" Type="Int32" Nullable="false" />
+          <Property Name="WindowsUserAccountID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="WINDOWSGROUP" Relationship="Self.FK_WINDOWSGROUPFORWINDOWSUSERACCOUNT_WINDOWSGROUP" FromRole="WINDOWSGROUPFORWINDOWSUSERACCOUNT" ToRole="WINDOWSGROUP" />
+        </EntityType>
+        <EntityType Name="WINDOWSHANDLE">
+          <Key>
+            <PropertyRef Name="WindowsHandleID" />
+          </Key>
+          <Property Name="WindowsHandleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsHandleObjectID" Type="Int32" />
+          <Property Name="WindowsHandleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HandleTypeID" Type="Int32" />
+          <Property Name="Object_Address" Type="Int32" />
+          <Property Name="Access_Mask" Type="Int32" />
+          <Property Name="Pointer_Count" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="Int32" />
+          <Property Name="CollectionMethodID" Type="Int32" />
+          <NavigationProperty Name="WINDOWSHANDLELISTHANDLES" Relationship="Self.FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLE" FromRole="WINDOWSHANDLE" ToRole="WINDOWSHANDLELISTHANDLES" />
+          <NavigationProperty Name="WINDOWSMUTEXHANDLE" Relationship="Self.FK_WINDOWSMUTEXHANDLE_WINDOWSHANDLE" FromRole="WINDOWSHANDLE" ToRole="WINDOWSMUTEXHANDLE" />
+          <NavigationProperty Name="WINDOWSTHREAD" Relationship="Self.FK_WINDOWSTHREAD_WINDOWSHANDLE" FromRole="WINDOWSHANDLE" ToRole="WINDOWSTHREAD" />
+          <NavigationProperty Name="WINDOWSWAITABLETIMEROBJECT" Relationship="Self.FK_WINDOWSWAITABLETIMEROBJECT_WINDOWSHANDLE" FromRole="WINDOWSHANDLE" ToRole="WINDOWSWAITABLETIMEROBJECT" />
+        </EntityType>
+        <EntityType Name="WINDOWSHANDLELIST">
+          <Key>
+            <PropertyRef Name="WindowsHandleListID" />
+          </Key>
+          <Property Name="WindowsHandleListID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="Int32" />
+          <Property Name="CollectionMethodID" Type="Int32" />
+          <NavigationProperty Name="WINDOWSHANDLELISTHANDLES" Relationship="Self.FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLELIST" FromRole="WINDOWSHANDLELIST" ToRole="WINDOWSHANDLELISTHANDLES" />
+          <NavigationProperty Name="WINDOWSREGISTRYKEYOBJECT" Relationship="Self.FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSHANDLELIST" FromRole="WINDOWSHANDLELIST" ToRole="WINDOWSREGISTRYKEYOBJECT" />
+        </EntityType>
+        <EntityType Name="WINDOWSHANDLELISTHANDLES">
+          <Key>
+            <PropertyRef Name="WindowsHandleListHandlesID" />
+          </Key>
+          <Property Name="WindowsHandleListHandlesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsHandleListID" Type="Int32" Nullable="false" />
+          <Property Name="WindowsHandleID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="Int32" />
+          <Property Name="CollectionMethodID" Type="Int32" />
+          <NavigationProperty Name="WINDOWSHANDLE" Relationship="Self.FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLE" FromRole="WINDOWSHANDLELISTHANDLES" ToRole="WINDOWSHANDLE" />
+          <NavigationProperty Name="WINDOWSHANDLELIST" Relationship="Self.FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLELIST" FromRole="WINDOWSHANDLELISTHANDLES" ToRole="WINDOWSHANDLELIST" />
+        </EntityType>
+        <EntityType Name="WINDOWSHANDLETYPE">
+          <Key>
+            <PropertyRef Name="WindowsHandleTypeID" />
+          </Key>
+          <Property Name="WindowsHandleTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HandleTypeID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="VocabularyID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="WINDOWSKERNELHOOK">
+          <Key>
+            <PropertyRef Name="WindowsKernelHookID" />
+          </Key>
+          <Property Name="WindowsKernelHookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Digital_Signature_Hooking" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DigitalSignatureInfoHookingID" Type="Int32" />
+          <Property Name="Digital_Signature_Hooked" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DigitalSignatureInfoHookedID" Type="Int32" />
+          <Property Name="Hooking_Address" Type="Int32" />
+          <Property Name="Hook_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Hooked_Function" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FunctionHookedID" Type="Int32" />
+          <Property Name="Hooked_Module" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ModuleHookedID" Type="Int32" />
+          <Property Name="Hooking_Module" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KernelHookID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="Int32" />
+          <Property Name="CollectionMethodID" Type="Int32" />
+          <Property Name="DetectionMethodID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="WINDOWSKERNELOBJECT">
+          <Key>
+            <PropertyRef Name="WindowsKernelObjectID" />
+          </Key>
+          <Property Name="WindowsKernelObjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDTEntryListID" Type="Int32" />
+          <Property Name="SSDTEntryListID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="Int32" />
+          <Property Name="CollectionMethodID" Type="Int32" />
+          <Property Name="CollectionToolID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="WINDOWSMAILSLOT">
+          <Key>
+            <PropertyRef Name="WindowsMailslotID" />
+          </Key>
+          <Property Name="WindowsMailslotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSMEMORYPAGEREGION">
+          <Key>
+            <PropertyRef Name="WindowsMemoryPageRegionID" />
+          </Key>
+          <Property Name="WindowsMemoryPageRegionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSMUTEX">
+          <Key>
+            <PropertyRef Name="WindowsMutexID" />
+          </Key>
+          <Property Name="WindowsMutexID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsHandleID" Type="Int32" />
+          <Property Name="MutexID" Type="Int32" />
+          <Property Name="Security_Attributes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WindowsMutexDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <Property Name="ConfidenceLevelID" Type="Int32" />
+          <NavigationProperty Name="WINDOWSMUTEXHANDLE" Relationship="Self.FK_WINDOWSMUTEXHANDLE_WINDOWSMUTEX" FromRole="WINDOWSMUTEX" ToRole="WINDOWSMUTEXHANDLE" />
+          <NavigationProperty Name="WINDOWSMUTEXSECURITYATTRIBUTE" Relationship="Self.FK_WINDOWSMUTEXSECURITYATTRIBUTE_WINDOWSMUTEX" FromRole="WINDOWSMUTEX" ToRole="WINDOWSMUTEXSECURITYATTRIBUTE" />
+        </EntityType>
+        <EntityType Name="WINDOWSMUTEXHANDLE">
+          <Key>
+            <PropertyRef Name="WindowsMutexHandleID" />
+          </Key>
+          <Property Name="WindowsMutexHandleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsMutexID" Type="Int32" Nullable="false" />
+          <Property Name="WindowsHandleID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <NavigationProperty Name="WINDOWSHANDLE" Relationship="Self.FK_WINDOWSMUTEXHANDLE_WINDOWSHANDLE" FromRole="WINDOWSMUTEXHANDLE" ToRole="WINDOWSHANDLE" />
+          <NavigationProperty Name="WINDOWSMUTEX" Relationship="Self.FK_WINDOWSMUTEXHANDLE_WINDOWSMUTEX" FromRole="WINDOWSMUTEXHANDLE" ToRole="WINDOWSMUTEX" />
+        </EntityType>
+        <EntityType Name="WINDOWSMUTEXSECURITYATTRIBUTE">
+          <Key>
+            <PropertyRef Name="WindowsMutexSecurityAttributeID" />
+          </Key>
+          <Property Name="WindowsMutexSecurityAttributeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsMutexID" Type="Int32" Nullable="false" />
+          <Property Name="SecurityAttributeID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <NavigationProperty Name="WINDOWSMUTEX" Relationship="Self.FK_WINDOWSMUTEXSECURITYATTRIBUTE_WINDOWSMUTEX" FromRole="WINDOWSMUTEXSECURITYATTRIBUTE" ToRole="WINDOWSMUTEX" />
+        </EntityType>
+        <EntityType Name="WINDOWSNETWORKROUTEENTRY">
+          <Key>
+            <PropertyRef Name="WindowsNetworkRouteEntryID" />
+          </Key>
+          <Property Name="WindowsNetworkRouteEntryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSNETWORKSHARE">
+          <Key>
+            <PropertyRef Name="WindowsNetworkShareID" />
+          </Key>
+          <Property Name="WindowsNetworkShareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSPIPEOBJECT">
+          <Key>
+            <PropertyRef Name="WindowsPipeObjectID" />
+          </Key>
+          <Property Name="WindowsPipeObjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PipeObjectID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="WINDOWSPREFETCHACCESSEDFILELIST">
+          <Key>
+            <PropertyRef Name="WindowsPrefetchObjectAccessedFileListID" />
+          </Key>
+          <Property Name="WindowsPrefetchObjectAccessedFileListID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsPrefetchObjectID" Type="Int32" Nullable="false" />
+          <Property Name="AccessedFileListID" Type="Int32" Nullable="false" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="WINDOWSPREFETCHOBJECT" Relationship="Self.FK_WINDOWSPREFETCHACCESSEDFILELIST_WINDOWSPREFETCHOBJECT" FromRole="WINDOWSPREFETCHACCESSEDFILELIST" ToRole="WINDOWSPREFETCHOBJECT" />
+        </EntityType>
+        <EntityType Name="WINDOWSPREFETCHCHANGERECORD">
+          <Key>
+            <PropertyRef Name="WindowsPrefetchChangeRecordID" />
+          </Key>
+          <Property Name="WindowsPrefetchChangeRecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSPREFETCHOBJECT">
+          <Key>
+            <PropertyRef Name="WindowsPrefetchObjectID" />
+          </Key>
+          <Property Name="WindowsPrefetchObjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Application_File_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FileID" Type="Int32" />
+          <Property Name="CPEName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Prefetch_Hash" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="Times_Executed" Type="Int64" />
+          <Property Name="First_Run" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Last_Run" Type="DateTimeOffset" Precision="7" />
+          <Property Name="VolumeObjectID" Type="Int32" />
+          <Property Name="WindowsVolumeID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <NavigationProperty Name="WINDOWSPREFETCHACCESSEDFILELIST" Relationship="Self.FK_WINDOWSPREFETCHACCESSEDFILELIST_WINDOWSPREFETCHOBJECT" FromRole="WINDOWSPREFETCHOBJECT" ToRole="WINDOWSPREFETCHACCESSEDFILELIST" />
+        </EntityType>
+        <EntityType Name="WINDOWSPRIVILEGE">
+          <Key>
+            <PropertyRef Name="WindowsPrivilegeID" />
+          </Key>
+          <Property Name="WindowsPrivilegeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrivilegeID" Type="Int32" />
+          <Property Name="User_Right" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <NavigationProperty Name="WINDOWSUSERACCOUNTPRIVILEGE" Relationship="Self.FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSPRIVILEGE" FromRole="WINDOWSPRIVILEGE" ToRole="WINDOWSUSERACCOUNTPRIVILEGE" />
+        </EntityType>
+        <EntityType Name="WINDOWSPROCESS">
+          <Key>
+            <PropertyRef Name="WindowsProcessID" />
+          </Key>
+          <Property Name="WindowsProcessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessID" Type="Int32" />
+          <Property Name="WindowsProcessGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="aslr_enabled" Type="Boolean" />
+          <Property Name="dep_enabled" Type="Boolean" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="WINDOWSPROCESSTOKEN" Relationship="Self.FK_WINDOWSPROCESSTOKEN_WINDOWSPROCESS" FromRole="WINDOWSPROCESS" ToRole="WINDOWSPROCESSTOKEN" />
+        </EntityType>
+        <EntityType Name="WINDOWSPROCESSTOKEN">
+          <Key>
+            <PropertyRef Name="WindowsProcessTokenID" />
+          </Key>
+          <Property Name="WindowsProcessTokenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsProcessID" Type="Int32" Nullable="false" />
+          <Property Name="TokenID" Type="Int32" Nullable="false" />
+          <Property Name="IntegrityLevelID" Type="Int32" />
+          <Property Name="ConfidenceLevelID" Type="Int32" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="WINDOWSPROCESS" Relationship="Self.FK_WINDOWSPROCESSTOKEN_WINDOWSPROCESS" FromRole="WINDOWSPROCESSTOKEN" ToRole="WINDOWSPROCESS" />
+        </EntityType>
+        <EntityType Name="WINDOWSREGISTRYKEYOBJECT">
+          <Key>
+            <PropertyRef Name="WindowsRegistryKeyObjectID" />
+          </Key>
+          <Property Name="WindowsRegistryKeyObjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hive" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="operation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Full_Key" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RegistryHiveID" Type="Int32" />
+          <Property Name="Number_Values" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegistryValuesID" Type="Int32" />
+          <Property Name="Modified_Time" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Creator_Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="UserAccountID" Type="Int32" />
+          <Property Name="WindowsUserAccountID" Type="Int32" />
+          <Property Name="WindowsHandleListID" Type="Int32" />
+          <Property Name="Number_Subkeys" Type="Int32" />
+          <Property Name="RegistrySubkeysID" Type="Int32" />
+          <Property Name="ByteRunsID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="Int32" />
+          <Property Name="CollectionMethodID" Type="Int32" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <NavigationProperty Name="WINDOWSHANDLELIST" Relationship="Self.FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSHANDLELIST" FromRole="WINDOWSREGISTRYKEYOBJECT" ToRole="WINDOWSHANDLELIST" />
+          <NavigationProperty Name="WINDOWSUSERACCOUNT" Relationship="Self.FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSUSERACCOUNT" FromRole="WINDOWSREGISTRYKEYOBJECT" ToRole="WINDOWSUSERACCOUNT" />
+        </EntityType>
+        <EntityType Name="WINDOWSSEMAPHORE">
+          <Key>
+            <PropertyRef Name="WindowsSemaphoreID" />
+          </Key>
+          <Property Name="WindowsSemaphoreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SemaphoreID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="WINDOWSSERVICE">
+          <Key>
+            <PropertyRef Name="WindowsServiceID" />
+          </Key>
+          <Property Name="WindowsServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSSYSTEM">
+          <Key>
+            <PropertyRef Name="WindowsSystemID" />
+          </Key>
+          <Property Name="WindowsSystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SystemID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="WINDOWSSYSTEMRESTORE">
+          <Key>
+            <PropertyRef Name="WindowsSystemRestoreID" />
+          </Key>
+          <Property Name="WindowsSystemRestoreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Restore_Point_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Restore_Point_Full_Path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Restore_Point_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Restore_Point_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ACL_Change_SID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ACL_Change_Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Backup_File_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Change_Event" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChangeLog_Entry_Flags" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChangeLog_Entry_Sequence_Number" Type="Int32" />
+          <Property Name="ChangeLog_Entry_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Change_Log_File_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTimeOffset" Precision="7" />
+          <Property Name="File_Attributes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="New_File_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Original_File_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Original_Short_File_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Process_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Registry_Hive_List" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="WINDOWSTASK">
+          <Key>
+            <PropertyRef Name="WindowsTaskID" />
+          </Key>
+          <Property Name="WindowsTaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskID" Type="Int32" />
+          <Property Name="SessionCronID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaskStatusID" Type="Int32" />
+          <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaskPriorityID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Application_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationID" Type="Int32" />
+          <Property Name="CPEName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Parameters" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Flags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Account_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="Account_Run_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Account_Logon_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Creator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Creation_Date" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Most_Recent_Run_Time" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Exit_Code" Type="Int32" />
+          <Property Name="Max_Run_Time" Type="Int32" />
+          <Property Name="Next_Run_Time" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Working_Directory" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DirectoryID" Type="Int32" />
+          <Property Name="Work_Item_Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isEncrypted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="WINDOWSTHREAD">
+          <Key>
+            <PropertyRef Name="WindowsThreadID" />
+          </Key>
+          <Property Name="WindowsThreadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Thread_ID" Type="Int32" />
+          <Property Name="WindowsHandleID" Type="Int32" />
+          <Property Name="ThreadRunningStatusID" Type="Int32" />
+          <Property Name="Running_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Context" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="Creation_Flags" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Creation_Time" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Start_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartMemoryAddressID" Type="Int32" />
+          <Property Name="Parameter_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParameterMemoryAddressID" Type="Int32" />
+          <Property Name="Security_Attributes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stack_Size" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <NavigationProperty Name="WINDOWSHANDLE" Relationship="Self.FK_WINDOWSTHREAD_WINDOWSHANDLE" FromRole="WINDOWSTHREAD" ToRole="WINDOWSHANDLE" />
+        </EntityType>
+        <EntityType Name="WINDOWSUSERACCOUNT">
+          <Key>
+            <PropertyRef Name="WindowsUserAccountID" />
+          </Key>
+          <Property Name="WindowsUserAccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsUserAccountGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="UserAccountID" Type="Int32" />
+          <Property Name="WindowsComputerAccountID" Type="Int32" />
+          <Property Name="Security_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Security_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreationObjectID" Type="Int32" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="TrustLevelID" Type="Int32" />
+          <Property Name="TrustReasonID" Type="Int32" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <Property Name="suspected_malicious" Type="Boolean" />
+          <Property Name="SuspectedMaliciousReasonID" Type="Int32" />
+          <NavigationProperty Name="WINDOWSCOMPUTERACCOUNT" Relationship="Self.FK_WINDOWSUSERACCOUNT_WINDOWSCOMPUTERACCOUNT" FromRole="WINDOWSUSERACCOUNT" ToRole="WINDOWSCOMPUTERACCOUNT" />
+          <NavigationProperty Name="WINDOWSREGISTRYKEYOBJECT" Relationship="Self.FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSUSERACCOUNT" FromRole="WINDOWSUSERACCOUNT" ToRole="WINDOWSREGISTRYKEYOBJECT" />
+          <NavigationProperty Name="WINDOWSUSERACCOUNTPRIVILEGE" Relationship="Self.FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSUSERACCOUNT" FromRole="WINDOWSUSERACCOUNT" ToRole="WINDOWSUSERACCOUNTPRIVILEGE" />
+        </EntityType>
+        <EntityType Name="WINDOWSUSERACCOUNTCHANGERECORD">
+          <Key>
+            <PropertyRef Name="WindowsUserAccountChangeRecordID" />
+          </Key>
+          <Property Name="WindowsUserAccountChangeRecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSUSERACCOUNTPRIVILEGE">
+          <Key>
+            <PropertyRef Name="WindowsUserAccountPrivilegeID" />
+          </Key>
+          <Property Name="WindowsUserAccountPrivilegeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsUserAccountID" Type="Int32" Nullable="false" />
+          <Property Name="WindowsPrivilegeID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="Int32" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <NavigationProperty Name="WINDOWSPRIVILEGE" Relationship="Self.FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSPRIVILEGE" FromRole="WINDOWSUSERACCOUNTPRIVILEGE" ToRole="WINDOWSPRIVILEGE" />
+          <NavigationProperty Name="WINDOWSUSERACCOUNT" Relationship="Self.FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSUSERACCOUNT" FromRole="WINDOWSUSERACCOUNTPRIVILEGE" ToRole="WINDOWSUSERACCOUNT" />
+        </EntityType>
+        <EntityType Name="WINDOWSVOLUME">
+          <Key>
+            <PropertyRef Name="WindowsVolumeID" />
+          </Key>
+          <Property Name="WindowsVolumeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsVolumeGUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VolumeObjectID" Type="Int32" />
+          <Property Name="Drive_Letter" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <NavigationProperty Name="WINDOWSVOLUMEATTRIBUTESLIST" Relationship="Self.FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUME" FromRole="WINDOWSVOLUME" ToRole="WINDOWSVOLUMEATTRIBUTESLIST" />
+          <NavigationProperty Name="WINDOWSVOLUMEENCRYPTION" Relationship="Self.FK_WINDOWSVOLUMEENCRYPTION_WINDOWSVOLUME" FromRole="WINDOWSVOLUME" ToRole="WINDOWSVOLUMEENCRYPTION" />
+        </EntityType>
+        <EntityType Name="WINDOWSVOLUMEATTRIBUTE">
+          <Key>
+            <PropertyRef Name="WindowsVolumeAttributeID" />
+          </Key>
+          <Property Name="WindowsVolumeAttributeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttributeID" Type="Int32" />
+          <NavigationProperty Name="WINDOWSVOLUMEATTRIBUTESLIST" Relationship="Self.FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUMEATTRIBUTE" FromRole="WINDOWSVOLUMEATTRIBUTE" ToRole="WINDOWSVOLUMEATTRIBUTESLIST" />
+        </EntityType>
+        <EntityType Name="WINDOWSVOLUMEATTRIBUTEENUM">
+          <Key>
+            <PropertyRef Name="WindowsVolumeAttributeEnumID" />
+          </Key>
+          <Property Name="WindowsVolumeAttributeEnumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsVolumeAttributeEnumValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WindowsVolumeAttributeEnumDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VocabularyID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="WINDOWSVOLUMEATTRIBUTESLIST">
+          <Key>
+            <PropertyRef Name="WindowsVolumeAttributesListID" />
+          </Key>
+          <Property Name="WindowsVolumeAttributesListID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsVolumeID" Type="Int32" Nullable="false" />
+          <Property Name="WindowsVolumeAttributeID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <NavigationProperty Name="WINDOWSVOLUME" Relationship="Self.FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUME" FromRole="WINDOWSVOLUMEATTRIBUTESLIST" ToRole="WINDOWSVOLUME" />
+          <NavigationProperty Name="WINDOWSVOLUMEATTRIBUTE" Relationship="Self.FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUMEATTRIBUTE" FromRole="WINDOWSVOLUMEATTRIBUTESLIST" ToRole="WINDOWSVOLUMEATTRIBUTE" />
+        </EntityType>
+        <EntityType Name="WINDOWSVOLUMEENCRYPTION">
+          <Key>
+            <PropertyRef Name="WindowsVolumeEncryptionID" />
+          </Key>
+          <Property Name="WindowsVolumeEncryptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsVolumeID" Type="Int32" Nullable="false" />
+          <Property Name="EncryptionID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ConfidenceLevelID" Type="Int32" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <NavigationProperty Name="WINDOWSVOLUME" Relationship="Self.FK_WINDOWSVOLUMEENCRYPTION_WINDOWSVOLUME" FromRole="WINDOWSVOLUMEENCRYPTION" ToRole="WINDOWSVOLUME" />
+        </EntityType>
+        <EntityType Name="WINDOWSWAITABLETIMER">
+          <Key>
+            <PropertyRef Name="WindowsWaitableTimerID" />
+          </Key>
+          <Property Name="WindowsWaitableTimerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WINDOWSWAITABLETIMEROBJECT">
+          <Key>
+            <PropertyRef Name="WindowsWaitableTimerObjectID" />
+          </Key>
+          <Property Name="WindowsWaitableTimerObjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WindowsHandleID" Type="Int32" />
+          <Property Name="WindowsWaitableTimerObjectName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Security_Attributes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WaitableTimerTypeID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="timestamp" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidFromDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidUntilDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isEncrypted" Type="Boolean" />
+          <NavigationProperty Name="WINDOWSHANDLE" Relationship="Self.FK_WINDOWSWAITABLETIMEROBJECT_WINDOWSHANDLE" FromRole="WINDOWSWAITABLETIMEROBJECT" ToRole="WINDOWSHANDLE" />
+        </EntityType>
+        <EntityType Name="WINWAITABLETIMER">
+          <Key>
+            <PropertyRef Name="WinWaitableTimerID" />
+          </Key>
+          <Property Name="WinWaitableTimerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="FK_WINDOWSUSERACCOUNT_WINDOWSCOMPUTERACCOUNT">
+          <End Role="WINDOWSCOMPUTERACCOUNT" Type="Self.WINDOWSCOMPUTERACCOUNT" Multiplicity="0..1" />
+          <End Role="WINDOWSUSERACCOUNT" Type="Self.WINDOWSUSERACCOUNT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSCOMPUTERACCOUNT">
+              <PropertyRef Name="WindowsComputerAccountID" />
+            </Principal>
+            <Dependent Role="WINDOWSUSERACCOUNT">
+              <PropertyRef Name="WindowsComputerAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSGROUPFORWINDOWSUSERACCOUNT_WINDOWSGROUP">
+          <End Role="WINDOWSGROUP" Type="Self.WINDOWSGROUP" Multiplicity="1" />
+          <End Role="WINDOWSGROUPFORWINDOWSUSERACCOUNT" Type="Self.WINDOWSGROUPFORWINDOWSUSERACCOUNT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSGROUP">
+              <PropertyRef Name="WindowsGroupID" />
+            </Principal>
+            <Dependent Role="WINDOWSGROUPFORWINDOWSUSERACCOUNT">
+              <PropertyRef Name="WindowsGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLE">
+          <End Role="WINDOWSHANDLE" Type="Self.WINDOWSHANDLE" Multiplicity="1" />
+          <End Role="WINDOWSHANDLELISTHANDLES" Type="Self.WINDOWSHANDLELISTHANDLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSHANDLE">
+              <PropertyRef Name="WindowsHandleID" />
+            </Principal>
+            <Dependent Role="WINDOWSHANDLELISTHANDLES">
+              <PropertyRef Name="WindowsHandleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSMUTEXHANDLE_WINDOWSHANDLE">
+          <End Role="WINDOWSHANDLE" Type="Self.WINDOWSHANDLE" Multiplicity="1" />
+          <End Role="WINDOWSMUTEXHANDLE" Type="Self.WINDOWSMUTEXHANDLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSHANDLE">
+              <PropertyRef Name="WindowsHandleID" />
+            </Principal>
+            <Dependent Role="WINDOWSMUTEXHANDLE">
+              <PropertyRef Name="WindowsHandleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSTHREAD_WINDOWSHANDLE">
+          <End Role="WINDOWSHANDLE" Type="Self.WINDOWSHANDLE" Multiplicity="0..1" />
+          <End Role="WINDOWSTHREAD" Type="Self.WINDOWSTHREAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSHANDLE">
+              <PropertyRef Name="WindowsHandleID" />
+            </Principal>
+            <Dependent Role="WINDOWSTHREAD">
+              <PropertyRef Name="WindowsHandleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSWAITABLETIMEROBJECT_WINDOWSHANDLE">
+          <End Role="WINDOWSHANDLE" Type="Self.WINDOWSHANDLE" Multiplicity="0..1" />
+          <End Role="WINDOWSWAITABLETIMEROBJECT" Type="Self.WINDOWSWAITABLETIMEROBJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSHANDLE">
+              <PropertyRef Name="WindowsHandleID" />
+            </Principal>
+            <Dependent Role="WINDOWSWAITABLETIMEROBJECT">
+              <PropertyRef Name="WindowsHandleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLELIST">
+          <End Role="WINDOWSHANDLELIST" Type="Self.WINDOWSHANDLELIST" Multiplicity="1" />
+          <End Role="WINDOWSHANDLELISTHANDLES" Type="Self.WINDOWSHANDLELISTHANDLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSHANDLELIST">
+              <PropertyRef Name="WindowsHandleListID" />
+            </Principal>
+            <Dependent Role="WINDOWSHANDLELISTHANDLES">
+              <PropertyRef Name="WindowsHandleListID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSHANDLELIST">
+          <End Role="WINDOWSHANDLELIST" Type="Self.WINDOWSHANDLELIST" Multiplicity="0..1" />
+          <End Role="WINDOWSREGISTRYKEYOBJECT" Type="Self.WINDOWSREGISTRYKEYOBJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSHANDLELIST">
+              <PropertyRef Name="WindowsHandleListID" />
+            </Principal>
+            <Dependent Role="WINDOWSREGISTRYKEYOBJECT">
+              <PropertyRef Name="WindowsHandleListID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSMUTEXHANDLE_WINDOWSMUTEX">
+          <End Role="WINDOWSMUTEX" Type="Self.WINDOWSMUTEX" Multiplicity="1" />
+          <End Role="WINDOWSMUTEXHANDLE" Type="Self.WINDOWSMUTEXHANDLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSMUTEX">
+              <PropertyRef Name="WindowsMutexID" />
+            </Principal>
+            <Dependent Role="WINDOWSMUTEXHANDLE">
+              <PropertyRef Name="WindowsMutexID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSMUTEXSECURITYATTRIBUTE_WINDOWSMUTEX">
+          <End Role="WINDOWSMUTEX" Type="Self.WINDOWSMUTEX" Multiplicity="1" />
+          <End Role="WINDOWSMUTEXSECURITYATTRIBUTE" Type="Self.WINDOWSMUTEXSECURITYATTRIBUTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSMUTEX">
+              <PropertyRef Name="WindowsMutexID" />
+            </Principal>
+            <Dependent Role="WINDOWSMUTEXSECURITYATTRIBUTE">
+              <PropertyRef Name="WindowsMutexID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSPREFETCHACCESSEDFILELIST_WINDOWSPREFETCHOBJECT">
+          <End Role="WINDOWSPREFETCHOBJECT" Type="Self.WINDOWSPREFETCHOBJECT" Multiplicity="1" />
+          <End Role="WINDOWSPREFETCHACCESSEDFILELIST" Type="Self.WINDOWSPREFETCHACCESSEDFILELIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSPREFETCHOBJECT">
+              <PropertyRef Name="WindowsPrefetchObjectID" />
+            </Principal>
+            <Dependent Role="WINDOWSPREFETCHACCESSEDFILELIST">
+              <PropertyRef Name="WindowsPrefetchObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSPRIVILEGE">
+          <End Role="WINDOWSPRIVILEGE" Type="Self.WINDOWSPRIVILEGE" Multiplicity="1" />
+          <End Role="WINDOWSUSERACCOUNTPRIVILEGE" Type="Self.WINDOWSUSERACCOUNTPRIVILEGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSPRIVILEGE">
+              <PropertyRef Name="WindowsPrivilegeID" />
+            </Principal>
+            <Dependent Role="WINDOWSUSERACCOUNTPRIVILEGE">
+              <PropertyRef Name="WindowsPrivilegeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSPROCESSTOKEN_WINDOWSPROCESS">
+          <End Role="WINDOWSPROCESS" Type="Self.WINDOWSPROCESS" Multiplicity="1" />
+          <End Role="WINDOWSPROCESSTOKEN" Type="Self.WINDOWSPROCESSTOKEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSPROCESS">
+              <PropertyRef Name="WindowsProcessID" />
+            </Principal>
+            <Dependent Role="WINDOWSPROCESSTOKEN">
+              <PropertyRef Name="WindowsProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSUSERACCOUNT">
+          <End Role="WINDOWSUSERACCOUNT" Type="Self.WINDOWSUSERACCOUNT" Multiplicity="0..1" />
+          <End Role="WINDOWSREGISTRYKEYOBJECT" Type="Self.WINDOWSREGISTRYKEYOBJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSUSERACCOUNT">
+              <PropertyRef Name="WindowsUserAccountID" />
+            </Principal>
+            <Dependent Role="WINDOWSREGISTRYKEYOBJECT">
+              <PropertyRef Name="WindowsUserAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSUSERACCOUNT">
+          <End Role="WINDOWSUSERACCOUNT" Type="Self.WINDOWSUSERACCOUNT" Multiplicity="1" />
+          <End Role="WINDOWSUSERACCOUNTPRIVILEGE" Type="Self.WINDOWSUSERACCOUNTPRIVILEGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSUSERACCOUNT">
+              <PropertyRef Name="WindowsUserAccountID" />
+            </Principal>
+            <Dependent Role="WINDOWSUSERACCOUNTPRIVILEGE">
+              <PropertyRef Name="WindowsUserAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUME">
+          <End Role="WINDOWSVOLUME" Type="Self.WINDOWSVOLUME" Multiplicity="1" />
+          <End Role="WINDOWSVOLUMEATTRIBUTESLIST" Type="Self.WINDOWSVOLUMEATTRIBUTESLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSVOLUME">
+              <PropertyRef Name="WindowsVolumeID" />
+            </Principal>
+            <Dependent Role="WINDOWSVOLUMEATTRIBUTESLIST">
+              <PropertyRef Name="WindowsVolumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSVOLUMEENCRYPTION_WINDOWSVOLUME">
+          <End Role="WINDOWSVOLUME" Type="Self.WINDOWSVOLUME" Multiplicity="1" />
+          <End Role="WINDOWSVOLUMEENCRYPTION" Type="Self.WINDOWSVOLUMEENCRYPTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSVOLUME">
+              <PropertyRef Name="WindowsVolumeID" />
+            </Principal>
+            <Dependent Role="WINDOWSVOLUMEENCRYPTION">
+              <PropertyRef Name="WindowsVolumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUMEATTRIBUTE">
+          <End Role="WINDOWSVOLUMEATTRIBUTE" Type="Self.WINDOWSVOLUMEATTRIBUTE" Multiplicity="1" />
+          <End Role="WINDOWSVOLUMEATTRIBUTESLIST" Type="Self.WINDOWSVOLUMEATTRIBUTESLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WINDOWSVOLUMEATTRIBUTE">
+              <PropertyRef Name="WindowsVolumeAttributeID" />
+            </Principal>
+            <Dependent Role="WINDOWSVOLUMEATTRIBUTESLIST">
+              <PropertyRef Name="WindowsVolumeAttributeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="XWINDOWSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="WINDOWSCOMPUTERACCOUNT" EntityType="Self.WINDOWSCOMPUTERACCOUNT" />
+          <EntitySet Name="WINDOWSCRITICALSECTION" EntityType="Self.WINDOWSCRITICALSECTION" />
+          <EntitySet Name="WINDOWSDRIVER" EntityType="Self.WINDOWSDRIVER" />
+          <EntitySet Name="WINDOWSDRIVETYPE" EntityType="Self.WINDOWSDRIVETYPE" />
+          <EntitySet Name="WINDOWSEVENT" EntityType="Self.WINDOWSEVENT" />
+          <EntitySet Name="WINDOWSEVENTLOG" EntityType="Self.WINDOWSEVENTLOG" />
+          <EntitySet Name="WINDOWSEXECUTABLEFILE" EntityType="Self.WINDOWSEXECUTABLEFILE" />
+          <EntitySet Name="WINDOWSFILE" EntityType="Self.WINDOWSFILE" />
+          <EntitySet Name="WINDOWSGROUP" EntityType="Self.WINDOWSGROUP" />
+          <EntitySet Name="WINDOWSGROUPFORWINDOWSUSERACCOUNT" EntityType="Self.WINDOWSGROUPFORWINDOWSUSERACCOUNT" />
+          <EntitySet Name="WINDOWSHANDLE" EntityType="Self.WINDOWSHANDLE" />
+          <EntitySet Name="WINDOWSHANDLELIST" EntityType="Self.WINDOWSHANDLELIST" />
+          <EntitySet Name="WINDOWSHANDLELISTHANDLES" EntityType="Self.WINDOWSHANDLELISTHANDLES" />
+          <EntitySet Name="WINDOWSHANDLETYPE" EntityType="Self.WINDOWSHANDLETYPE" />
+          <EntitySet Name="WINDOWSKERNELHOOK" EntityType="Self.WINDOWSKERNELHOOK" />
+          <EntitySet Name="WINDOWSKERNELOBJECT" EntityType="Self.WINDOWSKERNELOBJECT" />
+          <EntitySet Name="WINDOWSMAILSLOT" EntityType="Self.WINDOWSMAILSLOT" />
+          <EntitySet Name="WINDOWSMEMORYPAGEREGION" EntityType="Self.WINDOWSMEMORYPAGEREGION" />
+          <EntitySet Name="WINDOWSMUTEX" EntityType="Self.WINDOWSMUTEX" />
+          <EntitySet Name="WINDOWSMUTEXHANDLE" EntityType="Self.WINDOWSMUTEXHANDLE" />
+          <EntitySet Name="WINDOWSMUTEXSECURITYATTRIBUTE" EntityType="Self.WINDOWSMUTEXSECURITYATTRIBUTE" />
+          <EntitySet Name="WINDOWSNETWORKROUTEENTRY" EntityType="Self.WINDOWSNETWORKROUTEENTRY" />
+          <EntitySet Name="WINDOWSNETWORKSHARE" EntityType="Self.WINDOWSNETWORKSHARE" />
+          <EntitySet Name="WINDOWSPIPEOBJECT" EntityType="Self.WINDOWSPIPEOBJECT" />
+          <EntitySet Name="WINDOWSPREFETCHACCESSEDFILELIST" EntityType="Self.WINDOWSPREFETCHACCESSEDFILELIST" />
+          <EntitySet Name="WINDOWSPREFETCHCHANGERECORD" EntityType="Self.WINDOWSPREFETCHCHANGERECORD" />
+          <EntitySet Name="WINDOWSPREFETCHOBJECT" EntityType="Self.WINDOWSPREFETCHOBJECT" />
+          <EntitySet Name="WINDOWSPRIVILEGE" EntityType="Self.WINDOWSPRIVILEGE" />
+          <EntitySet Name="WINDOWSPROCESS" EntityType="Self.WINDOWSPROCESS" />
+          <EntitySet Name="WINDOWSPROCESSTOKEN" EntityType="Self.WINDOWSPROCESSTOKEN" />
+          <EntitySet Name="WINDOWSREGISTRYKEYOBJECT" EntityType="Self.WINDOWSREGISTRYKEYOBJECT" />
+          <EntitySet Name="WINDOWSSEMAPHORE" EntityType="Self.WINDOWSSEMAPHORE" />
+          <EntitySet Name="WINDOWSSERVICE" EntityType="Self.WINDOWSSERVICE" />
+          <EntitySet Name="WINDOWSSYSTEM" EntityType="Self.WINDOWSSYSTEM" />
+          <EntitySet Name="WINDOWSSYSTEMRESTORE" EntityType="Self.WINDOWSSYSTEMRESTORE" />
+          <EntitySet Name="WINDOWSTASK" EntityType="Self.WINDOWSTASK" />
+          <EntitySet Name="WINDOWSTHREAD" EntityType="Self.WINDOWSTHREAD" />
+          <EntitySet Name="WINDOWSUSERACCOUNT" EntityType="Self.WINDOWSUSERACCOUNT" />
+          <EntitySet Name="WINDOWSUSERACCOUNTCHANGERECORD" EntityType="Self.WINDOWSUSERACCOUNTCHANGERECORD" />
+          <EntitySet Name="WINDOWSUSERACCOUNTPRIVILEGE" EntityType="Self.WINDOWSUSERACCOUNTPRIVILEGE" />
+          <EntitySet Name="WINDOWSVOLUME" EntityType="Self.WINDOWSVOLUME" />
+          <EntitySet Name="WINDOWSVOLUMEATTRIBUTE" EntityType="Self.WINDOWSVOLUMEATTRIBUTE" />
+          <EntitySet Name="WINDOWSVOLUMEATTRIBUTEENUM" EntityType="Self.WINDOWSVOLUMEATTRIBUTEENUM" />
+          <EntitySet Name="WINDOWSVOLUMEATTRIBUTESLIST" EntityType="Self.WINDOWSVOLUMEATTRIBUTESLIST" />
+          <EntitySet Name="WINDOWSVOLUMEENCRYPTION" EntityType="Self.WINDOWSVOLUMEENCRYPTION" />
+          <EntitySet Name="WINDOWSWAITABLETIMER" EntityType="Self.WINDOWSWAITABLETIMER" />
+          <EntitySet Name="WINDOWSWAITABLETIMEROBJECT" EntityType="Self.WINDOWSWAITABLETIMEROBJECT" />
+          <EntitySet Name="WINWAITABLETIMER" EntityType="Self.WINWAITABLETIMER" />
+          <AssociationSet Name="FK_WINDOWSUSERACCOUNT_WINDOWSCOMPUTERACCOUNT" Association="Self.FK_WINDOWSUSERACCOUNT_WINDOWSCOMPUTERACCOUNT">
+            <End Role="WINDOWSCOMPUTERACCOUNT" EntitySet="WINDOWSCOMPUTERACCOUNT" />
+            <End Role="WINDOWSUSERACCOUNT" EntitySet="WINDOWSUSERACCOUNT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSGROUPFORWINDOWSUSERACCOUNT_WINDOWSGROUP" Association="Self.FK_WINDOWSGROUPFORWINDOWSUSERACCOUNT_WINDOWSGROUP">
+            <End Role="WINDOWSGROUP" EntitySet="WINDOWSGROUP" />
+            <End Role="WINDOWSGROUPFORWINDOWSUSERACCOUNT" EntitySet="WINDOWSGROUPFORWINDOWSUSERACCOUNT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLE" Association="Self.FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLE">
+            <End Role="WINDOWSHANDLE" EntitySet="WINDOWSHANDLE" />
+            <End Role="WINDOWSHANDLELISTHANDLES" EntitySet="WINDOWSHANDLELISTHANDLES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSMUTEXHANDLE_WINDOWSHANDLE" Association="Self.FK_WINDOWSMUTEXHANDLE_WINDOWSHANDLE">
+            <End Role="WINDOWSHANDLE" EntitySet="WINDOWSHANDLE" />
+            <End Role="WINDOWSMUTEXHANDLE" EntitySet="WINDOWSMUTEXHANDLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSTHREAD_WINDOWSHANDLE" Association="Self.FK_WINDOWSTHREAD_WINDOWSHANDLE">
+            <End Role="WINDOWSHANDLE" EntitySet="WINDOWSHANDLE" />
+            <End Role="WINDOWSTHREAD" EntitySet="WINDOWSTHREAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSWAITABLETIMEROBJECT_WINDOWSHANDLE" Association="Self.FK_WINDOWSWAITABLETIMEROBJECT_WINDOWSHANDLE">
+            <End Role="WINDOWSHANDLE" EntitySet="WINDOWSHANDLE" />
+            <End Role="WINDOWSWAITABLETIMEROBJECT" EntitySet="WINDOWSWAITABLETIMEROBJECT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLELIST" Association="Self.FK_WINDOWSHANDLELISTHANDLES_WINDOWSHANDLELIST">
+            <End Role="WINDOWSHANDLELIST" EntitySet="WINDOWSHANDLELIST" />
+            <End Role="WINDOWSHANDLELISTHANDLES" EntitySet="WINDOWSHANDLELISTHANDLES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSHANDLELIST" Association="Self.FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSHANDLELIST">
+            <End Role="WINDOWSHANDLELIST" EntitySet="WINDOWSHANDLELIST" />
+            <End Role="WINDOWSREGISTRYKEYOBJECT" EntitySet="WINDOWSREGISTRYKEYOBJECT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSMUTEXHANDLE_WINDOWSMUTEX" Association="Self.FK_WINDOWSMUTEXHANDLE_WINDOWSMUTEX">
+            <End Role="WINDOWSMUTEX" EntitySet="WINDOWSMUTEX" />
+            <End Role="WINDOWSMUTEXHANDLE" EntitySet="WINDOWSMUTEXHANDLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSMUTEXSECURITYATTRIBUTE_WINDOWSMUTEX" Association="Self.FK_WINDOWSMUTEXSECURITYATTRIBUTE_WINDOWSMUTEX">
+            <End Role="WINDOWSMUTEX" EntitySet="WINDOWSMUTEX" />
+            <End Role="WINDOWSMUTEXSECURITYATTRIBUTE" EntitySet="WINDOWSMUTEXSECURITYATTRIBUTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSPREFETCHACCESSEDFILELIST_WINDOWSPREFETCHOBJECT" Association="Self.FK_WINDOWSPREFETCHACCESSEDFILELIST_WINDOWSPREFETCHOBJECT">
+            <End Role="WINDOWSPREFETCHOBJECT" EntitySet="WINDOWSPREFETCHOBJECT" />
+            <End Role="WINDOWSPREFETCHACCESSEDFILELIST" EntitySet="WINDOWSPREFETCHACCESSEDFILELIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSPRIVILEGE" Association="Self.FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSPRIVILEGE">
+            <End Role="WINDOWSPRIVILEGE" EntitySet="WINDOWSPRIVILEGE" />
+            <End Role="WINDOWSUSERACCOUNTPRIVILEGE" EntitySet="WINDOWSUSERACCOUNTPRIVILEGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSPROCESSTOKEN_WINDOWSPROCESS" Association="Self.FK_WINDOWSPROCESSTOKEN_WINDOWSPROCESS">
+            <End Role="WINDOWSPROCESS" EntitySet="WINDOWSPROCESS" />
+            <End Role="WINDOWSPROCESSTOKEN" EntitySet="WINDOWSPROCESSTOKEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSUSERACCOUNT" Association="Self.FK_WINDOWSREGISTRYKEYOBJECT_WINDOWSUSERACCOUNT">
+            <End Role="WINDOWSUSERACCOUNT" EntitySet="WINDOWSUSERACCOUNT" />
+            <End Role="WINDOWSREGISTRYKEYOBJECT" EntitySet="WINDOWSREGISTRYKEYOBJECT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSUSERACCOUNT" Association="Self.FK_WINDOWSUSERACCOUNTPRIVILEGE_WINDOWSUSERACCOUNT">
+            <End Role="WINDOWSUSERACCOUNT" EntitySet="WINDOWSUSERACCOUNT" />
+            <End Role="WINDOWSUSERACCOUNTPRIVILEGE" EntitySet="WINDOWSUSERACCOUNTPRIVILEGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUME" Association="Self.FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUME">
+            <End Role="WINDOWSVOLUME" EntitySet="WINDOWSVOLUME" />
+            <End Role="WINDOWSVOLUMEATTRIBUTESLIST" EntitySet="WINDOWSVOLUMEATTRIBUTESLIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSVOLUMEENCRYPTION_WINDOWSVOLUME" Association="Self.FK_WINDOWSVOLUMEENCRYPTION_WINDOWSVOLUME">
+            <End Role="WINDOWSVOLUME" EntitySet="WINDOWSVOLUME" />
+            <End Role="WINDOWSVOLUMEENCRYPTION" EntitySet="WINDOWSVOLUMEENCRYPTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUMEATTRIBUTE" Association="Self.FK_WINDOWSVOLUMEATTRIBUTESLIST_WINDOWSVOLUMEATTRIBUTE">
+            <End Role="WINDOWSVOLUMEATTRIBUTE" EntitySet="WINDOWSVOLUMEATTRIBUTE" />
+            <End Role="WINDOWSVOLUMEATTRIBUTESLIST" EntitySet="WINDOWSVOLUMEATTRIBUTESLIST" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="XWINDOWSModelStoreContainer" CdmEntityContainer="XWINDOWSEntities">
+          <EntitySetMapping Name="WINDOWSCOMPUTERACCOUNT">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSCOMPUTERACCOUNT">
+              <MappingFragment StoreEntitySet="WINDOWSCOMPUTERACCOUNT">
+                <ScalarProperty Name="WindowsComputerAccountID" ColumnName="WindowsComputerAccountID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreationObjectID" ColumnName="CreationObjectID" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSCRITICALSECTION">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSCRITICALSECTION">
+              <MappingFragment StoreEntitySet="WINDOWSCRITICALSECTION">
+                <ScalarProperty Name="WindowsCriticalSectionID" ColumnName="WindowsCriticalSectionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSDRIVER">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSDRIVER">
+              <MappingFragment StoreEntitySet="WINDOWSDRIVER">
+                <ScalarProperty Name="WindowsDriverID" ColumnName="WindowsDriverID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSDRIVETYPE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSDRIVETYPE">
+              <MappingFragment StoreEntitySet="WINDOWSDRIVETYPE">
+                <ScalarProperty Name="WindowsDriveTypeID" ColumnName="WindowsDriveTypeID" />
+                <ScalarProperty Name="WindowsDriveTypeName" ColumnName="WindowsDriveTypeName" />
+                <ScalarProperty Name="WindowsDriveTypeDescription" ColumnName="WindowsDriveTypeDescription" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSEVENT">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSEVENT">
+              <MappingFragment StoreEntitySet="WINDOWSEVENT">
+                <ScalarProperty Name="WindowsEventID" ColumnName="WindowsEventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSEVENTLOG">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSEVENTLOG">
+              <MappingFragment StoreEntitySet="WINDOWSEVENTLOG">
+                <ScalarProperty Name="WindowsEventLogID" ColumnName="WindowsEventLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSEXECUTABLEFILE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSEXECUTABLEFILE">
+              <MappingFragment StoreEntitySet="WINDOWSEXECUTABLEFILE">
+                <ScalarProperty Name="WindowsExecutableFileID" ColumnName="WindowsExecutableFileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSFILE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSFILE">
+              <MappingFragment StoreEntitySet="WINDOWSFILE">
+                <ScalarProperty Name="WindowsFileID" ColumnName="WindowsFileID" />
+                <ScalarProperty Name="WindowsFileGUID" ColumnName="WindowsFileGUID" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+                <ScalarProperty Name="suspected_malicious" ColumnName="suspected_malicious" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSGROUP">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSGROUP">
+              <MappingFragment StoreEntitySet="WINDOWSGROUP">
+                <ScalarProperty Name="WindowsGroupID" ColumnName="WindowsGroupID" />
+                <ScalarProperty Name="WindowsGroupName" ColumnName="WindowsGroupName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSGROUPFORWINDOWSUSERACCOUNT">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSGROUPFORWINDOWSUSERACCOUNT">
+              <MappingFragment StoreEntitySet="WINDOWSGROUPFORWINDOWSUSERACCOUNT">
+                <ScalarProperty Name="WindowsGroupWindowsUserAccountID" ColumnName="WindowsGroupWindowsUserAccountID" />
+                <ScalarProperty Name="WindowsGroupID" ColumnName="WindowsGroupID" />
+                <ScalarProperty Name="WindowsUserAccountID" ColumnName="WindowsUserAccountID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSHANDLE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSHANDLE">
+              <MappingFragment StoreEntitySet="WINDOWSHANDLE">
+                <ScalarProperty Name="WindowsHandleID" ColumnName="WindowsHandleID" />
+                <ScalarProperty Name="WindowsHandleObjectID" ColumnName="WindowsHandleObjectID" />
+                <ScalarProperty Name="WindowsHandleName" ColumnName="WindowsHandleName" />
+                <ScalarProperty Name="HandleTypeID" ColumnName="HandleTypeID" />
+                <ScalarProperty Name="Object_Address" ColumnName="Object_Address" />
+                <ScalarProperty Name="Access_Mask" ColumnName="Access_Mask" />
+                <ScalarProperty Name="Pointer_Count" ColumnName="Pointer_Count" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="ConfidenceLevelID" ColumnName="ConfidenceLevelID" />
+                <ScalarProperty Name="CollectionMethodID" ColumnName="CollectionMethodID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSHANDLELIST">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSHANDLELIST">
+              <MappingFragment StoreEntitySet="WINDOWSHANDLELIST">
+                <ScalarProperty Name="WindowsHandleListID" ColumnName="WindowsHandleListID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="ConfidenceLevelID" ColumnName="ConfidenceLevelID" />
+                <ScalarProperty Name="CollectionMethodID" ColumnName="CollectionMethodID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSHANDLELISTHANDLES">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSHANDLELISTHANDLES">
+              <MappingFragment StoreEntitySet="WINDOWSHANDLELISTHANDLES">
+                <ScalarProperty Name="WindowsHandleListHandlesID" ColumnName="WindowsHandleListHandlesID" />
+                <ScalarProperty Name="WindowsHandleListID" ColumnName="WindowsHandleListID" />
+                <ScalarProperty Name="WindowsHandleID" ColumnName="WindowsHandleID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="ConfidenceLevelID" ColumnName="ConfidenceLevelID" />
+                <ScalarProperty Name="CollectionMethodID" ColumnName="CollectionMethodID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSHANDLETYPE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSHANDLETYPE">
+              <MappingFragment StoreEntitySet="WINDOWSHANDLETYPE">
+                <ScalarProperty Name="WindowsHandleTypeID" ColumnName="WindowsHandleTypeID" />
+                <ScalarProperty Name="HandleTypeID" ColumnName="HandleTypeID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSKERNELHOOK">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSKERNELHOOK">
+              <MappingFragment StoreEntitySet="WINDOWSKERNELHOOK">
+                <ScalarProperty Name="WindowsKernelHookID" ColumnName="WindowsKernelHookID" />
+                <ScalarProperty Name="Digital_Signature_Hooking" ColumnName="Digital_Signature_Hooking" />
+                <ScalarProperty Name="DigitalSignatureInfoHookingID" ColumnName="DigitalSignatureInfoHookingID" />
+                <ScalarProperty Name="Digital_Signature_Hooked" ColumnName="Digital_Signature_Hooked" />
+                <ScalarProperty Name="DigitalSignatureInfoHookedID" ColumnName="DigitalSignatureInfoHookedID" />
+                <ScalarProperty Name="Hooking_Address" ColumnName="Hooking_Address" />
+                <ScalarProperty Name="Hook_Description" ColumnName="Hook_Description" />
+                <ScalarProperty Name="Hooked_Function" ColumnName="Hooked_Function" />
+                <ScalarProperty Name="FunctionHookedID" ColumnName="FunctionHookedID" />
+                <ScalarProperty Name="Hooked_Module" ColumnName="Hooked_Module" />
+                <ScalarProperty Name="ModuleHookedID" ColumnName="ModuleHookedID" />
+                <ScalarProperty Name="Hooking_Module" ColumnName="Hooking_Module" />
+                <ScalarProperty Name="KernelHookID" ColumnName="KernelHookID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="ConfidenceLevelID" ColumnName="ConfidenceLevelID" />
+                <ScalarProperty Name="CollectionMethodID" ColumnName="CollectionMethodID" />
+                <ScalarProperty Name="DetectionMethodID" ColumnName="DetectionMethodID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSKERNELOBJECT">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSKERNELOBJECT">
+              <MappingFragment StoreEntitySet="WINDOWSKERNELOBJECT">
+                <ScalarProperty Name="WindowsKernelObjectID" ColumnName="WindowsKernelObjectID" />
+                <ScalarProperty Name="IDTEntryListID" ColumnName="IDTEntryListID" />
+                <ScalarProperty Name="SSDTEntryListID" ColumnName="SSDTEntryListID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="ConfidenceLevelID" ColumnName="ConfidenceLevelID" />
+                <ScalarProperty Name="CollectionMethodID" ColumnName="CollectionMethodID" />
+                <ScalarProperty Name="CollectionToolID" ColumnName="CollectionToolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSMAILSLOT">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSMAILSLOT">
+              <MappingFragment StoreEntitySet="WINDOWSMAILSLOT">
+                <ScalarProperty Name="WindowsMailslotID" ColumnName="WindowsMailslotID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSMEMORYPAGEREGION">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSMEMORYPAGEREGION">
+              <MappingFragment StoreEntitySet="WINDOWSMEMORYPAGEREGION">
+                <ScalarProperty Name="WindowsMemoryPageRegionID" ColumnName="WindowsMemoryPageRegionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSMUTEX">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSMUTEX">
+              <MappingFragment StoreEntitySet="WINDOWSMUTEX">
+                <ScalarProperty Name="WindowsMutexID" ColumnName="WindowsMutexID" />
+                <ScalarProperty Name="WindowsHandleID" ColumnName="WindowsHandleID" />
+                <ScalarProperty Name="MutexID" ColumnName="MutexID" />
+                <ScalarProperty Name="Security_Attributes" ColumnName="Security_Attributes" />
+                <ScalarProperty Name="WindowsMutexDescription" ColumnName="WindowsMutexDescription" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+                <ScalarProperty Name="ConfidenceLevelID" ColumnName="ConfidenceLevelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSMUTEXHANDLE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSMUTEXHANDLE">
+              <MappingFragment StoreEntitySet="WINDOWSMUTEXHANDLE">
+                <ScalarProperty Name="WindowsMutexHandleID" ColumnName="WindowsMutexHandleID" />
+                <ScalarProperty Name="WindowsMutexID" ColumnName="WindowsMutexID" />
+                <ScalarProperty Name="WindowsHandleID" ColumnName="WindowsHandleID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSMUTEXSECURITYATTRIBUTE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSMUTEXSECURITYATTRIBUTE">
+              <MappingFragment StoreEntitySet="WINDOWSMUTEXSECURITYATTRIBUTE">
+                <ScalarProperty Name="WindowsMutexSecurityAttributeID" ColumnName="WindowsMutexSecurityAttributeID" />
+                <ScalarProperty Name="WindowsMutexID" ColumnName="WindowsMutexID" />
+                <ScalarProperty Name="SecurityAttributeID" ColumnName="SecurityAttributeID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSNETWORKROUTEENTRY">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSNETWORKROUTEENTRY">
+              <MappingFragment StoreEntitySet="WINDOWSNETWORKROUTEENTRY">
+                <ScalarProperty Name="WindowsNetworkRouteEntryID" ColumnName="WindowsNetworkRouteEntryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSNETWORKSHARE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSNETWORKSHARE">
+              <MappingFragment StoreEntitySet="WINDOWSNETWORKSHARE">
+                <ScalarProperty Name="WindowsNetworkShareID" ColumnName="WindowsNetworkShareID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSPIPEOBJECT">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSPIPEOBJECT">
+              <MappingFragment StoreEntitySet="WINDOWSPIPEOBJECT">
+                <ScalarProperty Name="WindowsPipeObjectID" ColumnName="WindowsPipeObjectID" />
+                <ScalarProperty Name="PipeObjectID" ColumnName="PipeObjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSPREFETCHACCESSEDFILELIST">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSPREFETCHACCESSEDFILELIST">
+              <MappingFragment StoreEntitySet="WINDOWSPREFETCHACCESSEDFILELIST">
+                <ScalarProperty Name="WindowsPrefetchObjectAccessedFileListID" ColumnName="WindowsPrefetchObjectAccessedFileListID" />
+                <ScalarProperty Name="WindowsPrefetchObjectID" ColumnName="WindowsPrefetchObjectID" />
+                <ScalarProperty Name="AccessedFileListID" ColumnName="AccessedFileListID" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSPREFETCHCHANGERECORD">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSPREFETCHCHANGERECORD">
+              <MappingFragment StoreEntitySet="WINDOWSPREFETCHCHANGERECORD">
+                <ScalarProperty Name="WindowsPrefetchChangeRecordID" ColumnName="WindowsPrefetchChangeRecordID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSPREFETCHOBJECT">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSPREFETCHOBJECT">
+              <MappingFragment StoreEntitySet="WINDOWSPREFETCHOBJECT">
+                <ScalarProperty Name="WindowsPrefetchObjectID" ColumnName="WindowsPrefetchObjectID" />
+                <ScalarProperty Name="Application_File_Name" ColumnName="Application_File_Name" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+                <ScalarProperty Name="CPEName" ColumnName="CPEName" />
+                <ScalarProperty Name="Prefetch_Hash" ColumnName="Prefetch_Hash" />
+                <ScalarProperty Name="Times_Executed" ColumnName="Times_Executed" />
+                <ScalarProperty Name="First_Run" ColumnName="First_Run" />
+                <ScalarProperty Name="Last_Run" ColumnName="Last_Run" />
+                <ScalarProperty Name="VolumeObjectID" ColumnName="VolumeObjectID" />
+                <ScalarProperty Name="WindowsVolumeID" ColumnName="WindowsVolumeID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSPRIVILEGE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSPRIVILEGE">
+              <MappingFragment StoreEntitySet="WINDOWSPRIVILEGE">
+                <ScalarProperty Name="WindowsPrivilegeID" ColumnName="WindowsPrivilegeID" />
+                <ScalarProperty Name="PrivilegeID" ColumnName="PrivilegeID" />
+                <ScalarProperty Name="User_Right" ColumnName="User_Right" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSPROCESS">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSPROCESS">
+              <MappingFragment StoreEntitySet="WINDOWSPROCESS">
+                <ScalarProperty Name="WindowsProcessID" ColumnName="WindowsProcessID" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+                <ScalarProperty Name="WindowsProcessGUID" ColumnName="WindowsProcessGUID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="aslr_enabled" ColumnName="aslr_enabled" />
+                <ScalarProperty Name="dep_enabled" ColumnName="dep_enabled" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSPROCESSTOKEN">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSPROCESSTOKEN">
+              <MappingFragment StoreEntitySet="WINDOWSPROCESSTOKEN">
+                <ScalarProperty Name="WindowsProcessTokenID" ColumnName="WindowsProcessTokenID" />
+                <ScalarProperty Name="WindowsProcessID" ColumnName="WindowsProcessID" />
+                <ScalarProperty Name="TokenID" ColumnName="TokenID" />
+                <ScalarProperty Name="IntegrityLevelID" ColumnName="IntegrityLevelID" />
+                <ScalarProperty Name="ConfidenceLevelID" ColumnName="ConfidenceLevelID" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSREGISTRYKEYOBJECT">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSREGISTRYKEYOBJECT">
+              <MappingFragment StoreEntitySet="WINDOWSREGISTRYKEYOBJECT">
+                <ScalarProperty Name="WindowsRegistryKeyObjectID" ColumnName="WindowsRegistryKeyObjectID" />
+                <ScalarProperty Name="Hive" ColumnName="Hive" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+                <ScalarProperty Name="Full_Key" ColumnName="Full_Key" />
+                <ScalarProperty Name="RegistryHiveID" ColumnName="RegistryHiveID" />
+                <ScalarProperty Name="Number_Values" ColumnName="Number_Values" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="RegistryValuesID" ColumnName="RegistryValuesID" />
+                <ScalarProperty Name="Modified_Time" ColumnName="Modified_Time" />
+                <ScalarProperty Name="Creator_Username" ColumnName="Creator_Username" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="UserAccountID" ColumnName="UserAccountID" />
+                <ScalarProperty Name="WindowsUserAccountID" ColumnName="WindowsUserAccountID" />
+                <ScalarProperty Name="WindowsHandleListID" ColumnName="WindowsHandleListID" />
+                <ScalarProperty Name="Number_Subkeys" ColumnName="Number_Subkeys" />
+                <ScalarProperty Name="RegistrySubkeysID" ColumnName="RegistrySubkeysID" />
+                <ScalarProperty Name="ByteRunsID" ColumnName="ByteRunsID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="ConfidenceLevelID" ColumnName="ConfidenceLevelID" />
+                <ScalarProperty Name="CollectionMethodID" ColumnName="CollectionMethodID" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSSEMAPHORE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSSEMAPHORE">
+              <MappingFragment StoreEntitySet="WINDOWSSEMAPHORE">
+                <ScalarProperty Name="WindowsSemaphoreID" ColumnName="WindowsSemaphoreID" />
+                <ScalarProperty Name="SemaphoreID" ColumnName="SemaphoreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSSERVICE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSSERVICE">
+              <MappingFragment StoreEntitySet="WINDOWSSERVICE">
+                <ScalarProperty Name="WindowsServiceID" ColumnName="WindowsServiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSSYSTEM">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSSYSTEM">
+              <MappingFragment StoreEntitySet="WINDOWSSYSTEM">
+                <ScalarProperty Name="WindowsSystemID" ColumnName="WindowsSystemID" />
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSSYSTEMRESTORE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSSYSTEMRESTORE">
+              <MappingFragment StoreEntitySet="WINDOWSSYSTEMRESTORE">
+                <ScalarProperty Name="WindowsSystemRestoreID" ColumnName="WindowsSystemRestoreID" />
+                <ScalarProperty Name="Restore_Point_Description" ColumnName="Restore_Point_Description" />
+                <ScalarProperty Name="Restore_Point_Full_Path" ColumnName="Restore_Point_Full_Path" />
+                <ScalarProperty Name="Restore_Point_Name" ColumnName="Restore_Point_Name" />
+                <ScalarProperty Name="Restore_Point_Type" ColumnName="Restore_Point_Type" />
+                <ScalarProperty Name="ACL_Change_SID" ColumnName="ACL_Change_SID" />
+                <ScalarProperty Name="ACL_Change_Username" ColumnName="ACL_Change_Username" />
+                <ScalarProperty Name="Backup_File_Name" ColumnName="Backup_File_Name" />
+                <ScalarProperty Name="Change_Event" ColumnName="Change_Event" />
+                <ScalarProperty Name="ChangeLog_Entry_Flags" ColumnName="ChangeLog_Entry_Flags" />
+                <ScalarProperty Name="ChangeLog_Entry_Sequence_Number" ColumnName="ChangeLog_Entry_Sequence_Number" />
+                <ScalarProperty Name="ChangeLog_Entry_Type" ColumnName="ChangeLog_Entry_Type" />
+                <ScalarProperty Name="Change_Log_File_Name" ColumnName="Change_Log_File_Name" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="File_Attributes" ColumnName="File_Attributes" />
+                <ScalarProperty Name="New_File_Name" ColumnName="New_File_Name" />
+                <ScalarProperty Name="Original_File_Name" ColumnName="Original_File_Name" />
+                <ScalarProperty Name="Original_Short_File_Name" ColumnName="Original_Short_File_Name" />
+                <ScalarProperty Name="Process_Name" ColumnName="Process_Name" />
+                <ScalarProperty Name="Registry_Hive_List" ColumnName="Registry_Hive_List" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSTASK">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSTASK">
+              <MappingFragment StoreEntitySet="WINDOWSTASK">
+                <ScalarProperty Name="WindowsTaskID" ColumnName="WindowsTaskID" />
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="SessionCronID" ColumnName="SessionCronID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TaskStatusID" ColumnName="TaskStatusID" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="TaskPriorityID" ColumnName="TaskPriorityID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Application_Name" ColumnName="Application_Name" />
+                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+                <ScalarProperty Name="CPEName" ColumnName="CPEName" />
+                <ScalarProperty Name="Parameters" ColumnName="Parameters" />
+                <ScalarProperty Name="Flags" ColumnName="Flags" />
+                <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Account_Run_Level" ColumnName="Account_Run_Level" />
+                <ScalarProperty Name="Account_Logon_Type" ColumnName="Account_Logon_Type" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Most_Recent_Run_Time" ColumnName="Most_Recent_Run_Time" />
+                <ScalarProperty Name="Exit_Code" ColumnName="Exit_Code" />
+                <ScalarProperty Name="Max_Run_Time" ColumnName="Max_Run_Time" />
+                <ScalarProperty Name="Next_Run_Time" ColumnName="Next_Run_Time" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Working_Directory" ColumnName="Working_Directory" />
+                <ScalarProperty Name="DirectoryID" ColumnName="DirectoryID" />
+                <ScalarProperty Name="Work_Item_Data" ColumnName="Work_Item_Data" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSTHREAD">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSTHREAD">
+              <MappingFragment StoreEntitySet="WINDOWSTHREAD">
+                <ScalarProperty Name="WindowsThreadID" ColumnName="WindowsThreadID" />
+                <ScalarProperty Name="Thread_ID" ColumnName="Thread_ID" />
+                <ScalarProperty Name="WindowsHandleID" ColumnName="WindowsHandleID" />
+                <ScalarProperty Name="ThreadRunningStatusID" ColumnName="ThreadRunningStatusID" />
+                <ScalarProperty Name="Running_Status" ColumnName="Running_Status" />
+                <ScalarProperty Name="Context" ColumnName="Context" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Creation_Flags" ColumnName="Creation_Flags" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+                <ScalarProperty Name="Start_Address" ColumnName="Start_Address" />
+                <ScalarProperty Name="StartMemoryAddressID" ColumnName="StartMemoryAddressID" />
+                <ScalarProperty Name="Parameter_Address" ColumnName="Parameter_Address" />
+                <ScalarProperty Name="ParameterMemoryAddressID" ColumnName="ParameterMemoryAddressID" />
+                <ScalarProperty Name="Security_Attributes" ColumnName="Security_Attributes" />
+                <ScalarProperty Name="Stack_Size" ColumnName="Stack_Size" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSUSERACCOUNT">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSUSERACCOUNT">
+              <MappingFragment StoreEntitySet="WINDOWSUSERACCOUNT">
+                <ScalarProperty Name="WindowsUserAccountID" ColumnName="WindowsUserAccountID" />
+                <ScalarProperty Name="WindowsUserAccountGUID" ColumnName="WindowsUserAccountGUID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="UserAccountID" ColumnName="UserAccountID" />
+                <ScalarProperty Name="WindowsComputerAccountID" ColumnName="WindowsComputerAccountID" />
+                <ScalarProperty Name="Security_ID" ColumnName="Security_ID" />
+                <ScalarProperty Name="Security_Type" ColumnName="Security_Type" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreationObjectID" ColumnName="CreationObjectID" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="TrustLevelID" ColumnName="TrustLevelID" />
+                <ScalarProperty Name="TrustReasonID" ColumnName="TrustReasonID" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+                <ScalarProperty Name="suspected_malicious" ColumnName="suspected_malicious" />
+                <ScalarProperty Name="SuspectedMaliciousReasonID" ColumnName="SuspectedMaliciousReasonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSUSERACCOUNTCHANGERECORD">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSUSERACCOUNTCHANGERECORD">
+              <MappingFragment StoreEntitySet="WINDOWSUSERACCOUNTCHANGERECORD">
+                <ScalarProperty Name="WindowsUserAccountChangeRecordID" ColumnName="WindowsUserAccountChangeRecordID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSUSERACCOUNTPRIVILEGE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSUSERACCOUNTPRIVILEGE">
+              <MappingFragment StoreEntitySet="WINDOWSUSERACCOUNTPRIVILEGE">
+                <ScalarProperty Name="WindowsUserAccountPrivilegeID" ColumnName="WindowsUserAccountPrivilegeID" />
+                <ScalarProperty Name="WindowsUserAccountID" ColumnName="WindowsUserAccountID" />
+                <ScalarProperty Name="WindowsPrivilegeID" ColumnName="WindowsPrivilegeID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="ConfidenceLevelID" ColumnName="ConfidenceLevelID" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSVOLUME">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSVOLUME">
+              <MappingFragment StoreEntitySet="WINDOWSVOLUME">
+                <ScalarProperty Name="WindowsVolumeID" ColumnName="WindowsVolumeID" />
+                <ScalarProperty Name="WindowsVolumeGUID" ColumnName="WindowsVolumeGUID" />
+                <ScalarProperty Name="VolumeObjectID" ColumnName="VolumeObjectID" />
+                <ScalarProperty Name="Drive_Letter" ColumnName="Drive_Letter" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSVOLUMEATTRIBUTE">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSVOLUMEATTRIBUTE">
+              <MappingFragment StoreEntitySet="WINDOWSVOLUMEATTRIBUTE">
+                <ScalarProperty Name="WindowsVolumeAttributeID" ColumnName="WindowsVolumeAttributeID" />
+                <ScalarProperty Name="AttributeID" ColumnName="AttributeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSVOLUMEATTRIBUTEENUM">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSVOLUMEATTRIBUTEENUM">
+              <MappingFragment StoreEntitySet="WINDOWSVOLUMEATTRIBUTEENUM">
+                <ScalarProperty Name="WindowsVolumeAttributeEnumID" ColumnName="WindowsVolumeAttributeEnumID" />
+                <ScalarProperty Name="WindowsVolumeAttributeEnumValue" ColumnName="WindowsVolumeAttributeEnumValue" />
+                <ScalarProperty Name="WindowsVolumeAttributeEnumDescription" ColumnName="WindowsVolumeAttributeEnumDescription" />
+                <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSVOLUMEATTRIBUTESLIST">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSVOLUMEATTRIBUTESLIST">
+              <MappingFragment StoreEntitySet="WINDOWSVOLUMEATTRIBUTESLIST">
+                <ScalarProperty Name="WindowsVolumeAttributesListID" ColumnName="WindowsVolumeAttributesListID" />
+                <ScalarProperty Name="WindowsVolumeID" ColumnName="WindowsVolumeID" />
+                <ScalarProperty Name="WindowsVolumeAttributeID" ColumnName="WindowsVolumeAttributeID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSVOLUMEENCRYPTION">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSVOLUMEENCRYPTION">
+              <MappingFragment StoreEntitySet="WINDOWSVOLUMEENCRYPTION">
+                <ScalarProperty Name="WindowsVolumeEncryptionID" ColumnName="WindowsVolumeEncryptionID" />
+                <ScalarProperty Name="WindowsVolumeID" ColumnName="WindowsVolumeID" />
+                <ScalarProperty Name="EncryptionID" ColumnName="EncryptionID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="ConfidenceLevelID" ColumnName="ConfidenceLevelID" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSWAITABLETIMER">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSWAITABLETIMER">
+              <MappingFragment StoreEntitySet="WINDOWSWAITABLETIMER">
+                <ScalarProperty Name="WindowsWaitableTimerID" ColumnName="WindowsWaitableTimerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINDOWSWAITABLETIMEROBJECT">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINDOWSWAITABLETIMEROBJECT">
+              <MappingFragment StoreEntitySet="WINDOWSWAITABLETIMEROBJECT">
+                <ScalarProperty Name="WindowsWaitableTimerObjectID" ColumnName="WindowsWaitableTimerObjectID" />
+                <ScalarProperty Name="WindowsHandleID" ColumnName="WindowsHandleID" />
+                <ScalarProperty Name="WindowsWaitableTimerObjectName" ColumnName="WindowsWaitableTimerObjectName" />
+                <ScalarProperty Name="Security_Attributes" ColumnName="Security_Attributes" />
+                <ScalarProperty Name="WaitableTimerTypeID" ColumnName="WaitableTimerTypeID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidUntilDate" ColumnName="ValidUntilDate" />
+                <ScalarProperty Name="isEncrypted" ColumnName="isEncrypted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WINWAITABLETIMER">
+            <EntityTypeMapping TypeName="XWINDOWSModel.WINWAITABLETIMER">
+              <MappingFragment StoreEntitySet="WINWAITABLETIMER">
+                <ScalarProperty Name="WinWaitableTimerID" ColumnName="WinWaitableTimerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

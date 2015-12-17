@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE SCAN SYSTEM "https://qualysapi.qualys.eu/scan-1.dtd">
+<!-- scan is running on 4.3.2.1 //-->
+  <SCAN value="scan/1278323977.19312">
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+<!-- keep-alive -->
+  <IP value="4.3.2.1" name="No registered hostname" status="Finish">
+    <OS><![CDATA[Solaris 9-10]]></OS>
+    <INFOS>
+      <CAT value="TCP/IP">
+        <INFO number="82040" severity="1">
+          <TITLE><![CDATA[ICMP Replies Received]]></TITLE>
+          <LAST_UPDATE><![CDATA[2003-01-16T20:14:30Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS>
+            <![CDATA[ICMP (Internet Control and Error Message Protocol) is a protocol encapsulated in IP packets. ICMP's principal purpose is to provide a protocol layer that informs gateways of the inter-connectivity and accessibility of other gateways or hosts. 
+            <P>
+            We have sent the following types of packets to trigger the host to send us ICMP replies: 
+            <P>
+            Echo Request (to trigger Echo Reply)<br>
+            Timestamp Request (to trigger Timestamp Reply)<br>
+            Address Mask Request (to trigger Address Mask Reply)<br>
+            UDP Packet (to trigger Port Unreachable Reply)<br>
+            IP Packet with Protocol >= 250 (to trigger Protocol Unreachable Reply)
+            <P>
+            Listed in the "Result" section are the ICMP replies that we have received.
+            ]]>
+          </DIAGNOSIS>
+          <RESULT format="table"><![CDATA[ICMP Reply Type	Triggered By	Additional Information
+Echo (type=0 code=0)	Echo Request	Echo Reply
+Unreachable (type=3 code=3)	UDP Port 376	Port Unreachable
+Unreachable (type=3 code=3)	UDP Port 994	Port Unreachable
+Unreachable (type=3 code=3)	UDP Port 433	Port Unreachable
+Unreachable (type=3 code=3)	UDP Port 299	Port Unreachable
+Unreachable (type=3 code=3)	UDP Port 593	Port Unreachable
+Unreachable (type=3 code=3)	UDP Port 274	Port Unreachable
+Unreachable (type=3 code=3)	UDP Port 80	Port Unreachable
+Unreachable (type=3 code=3)	UDP Port 45674	Port Unreachable
+Unreachable (type=3 code=3)	UDP Port 470	Port Unreachable
+Unreachable (type=3 code=3)	UDP Port 127	Port Unreachable]]></RESULT>
+        </INFO>
+        <INFO number="82046" severity="1">
+          <TITLE><![CDATA[IP ID Values Randomness]]></TITLE>
+          <LAST_UPDATE><![CDATA[2006-07-27T21:45:19Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS>
+            <![CDATA[The values for the identification (ID) field in IP headers in IP packets from the host are analyzed to determine how random they are. The changes between subsequent ID values for either the network byte ordering or the host byte ordering, whichever is smaller, are displayed in the RESULT section along with the duration taken to send the probes. When incremental values are used, as is the case for TCP/IP implementation in many operating systems, these changes reflect the network load of the host at the time this test was conducted.
+            <P>
+            Please note that for reliability reasons only the network traffic from open TCP ports is analyzed.]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[N/A]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[N/A]]></SOLUTION>
+          <RESULT><![CDATA[IP ID changes observed (network order) for port 111: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Duration: 21 milli seconds]]></RESULT>
+        </INFO>
+        <INFO number="82063" severity="2">
+          <TITLE><![CDATA[Host Uptime Based on TCP TimeStamp Option]]></TITLE>
+          <LAST_UPDATE><![CDATA[2007-05-29T18:56:36Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS>
+            <![CDATA[The TCP/IP stack on the host supports the TCP TimeStamp (kind 8) option. Typically the timestamp used is the host's uptime (since last reboot) in various units (e.g., one hundredth of second, one tenth of a second, etc.). Based on this, we can obtain the host's uptime. The result is given in the Result section below.
+            <P>
+            Some operating systems (e.g., MacOS, OpenBSD) use a non-zero, probably random, initial value for the timestamp. For these operating systems, the uptime obtained does not reflect the actual uptime of the host; the former is always larger than the latter.
+            ]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[N/A]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[N/A]]></SOLUTION>
+          <RESULT><![CDATA[Based on TCP timestamps obtained via port 111, the host&apos;s uptime is 213 days, 14 hours, and 49 minutes.
+The TCP timestamps from the host are in units of 10 milliseconds.]]></RESULT>
+        </INFO>
+        <INFO number="82045" severity="1">
+          <TITLE><![CDATA[Degree of Randomness of TCP Initial Sequence Numbers]]></TITLE>
+          <LAST_UPDATE><![CDATA[2004-11-19T21:53:59Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS><![CDATA[TCP Initial Sequence Numbers (ISNs) obtained in the SYNACK replies from the host are analyzed to determine how random they are. The average change between subsequent ISNs and the standard deviation from the average are displayed in the RESULT section. Also included is the degree of difficulty for exploitation of the TCP ISN generation scheme used by the host.]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[N/A]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[N/A]]></SOLUTION>
+          <RESULT><![CDATA[Average change between subsequent TCP initial sequence numbers is 130823 with a standard deviation of 50060. These TCP initial sequence numbers were triggered by TCP SYN probes sent to the host at an average rate of 1/(6990 microseconds). The degree of difficulty to exploit the TCP initial sequence number generation scheme is: hard.]]></RESULT>
+        </INFO>
+        <INFO number="82056" severity="1">
+          <TITLE><![CDATA[Host Name Not Available]]></TITLE>
+          <LAST_UPDATE><![CDATA[2004-10-07T18:04:44Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS><![CDATA[Attempts to obtain the fully-qualified domain name (FQDN) or the Netbios name failed for this host.]]></DIAGNOSIS>
+        </INFO>
+      </CAT>
+      <CAT value="Information gathering">
+        <INFO number="6" severity="1">
+          <TITLE><![CDATA[DNS Host Name]]></TITLE>
+          <LAST_UPDATE><![CDATA[1999-01-01T08:00:00Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS><![CDATA[The fully qualified domain name of this host, if it was obtained from a DNS server, is displayed in the RESULT section.]]></DIAGNOSIS>
+          <RESULT format="table"><![CDATA[IP address	Host name
+4.3.2.1	No registered hostname]]></RESULT>
+        </INFO>
+        <INFO number="45038" severity="1">
+          <TITLE><![CDATA[Host Scan Time]]></TITLE>
+          <LAST_UPDATE><![CDATA[2004-11-19T02:46:12Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS>
+            <![CDATA[The Host Scan Time is the period of time it takes the scanning engine to perform the vulnerability assessment of a single target host. The Host Scan Time for this host is reported in the Result section below. 
+            <P>
+            The Host Scan Time does not have a direct correlation to the Duration time as displayed in the Report Summary section of a scan results report. The Duration is the period of time it takes the service to perform a scan task. The Duration includes the time it takes the service to scan all hosts, which may involve parallel scanning. It also includes the time it takes for a scanner appliance to pick up the scan task and transfer the results back to the service's Secure Operating Center. Further, when a scan task is distributed across multiple scanners, the Duration includes the time it takes to perform parallel host scanning on all scanners.]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[N/A]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[N/A]]></SOLUTION>
+          <RESULT><![CDATA[Scan duration: 626 seconds
+
+Start time: Mon, Jul 05 2010, 09:59:37 GMT
+
+End time: Mon, Jul 05 2010, 10:10:03 GMT]]></RESULT>
+        </INFO>
+      </CAT>
+      <CAT value="General remote services">
+        <INFO number="42017" severity="3">
+          <TITLE><![CDATA[Remote Access or Management Service Detected]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-11-04T22:08:43Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS>
+            <![CDATA[A remote access or remote management service was detected. If such a service is accessible to malicious users it can be used to carry different type of attacks. Malicious users could try to brute force credentials or collect additional information on the service which could enable them in crafting further attacks. The Results section includes information on the remote access service that was found on the target.
+            <P>
+            Services like Telnet, Rlogin, SSH, windows remote desktop, pcAnywhere, Citrix Management Console, Remote Admin (RAdmin) and VNC are checked.
+            ]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[Consequences vary by the type of attack.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Expose the remote access or remote management services only to the system administrators or intended users of the system.]]></SOLUTION>
+          <RESULT><![CDATA[Service name: SSH on TCP port 22.
+Service name: Telnet on TCP port 23.
+Service name: Rlogin TCP port 513.]]></RESULT>
+        </INFO>
+      </CAT>
+      <CAT value="Mail services" port="25" protocol="tcp">
+        <INFO number="74145" severity="2">
+          <TITLE><![CDATA[SMTP Service Detected]]></TITLE>
+          <LAST_UPDATE><![CDATA[2004-09-20T22:24:49Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS><![CDATA[The Mail Service on this host can be identified from a remote system using SMTP fingerprinting. According to the results of this fingerprinting  technique, the Mail Service name and version are listed below.]]></DIAGNOSIS>
+          <RESULT><![CDATA[Name: Sendmail, Version: 8.12.10]]></RESULT>
+        </INFO>
+      </CAT>
+      <CAT value="Mail services" port="587" protocol="tcp">
+        <INFO number="74145" severity="2">
+          <TITLE><![CDATA[SMTP Service Detected]]></TITLE>
+          <LAST_UPDATE><![CDATA[2004-09-20T22:24:49Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS><![CDATA[The Mail Service on this host can be identified from a remote system using SMTP fingerprinting. According to the results of this fingerprinting  technique, the Mail Service name and version are listed below.]]></DIAGNOSIS>
+          <RESULT><![CDATA[Name: Sendmail, Version: 8.12.10]]></RESULT>
+        </INFO>
+      </CAT>
+      <CAT value="General remote services" port="22" protocol="tcp">
+        <INFO number="38047" severity="1">
+          <TITLE><![CDATA[SSH daemon information retrieving]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-04-21T18:50:05Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0634]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0634]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[SSH is a secure protocol, provided it is fully patched, properly configured, and uses FIPS approved algorithms. 
+            <P>
+            <PRE>
+            For Red Hat ES 4:-
+            SSH1 supported					yes
+            Supported authentification methods for SSH1	RSA,password
+            Supported ciphers for SSH1			3des,blowfish
+            SSH2 supported					yes
+            Supported keys exchange algorithm for SSH2	diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+            Supported decryption ciphers for SSH2		aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,arcfour,aes192-cbc,aes256-cbc,rijndael-cbc@lysator.liu.se,aes128-ctr,aes192-ctr,aes256-ctr
+            Supported encryption ciphers for SSH2		aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,arcfour,aes192-cbc,aes256-cbc,rijndael-cbc@lysator.liu.se,aes128-ctr,aes192-ctr,aes256-ctr
+            Supported decryption mac for SSH2		hmac-md5,hmac-sha1,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+            Supported encryption mac for SSH2		hmac-md5,hmac-sha1,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+            Supported authentification methods for SSH2	publickey,gssapi-with-mic,password
+            </PRE>]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[Successful exploitation allows an attacker to execute arbitrary commands on the SSH server or otherwise subvert an encrypted SSH channel with arbitrary data.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[SSH version 2 is preferred over SSH version 1.]]></SOLUTION>
+          <RESULT format="table"><![CDATA[SSH1 supported	no
+SSH2 supported	yes
+Supported keys exchange algorithm for SSH2	diffie-hellman-group1-sha1
+Supported decryption ciphers for SSH2	aes128-cbc,blowfish-cbc,3des-cbc
+Supported encryption ciphers for SSH2	aes128-cbc,blowfish-cbc,3des-cbc
+Supported decryption mac for SSH2	hmac-sha1,hmac-md5
+Supported encryption mac for SSH2	hmac-sha1,hmac-md5
+Supported authentification methods for SSH2	publickey,password]]></RESULT>
+        </INFO>
+      </CAT>
+    </INFOS>
+    <SERVICES>
+      <CAT value="TCP/IP">
+        <SERVICE number="82023" severity="1">
+          <TITLE><![CDATA[Open TCP Services List]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-06-15T18:32:21Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS>
+            <![CDATA[The port scanner enables unauthorized users with the appropriate tools to draw a map of all services on this host that can be accessed from the Internet.  The test was carried out with a &quot;stealth&quot; port scanner so that the server does not log real connections.
+            <P>
+            The Results section displays the port number (Port), the default service listening on the port (IANA Assigned Ports/Services), the description of the service (Description) and the service that the scanner detected using service discovery (Service Detected). ]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[Unauthorized users can exploit this information to test vulnerabilities in each of the open services.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Shut down any unknown or unused service on the list.  If you have difficulty figuring out which service is provided by which process or program, contact your provider's support team.  For more information about commercial and open-source Intrusion Detection Systems available for detecting port scanners of this kind, visit the <A HREF="http://www.cert.org" TARGET="_blank">CERT Web site</A>.]]></SOLUTION>
+          <RESULT format="table"><![CDATA[Port	IANA Assigned Ports/Services	Description	Service Detected	OS On Redirected Port
+7	echo	Echo	echo 	 
+9	discard	Discard	unknown 	 
+13	daytime	Daytime	daytime 	 
+19	chargen	Character Generator	chargen 	 
+21	ftp	File Transfer [Control]	ftp 	 
+22	ssh	SSH Remote Login Protocol	ssh 	 
+23	telnet	Telnet	telnet 	 
+25	smtp	Simple Mail Transfer	smtp 	 
+37	time	Time	time 	 
+79	finger	Finger	finger 	 
+111	sunrpc	SUN Remote Procedure Call	rpc 	 
+512	exec	remote process execution	rsh/rexec 	 
+513	login	remote login a la telnet	rlogin 	 
+514	shell	cmd	rsh/rexec 	 
+515	printer	spooler	lpd 	 
+540	uucp	uucpd	uucp 	 
+587	submission	Submission	smtp]]></RESULT>
+        </SERVICE>
+        <SERVICE number="82004" severity="1">
+          <TITLE><![CDATA[Open UDP Services List]]></TITLE>
+          <LAST_UPDATE><![CDATA[2005-07-11T22:36:34Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS>
+            <![CDATA[A port scanner was used to draw a map of all the UDP services on this host that can be accessed from the Internet.
+            <P>
+            Note that if the host is behind a firewall, there is a small chance that the list includes a few ports that are filtered or blocked by the firewall but are not actually open on the target host. This (false positive on UDP open ports) may happen when the firewall is configured to reject UDP packets for most (but not all) ports with an ICMP Port Unreachable packet. This may also happen when the firewall is configured to allow UDP packets for most (but not all) ports through and filter/block/drop UDP packets for only a few ports. Both cases are uncommon.
+            ]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[Unauthorized users can exploit this information to test vulnerabilities in each of the open services.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Shut down any unknown or unused service on the list.  If you have difficulty working out which service is provided by which process or program, contact your provider's support team.  For more information about commercial and open-source Intrusion Detection Systems available for detecting port scanners of this kind, visit the <A HREF="http://www.cert.org" TARGET="_blank">CERT Web site</A>.]]></SOLUTION>
+          <RESULT format="table"><![CDATA[Port	IANA Assigned Ports/Services	Description	Service Detected
+7	echo	Echo	echo udp
+13	daytime	Daytime	daytime udp
+19	chargen	Character Generator	chargen udp
+37	time	Time	time udp
+111	sunrpc	SUN Remote Procedure Call	rpc udp
+161	snmp	SNMP	snmp
+177	xdmcp	X Display Manager Control Protocol	xdmcp
+517	talk	like tenex link, but across	talk
+520	router	local routing process (on site)	unknown]]></RESULT>
+        </SERVICE>
+      </CAT>
+      <CAT value="Information gathering">
+        <SERVICE number="45017" severity="2">
+          <TITLE><![CDATA[Operating System Detected]]></TITLE>
+          <LAST_UPDATE><![CDATA[2005-02-09T19:06:45Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS>
+            <![CDATA[Several different techniques can be used to identify the operating system (OS) running on a host. A short description of these techniques is provided below. The specific technique used to identify the OS on this host is included in the RESULTS section of your report.
+            <P>
+            1) <B>TCP/IP Fingerprint</B>: The operating system of a host can be identified from a remote system using TCP/IP fingerprinting. All underlying operating system TCP/IP stacks have subtle differences that can be seen in their responses to specially-crafted TCP packets. According to the results of this &quot;fingerprinting&quot; technique, the OS version is among those listed below. 
+            <P>
+            Note that if one or more of these subtle differences are modified by a firewall or a packet filtering device between the scanner and the host, the fingerprinting technique may fail. Consequently, the version of the OS may not be detected correctly. If the host is behind a proxy-type firewall, the version of the operating system detected may be that for the firewall instead of for the host being scanned.
+            <P>
+            2) <B>NetBIOS</B>: Short for Network Basic Input Output System, an application programming interface (API) that augments the DOS BIOS by adding special functions for local-area networks (LANs). Almost all LANs for PCs are based on the NetBIOS. Some LAN manufacturers have even extended it, adding additional network capabilities. NetBIOS relies on a message format called Server Message Block (SMB). 
+            <P>
+            3) <B>PHP Info</B>: PHP is a hypertext pre-processor, an open-source, server-side, HTML-embedded scripting language used to create dynamic Web pages. Under some configurations it is possible to call PHP functions like phpinfo() and obtain operating system information.
+            <P>
+            4) <B>SNMP</B>: The Simple Network Monitoring Protocol is used to monitor hosts, routers, and the networks to which they attach. The SNMP service maintains Management Information Base (MIB), a set of variables (database) that can be fetched by Managers. These include &quot;MIB_II.system.sysDescr&quot; for the operating system.
+            ]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[Not  applicable ]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Not  applicable]]></SOLUTION>
+          <RESULT format="table"><![CDATA[Operating System	Technique	ID
+Solaris 9-10	TCP/IP Fingerprint	U1364:7]]></RESULT>
+        </SERVICE>
+      </CAT>
+      <CAT value="RPC" port="111" protocol="tcp">
+        <SERVICE number="9" severity="2">
+          <TITLE><![CDATA[Open RPC Services List]]></TITLE>
+          <LAST_UPDATE><![CDATA[1999-01-01T08:00:00Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS><![CDATA[A port scanner was used to draw a map of all the RPC services accessible from the Internet.]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[Unauthorized users can subsequently test vulnerabilities related to each of the services open.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Shut down any unknown or unused service on the list. To remove all RPC services, you cannot simply filter port 111 at the firewall because port 111 (the "portmap" service) only shows which ports the RPC services are listening on. Therefore, it cannot block access to these services. Disable the RPC services at the server level because each listens on an ephemeral UDP or TCP port.]]></SOLUTION>
+          <RESULT format="table"><![CDATA[program	version	protocol	port	name
+100000	4	tcp	111	rpcbind
+100000	3	tcp	111	rpcbind
+100000	2	tcp	111	rpcbind
+100000	4	udp	111	rpcbind
+100000	3	udp	111	rpcbind
+100000	2	udp	111	rpcbind
+100232	10	udp	32772	sadmind
+100083	1	tcp	32771	ttdbserverd
+100221	1	tcp	32772	kcms server
+100229	1	tcp	32773	metad
+100229	2	tcp	32773	metad
+100230	1	tcp	32774	metamhd
+100242	1	tcp	32775	rpc.metamedd
+100422	1	tcp	32776	mdcommd
+100068	2	udp	32773	cmsd
+100068	3	udp	32773	cmsd
+100068	4	udp	32773	cmsd
+100068	5	udp	32773	cmsd
+100011	1	udp	32774	rquotad
+100001	2	udp	32775	rstatd
+100001	3	udp	32775	rstatd
+100001	4	udp	32775	rstatd
+100002	2	udp	32776	rusersd
+100002	3	udp	32776	rusersd
+100002	2	tcp	32777	rusersd
+100002	3	tcp	32777	rusersd
+100008	1	udp	32777	walld
+100012	1	udp	32778	sprayd
+100024	1	udp	32779	status
+100021	1	udp	4045	nlockmgr
+100024	1	tcp	32778	status
+100133	1	udp	32779	nsm addrand
+100133	1	tcp	32778	nsm addrand
+100021	2	udp	4045	nlockmgr
+100021	3	udp	4045	nlockmgr
+100021	4	udp	4045	nlockmgr
+100021	1	tcp	4045	nlockmgr
+100021	2	tcp	4045	nlockmgr
+100021	3	tcp	4045	nlockmgr
+100021	4	tcp	4045	nlockmgr
+300598	1	udp	32783	dmispd
+300598	1	tcp	32782	dmispd
+805306368	1	udp	32783	dmispd
+805306368	1	tcp	32782	dmispd
+100249	1	udp	32784	snmpXdmid
+100249	1	tcp	32783	snmpXdmid
+100068	2	tcp	33360	cmsd
+100068	3	tcp	33360	cmsd
+100068	4	tcp	33360	cmsd
+100068	5	tcp	33360	cmsd]]></RESULT>
+        </SERVICE>
+      </CAT>
+      <CAT value="General remote services" port="23" protocol="tcp">
+        <SERVICE number="38007" severity="1">
+          <TITLE><![CDATA[Telnet Banner]]></TITLE>
+          <LAST_UPDATE><![CDATA[2007-12-11T00:56:09Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0619]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0619]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS><![CDATA[Telnet banner sometimes provides excessive information about the host.]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[If sensitive information is disclosed by the telnet banner, unauthorized users may be able to determine the type of Operating System this host is running, the host name, the domain name and possibly even the name of the Administrator.]]></CONSEQUENCE>
+          <SOLUTION>
+            <![CDATA[Do not disclose sensitive information through the telnet banner. Use an encrypted remote session service if available. You might also put a legal advisory on the telnet banner stating:
+            <BR>1. Only authorized persons can connect.
+            <BR>2. All attack attempts will be prosecuted.
+            <BR>3. All connections are logged.]]>
+          </SOLUTION>
+          <RESULT><![CDATA[SunOS 5.9
+
+login:]]></RESULT>
+        </SERVICE>
+      </CAT>
+      <CAT value="File Transfer Protocol" port="21" protocol="tcp">
+        <SERVICE number="27113" severity="2">
+          <TITLE><![CDATA[FTP Server Banner]]></TITLE>
+          <LAST_UPDATE><![CDATA[1999-01-01T08:00:00Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0614]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0614]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS><![CDATA[The following message is shown to all users logging on to your FTP server, including anonymous logins if they are allowed on your server. ]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[Unauthorized users can obtain sensitive information about your server, such as the version or type of server you are running, and use this information to implement specific attacks against the server.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[If possible, edit the configuration files or recompile the server to restrict the type of information disclosed.]]></SOLUTION>
+          <RESULT><![CDATA[220 demo5 FTP server ready.]]></RESULT>
+        </SERVICE>
+      </CAT>
+      <CAT value="Mail services" port="25" protocol="tcp">
+        <SERVICE number="74042" severity="2">
+          <TITLE><![CDATA[SMTP Banner]]></TITLE>
+          <LAST_UPDATE><![CDATA[2003-03-11T20:14:40Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <RESULT><![CDATA[220 demo5 ESMTP Sendmail 8.12.10+Sun/8.12.10; Sun, 4 Jul 2010 21:01:40 GMT]]></RESULT>
+        </SERVICE>
+      </CAT>
+      <CAT value="Mail services" port="587" protocol="tcp">
+        <SERVICE number="74042" severity="2">
+          <TITLE><![CDATA[SMTP Banner]]></TITLE>
+          <LAST_UPDATE><![CDATA[2003-03-11T20:14:40Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <RESULT><![CDATA[220 demo5 ESMTP Sendmail 8.12.10+Sun/8.12.10; Sun, 4 Jul 2010 21:01:59 GMT]]></RESULT>
+        </SERVICE>
+      </CAT>
+      <CAT value="General remote services" port="22" protocol="tcp">
+        <SERVICE number="38050" severity="1">
+          <TITLE><![CDATA[SSH Banner]]></TITLE>
+          <LAST_UPDATE><![CDATA[2003-02-04T17:08:00Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <RESULT><![CDATA[SSH-2.0-Sun_SSH_1.0.1]]></RESULT>
+        </SERVICE>
+      </CAT>
+    </SERVICES>
+    <VULNS>
+      <CAT value="TCP/IP">
+        <VULN number="82048" severity="1">
+          <TITLE><![CDATA[Non-Zero Padding Bytes Observed in Ethernet Packets]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-05-26T20:48:49Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS>
+            <![CDATA[Ethernet standards impose strict limitations on the size of encapsulated packets, requiring small packets to be padded up to a minimum size using zero padding bytes (for example, 0x00).
+            <P>
+            The service detected that the small packets from the host were padded to the mimimum size using non-zero padding bytes, as shown in the Results section.]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[This weakness may be exploited to fingerprint the Ethernet cards and device drivers.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Contact the vendor of the Ethernet cards and device drivers for the availability of a patch.]]></SOLUTION>
+          <RESULT><![CDATA[Ethernet padding bytes triggered by an ICMP probe:
+B0 67 00 00 35 30 31 20 35 2E 30 2E 30 20]]></RESULT>
+        </VULN>
+      </CAT>
+      <CAT value="Information gathering">
+        <VULN number="45002" severity="2">
+          <TITLE><![CDATA[Global User List]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-04-08T10:39:04Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS>
+            <![CDATA[This is the global system user list, which was retrieved during the scan by exploiting one or more vulnerabilities. The Qualys IDs for the
+            vulnerabilities leading to the disclosure of these users are also given in the Result section. Each user will be displayed only once, even though it may be obtained by using different methods.
+            ]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE>
+            <![CDATA[These common account(s) can be used by a malicious user to break-in the system via password bruteforcing.
+            ]]>
+          </CONSEQUENCE>
+          <SOLUTION>
+            <![CDATA[To prevent your host from being attacked, do one or more of the following:
+            <UL>
+            <LI>Remove (or rename) unnecessary accounts
+            <LI>Shutdown unnecessary network services
+            <LI>Ensure the passwords to these accounts are kept secret
+            <LI>Use a firewall to restrict access to your hosts from unauthorized domains
+            </UL>]]>
+          </SOLUTION>
+          <RESULT format="table"><![CDATA[User Name	Source Vulnerability (QualysID)
+root	66016,74045,74046
+daemon	31003
+bin	31003
+sys	31003
+adm	31003
+lp	31003
+uucp	31003
+nuucp	31003
+listen	31003
+nobody	31003
+nobody4	31003
+noaccess	31003]]></RESULT>
+        </VULN>
+      </CAT>
+      <CAT value="RPC">
+        <VULN number="66016" severity="2" cveid="CVE-1999-0626">
+          <TITLE><![CDATA[rusers RPC Service Information Disclosure Vulnerability ]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-06-04T21:55:49Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0626]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0626]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[The &quot;rusers&quot; RPC service is used from remote systems to check who is connected to a host at any given time. The &quot;rusers&quot; service does not authenticate or perform any kind of access control.
+            <P>
+            In the Result section, we list the connected users found, if any. We also list the TCP and/or UDP port this vulnerability is detected on.
+            ]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[Aggressive intruders have been using this service for years to see if the administrator or authorized users are connected before attacking the host or logging on to a system.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[We strongly advise that you remove Rusers from your system since it is not critical.]]></SOLUTION>
+          <RESULT><![CDATA[Number of connected user(s): 1
+root_from_]]></RESULT>
+        </VULN>
+        <VULN number="66032" severity="2" cveid="CVE-1999-0624">
+          <TITLE><![CDATA["rstatd" RPC Service System Information Disclosure Vulnerability]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-06-04T21:48:00Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0624]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0624]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS><![CDATA[The RPC rstatd daemon enables the Administrator to monitor the host's load average from a remote system using the &quot;rup&quot; command line.  It discloses other sensitive information, including the time at which the machine was booted, the current time of the host, the number of packets sent and received from the ethernet interface.]]></DIAGNOSIS>
+          <CONSEQUENCE>
+            <![CDATA[Unauthorized users can check the system load to establish when attacks against the host are most likely to be successful.  Since a low host load average indicates that the system is idle, the attack is less likely to be noticed by the System Administrator when the host load average is low.  
+            <P>
+            On SunOS, the length of time that the host takes to boot may also be of interest to unauthorized users since this value is sometimes used to generate ID or tokens internally.]]>
+          </CONSEQUENCE>
+          <SOLUTION><![CDATA[Unless it is required on this system, remove the rstatd daemon from the list of default RPC programs run on boot. ]]></SOLUTION>
+          <RESULT><![CDATA[load average: 0.05, 0.02, 0.02
+
+host was booted on Wed Jul 23 22:15:05 2008
+
+current time of host is Sun Jul  4 14:01:42 2010]]></RESULT>
+        </VULN>
+        <VULN number="66047" severity="1" cveid="CVE-1999-0625">
+          <TITLE><![CDATA["rquotad" RPC Service Present]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-06-04T22:15:31Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0625]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0625]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS><![CDATA[The rpc.rquotad service is running on your server. No known vulnerabilities exist for this service; however, it is highly sensitive. Therefore, unless it is required, you should disable this service.]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[If an unauthorized user finds a vulnerability in this daemon, then it would leave an open door into the server.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[If the &quot;rquotad&quot; RPC service is not required, then you should disable it. ]]></SOLUTION>
+          <RESULT><![CDATA[UDP Port 32774]]></RESULT>
+        </VULN>
+        <VULN number="66046" severity="1" cveid="CVE-1999-0613">
+          <TITLE><![CDATA[sprayd RPC Service Present]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-06-04T21:55:07Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0613]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0613]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS><![CDATA[The rpc.sprayd service is running on the server. No known vulnerabilities exist for this service; however, it is highly sensitive. Therefore, unless it is required, you should disable this service.]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[If an unauthorized user finds a vulnerability in this daemon, then it would leave an open door into the server.]]></CONSEQUENCE>
+          <SOLUTION>
+            <![CDATA[If the &quot;sprayd&quot; RPC service is not required, then you should disable it.
+            ]]>
+          </SOLUTION>
+          <RESULT><![CDATA[UDP Port 32778]]></RESULT>
+        </VULN>
+      </CAT>
+      <CAT value="General remote services">
+        <VULN number="38003" severity="2">
+          <TITLE><![CDATA[TCP Test-Services]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-05-13T17:56:56Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS><![CDATA[This system is running TCP services, which are generally used for network testing purposes only (7 echo, 9 discard, 13 daytime, 17 quote of the day, 19 chargen, 37 time).  We recommend that no information be disclosed (even current server time).  Also, we advise against running superfluous services.]]></DIAGNOSIS>
+          <CONSEQUENCE>
+            <![CDATA[By exploiting this vulnerability, unauthorized users can gather information about the server.
+            ]]>
+          </CONSEQUENCE>
+          <SOLUTION><![CDATA[Disable all TCP services not required on the server.]]></SOLUTION>
+          <RESULT><![CDATA[Echo Service detected on port 7.
+Chargen detected on port 19.
+Daytime detected on port 13.
+Time detected on port 37.]]></RESULT>
+        </VULN>
+        <VULN number="38020" severity="2" cveid="CVE-1999-0651">
+          <TITLE><![CDATA[Remote Shell Service Open]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-06-18T09:19:30Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0651]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0651]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[The &quot;Remote Shell&quot; (RSH) service, which uses TCP port number 514, was detected on this host.  If this service is accessible from remote hosts, then the server's host can be compromised because of a problem in the service's trust in IP addresses.  
+            <P>
+            Malicious users heavily exploit the RSH service to log onto hosts in trust relationships. Remote users do not need a password to log into accounts that the &quot;.rhosts&quot; file has authorized them for. This can be done for all users with a general file called &quot;/etc/hosts.equiv&quot;. 
+            <P>
+            Two plus signs (+ +) in an &quot;.rhosts&quot; file translates to &quot;anybody can log into my account without having to supply a password&quot;. A line with a single plus sign (+) in the &quot;/etc/hosts.equiv&quot; file translates to &quot;any user on any system that can connect to this machine can log into the same user name on this machine provided it exists on the local host&quot;. ]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[By exploiting this vulnerability, unauthorized users can impersonate a trusted machine to log in without a password.  To impersonate a host, the unauthorized user has to set up a TCP Sequencing attack against this host. Such attacks are not common, but are, nevertheless, extremely dangerous.  HP-UX, Windows and Linux (versions prior to the 2.0.35 kernel) are extremely vulnerable.]]></CONSEQUENCE>
+          <SOLUTION>
+            <![CDATA[Since host-based access controls are not very secure, you should choose a more secure access protocol. Some systems prevent this kind of attack more effectively than others because they are not sensitive to Sequence prediction (the key to TCP Sequencing attacks).  Linux systems Version 2.0.36 and later, and Solaris Version 2.x have built-in protection. 
+            <P>
+            Install an upgrade of your rlogind server.  Be sure to use a secure replacement for rlogin, such as Secure Shell (<A TARGET="_blank" HREF="http://www.ssh.com/">www.ssh.com</A>), or France Secure Shell (FSH) in France in appliance with crypto regulations.  ]]>
+          </SOLUTION>
+          <RESULT><![CDATA[Detected service rsh/rexec and os SOLARIS 9-10]]></RESULT>
+        </VULN>
+        <VULN number="38021" severity="2" cveid="CVE-1999-0618">
+          <TITLE><![CDATA[Remote Execution Service Open]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-06-04T06:59:46Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0618]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0618]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS><![CDATA[The &quot;Remote Execution&quot; (rexec) service, which uses TCP port number 512, was detected on this host.  This service is based on a login/password authentication procedure and allows remote users to execute commands on the system. rexec uses a protocol similar to the rshd/rlogind apart from the .rhosts and /etc/host.equiv authentication (where no password is required)]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[If unauthorized users manage to obtain information about the login names of the users on your system (by using &quot;finger&quot;, for example), then they can try to brute force accounts by testing login/password combinations.  Compared to many telnet daemons that deny login as root, rexec allows remote users with the correct password to execute commands as root.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[We strongly advise that you remove the &quot;rexec&quot; service from your system.  If an alternative is required, we recommend installing Secure Shell (SSH) which has the same features as the &quot;r* services&quot; daemon, but also adds an encryption layer on top of the protocol to prevent eavesdropping and provide better authentication. ]]></SOLUTION>
+          <RESULT><![CDATA[Detected service rsh/rexec and os SOLARIS 9-10]]></RESULT>
+        </VULN>
+        <VULN number="38019" severity="2" cveid="CVE-1999-0651">
+          <TITLE><![CDATA[Remote Login Service Open]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-06-12T07:44:47Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0651]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0651]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS><![CDATA[The rlogin service is open. It's possible that this service is wrapped on your host.  Wrapping provides a first level of security.  If the service is wrapped, check that all hosts authorized by the TCP wrapper to connect to the rlogin service are secure.  The security of your host depends on the security of hosts connecting to it.]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[This can lead to severe problems since the rlogin service is vulnerable to both brute force and spoofing attacks.]]></CONSEQUENCE>
+          <SOLUTION>
+            <![CDATA[Remove the rlogin service.  If a remote connection is required on this host, install Secure Shell or France Secure Shell (fsh) in France. This is an appliance with crypto regulation. You can download Secure Shell from the <A TARGET="_blank" HREF="http://www.ssh.com/">SSH Web site (www.ssh.com)</A>.
+            <P>
+            If you cannot install one of these programs, then you should ensure that a TCP Wrapper is installed to restrict the hosts that can connect to this service.]]>
+          </SOLUTION>
+          <RESULT><![CDATA[Detected service rlogin and os SOLARIS 9-10]]></RESULT>
+        </VULN>
+      </CAT>
+      <CAT value="General remote services" port="177" protocol="udp">
+        <VULN number="38147" severity="3">
+          <TITLE><![CDATA[X Display Manager Control Protocol (XDMCP) Detected]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-04-15T22:00:22Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <DIAGNOSIS>
+            <![CDATA[X Display Manager Control Protocol (XDMCP) is used to provide X display connections for X terminals. 
+            <P>
+            The host is running the XDMCP protocol. This protocol is insecure because the XDMCP data is not encrypted.]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[By exploiting this vulnerability, an attacker with access to the XDMCP traffic can obtain the passwords of the XDMCP users.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[There are no solutions available at this time.]]></SOLUTION>
+          <RESULT><![CDATA[Detected service xdmcp and os Solaris 9-10]]></RESULT>
+        </VULN>
+      </CAT>
+      <CAT value="Finger" port="79" protocol="tcp">
+        <VULN number="31003" severity="3" cveid="CVE-1999-0259,CVE-1999-0612">
+          <TITLE><![CDATA[Finger Service Discloses Logged Users]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-06-08T17:54:01Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0259]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0259]]></URL>
+            </CVE_ID>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0612]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0612]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS><![CDATA[The finger service is present on your system.  This service shows which users are logged on. It also provides some user details.]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[Unauthorized users often exploit this service to obtain the user's login name.  This service potentially makes the system vulnerable, especially if some users have weak passwords.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Remove this service from your system. On Unix sytems, it is usually located in the /etc/inetd.conf file. On other systems, check the service's configuration file.]]></SOLUTION>
+          <RESULT><![CDATA[Login       Name               TTY         Idle    When    Where
+root     Super-User            console     298d Wed 07:44]]></RESULT>
+        </VULN>
+        <VULN number="31000" severity="3" cveid="CVE-1999-0197">
+          <TITLE><![CDATA["Finger 0@" Information about Logged Users Disclosure Vulnerability]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-04-08T09:15:32Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0197]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0197]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS><![CDATA[The finger service is present on your system.  This service discloses which users are logged on, and provides information about those users.  On some Operating Systems, the &quot;0&quot; acts as a wildcard and provides logins for almost all accounts existing on the server. ]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[Aggressive intruders often exploit this service to get user login names on a system.  This makes the system vulnerable to other attacks, especially if users have weak passwords.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Remove this service from your system.  On Unix systems, it is usually located in the /etc/inetd.conf configuration file. On other systems, check the inetd configuration file]]></SOLUTION>
+          <RESULT><![CDATA[Login       Name               TTY         Idle    When    Where
+daemon          ???                         &lt; .  .  .  . &gt;
+bin             ???                         &lt; .  .  .  . &gt;
+sys             ???                         &lt; .  .  .  . &gt;]]></RESULT>
+        </VULN>
+        <VULN number="31002" severity="3" cveid="CVE-1999-0106">
+          <TITLE><![CDATA[Finger Daemon Accepts Forwarding of Requests]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-04-08T21:25:57Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0106]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0106]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[The finger service is present on your system.  This service discloses which users are logged on, and provides information about those users.  On older versions, the finger daemon accepts forwarding. This could allow unauthorized users to proxy &quot;finger&quot; requests to other servers via your server.
+            <P>
+            Additionally, a denial of service can be implemented on networks using NIS (Network Information Service).  This is done by executing a finger command containing hundreds of nested '@' characters.  This generates a lot of traffic in the network and consumes a lot of the NIS master server's CPU.]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[If successfully exploited, unauthorized users can use your finger service to anonymously scan other hosts that have finger enabled, or cause a denial of service on networks using NIS.  ]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Remove this service from your system.  On Unix systems, it's typically located in the /etc/inetd.conf file. On other systems, check the service's configuration file.]]></SOLUTION>
+        </VULN>
+      </CAT>
+      <CAT value="Mail services" port="25" protocol="tcp">
+        <VULN number="74045" severity="2">
+          <TITLE><![CDATA[Valid Logins Guessed with SMTP EXPN Command]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-04-08T09:02:44Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS><![CDATA[Simple Mail Transfer Protocol (SMTP) is used to transfer mail between servers.  When one mail server establishes a connection with another mail server to deliver an e-mail message, it can check the validity of the destination user on the remote host by using the EXPN command. ]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[If a host is running an SMTP server, unauthorized users can obtain valid logins by brute forcing common &quot;login names&quot; with the EXPN command.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Your mail server should not allow remote users to verify the existence of a particular user on your system.  If you are using Sendmail Version 8, then you can disable the EXPN command by adding the line &quot;noexpn&quot; to your sendmail.cf file, which is usually located in the /etc directory.]]></SOLUTION>
+          <RESULT><![CDATA[user &quot;root&quot; expanded to:  2.1.5 Super-User &lt;root@demo5&gt;]]></RESULT>
+        </VULN>
+        <VULN number="74046" severity="2">
+          <TITLE><![CDATA[Valid Logins/Aliases Guessed with SMTP VRFY Command]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-05-12T06:23:06Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS><![CDATA[Simple Mail Transfer Protocol (SMTP) is used to transfer mail between servers.  When one mail server establishes a connection with another mail server to deliver an e-mail message, it can check the validity of the destination user on the remote host by using the VRFY command.]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[If a host is running an SMTP server, unauthorized users can obtain valid logins by brute forcing common &quot;login names&quot; with the VRFY command.]]></CONSEQUENCE>
+          <SOLUTION>
+            <![CDATA[Your mail server should not allow remote users to verify the existence of a particular user on your system.  If you are using Sendmail Version 8, then you can disable the VRFY command by adding the line &quot;novrfy&quot; to your sendmail.cf file, which is usually located in the /etc directory.
+            <P>
+            Please note that RFC 821 (Simple Mail Transfer Protocol) defines SMTP 2xx replies as positive completion replies, noting &quot;The requested action has been successfully completed&quot;. An SMTP server that responds to a VRFY command with a 2xx reply will be marked as vulnerable.]]>
+          </SOLUTION>
+          <RESULT><![CDATA[root]]></RESULT>
+        </VULN>
+      </CAT>
+      <CAT value="Mail services" port="587" protocol="tcp">
+        <VULN number="74045" severity="2">
+          <TITLE><![CDATA[Valid Logins Guessed with SMTP EXPN Command]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-04-08T09:02:44Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS><![CDATA[Simple Mail Transfer Protocol (SMTP) is used to transfer mail between servers.  When one mail server establishes a connection with another mail server to deliver an e-mail message, it can check the validity of the destination user on the remote host by using the EXPN command. ]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[If a host is running an SMTP server, unauthorized users can obtain valid logins by brute forcing common &quot;login names&quot; with the EXPN command.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Your mail server should not allow remote users to verify the existence of a particular user on your system.  If you are using Sendmail Version 8, then you can disable the EXPN command by adding the line &quot;noexpn&quot; to your sendmail.cf file, which is usually located in the /etc directory.]]></SOLUTION>
+          <RESULT><![CDATA[user &quot;root&quot; expanded to:  2.1.5 Super-User &lt;root@demo5&gt;]]></RESULT>
+        </VULN>
+        <VULN number="74046" severity="2">
+          <TITLE><![CDATA[Valid Logins/Aliases Guessed with SMTP VRFY Command]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-05-12T06:23:06Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <DIAGNOSIS><![CDATA[Simple Mail Transfer Protocol (SMTP) is used to transfer mail between servers.  When one mail server establishes a connection with another mail server to deliver an e-mail message, it can check the validity of the destination user on the remote host by using the VRFY command.]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[If a host is running an SMTP server, unauthorized users can obtain valid logins by brute forcing common &quot;login names&quot; with the VRFY command.]]></CONSEQUENCE>
+          <SOLUTION>
+            <![CDATA[Your mail server should not allow remote users to verify the existence of a particular user on your system.  If you are using Sendmail Version 8, then you can disable the VRFY command by adding the line &quot;novrfy&quot; to your sendmail.cf file, which is usually located in the /etc directory.
+            <P>
+            Please note that RFC 821 (Simple Mail Transfer Protocol) defines SMTP 2xx replies as positive completion replies, noting &quot;The requested action has been successfully completed&quot;. An SMTP server that responds to a VRFY command with a 2xx reply will be marked as vulnerable.]]>
+          </SOLUTION>
+          <RESULT><![CDATA[root]]></RESULT>
+        </VULN>
+      </CAT>
+    </VULNS>
+    <PRACTICES>
+      <CAT value="RPC">
+        <PRACTICE number="68507" severity="4" cveid="CVE-2002-0677">
+          <TITLE><![CDATA[Multiple Vendor CDE ToolTalk Database Server Null Write Vulnerability]]></TITLE>
+          <LAST_UPDATE><![CDATA[2008-02-08T00:34:03Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-2002-0677]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0677]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <BUGTRAQ_ID_LIST>
+            <BUGTRAQ_ID>
+              <ID><![CDATA[5082]]></ID>
+              <URL><![CDATA[http://www.securityfocus.com/bid/5082]]></URL>
+            </BUGTRAQ_ID>
+          </BUGTRAQ_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[CDE ships with a daemon called the ToolTalk database server. The ToolTalk database server allows for programs designed for use in CDE to communicate with each other. It is enabled by default on most systems shipped with CDE.
+            <P>
+            The ToolTalk database server is vulnerable to a condition that may allow NULL words to be written to arbitrary locations in memory. The vulnerability is due to an input validation error in the _TT_ISCLOSE procedure, used by ToolTalk clients to close open ToolTalk databases.
+            <P>
+            The _TT_ISCLOSE RPC accepts a file descriptor as a parameter.  This integer value is used as an index for writing to structures in server memory.  There are no checks to restrict the range of the index value. Consequently, malicious file descriptor values supplied by remote clients may cause writes to occur far beyond the table in memory. The only value written is a NULL word, limiting the consequences.
+            <P>
+            It should be noted that the only authentication required is client-supplied AUTH_UNIX credentials. AUTH_UNIX credentials may be trivially spoofed by attackers.]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE>
+            <![CDATA[Exploitation of this vulnerability could allow for complex attacks, potentially resulting in remote deletion and creation of arbitrary files, or code/command execution.
+            ]]>
+          </CONSEQUENCE>
+          <SOLUTION><![CDATA[Please contact your vendor for patch information.]]></SOLUTION>
+          <RESULT><![CDATA[TCP Port 32771]]></RESULT>
+        </PRACTICE>
+        <PRACTICE number="68533" severity="4" cveid="CVE-2003-0027">
+          <TITLE><![CDATA[KCMS Directory Traversal Vulnerability]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-06-12T18:45:41Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <VENDOR_REFERENCE_LIST>
+            <VENDOR_REFERENCE>
+              <ID><![CDATA[Sun Alert ID 50104]]></ID>
+              <URL><![CDATA[http://sunsolve.sun.com/search/document.do?assetkey=1-26-50104-1]]></URL>
+            </VENDOR_REFERENCE>
+          </VENDOR_REFERENCE_LIST>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-2003-0027]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0027]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <BUGTRAQ_ID_LIST>
+            <BUGTRAQ_ID>
+              <ID><![CDATA[6665]]></ID>
+              <URL><![CDATA[http://www.securityfocus.com/bid/6665]]></URL>
+            </BUGTRAQ_ID>
+          </BUGTRAQ_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[The Kodak Color Management System (KCMS) is an image and video management Application Programming Interface (API) for Unix, Linux, and Windows. It is distributed and maintained by Kodak.
+            <P>
+            A problem could make it possible for a remote user to gain unauthorized remote access to arbitrary files. It has been reported that a problem exists in the Kodak Color Management System (KCMS) due to the insecure handling of input. It may be possible for a remote user to gain access to arbitrary files on a vulnerable host.
+            <P>
+            This could allow remote information gathering, leakage of sensitive information, and potentially privilege elevation. The problem occurs in the KCS_OPEN_PROFILE. By exploiting a vulnerable system running the kcms_server process, it's possible for a remote user to download any file for which the kcms_server has read access. As the kcms_server process is typically executed as root, this could be any file on the target system. Note that an attacker must use the TT_ISBUILD procedure call of ToolTalk to exploit this issue.]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[This vulnerability can be exploited remotely to read arbitrary files on a vulnerable system.]]></CONSEQUENCE>
+          <SOLUTION>
+            <![CDATA[Sun released <A HREF="http://sunsolve.sun.com/search/document.do?assetkey=1-26-50104-1" TARGET="_blank">Sun Alert ID 50104</A> containing patches.
+            <P>
+            A workaround for this vulnerability is to disable the KCMS server. The kcms_server is started by inetd, and may be disabled by commenting out or removing its entry in the inetd.conf.]]>
+          </SOLUTION>
+          <RESULT><![CDATA[TCP Port 32772]]></RESULT>
+        </PRACTICE>
+        <PRACTICE number="66017" severity="3">
+          <TITLE><![CDATA[RWALL Spoofing ]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-04-28T09:15:06Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <DIAGNOSIS><![CDATA[&quot;rwall&quot; is a service that enables one single user to broadcast a message to all users of a Unix host. This service can be used to impersonate a user and compromise the security of the host running this service.]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[The vulnerability is caused by poor user authentication.  Rwall can be used in some situations (notably on SunOS) to directly write data to any file on the system.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[If Rwall is not required on this system, then remove it.]]></SOLUTION>
+          <RESULT><![CDATA[UDP Port 32777]]></RESULT>
+        </PRACTICE>
+        <PRACTICE number="66037" severity="4" cveid="CVE-1999-0696,CVE-1999-0320">
+          <TITLE><![CDATA[cmsd RPC Daemon Over TCP Might Indicate a Break-in ]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-06-04T07:27:03Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0696]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0696]]></URL>
+            </CVE_ID>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0320]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0320]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <BUGTRAQ_ID_LIST>
+            <BUGTRAQ_ID>
+              <ID><![CDATA[428]]></ID>
+              <URL><![CDATA[http://www.securityfocus.com/bid/428]]></URL>
+            </BUGTRAQ_ID>
+          </BUGTRAQ_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[The &quot;cmsd&quot; RPC service is used for managing the calendar and schedule.  It contains a widely exploited vulnerability that enables unauthorized users to gain access to servers.  By default, &quot;cmsd&quot; listens on the UDP port, and rarely on the TCP port.  
+            <P>
+            Unauthorized users can force the &quot;cmsd&quot; service to bind to a TCP port by exploiting the &quot;cmsd&quot; buffer overflow.  Then, they can try to exploit the RPC service listening on the TCP port to obtain a shell.  Whether they obtain access or not, a new &quot;cmsd&quot; daemon will be listening on a TCP port (this new entry is registered in the portmapper list).]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[If the &quot;cmsd&quot; RPC daemon is listening on a TCP port, then this could indicate that an unauthorized user attempted to exploit the buffer overflow vulnerability.  If the attack was successful, then your system may have a trojan installed. ]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[If this service is not used, shut down the Calendar service of &quot;cmsd&quot;. Otherwise, download a patch provided by your vendor (<A HREF="http://www.sun.com" TARGET="_blank">www.sun.com</A>). You should verify that the host was not compromised.]]></SOLUTION>
+          <RESULT><![CDATA[TCP Port 33360]]></RESULT>
+        </PRACTICE>
+      </CAT>
+      <CAT value="General remote services">
+        <PRACTICE number="38261" severity="5" cveid="CVE-2004-0368">
+          <TITLE><![CDATA[Common Desktop Environment Dtlogin Unspecified Remote Double Free Vulnerability (HPSBUX01038, Sun Alert ID 57539)]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-11-17T19:44:20Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <VENDOR_REFERENCE_LIST>
+            <VENDOR_REFERENCE>
+              <ID><![CDATA[HPSBUX01038]]></ID>
+              <URL><![CDATA[http://www11.itrc.hp.com/service/cki/docDisplay.do?docLocale=en&docId=emr_na-c00957752-1]]></URL>
+            </VENDOR_REFERENCE>
+            <VENDOR_REFERENCE>
+              <ID><![CDATA[Sun Alert ID 57539]]></ID>
+              <URL><![CDATA[http://sunsolve.sun.com/search/document.do?assetkey=1-26-57539-1]]></URL>
+            </VENDOR_REFERENCE>
+            <VENDOR_REFERENCE>
+              <ID><![CDATA[AIX Dtlogin Advisory]]></ID>
+              <URL><![CDATA[http://www14.software.ibm.com/webapp/set2/subscriptions/pqvcmjd?mode=18&ID=284]]></URL>
+            </VENDOR_REFERENCE>
+          </VENDOR_REFERENCE_LIST>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-2004-0368]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0368]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <BUGTRAQ_ID_LIST>
+            <BUGTRAQ_ID>
+              <ID><![CDATA[9958]]></ID>
+              <URL><![CDATA[http://www.securityfocus.com/bid/9958]]></URL>
+            </BUGTRAQ_ID>
+          </BUGTRAQ_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[The dtlogin application is implemented with the Common Desktop Environment (CDE) that implements the X-Display Manager Control Protocol (XDMCP). The dtlogin process makes it possible for users to log into remote computers using a CDE graphical user interface. CDE is implemented on many Unix and Unix like systems and is a popular window manager.
+            <P>
+            It has been reported that a double free vulnerability exists in the dtlogin process of CDE. This issue presents itself due to the free() function being called on the same allocated chunk of memory more than once. This problem occurs prior to any authorization.]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[An attacker may be able to leverage this issue to gain unauthorized remote access on a system running the affected software. The attacker must be able to interact with the dtlogin process in such a way as to overwrite previously freed heap memory with malicious data prior to the second call to free(). Ultimately an attacker may be able to control the data handled by the free() function, which could lead to the corruption of an arbitrary location in memory. This may allow the attacker to control the execution flow of the affected process.]]></CONSEQUENCE>
+          <SOLUTION>
+            <![CDATA[Check <A HREF="http://www.opengroup.org/cde/" TARGET="_blank">The Open Group's Web site</A> for updates.
+            <P>
+            For Solaris/Sun OS, use <A HREF="http://www.securityfocus.com/archive/1/358426" TARGET="_blank">this workaround</A> for protecting the 'dtlogin' service from remote access. Sun also released a patch available at <A HREF="http://sunsolve.sun.com/search/document.do?assetkey=1-26-57539-1" TARGET="_blank">Sun Alert 57539</A>.
+            <P>
+            The following patches are available:<BR>
+            On a sparc-based Solaris 9 system, install patch 112807-12.<BR>
+            On a sparc-based Solaris 8 system, install patch 108919-21.<BR>
+            On a sparc-based Solaris 7 system, install patch 107180-31.<BR>
+            On a x-86 Solaris 7 system, install patch 107181-31 <BR>
+            On a x-86 Solaris 8 system, install patch 108920-21 <BR>
+            On a x-86 Solaris 9 system, install patch 114210-08 <BR>
+            <P>
+            A newer update <A HREF="http://sunsolve.sun.com/search/document.do?assetkey=1-21-108919-30-1" TARGET="_blank">Sparc-based Solaris 8 108919-30</A> is also available which obsoletes the patch &quot;108919-21&quot;.
+            <P>
+            A newer update <A HREF="http://sunsolve.sun.com/search/document.do?assetkey=1-21-108920-30-1" TARGET="_blank">x-86 based Solaris 8 108920-30</A> is also available which obsoletes the patch &quot;108920-21&quot;.
+            <P>
+            For HP-UX, refer to HP's technical support document <A HREF="http://www11.itrc.hp.com/service/cki/docDisplay.do?docLocale=en&docId=emr_na-c00957752-1" TARGET="_blank">HPSBUX01038</A> (registration required) for further details.
+            <P>
+            For AIX, refer to <A HREF="http://www14.software.ibm.com/webapp/set2/subscriptions/pqvcmjd?mode=18&ID=284" TARGET="_blank">AIX Dtlogin Advisory</A> to obtain additional details.
+            ]]>
+          </SOLUTION>
+          <RESULT><![CDATA[Detected service xdmcp and os Solaris 9-10]]></RESULT>
+        </PRACTICE>
+        <PRACTICE number="38574" severity="5" cveid="CVE-2007-0882">
+          <TITLE><![CDATA[Solaris 10 and Solaris 11 (SolarisExpress) Remote Access Telnet Daemon Flaw]]></TITLE>
+          <LAST_UPDATE><![CDATA[2010-01-22T22:49:30Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <VENDOR_REFERENCE_LIST>
+            <VENDOR_REFERENCE>
+              <ID><![CDATA[Sun Alert ID 102802]]></ID>
+              <URL><![CDATA[http://sunsolve.sun.com/search/document.do?assetkey=1-26-102802-1]]></URL>
+            </VENDOR_REFERENCE>
+          </VENDOR_REFERENCE_LIST>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-2007-0882]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0882]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <BUGTRAQ_ID_LIST>
+            <BUGTRAQ_ID>
+              <ID><![CDATA[22512]]></ID>
+              <URL><![CDATA[http://www.securityfocus.com/bid/22512]]></URL>
+            </BUGTRAQ_ID>
+          </BUGTRAQ_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[Solaris 10 and 11 hosts are vulnerable to a telnet daemon flaw.
+            <P>
+            The telnet daemon passes switches directly to the login process which looks for a switch that allows root to login to any account without a password. If your telnet daemon is running as root it allows unauthenticated remote logins.
+            <P>
+            Telnet poses a risk because data transferred between clients may not be encrypted. Telnet is also a frequent target for port scanners.]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[An attacker can login with any account without a password.]]></CONSEQUENCE>
+          <SOLUTION>
+            <![CDATA[<B>SPARC:</B>
+            <BR>Install patch 
+            <A HREF="http://sunsolve.sun.com/search/document.do?assetkey=1-21-125418-01-1" TARGET="_blank">120068-03</A>
+            
+            
+            <P><B>x86:</B>Install patch <A HREF="http://sunsolve.sun.com/search/document.do?assetkey=urn:cds:docid:1-21-120069-02-1" TARGET="_blank">120069-02</A><BR>
+            A newer patch <A HREF="http://sunsolve.sun.com/search/document.do?assetkey=1-21-125419-01-1" TARGET="_blank">125419-01</A> is also available which obsoletes 120069-02.
+            
+            <P><B>Workaround:</B>
+            <BR>To workaround this issue, the telnet service can be disabled as in the following example (Note that this will remove the functionality of the in.telnetd daemon on that host):
+            
+            <P>    # svcadm disable svc:/network/telnet:default
+            
+            <P>In addition, it is also possible to uncomment (or add) the 'CONSOLE' line in the &quot;/etc/default/login&quot; file so that it looks similar to the following:
+            
+            <P>    CONSOLE=/dev/console
+            
+            <P>However, this will only prevent unauthorized access to the root account; other user accounts will still be affected by this issue.
+            ]]>
+          </SOLUTION>
+          <RESULT><![CDATA[Detected service telnet and os SOLARIS 9-10]]></RESULT>
+        </PRACTICE>
+      </CAT>
+      <CAT value="Mail services">
+        <PRACTICE number="74212" severity="3" cveid="CVE-2006-0058">
+          <TITLE><![CDATA[Sendmail Asynchronous Signal Handling Remote Code Execution Vulnerability(RHSA-2006:0265-9)]]></TITLE>
+          <LAST_UPDATE><![CDATA[2010-01-05T19:32:57Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <VENDOR_REFERENCE_LIST>
+            <VENDOR_REFERENCE>
+              <ID><![CDATA[Sendmail Advisory]]></ID>
+              <URL><![CDATA[http://www.sendmail.com/company/advisory/index.shtml]]></URL>
+            </VENDOR_REFERENCE>
+          </VENDOR_REFERENCE_LIST>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-2006-0058]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0058]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <BUGTRAQ_ID_LIST>
+            <BUGTRAQ_ID>
+              <ID><![CDATA[17192]]></ID>
+              <URL><![CDATA[http://www.securityfocus.com/bid/17192]]></URL>
+            </BUGTRAQ_ID>
+          </BUGTRAQ_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[Sendmail is a widely-used MTA for Unix and Microsoft Windows systems. 
+            <P>
+            Sendmail is prone to a remote code execution vulnerability because of an unspecified race condition error. The vulnerability arises in the &quot;sm_syslog()&quot; function due to improper handling of setjmp/longjmp set of macros with asynchronous signals. Specifically, the issue presents itself when Sendmail processes specially-crafted mail data from clients and employs a signal handler to handle timeouts. The signal handler causes certain data elements to reside in an inconsistent state and an attacker can use the elements to write to stack or heap memory. 
+            <P>
+            Sendmail versions 8.13.5 and earlier are vulnerable to this issue. Note that this issue does not exist in Windows.]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[Successful exploitation could allow remote attackers to execute arbitrary code with the privileges of the application, which typically runs as superuser.]]></CONSEQUENCE>
+          <SOLUTION>
+            <![CDATA[This issue was fixed in Sendmail Version 8.13.6, which is available for download from <A HREF="http://www.sendmail.org/8.13.6.html" TARGET="_blank">Sendmail's Web site</A>.
+            <P>
+            Upgrade to the latest packages which contain a patch. These are available from the <A HREF="https://www.redhat.com/wapps/sso/rhn/login.html?redirect=http%3A%2F%2Frhn.redhat.com%2Frhn%2FYourRhn.do" TARGET="_blank">Red Hat Network</A>. 
+            <P>
+            Steps on using the Red Hat Network (RHN) to apply packages are listed as follows:<BR>
+            For Red Hat Enterprise Linux Versions 2.1, 3, and 4, the interactive Update Agent can be launched with the &quot;up2date&quot; command. 
+            <P>
+            For Red Hat Enterprise Linux Version 5, the graphical Update tool can be launched with the &quot;pup&quot; command.
+            <P>
+            To install packages using the command-line interface, use the command &quot;yum update&quot;.
+            <P>
+            Refer to Red Hat security advisory <A HREF="https://rhn.redhat.com/errata/RHSA-2006-0265.html" TARGET="_blank">RHSA-2006-0265</A> to address this issue and obtain further details.]]>
+          </SOLUTION>
+          <RESULT><![CDATA[Detected on TCP port 25.
+Detected on TCP port 587.]]></RESULT>
+        </PRACTICE>
+        <PRACTICE number="74215" severity="3" cveid="CVE-2006-1173">
+          <TITLE><![CDATA[Sendmail Malformed MIME Message Denial of Service]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-06-08T18:20:45Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <VENDOR_REFERENCE_LIST>
+            <VENDOR_REFERENCE>
+              <ID><![CDATA[Sendmail Advisory]]></ID>
+              <URL><![CDATA[http://www.sendmail.org/releases/8.13.7.html]]></URL>
+            </VENDOR_REFERENCE>
+          </VENDOR_REFERENCE_LIST>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-2006-1173]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1173]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <BUGTRAQ_ID_LIST>
+            <BUGTRAQ_ID>
+              <ID><![CDATA[18433]]></ID>
+              <URL><![CDATA[http://www.securityfocus.com/bid/18433]]></URL>
+            </BUGTRAQ_ID>
+          </BUGTRAQ_ID_LIST>
+          <DIAGNOSIS><![CDATA[Sendmail is vulnerable to a denial of service issue due to a failure in the application to properly handle malformed multi-part MIME messages. The problem occurs because a malformed MIME structure can trigger a stack overflow because the recursion is not restricted in the &quot;mime8to7()&quot; function.]]></DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[An attacker can exploit this issue to crash the Sendmail process during delivery.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Sendmail.org has released a patch to address this issue. Download  Sendmail 8.13.7 from <A HREF="http://www.sendmail.org/releases/8.13.7.html" TARGET="_blank">www.sendmail.org</A>.]]></SOLUTION>
+          <RESULT><![CDATA[Detected on TCP port 25.
+Detected on TCP port 587.]]></RESULT>
+        </PRACTICE>
+        <PRACTICE number="74220" severity="3" cveid="CVE-2006-4434">
+          <TITLE><![CDATA[Sendmail Long Header Denial of Service Vulnerability]]></TITLE>
+          <LAST_UPDATE><![CDATA[2009-01-13T17:46:29Z]]></LAST_UPDATE>
+          <PCI_FLAG>0</PCI_FLAG>
+          <VENDOR_REFERENCE_LIST>
+            <VENDOR_REFERENCE>
+              <ID><![CDATA[Sun Alert ID 102664]]></ID>
+              <URL><![CDATA[http://sunsolve.sun.com/search/document.do?assetkey=1-26-102664-1]]></URL>
+            </VENDOR_REFERENCE>
+          </VENDOR_REFERENCE_LIST>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-2006-4434]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4434]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <BUGTRAQ_ID_LIST>
+            <BUGTRAQ_ID>
+              <ID><![CDATA[19714]]></ID>
+              <URL><![CDATA[http://www.securityfocus.com/bid/19714]]></URL>
+            </BUGTRAQ_ID>
+          </BUGTRAQ_ID_LIST>
+          <DIAGNOSIS><![CDATA[Sendmail is a widely used MTA for UNIX and Microsoft Windows systems. Sendmail is prone to a denial of service vulnerability. This issue occurs when the application tries to handle excessively long header lines. This could trigger a user-after-free bug. This issue was reported in OpenBSD's version of Sendmail.]]></DIAGNOSIS>
+          <CONSEQUENCE>
+            <![CDATA[An attacker can exploit this issue to crash Sendmail causing a denial of service.
+            
+            ]]>
+          </CONSEQUENCE>
+          <SOLUTION>
+            <![CDATA[OpenBSD fixes are available for this application.
+            <P>
+            For Solaris, Refer to <A HREF="http://sunsolve.sun.com/search/document.do?assetkey=1-26-102664-1" TARGET="_blank">Sun Alert ID 102664</A> to address this issue and obtain patch details.]]>
+          </SOLUTION>
+          <RESULT><![CDATA[Detected on TCP port 25.
+Detected on TCP port 587.]]></RESULT>
+        </PRACTICE>
+      </CAT>
+      <CAT value="General remote services" port="13" protocol="udp">
+        <PRACTICE number="38002" severity="2" cveid="CVE-1999-0103">
+          <TITLE><![CDATA[UDP Test-Services]]></TITLE>
+          <LAST_UPDATE><![CDATA[2008-06-02T23:02:38Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0103]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0103]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[This system is running UDP services, which are generally used for networking testing purposes only (7 echo, 9 discard, 13 daytime, 17 quote of the day, 19 chargen, 37 time).  We recommend that no information be disclosed (even the current server time).  
+            <P>
+            Moreover, on older Operating Systems, Echo and chargen, or other combinations of UDP services, can be used in tandem to flood the server.  This can be accomplished with attacks like UDP bombs or UDP packet storms. ]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[By exploiting this vulnerability, unauthorized users can gather information about the server or cause a Denial of Service, depending on the TCP/IP stack being run.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Disable all UDP services that are not required on the server.]]></SOLUTION>
+          <RESULT><![CDATA[Detected service daytime_udp and os Solaris 9-10]]></RESULT>
+        </PRACTICE>
+      </CAT>
+      <CAT value="General remote services" port="19" protocol="udp">
+        <PRACTICE number="38002" severity="2" cveid="CVE-1999-0103">
+          <TITLE><![CDATA[UDP Test-Services]]></TITLE>
+          <LAST_UPDATE><![CDATA[2008-06-02T23:02:38Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0103]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0103]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[This system is running UDP services, which are generally used for networking testing purposes only (7 echo, 9 discard, 13 daytime, 17 quote of the day, 19 chargen, 37 time).  We recommend that no information be disclosed (even the current server time).  
+            <P>
+            Moreover, on older Operating Systems, Echo and chargen, or other combinations of UDP services, can be used in tandem to flood the server.  This can be accomplished with attacks like UDP bombs or UDP packet storms. ]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[By exploiting this vulnerability, unauthorized users can gather information about the server or cause a Denial of Service, depending on the TCP/IP stack being run.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Disable all UDP services that are not required on the server.]]></SOLUTION>
+          <RESULT><![CDATA[Detected service chargen_udp and os Solaris 9-10]]></RESULT>
+        </PRACTICE>
+      </CAT>
+      <CAT value="General remote services" port="7" protocol="udp">
+        <PRACTICE number="38002" severity="2" cveid="CVE-1999-0103">
+          <TITLE><![CDATA[UDP Test-Services]]></TITLE>
+          <LAST_UPDATE><![CDATA[2008-06-02T23:02:38Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0103]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0103]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[This system is running UDP services, which are generally used for networking testing purposes only (7 echo, 9 discard, 13 daytime, 17 quote of the day, 19 chargen, 37 time).  We recommend that no information be disclosed (even the current server time).  
+            <P>
+            Moreover, on older Operating Systems, Echo and chargen, or other combinations of UDP services, can be used in tandem to flood the server.  This can be accomplished with attacks like UDP bombs or UDP packet storms. ]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[By exploiting this vulnerability, unauthorized users can gather information about the server or cause a Denial of Service, depending on the TCP/IP stack being run.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Disable all UDP services that are not required on the server.]]></SOLUTION>
+          <RESULT><![CDATA[Detected service echo_udp and os Solaris 9-10]]></RESULT>
+        </PRACTICE>
+      </CAT>
+      <CAT value="General remote services" port="37" protocol="udp">
+        <PRACTICE number="38002" severity="2" cveid="CVE-1999-0103">
+          <TITLE><![CDATA[UDP Test-Services]]></TITLE>
+          <LAST_UPDATE><![CDATA[2008-06-02T23:02:38Z]]></LAST_UPDATE>
+          <PCI_FLAG>1</PCI_FLAG>
+          <CVE_ID_LIST>
+            <CVE_ID>
+              <ID><![CDATA[CVE-1999-0103]]></ID>
+              <URL><![CDATA[http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0103]]></URL>
+            </CVE_ID>
+          </CVE_ID_LIST>
+          <DIAGNOSIS>
+            <![CDATA[This system is running UDP services, which are generally used for networking testing purposes only (7 echo, 9 discard, 13 daytime, 17 quote of the day, 19 chargen, 37 time).  We recommend that no information be disclosed (even the current server time).  
+            <P>
+            Moreover, on older Operating Systems, Echo and chargen, or other combinations of UDP services, can be used in tandem to flood the server.  This can be accomplished with attacks like UDP bombs or UDP packet storms. ]]>
+          </DIAGNOSIS>
+          <CONSEQUENCE><![CDATA[By exploiting this vulnerability, unauthorized users can gather information about the server or cause a Denial of Service, depending on the TCP/IP stack being run.]]></CONSEQUENCE>
+          <SOLUTION><![CDATA[Disable all UDP services that are not required on the server.]]></SOLUTION>
+          <RESULT><![CDATA[Detected service time_udp and os Solaris 9-10]]></RESULT>
+        </PRACTICE>
+      </CAT>
+    </PRACTICES>
+  </IP>
+  <HEADER>
+    <KEY value="USERNAME">xoruser</KEY>
+    <KEY value="COMPANY"><![CDATA[XORCISM]]></KEY>
+    <KEY value="DATE">2010-07-05T09:59:36Z</KEY>
+    <KEY value="TITLE"><![CDATA[N/A (no report saved)]]></KEY>
+    <KEY value="TARGET"><![CDATA[90.110.18.26]]></KEY>
+    <KEY value="DURATION">00:11:09</KEY>
+    <KEY value="SCAN_HOST">90.110.18.26 (Scanner 5.9.64-1, Web 6.11.72-1, Vulnerability Signatures 1.26.110-3)</KEY>
+    <KEY value="NBHOST_ALIVE">1</KEY>
+    <KEY value="NBHOST_TOTAL">1</KEY>
+    <KEY value="REPORT_TYPE">API (default option profile)</KEY>
+    <KEY value="OPTIONS"><![CDATA[Custom TCP Port List (1-1024), Custom UDP Port List (1-1000), Authoritative Option: Off, Load balancer detection OFF, Ignore firewall-generated SYN-ACK packets, ICMP Host Discovery, Overall Performance: Normal, Hosts to Scan in Parallel - External Scanners: 15, Hosts to Scan in Parallel - Scanner Appliances: 30, Total Processes to Run in Parallel: 10, HTTP Processes to Run in Parallel: 10, Packet (Burst) Delay: Medium, Intensity: Normal]]></KEY>
+    <KEY value="STATUS">FINISHED</KEY>
+    <OPTION_PROFILE>
+      <OPTION_PROFILE_TITLE option_profile_default="1"><![CDATA[Normal_Policy]]></OPTION_PROFILE_TITLE>
+    </OPTION_PROFILE>
+  </HEADER>
+</SCAN>
+<!-- This report was generated with an evaluation version of QualysGuard //--> 
+<!-- CONFIDENTIAL AND PROPRIETARY INFORMATION. Qualys provides the QualysGuard Service "As Is," without any warranty of any kind. Qualys makes no warranty that the information contained in this report is complete or error-free. Copyright 2010, Qualys, Inc. //--> 
