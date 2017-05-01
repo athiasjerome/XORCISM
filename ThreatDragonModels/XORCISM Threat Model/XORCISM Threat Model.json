@@ -1,0 +1,21 @@
+{
+  "summary": {
+    "title": "XORCISM Threat Model",
+    "owner": "Jerome Athias",
+    "description": "Threat Dragon Test"
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "Jerome Athias"
+      }
+    ],
+    "diagrams": [
+      {
+        "title": "Threat Model",
+        "thumbnail": "../public/content/images/thumbnail.jpg",
+        "id": 0
+      }
+    ]
+  }
+}
