@@ -2,35 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-//using System.Threading.Tasks;
-
-//using System.Data;
 using System.Data.Entity;
-//using System.Xml;
+using System.Net;
+using System.Net.Http;  //For MS API
+using System.Web;
+using System.Globalization;
+using System.Diagnostics;   //ProcessStartInfo
+using System.Threading; //Sleep
+using System.IO;
+using System.Text.RegularExpressions;
 
 using XORCISMModel;
 using XOVALModel;
 using XVULNERABILITYModel;
 
-using System.Net;
-using System.Net.Http;  //For MS API
-//using System.Net.Http.Headers;  //For MS API
-
-using System.IO;
-using System.Text.RegularExpressions;
-
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 //using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.UI;   //For MS popup
-//using OpenQA.Selenium.Remote;
-
-using System.Web;
-//using System.Data.Entity;
-using System.Globalization;
-using System.Diagnostics;   //ProcessStartInfo
-
-using System.Threading; //Sleep
 
 namespace OVALBuilder
 {
@@ -47,7 +36,8 @@ namespace OVALBuilder
         /// This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
         /// 
         /// You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-		/// All trademarks, product names, company names, publisher name and their respective logos cited herein are the property of their respective owners.
+        /// 
+        /// All trademarks, product names, company names, publisher name and their respective logos cited herein are the property of their respective owners.
         /// </summary>
 
         public static string sMSUpdateAPIKey = "CHANGEME";  //HARDCODED
@@ -75,8 +65,7 @@ namespace OVALBuilder
         //TODO: Retrieve this from the database
         public static int iOSFamilyWindowsID = 114;    //HARDCODED windows
         public static int iOVALClassEnumerationInventoryID = 4;    //HARDCODED inventory
-
-
+        
         public static List<string> lMainProductsNames = new List<string>();     //TODO Could use the MS API
         public static List<string> lFileNamesToSearch = new List<string>();     //We use a list to avoid "errors" (i.e. Win32k.sys vs Win32kfull.sys) e.g.: gdiplus.dll, ogl.dll, etc.
         public static List<string> lFileNamesNOTToSearch = new List<string>();  //Excluded filenames. Useful, for example, when 1 (cumulative) KB covers 2-3 CVEs (for 2-3 different files)
@@ -100,7 +89,6 @@ namespace OVALBuilder
         public static string sProductFoundDEADBEEFGlobal = "";
 
         public static Regex _htmlRegex = new Regex("<.*?>", RegexOptions.Compiled); //Remove HTML from strings  Compiled regular expression for performance.
-
         public static string sCurrentPath = Directory.GetCurrentDirectory();
         
         public static List<string> lProducts = new List<string>();    //simplest names for the products (used to find the OVAL Inventory Definitions)
@@ -411,8 +399,7 @@ namespace OVALBuilder
                                             //lMainProductsNames.Add("Microsoft Office 2007 Service Pack 3");
 
             string sForceVULDescription = "";   //"Microsoft Office Remote Code Vulnerability"; //"Office 2007";
-
-
+            
             if (sForceMS != "")
             {
                 bUseOnlyCPEs = false;   //(we don't know them yet on Patch Tuesday)
@@ -750,7 +737,6 @@ namespace OVALBuilder
                 if (!lProductsMicrosoft.Contains("silverlight")) lProductsMicrosoft.Add("silverlight");
                 #endregion hardcodedmicrosoftproducts
             }
-
             
             //Search the CVE in the XORCISM database
             //#region searchCVEinXORCISM
@@ -1103,7 +1089,6 @@ namespace OVALBuilder
                     sFileNameToSearch = "edgehtml.dll";
                     if (sFileNameToSearch != "" && !lFileNamesToSearch.Contains(sFileNameToSearch)) lFileNamesToSearch.Add(sFileNameToSearch);
                 }
-
                 if (sVulnerabilityDescriptionLower.Contains("tcp/ip") || sVulnerabilityDescriptionLower.Contains("windows filtering platform") || sVulnerabilityDescriptionLower.Contains("wfp") || sVulnerabilityDescriptionLower.Contains("icmp") || sVulnerabilityDescriptionLower.Contains("dhcp") || sVulnerabilityDescriptionLower.Contains("ipsec") || sVulnerabilityDescriptionLower.Contains("igmp") || sVulnerabilityDescriptionLower.Contains("sack") || sVulnerabilityDescriptionLower.Contains("ipv6") || sVulnerabilityDescriptionLower.Contains("arp"))
                 {
                     sFileNameToSearch = "tcpip.sys";
@@ -1299,7 +1284,6 @@ namespace OVALBuilder
                     sFileNameToSearch = "partmgr.sys";   //Windows Partition Manager
                     if (sFileNameToSearch != "" && !lFileNamesToSearch.Contains(sFileNameToSearch)) lFileNamesToSearch.Add(sFileNameToSearch);
                 }
-
                 if (sVulnerabilityDescriptionLower.Contains("xbox"))
                 {
                     sFileNameToSearch = "xblauthmanager.dll";
@@ -1307,8 +1291,7 @@ namespace OVALBuilder
                     //windows.gaming.xboxlive.storage.dll
                 }
                 //}
-
-
+                
                 foreach(string sExcludedFilename in lFileNamesNOTToSearch)
                 {
                     lFileNamesToSearch.Remove(sExcludedFilename);
@@ -1318,8 +1301,7 @@ namespace OVALBuilder
 
                 //=================================================================================================================================================================================
                 if (sFileNameToSearch != "") Console.WriteLine("DEBUG sFileNameToSearch retrieved from CVE description: " + sFileNameToSearch);
-
-
+                
                 //Check if there is already at least one (Vulnerability) OVALDEFINITION for the VULNERABILITY (CVE) in the XORCISM database (/OVAL repo)
                 int iOVALDefVulnID = 0;
                 //OVALDEFINITIONVULNERABILITY oOVALDefForVuln = oval_model.OVALDEFINITIONVULNERABILITY.FirstOrDefault(o => o.VulnerabilityID == oVulnerability.VulnerabilityID);
@@ -1444,7 +1426,6 @@ namespace OVALBuilder
                             sProductToAdd = "windows server 2003";
                             if (!lProducts.Contains(sProductToAdd)) lProducts.Add(sProductToAdd);    //Hardcoded    (cpe always ToLower())
                             if (!lProductsMicrosoft.Contains(sProductToAdd)) lProductsMicrosoft.Add(sProductToAdd); //We add the basic product name
-
                         }
 
                         //Try to Identify the MainProducts from Here
@@ -1452,8 +1433,7 @@ namespace OVALBuilder
                         {
                             //JJJ
                             ////if (!lMainProductsNames.Contains("windows")) lMainProductsNames.Add("windows");
-
-
+                            
                             //lync 2013 sp1
                             string sMainProductNameFromCPE = string.Empty;
                             if (sProductToAdd.Contains("flash player")) //Hardcoded
@@ -1504,8 +1484,7 @@ namespace OVALBuilder
                     }
                 }
                 #endregion cpesanalysis
-
-
+                
                 if (bUseOnlyCPEs && bMacCVE && iCptCPENotMac == 0)
                 {
                     Console.WriteLine("DEBUG RETURN1");
@@ -1527,8 +1506,7 @@ namespace OVALBuilder
                     if (!lProductsMicrosoft.Contains(sMicrosoftProductName.ToLower())) lProductsMicrosoft.Add(sMicrosoftProductName.ToLower());
                 }
                 //Console.WriteLine("DEBUG LOADED lKnownMicrosoftProducts " + DateTimeOffset.Now);
-
-
+                
                 List<string> lVulnReferencesVisited = new List<string>();
 
                 //Get information from the VULNERABILITYREFERENCEs
@@ -1586,7 +1564,6 @@ namespace OVALBuilder
                                         //Console.WriteLine("NOTE: MSID not retrieved");
                                         sMSID = "temp"; //Hardcoded
                                     }
-
                                 }
                                 //"A programmer is just a tool which converts caffeine into code" CLIP- Stellvertreter
                                 //Console.WriteLine("DEBUG sMSID=" + sMSID);
@@ -1637,8 +1614,7 @@ namespace OVALBuilder
                                                 IWebElement elementToClick = driver.FindElement(By.XPath(checkbox));
                                                 elementToClick.Click();
                                                 Thread.Sleep(1000); //Hardcoded
-
-
+                                                
                                                 //driver.FindElementByClassName("btn btn-primary").Click();
                                                 String button = "//input[@type='button']";
                                                 elementToClick = driver.FindElement(By.XPath(button));  //<input type="button" ng-click="vm.save()" class="btn btn-primary" value="Accept" ng-disabled="eulaForm.$invalid" />
@@ -1647,7 +1623,6 @@ namespace OVALBuilder
 
                                                 driver.Navigate().GoToUrl(sURLMS);
                                                 Thread.Sleep(3000 + iSleepMore); //Hardcoded
-
                                             }
                                         }
                                         catch (Exception exEULA)
@@ -1683,8 +1658,7 @@ namespace OVALBuilder
                                 {
                                     Console.WriteLine("Exception: exReadMSFile " + exReadMSFile.Message + " " + exReadMSFile.InnerException);
                                 }
-
-
+                                
                                 //Try to identify the Main Product(s)   NOTE: known if using the MS API
                                 //<h2 class="subheading">Cumulative Security Update for Microsoft Edge (3199057)</h2>
                                 string sMSTitle = "";
@@ -1743,12 +1717,10 @@ namespace OVALBuilder
 
                                                 sFileNameToSearch = "gdi32.dll";
                                                 if (!lFileNamesToSearch.Contains(sFileNameToSearch)) lFileNamesToSearch.Add(sFileNameToSearch);
-
                                             }
                                         }
                                         //...
-
-
+                                        
                                         foreach(string sExcludedFilename in lFileNamesNOTToSearch)
                                         {
                                             lFileNamesToSearch.Remove(sExcludedFilename);
@@ -1758,7 +1730,6 @@ namespace OVALBuilder
                                     {
                                         Console.WriteLine("Exception: exMSTitleSplit " + exMSTitleSplit.Message + " " + exMSTitleSplit.InnerException);
                                     }
-
                                     
                                     //Console.WriteLine("DEBUG lProductsMicrosoft.Count=" + lProductsMicrosoft.Count);
                                     foreach (string sMSProductName in lProductsMicrosoft)
@@ -1795,7 +1766,6 @@ namespace OVALBuilder
                                                 if (sFileNameToSearch != "") Console.WriteLine("DEBUG: sFileNameToSearch hardcoded from MS title: " + sFileNameToSearch);
                                                 //if (sFileNameToSearch != "" && !lFileNamesToSearch.Contains(sFileNameToSearch)) lFileNamesToSearch.Add(sFileNameToSearch);
                                                 if (sFileNameToSearchHardcoded != "" && !lFileNamesToSearch.Contains(sFileNameToSearchHardcoded)) lFileNamesToSearch.Add(sFileNameToSearchHardcoded);
-
                                             }
                                             //}
                                         }
@@ -1819,8 +1789,7 @@ namespace OVALBuilder
                                 
                                 //Console.WriteLine("DEBUG analyzeMSPageTitleH2 END " + DateTimeOffset.Now);
                                 #endregion analyzeMSPageTitleH2
-
-
+                                
                                 if (sForceMS != "" || oReference.ReferenceURL.ToLower().Contains("security-guidance/advisory"))
                                 {
                                     //Console.WriteLine("DEBUG sForceMSCatalog");
@@ -1852,7 +1821,6 @@ namespace OVALBuilder
                                     {
                                         if (!lKBCatalogURLs.Contains(matchKBCatalogURL.ToString()))
                                         {
-                                            
                                             string sKBNumber = matchKBCatalogURL.ToString().Replace("catalog.update.microsoft.com/v7/site/Search.aspx?q=", "").ToUpper();   //HardcodedMS
                                             Console.WriteLine("DEBUG sKBNumber=" + sKBNumber);
                                             lKBNumbers.Add(sKBNumber);//.Replace("KB",""));
@@ -1942,8 +1910,7 @@ namespace OVALBuilder
                                             }
                                         }
                                     }
-
-
+                                    
                                     Regex myRegexKBNumberExtract = new Regex(@"\(\d+\)", RegexOptions.Singleline);
                                     MatchCollection KBNumbers = myRegexKBNumberExtract.Matches(ResponseText);
                                     //List<string> lKBNumbers = new List<string>();
@@ -2037,7 +2004,6 @@ namespace OVALBuilder
                                                 }
                                             }
                                         }
-
                                     }
                                 }
 
@@ -2045,8 +2011,7 @@ namespace OVALBuilder
 
                                 //Regex myRegexKBURL = new Regex("support.microsoft.com/kb/(.*?)\">", RegexOptions.Singleline);   //HardcodedMS //TODO Review
                                 Regex myRegexKBURL = new Regex("support.microsoft.com/kb/\\d+", RegexOptions.Singleline);   //HardcodedMS //TODO Review
-
-
+                                
                                 //Extract the KB links from the MS- page
                                 MatchCollection myKBURLs = myRegexKBURL.Matches(ResponseText);
 
@@ -2081,7 +2046,6 @@ namespace OVALBuilder
                                         Console.WriteLine("DEBUG break");
                                         break;  //TODO: Review For now we just work with the 1st BigKBlink found in the initial MS- page of the Vulnerability. Note that others could appear in the comments
                                     }
-
                                 }
                             }
                         }
@@ -2178,7 +2142,7 @@ namespace OVALBuilder
                         {
                             #region getplatforms
                             //Get the known Platforms of the Products
-                            foreach (var x in dProductFile.OrderBy(o => o.Key))
+                            foreach (var xProductFile in dProductFile.OrderBy(o => o.Key))
                             {
                                 /*
                                 if (x.Key.Contains(sMainProductFound))   //microsoft lync 2013 contains microsoft lync 2013
@@ -2192,7 +2156,7 @@ namespace OVALBuilder
                                 //DEADBEEFwindows 7 x86
                                 //microsoft .net framework 3.5 x64DEADBEEFwindows 10 version 1607 x64 20161005 gdiplus.dll 10.0.14393.321
                                 //microsoft lync 2013 x64DEADBEEFmicrosoft lync basic 2013 x64 20160913 lync.lync.exe 15.0.4867.1000
-                                string[] sxKeySplit = x.Key.Split(new string[] { "DEADBEEF" }, StringSplitOptions.None);
+                                string[] sxKeySplit = xProductFile.Key.Split(new string[] { "DEADBEEF" }, StringSplitOptions.None);
                                 string sMyProductName = sxKeySplit[0];  //microsoft lync 2013 x64
 
                                 if (sMyProductName.Trim() == "" || sMyProductName == "windows kernel" || sMyProductName == "microsoft management console" || sMyProductName.Contains("active directory federation services"))  //HARDCODEDMSWINSERVICES because they are not Products   //TODO Improve (services...)
@@ -2214,6 +2178,7 @@ namespace OVALBuilder
                                     string sPlatformName = new CultureInfo("en-US").TextInfo.ToTitleCase(sMyProductName).Replace(" Sp", " SP").Replace(" Rt", " RT");   //HARDCODED
                                     sPlatformName = sPlatformName.Replace("X86", "x86");
                                     sPlatformName = sPlatformName.Replace("X64", "x64");
+                                    sPlatformName = sPlatformName.Replace(" version 1511", "");
                                     sPlatformName = fGetPlatformName(sPlatformName);
 
                                     if (!lPlatforms.Contains(sPlatformName) && !lPlatforms.Contains("Microsoft " + sPlatformName))
@@ -2223,7 +2188,6 @@ namespace OVALBuilder
                                 }
                                 else//not windows xxx
                                 {
-
                                     string sProductName = new CultureInfo("en-US").TextInfo.ToTitleCase(sMyProductName).Replace(" Sp", " SP").Replace(" Rt", " RT");   //HARDCODED
 
                                     sProductName = sProductName.Replace("X86", "x86");
@@ -2267,7 +2231,7 @@ namespace OVALBuilder
                                             //We can retrieve the Known Platform for the Product (if needed), but we don't want ALL of them (ideally just the ones found)
                                             if (lPlatforms.Count == 0)
                                             {
-                                                if (x.Key.Contains("windows"))
+                                                if (xProductFile.Key.Contains("windows"))
                                                 {
                                                     try
                                                     {
@@ -2283,8 +2247,10 @@ namespace OVALBuilder
                                                         string sPlatformName = new CultureInfo("en-US").TextInfo.ToTitleCase(sMyProductName).Replace(" Sp", " SP").Replace(" Rt", " RT");   //HARDCODED
                                                         sPlatformName = sPlatformName.Replace("X86", "x86");
                                                         sPlatformName = sPlatformName.Replace("X64", "x64");
+                                                        sPlatformName = sPlatformName.Replace(" version 1511", ""); //Known issue in the database (due to error in old version of a Definition)
+                                                        sPlatformName = sPlatformName.Replace(" Version 1511", "");
                                                         sPlatformName = fGetPlatformName(sPlatformName);
-
+                                                        
                                                         if (!lPlatforms.Contains(sPlatformName) && !lPlatforms.Contains("Microsoft " + sPlatformName))
                                                         {
                                                             lPlatforms.Add("Microsoft " + sPlatformName);
@@ -2312,6 +2278,8 @@ namespace OVALBuilder
                                                             if (oProductPlatform.PLATFORM.PlatformName.ToLower().Contains("windows"))   //Exclude Apple Mac OS X
                                                             {
                                                                 string sPlatformNameTemp = oProductPlatform.PLATFORM.PlatformName.Replace("(x86)", "").Replace("(x64)", "").Replace("(Ia-64)", "").Replace("Itanium", "").Trim();
+                                                                sPlatformNameTemp = sPlatformNameTemp.Replace(" version 1511", ""); //Known issue in the database (due to error in old version of a Definition)
+                                                                sPlatformNameTemp = sPlatformNameTemp.Replace(" Version 1511", "");
                                                                 if (!lPlatforms.Contains(sPlatformNameTemp)) lPlatforms.Add(sPlatformNameTemp);
                                                             }
                                                         }
@@ -2344,6 +2312,8 @@ namespace OVALBuilder
                                                                     if (oProductPlatform.PLATFORM.PlatformName.ToLower().Contains("windows"))   //Exclude Apple Mac OS X
                                                                     {
                                                                         string sPlatformNameTemp = oProductPlatform.PLATFORM.PlatformName.Replace("(x86)", "").Replace("(x64)", "").Replace("(Ia-64)", "").Replace("Itanium", "").Trim();
+                                                                        sPlatformNameTemp = sPlatformNameTemp.Replace(" version 1511", ""); //Known issue in the database (due to error in old version of a Definition)
+                                                                        sPlatformNameTemp = sPlatformNameTemp.Replace(" Version 1511", "");
                                                                         if (!lPlatforms.Contains(sPlatformNameTemp)) lPlatforms.Add(sPlatformNameTemp);
                                                                     }
                                                                 }
@@ -2369,22 +2339,21 @@ namespace OVALBuilder
                                     }
                                 }
 
-                                string[] FileInfoSplit = x.Value.Split(' ');
+                                string[] FileInfoSplit = xProductFile.Value.Split(' ');
                                 ////dFileProduct.Add(FileInfoSplit[1] + " " + FileInfoSplit[2], x.Key);
                                 //lFileProduct.Add(FileInfoSplit[1] + " " + FileInfoSplit[2] + "JEROME" + x.Key);    //Hardcoded :-)
                                 string sFileProductLine = string.Empty;
                                 try
                                 {
-                                    sFileProductLine = FileInfoSplit[1] + " " + FileInfoSplit[2] + "JEROME" + x.Key;    //Hardcoded :-)
+                                    sFileProductLine = FileInfoSplit[1] + " " + FileInfoSplit[2] + "JEROME" + xProductFile.Key;    //Hardcoded :-)
                                 }
                                 catch (Exception exFileProductLineSplit)
                                 {
-                                    Console.WriteLine("Exception: exFileProductLineSplit " + exFileProductLineSplit.Message + " " + exFileProductLineSplit.InnerException);
+                                    Console.WriteLine("Exception: exFileProductLineSplit xProductFile.Value=" + xProductFile.Value+" " + exFileProductLineSplit.Message + " " + exFileProductLineSplit.InnerException);
                                 }
                                 //Console.WriteLine("DEBUG sFileProductLine=" + sFileProductLine);
                                 if (!lFileProduct.Contains(sFileProductLine))
                                 {
-
                                     //Console.WriteLine("DEBUG sxKeySplit[1]="+sxKeySplit[1]);
                                     string sProductName2 = sxKeySplit[1];
                                     if (sProductName2 != "" && !sProductName2.StartsWith("windows"))
@@ -2423,7 +2392,6 @@ namespace OVALBuilder
 
                                                 }
                                             }
-
                                         }
                                         else
                                         {
@@ -2432,7 +2400,6 @@ namespace OVALBuilder
                                             Console.WriteLine("DEBUG Not keeping the FileLine");
                                             continue;
                                         }
-
                                     }
 
                                     Console.WriteLine("DEBUG lFileProductAdd " + sFileProductLine);
@@ -2479,7 +2446,6 @@ namespace OVALBuilder
 
                         Console.WriteLine("DEBUG Writing sProductFinal=" + sProductFinalX);
                         monStreamWriter.WriteLine("\t\t\t<oval-def:product>" + sProductFinalX.Trim() + "</oval-def:product>");
-
                     }
                     #endregion writeallproducts
 
@@ -2555,12 +2521,8 @@ namespace OVALBuilder
                         if (sMainProductNameToTitle == "Windows Kernel") sMainProductNameToTitle = "1337";  //HARDCODEDJA
                         if (sMainProductNameToTitle == "Microsoft Management Console") sMainProductNameToTitle = "1337";  //HARDCODEDJA (probably not needed)
                         if (sMainProductNameToTitle.Contains("Active Directory Federation Services")) sMainProductNameToTitle = "1337";  //HARDCODEDJA (probably not needed)
-
-
-                        //int iCounterCorrectProductsTotalDef = 0;
                         int iCounterDifferentPlatforms = 0;
-
-
+                        
                         #region whiterabbit
                         #region sMainProductNameToTitle
                         if (sMainProductNameToTitle != "")// || lMainProductsNames.Count > 1) //Hardcoded  JJJ
@@ -2603,7 +2565,6 @@ namespace OVALBuilder
                                     if (i == lFileProduct.Count - 1)
                                     {
                                         //End of the list
-
                                     }
                                     else
                                     {
@@ -2679,28 +2640,14 @@ namespace OVALBuilder
                                 //<oval-def:extend_definition comment="Microsoft Edge is installed" definition_ref="oval:org.cisecurity:def:2" />
                                 if (iCounterMainProductsProcessed == 1) bWroteCriteria1Global = true;
                                 sSaveTabCriteria1 = sTab + "\t";
-
                             }
                             else
                             {
                                 Console.WriteLine("DEBUG NOT Writing Criteria1 sMainProductNameToTitle=1337 or JOKER");
                                 if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG NOT Writing Criteria1 sMainProductNameToTitle=1337 or JOKER");
                                 sSaveTabCriteria1 = sTab;
-                                /*
-                                if(bWroteCriteria0)
-                                {
-                                    sTab = "\t\t";
-                                    Console.WriteLine("DEBUG sTab is two TABs");
-                                }
-                                else
-                                {
-                                    sTab = "\t";
-                                    Console.WriteLine("DEBUG sTab is one TAB");
-                                }
-                                */
                             }
-
-
+                            
                             #region OVALInventoryDefinitionForMainProduct
                             //1st try   (will work with "Edition")
                             OVALDEFINITION oOVALInventoryDefinitionForMainProduct = new OVALDEFINITION();
@@ -2711,8 +2658,6 @@ namespace OVALBuilder
                                     //TODO: Use List/Dictionary 
                                     if (!lOVALDefInventoryNotRetrieved.Contains(sCurrentMainProductNameToTile))
                                     {
-
-                                        //oOVALInventoryDefinitionForMainProduct = oval_model.OVALDEFINITION.Where(o => o.OVALDefinitionTitle.ToLower().Contains(sMainProductName) && o.OVALDefinitionTitle.ToLower().Contains(" is installed")).OrderByDescending(o => o.OVALDefinitionVersion).FirstOrDefault(); //Hardcoded
                                         oOVALInventoryDefinitionForMainProduct = oval_model.OVALDEFINITION.Where(o => o.OVALClassEnumerationID == iOVALClassEnumerationInventoryID && o.OSFamilyID == iOSFamilyWindowsID && o.OVALDefinitionTitle.ToLower().Contains(sCurrentMainProductNameToTile) && o.OVALDefinitionTitle.ToLower().Contains(" is installed")).OrderByDescending(o => o.OVALDefinitionVersion).FirstOrDefault(); //Hardcoded
                                         if (oOVALInventoryDefinitionForMainProduct == null && sCurrentMainProductNameToTile.Contains("microsoft sharepoint"))   //HARDCODED
                                         {
@@ -2756,10 +2701,6 @@ namespace OVALBuilder
                                     Console.WriteLine("Exception: exoOVALInventoryDefinitionForMainProduct " + exoOVALInventoryDefinitionForMainProduct.Message + " " + exoOVALInventoryDefinitionForMainProduct.InnerException);
                                 }
                             }
-                            else
-                            {
-
-                            }
                             #endregion OVALInventoryDefinitionForMainProduct
 
                             if (sMainProductNameToTitle != "1337" && sCurrentMainProductNameToTile != "joker" && iCounterCorrectProductsTotalDef > 1)
@@ -2772,7 +2713,6 @@ namespace OVALBuilder
                             {
                                 Console.WriteLine("DEBUG NOT Adding Tab1 iCounterCorrectProductsTotalDef>1");
                                 if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG NOT Adding Tab1 iCounterCorrectProductsTotalDef>1");
-
                             }
                         }
                         #endregion sMainProductNameToTitle
@@ -2822,22 +2762,7 @@ namespace OVALBuilder
                                 bWroteCriteria2 = true;
                                 //Console.WriteLine("DEBUG bWroteCriteria2=true");
                                 sSaveTabCriteria2 = sTab;
-
-                                /*
-                                if(1==2 && iCounterDifferentPlatforms>0)    //TODO
-                                {
-                                    Console.WriteLine("DEBUG Adding Tab34");
-                                    if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG Adding Tab34");
-                                    //if(lMainProductsNames.Count > 1)
-                                    sTab = sTab + "\t";
-                                }
-                                else
-                                {
-                                    //if(lMainProductsNames.Count > 1)
-                                    Console.WriteLine("DEBUG NOT Adding Tab34");
-                                    if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG NOT Adding Tab34");
-                                }
-                                */
+                                
                                 #endregion writecriteria2
                             }
                         }
@@ -2900,7 +2825,6 @@ namespace OVALBuilder
                             else
                             {
                                 sCurrentProduct = CurrenProductSplitDEADBEEF[0];
-
                             }
 
                             #region analyzenextfileproduct
@@ -2933,7 +2857,6 @@ namespace OVALBuilder
                                 Console.WriteLine("DEBUG sNextFile=" + sNextFile);
                                 if (sNextFile == sCurrentFile && !bWroteCriteria3)
                                 {
-
                                     //if (!bWroteCriteria3)
                                     //{
                                     //Retrieve (in advance) all the Products with the same file/version for the criteria comment
@@ -2989,7 +2912,6 @@ namespace OVALBuilder
                                                     }
                                                     else
                                                     {
-
                                                         //Hardcoded for cosmetic
                                                         if (sCurrentProduct.Contains("ersion 1511") && sNextProduct.Contains("ersion 1511")) iIdenticalProductsForCriteria++;
                                                         if ((sCurrentProduct.Contains("windows server 2016") || sCurrentProduct.Contains("ersion 1607")) && sNextProduct.Contains("ersion 1607")) iIdenticalProductsForCriteria++;
@@ -3040,7 +2962,6 @@ namespace OVALBuilder
                                     {
                                         Console.WriteLine("DEBUG sCriteriaComment1=" + sCriteriaComment);
                                         Console.WriteLine("DEBUG iCounterCorrectProducts1=" + iCounterCorrectProducts);
-                                        //if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG sCriteriaComment1");
                                     }
                                 }
                             }
@@ -3093,8 +3014,6 @@ namespace OVALBuilder
                                     {
                                         if (iCounterCorrectProducts > 1 || lFileProduct.Count == 1)
                                         {
-                                            ////monStreamWriter.WriteLine("\t\t<oval-def:criteria comment=\"" + sProductName + " + file version\" operator=\"AND\">");
-                                            //monStreamWriter.WriteLine("\t\t<oval-def:criteria comment=\"Product is installed + file version\" operator=\"AND\">");
                                             Console.WriteLine("DEBUG Write Criteria3 " + sCriteriaComment.Replace(" Sp ", " SP ") + " is installed + file version");
                                             if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG Write Criteria3");
                                             if (bDEBUGMODEINXML) sDebug = "3";
@@ -3114,20 +3033,6 @@ namespace OVALBuilder
                                             if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG NOT Writing Criteria3 !bWroteCriteria3 iCounterCorrectProducts<=1");
                                         }
                                     }
-                                }
-                                else
-                                {
-                                    /*
-                                    Console.WriteLine("DEBUG bSkipExtendDefinition = " + bSkipExtendDefinition);
-                                    if (!bSkipExtendDefinition)
-                                    {
-                                        Console.WriteLine("DEBUG bWroteCriteria3=false sNextFile!=sCurrentFile or bBypassExtendDef or bSkipExtendDefinition");
-                                        if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG bWroteCriteria3=false sNextFile!=sCurrentFile or bBypassExtendDef or bSkipExtendDefinition");
-                                        Console.WriteLine("DEBUG bWroteCriteria3=false");
-                                        if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG bWroteCriteria3=false");
-                                        bWroteCriteria3 = false;
-                                    }
-                                    */
                                 }
 
                                 #region criteria4
@@ -3156,7 +3061,6 @@ namespace OVALBuilder
                                             Console.WriteLine("DEBUG bWroteCriteria4=true");
                                             if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG bWroteCriteria4=true");
                                             bWroteCriteria4 = true;
-
                                         }
                                         else
                                         {
@@ -3224,12 +3128,6 @@ namespace OVALBuilder
                                     monStreamWriter.WriteLine(sTab + "\t\t\t<oval-def:extend_definition" + sDebug + " comment=\"" + oOVALInventoryDefinition.OVALDefinitionTitle + "\" definition_ref=\"" + oOVALInventoryDefinition.OVALDefinitionIDPattern + "\" />");
                                     lOVALExtendDefinitionsWritten.Add(oOVALInventoryDefinition.OVALDefinitionIDPattern);
                                 }
-                                //}
-                                //else
-                                //{
-                                //    if (!bWroteCriteria4) monStreamWriter.WriteLine(sTab + "\t\t\t<oval-def:extend_definition comment=\"" + oOVALInventoryDefinition.OVALDefinitionTitle + "\" definition_ref=\"" + oOVALInventoryDefinition.OVALDefinitionIDPattern + "\" />");
-                                //}
-
                                 if (sNextFile != sCurrentFile || bSkipExtendDefinition)// || (sNextProduct != sCurrentProduct && !(sCurrentProduct.Contains("windows") && sNextProduct.Contains("windows"))))// || bBypassExtendDef)
                                 {
                                     if (bWroteCriteria4 && iCounterExtendDefinition2Wrote != 1)
@@ -3259,20 +3157,6 @@ namespace OVALBuilder
                                             if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG Removing TabX iCounterCorrectProducts!=1");
                                             sTab = sTab.Remove(sTab.Length - 1);
                                         }
-                                        /*
-                                        if(iCounterDifferentPlatforms>1)
-                                        {
-                                            Console.WriteLine("DEBUG sTab+ iCounterDifferentPlatforms>1");
-                                            if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG sTab+ iCounterDifferentPlatforms>1");
-                                            sTab = sTab + "\t";
-                                        }
-                                        */
-                                    }
-                                    else
-                                    {
-                                        //if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG sTab empty iCounterCorrectProducts=1");
-                                        //Console.WriteLine("DEBUG sTab empty iCounterCorrectProducts=1");
-                                        //sTab = "";
                                     }
 
                                     #region criterion
@@ -3317,7 +3201,6 @@ namespace OVALBuilder
                                             if (!fileInfo.Exists)
                                             {
                                                 #region findovaltestfilesandcopythemtolocaldirectory
-                                                //var allFiles = Directory.GetFiles(sCurrentPath, "*.xml", SearchOption.AllDirectories);
                                                 var allFiles = Directory.GetFiles(sCurrentPath, sOVALTestFilename, SearchOption.AllDirectories);
                                                 if (allFiles.Count() > 0)
                                                 {
@@ -3362,7 +3245,6 @@ namespace OVALBuilder
                                                                         Console.WriteLine("ERROR: Could not find the OVALObjectFile " + sOVALObjectFileName);
                                                                     }
                                                                 }
-
                                                             }
                                                             //else  //No need of the OVALObjectFile in current directory
 
@@ -3395,8 +3277,7 @@ namespace OVALBuilder
                                                                 }
                                                             }
                                                             //else  //No need of the OVALStateFile in current directory
-
-
+                                                            
                                                             //jjj
                                                             //myStreamReaderOVALTestFile.Close();
                                                         }
@@ -3404,7 +3285,6 @@ namespace OVALBuilder
                                                         {
                                                             Console.WriteLine("Exception: exReadOVALTestFile " + exReadOVALTestFile.Message + " " + exReadOVALTestFile.InnerException);
                                                         }
-
                                                     }
                                                     catch (IOException exCopyOVALTestFileToCurrentCVEDirectorycopyError)
                                                     {
@@ -3423,7 +3303,6 @@ namespace OVALBuilder
                                                 #endregion findovaltestfilesandcopythemtolocaldirectory
                                             }
                                         }
-
                                     }
                                     else
                                     {
@@ -3867,12 +3746,10 @@ namespace OVALBuilder
                                         if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG WriteEnd Criteria4 sNextFile!=sCurrentFile sTab.Length=" + sTab.Length);
                                         if (bDEBUGMODEINXML) sDebug = "4";
                                         monStreamWriter.WriteLine(sTab + "\t\t</oval-def:criteria" + sDebug + ">");   //Criteria4
-
                                     }
                                     iCounterExtendDefinition2Wrote = 0;
                                     iCounterCorrectProducts = 0;
 
-                                    //if (iCounterCorrectProducts <= 1)
                                     if (!bWroteCriteria3)
                                     {
                                         Console.WriteLine("DEBUG NOT Writing EndCriteria3");
@@ -3888,21 +3765,6 @@ namespace OVALBuilder
                                     }
                                     bWroteCriteria3 = false;
                                     bWroteCriteria4 = false;
-
-                                    /*
-                                    if (bWroteCriteria2)
-                                    {
-                                        sTab = sSaveTabCriteria2;
-                                        Console.WriteLine("DEBUG WriteEnd Criteria2");
-                                        if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG WriteEnd Criteria2");
-                                        monStreamWriter.WriteLine(sTab + "\t</oval-def:criteria>");
-                                        bWroteCriteria2 = false;
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("DEBUG NOT Writing Criteria2");
-                                    }
-                                    */
                                 }
                             }
                             #endregion ovalinventorydefinitionnotnull
@@ -3915,10 +3777,8 @@ namespace OVALBuilder
                             {
                                 bBypassBlock = false;
                             }
-
                         }
 
-                        //if (bWroteCriteria2 && (lMainProductsNames.Count<2) || iCounterMainProductsProcessed == lMainProductsNames.Count)
                         if (bWroteCriteria2 && !(bWroteCriteria2Global && iCounterMainProductsProcessed == 1))// && iCounterMainProductsProcessed == lMainProductsNames.Count)
                         {
                             Console.WriteLine("DEBUG WriteEnd Criteria2");
@@ -3927,7 +3787,6 @@ namespace OVALBuilder
                             monStreamWriter.WriteLine(sTab + "\t</oval-def:criteria" + sDebug + ">");
                             //bWroteCriteria2Global = false;
                             bWroteCriteria2 = false;
-
                         }
                         else
                         {
@@ -3940,13 +3799,9 @@ namespace OVALBuilder
                             if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG WriteEnd Criteria1 sMainProductNameToTitle!=1337");
                             if (bDEBUGMODEINXML) sDebug = "1";
                             monStreamWriter.WriteLine(sSaveTabCriteria1 + "</oval-def:criteria" + sDebug + ">");  //Note: always 2tabs?
-                            //sTab = "\t";
-
+                            
                             if (iCounterCorrectProducts == 1)
                             {
-                                //Console.WriteLine("DEBUG NOT Writing EndCriteria1 iCounterCorrectProducts=1");
-                                //if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG NOT Writing EndCriteria1 iCounterCorrectProducts=1");
-
                                 Console.WriteLine("DEBUG REINIT sTAB to one iCounterCorrectProducts=1");
                                 if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG REINIT sTAB to one iCounterCorrectProducts=1");
                                 sTab = "\t";
@@ -3968,9 +3823,6 @@ namespace OVALBuilder
                         if (bDEBUGMODEINXML) monStreamWriter.WriteLine("DEBUG WriteEnd Final Criteria2");
                         if (bDEBUGMODEINXML) sDebug = "22";
                         monStreamWriter.WriteLine(sSaveTabCriteria2Global + "\t</oval-def:criteria" + sDebug + ">");
-                        //bWroteCriteria2Global = false;
-                        ////bWroteCriteria2 = false;
-
                     }
                     else
                     {
@@ -3997,8 +3849,6 @@ namespace OVALBuilder
                         }
                     }
 
-                    //Console.WriteLine("DEBUG WriteEnd CriteriaFinal");
-                    //monStreamWriter.WriteLine("\t</oval-def:criteria>");
                     monStreamWriter.WriteLine("</oval-def:definition>");
                     monStreamWriter.Close();
 
@@ -4056,11 +3906,7 @@ namespace OVALBuilder
             }
             */
         }
-
-
-
-
-
+        
         public static void fAnalyzeKBURL(string sKBURL, string sFileNameToSearch = "", string sVULDescription = "", string sMainProductName = "", int iVulnerabilityID=0, string sMSTitle="")
         {
             string ResponseText = string.Empty;
@@ -4068,9 +3914,7 @@ namespace OVALBuilder
 
             string sBIGKBFilePath = sCurrentPath + @"\MS\KB" + sKBNumber + ".txt";    //HARDCODED Local Path to save the KB page
             Console.WriteLine("DEBUG sBIGKBFilePath=" + sBIGKBFilePath);
-
             
-
             #region AddPatchToXORCISM
             #region patch
             int iPatchID = 0;
@@ -4184,7 +4028,6 @@ namespace OVALBuilder
                 {
                     try
                     {
-                        //iVulnerabilityPatchID = vuln_model.VULNERABILITYPATCH.Where(o => o.VulnerabilityID == oVulnerability.VulnerabilityID && o.PatchID == iPatchID).FirstOrDefault().VulnerabilityPatchID;
                         iVulnerabilityPatchID = vuln_model.VULNERABILITYPATCH.Where(o => o.VulnerabilityID == iVulnerabilityID && o.PatchID == iPatchID).FirstOrDefault().VulnerabilityPatchID;
                     }
                     catch (Exception ex)
@@ -4264,8 +4107,7 @@ namespace OVALBuilder
                 }
             //}
             #endregion getMSKBPageLocalCopy
-
-
+            
             //Parse the big KB file (containing links to other individual KBs with files information for each Product)
             try
             {
@@ -4293,8 +4135,7 @@ namespace OVALBuilder
                 Console.WriteLine("DEBUG sMSPageTitle=" + sMSPageTitle.Replace("</title>", ""));
                 sMSPageTitle = sMSPageTitle.Replace("2007 Microsoft Office Suite", "Microsoft Office 2007");    //HARDCODEDMS
                 if (sMSPageTitle.ToLower().Contains("office online server") && !lFileNamesToSearch.Contains("wacserver.dll")) lFileNamesToSearch.Add("wacserver.dll");
-
-
+                
                 //Search products names in the page's title
                 string sMicrosoftProductFromTitle = string.Empty;
                 foreach (string sMicrosoftProduct in lProductsMicrosoft)
@@ -4321,7 +4162,7 @@ namespace OVALBuilder
                     string sMSPageTitleSP = myRegexTitleSP.Match(ResponseText).ToString();
                     if(sMSPageTitleSP!="")
                     {
-                        if (sMSPageTitleSP.Contains("Service Pack 1")) sMicrosoftProductFromTitle = sMicrosoftProductFromTitle + " Service Pack 1";
+                        if (sMSPageTitleSP.Contains("Service Pack 1")) sMicrosoftProductFromTitle = sMicrosoftProductFromTitle + " Service Pack 1"; //HARDCODED
                         if (sMSPageTitleSP.Contains("Service Pack 2")) sMicrosoftProductFromTitle = sMicrosoftProductFromTitle + " Service Pack 2";
                         if (sMSPageTitleSP.Contains("Service Pack 3")) sMicrosoftProductFromTitle = sMicrosoftProductFromTitle + " Service Pack 3";
                         if (sMSPageTitleSP.Contains("Service Pack 4")) sMicrosoftProductFromTitle = sMicrosoftProductFromTitle + " Service Pack 4";
@@ -4342,20 +4183,15 @@ namespace OVALBuilder
                     if (sMicrosoftProductFromTitle.ToLower().Contains("sharepoint") && !lFileNamesToSearch.Contains("sword.dll")) lFileNamesToSearch.Add("sword.dll");
                     if (sMicrosoftProductFromTitle.ToLower().Contains("project") && !lFileNamesToSearch.Contains("microsoft.office.project.server.pwa.applicationpages.dll")) lFileNamesToSearch.Add("microsoft.office.project.server.pwa.applicationpages.dll");   //Review
                     //...
-
                 }
-
             }
 
-            ////if (ResponseText.Contains("<h3 class=\"section-title ng-binding\">File Information</h3>"))   //HARDCODEDMS
-            //if (ResponseText.Contains(">File Information</h3>") || ResponseText.Contains(">File information</h3>"))   //HARDCODEDMS     (<strong>)
             if (ResponseText.Contains(">File Information</") || ResponseText.Contains(">File information</"))   //HARDCODEDMS     (<strong>)
             {
                 //<h3 class="ng-scope">File information</h3>
                 Console.WriteLine("DEBUG FileInformationH3");
                 #region fileinformationh3
                 //e.g.  Adobe Flash Player
-                //Regex myRegexBlockH3FileInformation = new Regex("<h3 class=\"section-title ng-binding\">File Information</h3>(.*?)</section>", RegexOptions.Singleline); //HARDCODEDMSHTML
                 Regex myRegexBlockH3FileInformation = new Regex(">File Information</(.*?)</section>", RegexOptions.IgnoreCase | RegexOptions.Singleline); //HARDCODEDMSHTML
 
                 string sBlockH3FileInformation = myRegexBlockH3FileInformation.Match(ResponseText).ToString();
@@ -4424,8 +4260,7 @@ namespace OVALBuilder
                 lFileplatforms = new List<string>();
                 string sFileNameToSearchReplaced = sFileNameToSearch;
                 string sKBURLFinal2 = sKBURL;
-
-
+                
                 //if(sBlockH3FileInformationKBURL.Contains("download.microsoft.com/download/"))   //.csv
                 if (ResponseText.Contains("download.microsoft.com/download/"))   //.csv
                 {
@@ -4435,8 +4270,7 @@ namespace OVALBuilder
                     {
                         Console.WriteLine("DEBUG CallingfParseCSV sFileNameToSearch=" + sFileNameToSearch);
                         fParseCSV(sRegexDownloadCSVlink, sFileNameToSearch);    //sFileNameToSearchReplaced
-
-
+                        
                         Dictionary<string, Dictionary<string, string>> dFileInfos = fSortFileInfos(sFileNameToSearch); //new Dictionary<string, Dictionary<string, string>>();
 
                         //fFileInfosRetrievedByParsing(dFileInfos, sFileNameToSearch, sProductFoundDEADBEEF, sKBURLFinal2);
@@ -4446,9 +4280,7 @@ namespace OVALBuilder
                         }
                         fFileInfosRetrievedByParsing(dFileInfos, sFileNameToSearch, sFileNameToSearchReplaced, sProductFoundDEADBEEFGlobal, sKBURLFinal2);
                     }
-                    
                 }
-
                 
                 //<span class="link-expand-text ng-binding" id="">  Windows Server 2012 file information  </span>
                 Regex myRegexBlockFileInfo = new Regex("<span class=\"link-expand-text ng-binding\" id=\"\">(.*?)</div></div>", RegexOptions.Singleline); //HARDCODEDMSHTML
@@ -4475,13 +4307,11 @@ namespace OVALBuilder
                         List<string> lProductsFoundInH3Title = new List<string>();
                         string sProductsInHyperlink = sHyperlinkText;
                         //Retrieve the Products Name(s) from the BlockH3
-                        //lProductsFoundInH3Title = fGetExactProductName(sHyperlinkText, sProductsInHyperlink, sProductsInHyperlink, oVulnerability.VULDescription, lProductsMicrosoft, sMainProductName);
                         lProductsFoundInH3Title = fGetExactProductName(sHyperlinkText, sProductsInHyperlink, sProductsInHyperlink, sVULDescription, lProductsMicrosoft, sMainProductName);
 
                         foreach (string sProductInBlock in lProductsFoundInH3Title)
                         {
                             Console.WriteLine("DEBUG sProductInBlockH3=" + sProductInBlock);
-
                             
                             Regex myRegexBlockH3Table = new Regex("</h4><table class=\"table ng-scope\">(.*?)</table>", RegexOptions.Singleline); //HARDCODEDMSHTML
                             MatchCollection myKBTable = myRegexBlockH3Table.Matches(sBlockH3FileInformation);
@@ -4494,8 +4324,7 @@ namespace OVALBuilder
                                 string sProductFoundDEADBEEF = sMainProductName + "DEADBEEF" + sProductInBlock;   //HARDCODEDJA Separator Product|Platform
 
                                 Console.WriteLine("DEBUG sProductFoundDEADBEEFH3=" + sProductFoundDEADBEEF);
-
-
+                                
                                 //TODO: Duplicate code
                                 ////Sort the arrays to get the file with most recent date
                                 #region sortfileinfos
@@ -4586,8 +4415,7 @@ namespace OVALBuilder
                                 */
 
                                 #endregion sortfileinfos
-
-
+                                
                                 if (dFileInfos.Count() > 0)
                                 {
                                     #region fileinfosretrievedbyparsing
@@ -4855,20 +4683,14 @@ namespace OVALBuilder
                                 {
                                     Console.WriteLine("WARNING: No file found!");
                                 }
-
-
-
+                                
                                 //date  file    version
                                 //string sFileInfoNeeded = 
 
                                 ////dProductFile.Add(sProductFoundDEADBEEF, dKBURLFile[sKBURLFinal2]);
                                 //dProductFile.Add(sProductFoundDEADBEEF, sFileInfoNeeded.ToLower());
-
-
                             }
-
                         }
-
                     }
                 }
                 else
@@ -4917,7 +4739,6 @@ namespace OVALBuilder
                                         iColumnIndexFileDate = iColumnIndex;    //5
                                     }
                                     //Time
-
                                 }
                             }
                             else
@@ -4976,8 +4797,7 @@ namespace OVALBuilder
                                 }
                             }
                         }
-
-
+                        
                         Dictionary<string, Dictionary<string, string>> dFileInfos = fSortFileInfos(sFileNameToSearch); //new Dictionary<string, Dictionary<string, string>>();
 
                         //fFileInfosRetrievedByParsing(dFileInfos, sFileNameToSearch, sProductFoundDEADBEEF, sKBURLFinal2);
@@ -4986,14 +4806,12 @@ namespace OVALBuilder
                             sProductFoundDEADBEEFGlobal = "DEADBEEF";
                         }
                         fFileInfosRetrievedByParsing(dFileInfos, sFileNameToSearch, sFileNameToSearchReplaced, sProductFoundDEADBEEFGlobal, sKBURLFinal2);
-
                     }
                 }
                 #endregion fileinformationh3
             }
             else
             {
-
                 //Note: ResponseText = System.IO.File.ReadAllText(sBIGKBFilePath);   ////Hardcoded
                 Regex myRegexKBProductH4 = new Regex("<h4 class=\"sbody-h4\">(.*?)</h4>", RegexOptions.Singleline); //HARDCODEDMSHTML
                 MatchCollection myKBProductH4s = myRegexKBProductH4.Matches(ResponseText);
@@ -5030,8 +4848,7 @@ namespace OVALBuilder
                     if (sHyperlinkText.Contains("restart requirement")) continue;
                     //verification of the update installation
                     if (sHyperlinkText.Contains("verification ")) continue;
-
-
+                    
                     //Cleaning
                     sHyperlinkText = sHyperlinkText.Replace("security update for ", ""); //Hardcoded
                     sHyperlinkText = sHyperlinkText.Replace("delta update for ", ""); //Hardcoded
@@ -5092,14 +4909,11 @@ namespace OVALBuilder
 
                     List<string> lProductsFoundInH4Title = new List<string>();
                     //Retrieve the Products Name(s) from the BlockH4
-                    //lProductsFoundInH4Title = fGetExactProductName(sHyperlinkText, sProductsInHyperlink, sProductsInHyperlink, oVulnerability.VULDescription, lProductsMicrosoft, sMainProductName);
                     lProductsFoundInH4Title = fGetExactProductName(sHyperlinkText, sProductsInHyperlink, sProductsInHyperlink, sVULDescription, lProductsMicrosoft, sMainProductName);
-
-
+                    
                     foreach (string sProductInBlock in lProductsFoundInH4Title)
                     {
                         Console.WriteLine("DEBUG sProductInBlockH4=" + sProductInBlock);
-
                         sKBNumber = "";
 
                         Regex myRegexKBProductBlock = new Regex(Regex.Escape(myKBProductH4.ToString()) + "(.*?)</td></tr></tbody>", RegexOptions.Singleline);   //HARDCODEDMSHTML
@@ -5130,10 +4944,7 @@ namespace OVALBuilder
                             //...
                             //see below
 
-                            ////fParseKBForFiles(sKBFileContent, sFileNameToSearchReplaced);
-                            //fParseKBForFiles(myKBProductBlock, sFileNameToSearch);
                             fParseKBForFiles(myKBProductBlock, lFileNamesToSearch); //Now use a list
-
                         }
                         else
                         {
@@ -5196,8 +5007,7 @@ namespace OVALBuilder
                                 //Reinitialization of the variables
                                 string sFileNameToSearchReplaced = sFileNameToSearch;
                                 //TODO? now lFileNamesToSearch
-
-
+                                
                                 #region excludeproduct1
                                 if (bUseOnlyCPEs)
                                 {
@@ -5246,10 +5056,7 @@ namespace OVALBuilder
                                     }
                                 }
                                 #endregion excludeproduct1
-
-
-
-
+                                
                                 #region getmainproductnameextended
                                 List<string> lProductsFoundInSecurityUpdate = new List<string>();
                                 //Retrieve all the Products Names in the Security Update Block Line
@@ -5302,13 +5109,10 @@ namespace OVALBuilder
                                     sMainProductNameExtended = "JOKER"; //HARDCODEDJA
                                     if (!lMainProductsNames.Contains("JOKER")) lMainProductsNames.Add("JOKER");
                                     if (!lMainProductsNamesExtended.Contains("JOKER")) lMainProductsNamesExtended.Add("JOKER");
-
                                 }
                                 Console.WriteLine("DEBUG sMainProductNameExtended2=" + sMainProductNameExtended);
                                 #endregion getmainproductnameextended
-
-
-
+                                
                                 foreach (string sCurrentMainProductNameExtended in lMainProductsNamesExtended)//Because we could have found multiple products e.g. .net framework 4.5/4.5.1/4.5.2
                                 {
                                     string sCurrentMainProductNameExtendedModified = sCurrentMainProductNameExtended;
@@ -5411,7 +5215,6 @@ namespace OVALBuilder
                                             sFileNameToSearchReplaced = "powerpnt.exe"; //Hardcoded
                                             if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
                                         }
-
                                         if (sFileNameToSearchReplaced == "" && sProductFound.Contains("word viewer"))
                                         {
                                             sFileNameToSearchReplaced = "wordview.exe"; //Hardcoded
@@ -5525,8 +5328,7 @@ namespace OVALBuilder
                                         }
                                         //oart.dll
                                         //oartconv.dll
-
-
+                                        
                                         //For Word Automation Services on supported editions of Microsoft SharePoint Server 2010 Service Pack 2:
                                         //msoserver.dll     sword.dll
                                         //For Excel Services on supported editions of Microsoft SharePoint Server 2010 Service Pack 2:
@@ -5578,7 +5380,6 @@ namespace OVALBuilder
                                         if (sFileNameToSearchReplaced == "" && sProductFoundDEADBEEF.Contains("jscript"))
                                         {
                                             sFileNameToSearchReplaced = "jscript.dll";    //HARDCODED
-
                                         }
                                         //Jscript9.dll
                                         if (sFileNameToSearchReplaced == "" && sProductFoundDEADBEEF.Contains("vbcript")) sFileNameToSearchReplaced = "vbcript.dll";    //HARDCODED
@@ -5609,7 +5410,6 @@ namespace OVALBuilder
                                         Regex myRegexKBNumberExtract = new Regex(@"kb(\d{7})-", RegexOptions.Singleline);
 
                                         MatchCollection KBNumbers = myRegexKBNumberExtract.Matches(sMyKB.Replace(" ", ""));
-
                                         if (KBNumbers.Count == 0)
                                         {
                                             //Try2
@@ -5714,12 +5514,18 @@ namespace OVALBuilder
                                                             if (sProductFound.Contains("itanium") && !fileName.Contains("ia64") && !fileName.ToLower().Contains("itanium")) continue;
                                                             //ia-64
                                                             string sProductNameReduced = sProductFound.ToLower().Replace("microsoft ", "").Replace("x86", "").Replace("x64", "").Trim();  //Hardcoded    //i.e. windows vista x86
+                                                            sProductNameReduced = sProductNameReduced.Replace("adobe flash player", "adobe flash");
+                                                            //For special cases
+                                                            string sProductNameCustomized = sProductNameReduced;
+                                                            sProductNameCustomized = sProductNameCustomized.Replace("windows 7", "windows embedded standard 7");
+                                                            sProductNameCustomized = sProductNameCustomized.Replace("windows 8", "windows embedded 8");    //Windows_Embedded_8_Standard-rt-x64
 
                                                             //string sProductNameReduced = sProductName.Replace("x86", "").Replace("x64", "");  //Hardcoded
                                                             if (!fileName.ToLower().Contains(sProductNameReduced.Replace(" ", "_").ToLower()))  //TODO Review
+                                                            if (!fileName.ToLower().Contains(sProductNameReduced.Replace(" ", "_").ToLower()) && !fileName.ToLower().Contains(sProductNameReduced.Replace(" ", "-").ToLower()) && !fileName.ToLower().Contains(sProductNameCustomized.Replace(" ", "_").ToLower()))  //TODO Review
                                                             {
-                                                                //Not the right KBfile
-                                                                continue;
+                                                                    //Not the right KBfile
+                                                                    continue;
                                                                 //Console.WriteLine("DEBUG ")
                                                             }
 
@@ -5894,11 +5700,6 @@ namespace OVALBuilder
                                                     int iCptColumnFileVersion = 0;
                                                     int iCptColumnDate = 0;
                                                     int iCptColumnPlatform = 0;
-                                                    //int iCptFileLines = 0;
-                                                    //List<string> lFilenames = new List<string>();     //Now global
-                                                    //List<string> lFileversions = new List<string>();
-                                                    //List<string> lFiledates = new List<string>();
-                                                    //List<string> lFileplatforms = new List<string>();
                                                     lFilenames = new List<string>();
                                                     lFileversions = new List<string>();
                                                     lFiledates = new List<string>();
@@ -5916,7 +5717,6 @@ namespace OVALBuilder
                                                     {
                                                         //Parse KB file
                                                         if (sFileNameToSearchReplaced != "" && !lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-                                                        //fParseKBForFiles(sKBFileContent, sFileNameToSearchReplaced);  //Now use a list
                                                         fParseKBForFiles(sKBFileContent, lFileNamesToSearch);
                                                     }
 
@@ -5928,7 +5728,6 @@ namespace OVALBuilder
                                                     if (dFileInfos.Count() > 0)
                                                     {
                                                         fFileInfosRetrievedByParsing(dFileInfos, sFileNameToSearch, sFileNameToSearchReplaced, sProductFoundDEADBEEF, sKBURLFinal2);
-
                                                     }
                                                     else
                                                     {
@@ -5940,59 +5739,9 @@ namespace OVALBuilder
                                                         //TODO  http://www.catalog.update.microsoft.com/Search.aspx?q=KB3208481
                                                         //string sKBCatalogURL = "http://www.catalog.update.microsoft.com/Search.aspx?q=KB" + sKBNumber;
                                                         //Resistance is futile
-
-
+                                                        
                                                         fMSKBCatalogPage(sKBNumber, sFileNameToSearchReplaced, sProductFound, sKBURLFinal2, sProductFoundDEADBEEF, iVulnerabilityID, sMSTitle);
-
-                                                        #region mscatalogpage
-                                                        /*
-                                                        string sKBCatalogFilePath = sCurrentPath + @"\MS\KBCAT" + sKBNumber + ".txt";   //HARDCODED Path
-
-                                                        //Check if File exists
-                                                        fileInfo = new FileInfo(sKBCatalogFilePath);
-                                                        if (!fileInfo.Exists)//We assume that if we already visited this page, everything worked well in bluepill...
-                                                        {
-                                                            Console.WriteLine("DEBUG Request to " + sKBCatalogURL);
-
-
-                                                            //JavaScript used here, so need a 'browser'
-                                                            ////OpenQA.Selenium.Chrome.ChromeDriver driver = null;
-                                                            //using (var driver = new ChromeDriver())
-                                                            //{
-                                                            //    driver.Navigate().GoToUrl(sKBCatalogURL);
-                                                            //    System.IO.File.WriteAllText(sKBCatalogFilePath, HttpUtility.HtmlDecode(driver.PageSource).Replace("\u00A0", " "));   //Hardcoded &nbsp;
-                                                            //    //driver.FindElementByClassName("flatLightBlueButton").Click();
-                                                            //}
-
-
-                                                            Console.WriteLine("DEBUG " + sKBCatalogURL);
-                                                            //Parse the Catalog Page File
-
-
-                                                            //TODO Review we could have multiple files/versions (i.e. LDR/GDR)
-                                                            sFileDateVersion = fBluePill(sKBNumber, sFileNameToSearchReplaced, sProductFound);
-                                                            if (sFileDateVersion != string.Empty)
-                                                            {
-                                                                //TODO Review
-                                                                if (!dKBURLFile.ContainsKey(sKBURLFinal2)) dKBURLFile.Add(sKBURLFinal2, sFileDateVersion.ToLower());
-                                                                if (!lFilesToUse.Contains(sFileNameToSearchReplaced.ToLower())) lFilesToUse.Add(sFileNameToSearchReplaced.ToLower());   //We keep track of the Files that we use so we can harmonize them in the final XML. e.g.: 20161005 10.0.14393.321 win32kbase.sys and 20161005 10.0.14393.321 win32kfull.sys (same date/version) if we already used win32kfull.sys we would give it preference
-
-                                                                if (!dProductFile.ContainsKey(sProductFoundDEADBEEF)) dProductFile.Add(sProductFoundDEADBEEF, sFileDateVersion.ToLower());
-                                                            }
-                                                        }
-                                                        else//Apparently we already visited the KB page, downloaded and extracted the KBfile
-                                                        {
-                                                            //jack
-                                                        }
-
-                                                        if (sFileDateVersion == string.Empty)
-                                                        {
-                                                            Console.WriteLine("WARNING: No file found!");
-                                                            dKBURLFile.Add(sKBURLFinal2, "WARNING: No file found!");  //Hardcoded //So we don't parse it again
-                                                        }
-                                                        */
-                                                        #endregion mscatalogpage
-
+                                                        
                                                     }
                                                     #endregion parsefinalkbforfiles
                                                 }
@@ -6013,7 +5762,6 @@ namespace OVALBuilder
                             #endregion blocksecurityupdates
                             #endregion blocksecurityupdatefilename
                         }
-
                     }
                     #endregion blockfoundforoneproduct
                     //}
@@ -6022,9 +5770,7 @@ namespace OVALBuilder
             }
             //}
             //}   //foreach(string sProduct in lProductsMicrosoft)
-
-
-
+            
             Console.WriteLine("DEBUG #########################################################################");
             //Display of all the interesting files information collected
             if (bDebugFileSelection)
@@ -6034,41 +5780,6 @@ namespace OVALBuilder
                     Console.WriteLine("DEBUG dProductFile: " + x.Key + "-" + x.Value);
                 }
             }
-
-            /*
-            //We eliminate the MainProducts where we found no file, and we improve the list
-            List<string> lMainProductsToRemove = new List<string>();
-            List<string> lMainProductsImproved = new List<string>();
-
-            foreach (string sMainProductFound in lMainProductsNames)
-            {
-                Console.WriteLine("DEBUG sMainProductFoundRemaining=" + sMainProductFound);
-                bool bFileFoundForMainProduct = false;
-                foreach (var x in dProductFile)//.OrderByDescending(o => o.Value))
-                {
-                    //Console.WriteLine("DEBUG dProductFile: " + x.Key + " " + x.Value);
-                    if (x.Key.Contains(sMainProductFound))   //microsoft lync 2013 contains microsoft lync 2013
-                    {
-                        bFileFoundForMainProduct = true;
-                        //break;
-                        //
-                        string[] sxKeySplit = x.Key.Split(new string[] { "DEADBEEF" }, StringSplitOptions.None);
-                        string sMyProductName = sxKeySplit[0];
-                        if (sMyProductName.Trim() == "" || sMyProductName == "windows kernel")  //Hardcoded
-                        {
-                            sMyProductName = sxKeySplit[1];
-                        }
-
-                    }
-                }
-                if (!bFileFoundForMainProduct) lMainProductsToRemove.Add(sMainProductFound);
-            }
-            foreach(string sMainProductToRemove in lMainProductsToRemove)
-            {
-                Console.WriteLine("DEBUG Eliminating sMainProduct=" + sMainProductToRemove);
-                lMainProductsNames.Remove(sMainProductToRemove);
-            }
-            */
             
         }
 
@@ -6160,7 +5871,6 @@ namespace OVALBuilder
                                     if (bDebugFileSelection) Console.WriteLine("JA13");
                                     itemFileInfo = itemFileInforeview;
                                 }
-
                             }
                         }
                         else//Different Dates
@@ -6423,13 +6133,11 @@ namespace OVALBuilder
                 //...
             }
             */
-
             #endregion sortfileinfos
 
             return dFileInfos;
         }
-
-
+        
         public static void fMSKBCatalogPage(string sKBNumber, string sFileNameToSearchReplaced, string sProductFound, string sKBURLFinal2, string sProductFoundDEADBEEF, int iVulnerabilityID, string sMSTitle="")
         {
             if (sKBNumber.Length < 5)
@@ -6440,8 +6148,6 @@ namespace OVALBuilder
             if (!sKBNumber.ToUpper().StartsWith("KB")) sKBNumber = "KB" + sKBNumber;
             string sFileDateVersion = string.Empty;
             string sKBCatalogURL = "http://www.catalog.update.microsoft.com/Search.aspx?q=" + sKBNumber; //HARDCODEDMS
-
-                                                                        
             string sKBCatalogFilePath = sCurrentPath + @"\MS\KBCAT" + sKBNumber + ".txt";   //HARDCODED Path
 
             #region AddPatchToXORCISM
@@ -6574,8 +6280,7 @@ namespace OVALBuilder
             }
             #endregion VulnerabilityPatch
             #endregion AddPatchToXORCISM
-
-
+            
             //Check if File exists
             FileInfo fileInfo = new FileInfo(sKBCatalogFilePath);
             //if (!fileInfo.Exists)//We assume that if we already visited this page, everything worked well in bluepill...
@@ -6595,8 +6300,7 @@ namespace OVALBuilder
 
                 //Console.WriteLine("DEBUG " + sKBCatalogURL);
                 //Parse the Catalog Page File
-
-
+                
                 //TODO Review we could have multiple files/versions (i.e. LDR/GDR)
                 Console.WriteLine("DEBUG Calling BluePill2 sFileNameToSearchReplaced="+ sFileNameToSearchReplaced);
                 try
@@ -6623,147 +6327,148 @@ namespace OVALBuilder
                         dProductFile.Add(sProductFoundDEADBEEF, sFileDateVersion.ToLower());
                     }
 
-                #region PATCHFILEinXORCISM
-                try
-                {
-                    string[] sFileDateVersionSplit = sFileDateVersion.Split(' ');
-                    int iFileID = 0;
+                    #region PATCHFILEinXORCISM
                     try
                     {
-                        iFileID = fXORCISMAddFILE(sFileDateVersionSplit[1], sFileDateVersionSplit[2], sFileDateVersionSplit[0]);
-                    }
-                    catch(Exception exFileNotFound)
-                    {
-                        Console.WriteLine("Exception: exFileNotFound " + exFileNotFound.Message + " " + exFileNotFound.InnerException);
-                    }
-                    /*
-                    try
-                    {
-                        iFileID = model.FILE.Where(o => o.FileName == sFileDateVersionSplit[1]).FirstOrDefault().FileID;
-                    }
-                    catch(Exception ex)
-                    {
-
-                    }
-                    if(iFileID<=0)
-                    {
-                        Console.WriteLine("DEBUG Adding FILE "+ sFileDateVersionSplit[1]);
+                        string[] sFileDateVersionSplit = sFileDateVersion.Split(' ');
+                        int iFileID = 0;
                         try
                         {
-                            FILE oFile = new FILE();
-                            oFile.CreatedDate = DateTimeOffset.Now;
-                            oFile.FileName = sFileDateVersionSplit[1];
-                            //oFile.VocabularyID=   //Microsoft?
-                            model.FILE.Add(oFile);
-                            model.SaveChanges();
-                            iFileID = oFile.FileID;
+                            iFileID = fXORCISMAddFILE(sFileDateVersionSplit[1], sFileDateVersionSplit[2], sFileDateVersionSplit[0]);
                         }
-                        catch(Exception exAddFILE44)
+                        catch(Exception exFileNotFound)
                         {
-                            Console.WriteLine("Exception: exAddFILE44 " + exAddFILE44.Message + " " + exAddFILE44.InnerException);
+                            Console.WriteLine("Exception: exFileNotFound " + exFileNotFound.Message + " " + exFileNotFound.InnerException);
                         }
+                        /*
+                        try
+                        {
+                            iFileID = model.FILE.Where(o => o.FileName == sFileDateVersionSplit[1]).FirstOrDefault().FileID;
+                        }
+                        catch(Exception ex)
+                        {
 
-                    }
-                    //TODO: FILEVERSION
-                    */
-                    if (iPatchID > 0 && iFileID > 0)
-                    {
-                        int iPlatformID = 0;
-                        //int iOVALPlatformID = 0;
-                        #region platformxorcism
-                        if (sProductFound.Contains("windows"))
+                        }
+                        if(iFileID<=0)
                         {
-                            if (sProductFound.Contains("windows server 2016"))
+                            Console.WriteLine("DEBUG Adding FILE "+ sFileDateVersionSplit[1]);
+                            try
                             {
-                                iPlatformID = iPlatformWin2016;
+                                FILE oFile = new FILE();
+                                oFile.CreatedDate = DateTimeOffset.Now;
+                                oFile.FileName = sFileDateVersionSplit[1];
+                                //oFile.VocabularyID=   //Microsoft?
+                                model.FILE.Add(oFile);
+                                model.SaveChanges();
+                                iFileID = oFile.FileID;
                             }
-                            else
+                            catch(Exception exAddFILE44)
                             {
-                                if (sProductFound.Contains("windows server 2012 r2"))
+                                Console.WriteLine("Exception: exAddFILE44 " + exAddFILE44.Message + " " + exAddFILE44.InnerException);
+                            }
+
+                        }
+                        //TODO: FILEVERSION
+                        */
+                        if (iPatchID > 0 && iFileID > 0)
+                        {
+                            int iPlatformID = 0;
+                            //int iOVALPlatformID = 0;
+                            #region platformxorcism
+                            if (sProductFound.Contains("windows"))
+                            {
+                                if (sProductFound.Contains("windows server 2016"))
                                 {
-                                    iPlatformID = iPlatformWin2012R2;
+                                    iPlatformID = iPlatformWin2016;
                                 }
                                 else
                                 {
-                                    if (sProductFound.Contains("windows server 2012"))
+                                    if (sProductFound.Contains("windows server 2012 r2"))
                                     {
-                                        iPlatformID = iPlatformWin2012;
+                                        iPlatformID = iPlatformWin2012R2;
                                     }
                                     else
                                     {
-                                        if (sProductFound.Contains("windows server 2008 r2"))
+                                        if (sProductFound.Contains("windows server 2012"))
                                         {
-                                            iPlatformID = iPlatformWin2008R2;
+                                            iPlatformID = iPlatformWin2012;
                                         }
                                         else
                                         {
-                                            if (sProductFound.Contains("windows server 2008"))
+                                            if (sProductFound.Contains("windows server 2008 r2"))
                                             {
-                                                iPlatformID = iPlatformWin2008;
+                                                iPlatformID = iPlatformWin2008R2;
                                             }
                                             else
                                             {
-                                                if (sProductFound.Contains("windows server 2003 r2"))
+                                                if (sProductFound.Contains("windows server 2008"))
                                                 {
-                                                    iPlatformID = iPlatformWin2003R2;
+                                                    iPlatformID = iPlatformWin2008;
                                                 }
                                                 else
                                                 {
-                                                    if (sProductFound.Contains("windows server 2003"))
+                                                    if (sProductFound.Contains("windows server 2003 r2"))
                                                     {
-                                                        iPlatformID = iPlatformWin2003;
+                                                        iPlatformID = iPlatformWin2003R2;
                                                     }
                                                     else
                                                     {
-                                                        if (sProductFound.Contains("windows 10 version 1511"))  //Review
+                                                        if (sProductFound.Contains("windows server 2003"))
                                                         {
-                                                            iPlatformID = iPlatformWin10v1511;
+                                                            iPlatformID = iPlatformWin2003;
                                                         }
                                                         else
                                                         {
-                                                            if (sProductFound.Contains("windows 10"))
+                                                            if (sProductFound.Contains("windows 10 version 1511"))  //Review
                                                             {
-                                                                iPlatformID = iPlatformWin10;
+                                                                iPlatformID = iPlatformWin10v1511;
                                                             }
                                                             else
                                                             {
-                                                                if (sProductFound.Contains("windows 8.1"))
+                                                                if (sProductFound.Contains("windows 10"))
                                                                 {
-                                                                    iPlatformID = iPlatformWin81;
+                                                                    iPlatformID = iPlatformWin10;
                                                                 }
                                                                 else
                                                                 {
-                                                                    if (sProductFound.Contains("windows 8"))
+                                                                    if (sProductFound.Contains("windows 8.1"))
                                                                     {
-                                                                        iPlatformID = iPlatformWin8;
+                                                                        iPlatformID = iPlatformWin81;
                                                                     }
                                                                     else
                                                                     {
-                                                                        if (sProductFound.Contains("windows 7"))
+                                                                        if (sProductFound.Contains("windows 8"))
                                                                         {
-                                                                            iPlatformID = iPlatformWin7;
+                                                                            iPlatformID = iPlatformWin8;
                                                                         }
                                                                         else
                                                                         {
-                                                                            if (sProductFound.Contains("windows xp"))
+                                                                            if (sProductFound.Contains("windows 7"))
                                                                             {
-                                                                                iPlatformID = iPlatformWinXP;
+                                                                                iPlatformID = iPlatformWin7;
                                                                             }
                                                                             else
                                                                             {
-                                                                                if (sProductFound.Contains("windows vista"))
+                                                                                if (sProductFound.Contains("windows xp"))
                                                                                 {
-                                                                                    iPlatformID = iPlatformWinVista;
+                                                                                    iPlatformID = iPlatformWinXP;
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    if (sProductFound.Contains("windows 2000"))
+                                                                                    if (sProductFound.Contains("windows vista"))
                                                                                     {
-                                                                                        iPlatformID = iPlatformWin2000;
+                                                                                        iPlatformID = iPlatformWinVista;
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        //ERROR?
+                                                                                        if (sProductFound.Contains("windows 2000"))
+                                                                                        {
+                                                                                            iPlatformID = iPlatformWin2000;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            //ERROR?
+                                                                                        }
                                                                                     }
                                                                                 }
                                                                             }
@@ -6779,68 +6484,67 @@ namespace OVALBuilder
                                     }
                                 }
                             }
-                        }
-                        #endregion platformxorcism
+                            #endregion platformxorcism
 
-                        //TODO  PRODUCT
-                        int iProductID = 0;
+                            //TODO  PRODUCT
+                            int iProductID = 0;
 
 
-                        //int iPatchFileID = 0;
-                        PATCHFILE oPatchFile = null;
-                        try
-                        {
-                            //iPatchFileID = model.PATCHFILE.Where(o => o.PatchID == iPatchID && o.FileID == iFileID).FirstOrDefault().PatchFileID;
-                            oPatchFile = model.PATCHFILE.Where(o => o.PatchID == iPatchID && o.FileID == iFileID).FirstOrDefault();
-                        }
-                        catch (Exception ex)
-                        {
-
-                        }
-                        //if (iPatchFileID <= 0)
-                        if(oPatchFile==null)
-                        {
+                            //int iPatchFileID = 0;
+                            PATCHFILE oPatchFile = null;
                             try
                             {
-                                oPatchFile = new PATCHFILE();
-                                oPatchFile.CreatedDate = DateTimeOffset.Now;
-                                oPatchFile.PatchID = iPatchID;
-                                oPatchFile.FileID = iFileID;
-                                if (iPlatformID > 0) oPatchFile.PlatformID = iPlatformID;
-                                if (iProductID > 0) oPatchFile.ProductID = iProductID;
-                                //oPatchFile.VocabularyID=
-                                model.PATCHFILE.Add(oPatchFile);
-                                model.SaveChanges();
+                                //iPatchFileID = model.PATCHFILE.Where(o => o.PatchID == iPatchID && o.FileID == iFileID).FirstOrDefault().PatchFileID;
+                                oPatchFile = model.PATCHFILE.Where(o => o.PatchID == iPatchID && o.FileID == iFileID).FirstOrDefault();
                             }
-                            catch (Exception exAddPATCHFILE)
+                            catch (Exception ex)
                             {
-                                Console.WriteLine("Exception: exAddPATCHFILE44 iPatchID="+iPatchID+" iFileID="+iFileID+ " " + exAddPATCHFILE.Message + " " + exAddPATCHFILE.InnerException);
+
                             }
-                        }
-                        else
-                        {
-                            //Update PATCHFILE
-                            try
+                            //if (iPatchFileID <= 0)
+                            if(oPatchFile==null)
                             {
-                                if (iPlatformID > 0) oPatchFile.PlatformID = iPlatformID;
-                                if (iProductID > 0) oPatchFile.ProductID = iProductID;
-                                oPatchFile.timestamp = DateTimeOffset.Now;
-                                model.Entry(oPatchFile).State = EntityState.Modified;
-                                model.SaveChanges();
+                                try
+                                {
+                                    oPatchFile = new PATCHFILE();
+                                    oPatchFile.CreatedDate = DateTimeOffset.Now;
+                                    oPatchFile.PatchID = iPatchID;
+                                    oPatchFile.FileID = iFileID;
+                                    if (iPlatformID > 0) oPatchFile.PlatformID = iPlatformID;
+                                    if (iProductID > 0) oPatchFile.ProductID = iProductID;
+                                    //oPatchFile.VocabularyID=
+                                    model.PATCHFILE.Add(oPatchFile);
+                                    model.SaveChanges();
+                                }
+                                catch (Exception exAddPATCHFILE)
+                                {
+                                    Console.WriteLine("Exception: exAddPATCHFILE44 iPatchID="+iPatchID+" iFileID="+iFileID+ " " + exAddPATCHFILE.Message + " " + exAddPATCHFILE.InnerException);
+                                }
                             }
-                            catch(Exception exUpdatePATCHFILE)
+                            else
                             {
-                                Console.WriteLine("Exception: exUpdatePATCHFILE " + exUpdatePATCHFILE.Message + " " + exUpdatePATCHFILE.InnerException);
+                                //Update PATCHFILE
+                                try
+                                {
+                                    if (iPlatformID > 0) oPatchFile.PlatformID = iPlatformID;
+                                    if (iProductID > 0) oPatchFile.ProductID = iProductID;
+                                    oPatchFile.timestamp = DateTimeOffset.Now;
+                                    model.Entry(oPatchFile).State = EntityState.Modified;
+                                    model.SaveChanges();
+                                }
+                                catch(Exception exUpdatePATCHFILE)
+                                {
+                                    Console.WriteLine("Exception: exUpdatePATCHFILE " + exUpdatePATCHFILE.Message + " " + exUpdatePATCHFILE.InnerException);
+                                }
                             }
                         }
                     }
+                    catch(Exception exXORCISMPATCHFILE)
+                    {
+                        Console.WriteLine("Exception: exXORCISMPATCHFILE " + exXORCISMPATCHFILE.Message + " " + exXORCISMPATCHFILE.InnerException);
+                    }
+                    #endregion PATCHFILEinXORCISM
                 }
-                catch(Exception exXORCISMPATCHFILE)
-                {
-                    Console.WriteLine("Exception: exXORCISMPATCHFILE " + exXORCISMPATCHFILE.Message + " " + exXORCISMPATCHFILE.InnerException);
-                }
-                #endregion PATCHFILEinXORCISM
-            }
             //}
             //else//Apparently we already visited the KB page, downloaded and extracted the KBfile
             //{
@@ -6849,6 +6553,8 @@ namespace OVALBuilder
 
             if (sFileDateVersion == string.Empty)
             {
+                //E:\MSKB\KB3192441-Windows_10_Version_1511-x86\Windows10.0-KB3192441-x86
+                //E:\MSKB\KB3191203-WES09_and_POSReady_2009-windowsxp-x86-embedded-enu
                 Console.WriteLine("WARNING: No file found!!!");
                 if (!dKBURLFile.ContainsKey(sKBURLFinal2))
                 {
@@ -6872,8 +6578,6 @@ namespace OVALBuilder
             //Try to clean the input to retrieve the product name(s)
             //Review WebUtility.HtmlDecode()
             string sHyperlinkTextCleaned = sHyperlinkText;
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("<td class=\"sbody-td\">pour le ", "");  //Hardcoded French
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("<td class=\"sbody-td\">pour ", "");  //Hardcoded French
             sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("<td class=\"sbody-td\">for the ", "");   //HARDCODEDMSHTML
             sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("<td class=\"sbody-td\">for ", "");
             sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("<td class=\"sbody-td\">", "");
@@ -6890,28 +6594,10 @@ namespace OVALBuilder
             }
             
             sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("<br />", "");
-
-
+            
             //Remove everything in brackets/parenthesis
             sHyperlinkTextCleaned = Regex.Replace(sHyperlinkTextCleaned, @" ?\(.*?\)", string.Empty);
-            
 
-            //For JScript 5.8 and VBScript 5.8 on all supported Server Core installations of x64-based editions of Windows Server 2008 R2
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(32-bit)", "");
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(64-bit)", "");
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(32-bit editions)", "");
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(64-bit editions)", "");
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(32-bit edition)", "");
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(64-bit edition)", "");
-            ////sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(editions 32 bits)", "");    //Hardcoded French
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(editions 64 bits)", "");    //Hardcoded French
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(edition 32 bits)", "");    //Hardcoded French
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(edition 64 bits)", "");    //Hardcoded French
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(toutes les versions)", ""); //Hardcoded French
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(all versions)", "");
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(all supported versions)", "");
-            //editions
-            //releases
             sHyperlinkTextCleaned = Regex.Replace(sHyperlinkTextCleaned, @"all supported (.*?)s of ", string.Empty);
             //on supported editions of
             sHyperlinkTextCleaned = Regex.Replace(sHyperlinkTextCleaned, @"supported (.*?)s of ", string.Empty);   //keep "on"  or  "in"
@@ -6920,57 +6606,12 @@ namespace OVALBuilder
             //on all supported server core installations of x64-based editions of 
             sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("x64-based editions of ", "");
             sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace(" only", "");
-
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("all supported itanium-based editions of ", "");
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("all supported x64-based editions of ", "");
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("all supported server core installations of x64-based editions of ", ""); //keep "on"
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("all supported 32-bit editions of ", "");
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("all supported 64-bit editions of ", "");
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("all supported editions of ", "");    //in
-            ////sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("sur les editions prises en charge de ", ""); //Hardcoded French
-
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(user level install)","");
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("(admin level install)", "");
             sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace(" for 32-bit systems", "");
             sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace(" for x64-based systems", "");
             sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace("for ", "");
-
-            //microsoft live meeting 2007, microsoft lync 2010, microsoft lync 2010 attendee, microsoft lync 2013 (skype for business), and microsoft lync basic 2013 (skype for business basic)
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace(" (skype for business basic)","");
-            //sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace(" (skype for business)", "");
-
-            //microsoft exchange server 2013 cumulative update 8 and microsoft exchange server 2013 cumulative update 9
-            //sHyperlinkTextCleaned = Regex.Replace(sHyperlinkTextCleaned, @"cumulative update \d", string.Empty);
-
+            
             sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace(", and ", " and ");   //For below split
-
-            //adobe flash player for windows 8.1 (kb3201860)
-            /*
-            try
-            {
-                Regex myRegexKBNumberInParenthesis = new Regex(@"(kb\d+)", RegexOptions.Singleline);
-                string sKBNumberFound = myRegexKBNumberInParenthesis.Match(sHyperlinkTextCleaned).ToString();
-                if(sKBNumberFound.Length>0) sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace(sKBNumberFound, "").Replace("()", "").Trim();
-            }
-            catch(Exception exRegexKBNumberInParenthesis)
-            {
-                Console.WriteLine("Exception: exRegexKBNumberInParenthesis " + exRegexKBNumberInParenthesis.Message + " " + exRegexKBNumberInParenthesis.InnerException);
-            }
-            //for microsoft live meeting 2007 console (3189647):
-            try
-            {
-                Regex myRegexKBNumberInParenthesis2 = new Regex(@"(\d+)", RegexOptions.Singleline);
-                string sKBNumberFound = myRegexKBNumberInParenthesis2.Match(sHyperlinkTextCleaned).ToString();
-                if (sKBNumberFound.Length > 0) sHyperlinkTextCleaned = sHyperlinkTextCleaned.Replace(sKBNumberFound, "").Replace("()", "").Trim();
-            }
-            catch (Exception myRegexKBNumberInParenthesis2)
-            {
-                Console.WriteLine("Exception: myRegexKBNumberInParenthesis2 " + myRegexKBNumberInParenthesis2.Message + " " + myRegexKBNumberInParenthesis2.InnerException);
-            }
-            */
-            ////word automation services sur les editions prises en charge de microsoft sharepoint server 2010 service pack 2
-
-
+            
             sHyperlinkTextCleaned = sHyperlinkTextCleaned.Trim();
             Console.WriteLine("DEBUG sHyperlinkTextCleaned=" + sHyperlinkTextCleaned);  //internet explorer 9 for windows vista
             //microsoft .net framework 4.6/4.6.1 on windows server 2012 r2
@@ -7048,7 +6689,6 @@ namespace OVALBuilder
             if (sProduct.Contains("office compatibility pack")) sProduct=fRemoveYear(sProduct);
             
             //TODO?
-            //sProduct = Regex.Replace(sProduct, @"for all supported (.*?)s of ", string.Empty);
             sProduct = Regex.Replace(sProduct, @"all supported (.*?)s of ", string.Empty);
             sProduct = sProduct.Replace(" for windows (all supported releases)", "");
             if (sProduct.StartsWith("for ")) sProduct = sProduct.Replace("for ", "");
@@ -7352,8 +6992,7 @@ namespace OVALBuilder
             //return sProductToAdd;
             return lProductsFoundToAdd;
         }
-
-
+        
         public static string fAddx86x64(string sProductName, string sText)
         {
             if (!sProductName.EndsWith("2016")) //TODO Review   Windows Server 2016 vs Office 2016
@@ -7373,8 +7012,7 @@ namespace OVALBuilder
             }
             return sProductName;
         }
-
-
+        
         public static string fGetProductToAdd(string sProduct, string sProductToAdd, string sHyperlinkText, string sMyMainProductName="")
         {
             //HARCODED AGAIN
@@ -7458,8 +7096,7 @@ namespace OVALBuilder
             }
             return sProductToAdd;
         }
-
-
+        
         public static string fGetPlatformName(string sProductName, bool bKeepSP=false)
         {
             //HARDCODED for your pleasure...
@@ -7472,8 +7109,7 @@ namespace OVALBuilder
             sProductName = sProductName.Replace(" Version 1703", "");
             sProductName = sProductName.Replace(" version 1703", "");
             sProductName = sProductName.Replace("(version 1703)", "");
-
-
+            
             sProductName = sProductName.Replace(" x86", "");
             sProductName = sProductName.Replace(" x64", "");
             sProductName = sProductName.Replace(" (x86)", "");
@@ -7509,8 +7145,7 @@ namespace OVALBuilder
             }
             return sProductName;
         }
-
-
+        
         public static string fRemoveYear(string sProductToAdd)
         {
             //TODO: Replace with a cleaner Regex
@@ -7521,8 +7156,7 @@ namespace OVALBuilder
             }
             return sProductToAdd;
         }
-
-
+        
         public static string fHardcodeVulnerableFilename(string sTextInput)
         {
             //string sFileNameFound = "";
@@ -7543,8 +7177,7 @@ namespace OVALBuilder
             //return sFileNameFound;
             return sFileNameToSearch;
         }
-
-
+        
         public static List<string> fGetFilenamesToSearchForProduct(string sProductNameInput, int iProductIDInput = 0)
         {
             //string sFilenameToSearch = "";
@@ -7560,7 +7193,6 @@ namespace OVALBuilder
             if (sProductNameInput.StartsWith("windows") && !sProductNameInput.Contains("kernel"))    //HARDCODED
             {
                 //TODO? Search PLATFORMFILE
-
             }
             else
             {
@@ -7624,9 +7256,7 @@ namespace OVALBuilder
                                 {
 
                                 }
-
                             }
-
                         }
                     }
                 }
@@ -7660,8 +7290,7 @@ namespace OVALBuilder
             //return sFilenameToSearch;
             return lProductFiles;
         }
-
-
+        
         public static void fParseCSV(string sRegexDownloadCSVlink, string sFileNameToSearchReplaced)
         {
             List<string> lFilesForProduct = new List<string>();
@@ -7794,37 +7423,9 @@ namespace OVALBuilder
                                         #region normalcsvline
                                         if (sCSVline.Contains(".dll") || sCSVline.Contains(".exe") || sCSVline.Contains(".sys") || sCSVline.Contains(".ocx") || sCSVline.Contains(".aspx") || sCSVline.Contains(".flt")) //HARDCODED
                                         {
-                                            /*
-                                            if (!sCSVline.Contains("\","))
-                                            {
-                                                bShittyCSV = true;
-                                                //Console.WriteLine("DEBUG Shitty CSV!");
-                                                ////Example:
-                                                ////File name,File version,File size,Date,Time,Platform,SP requirement,Service branch
-                                                ////Adsmsext.dll,6.1.7601.23545,226304,42625,0.864583333,IA-64,None,Not applicable
-                                                ////    => Enjoy the , in the file size!    Thanks Micro....
-                                                if (bShittyCSV) CSVlineSplit = sCSVline.Split(',');
-                                            }
-
-                                            //    Console.WriteLine("DEBUG File Name=" + sKBFileInfoValue);
-                                            //We don't want .png    idx_dll manifest...
-                                            string sKBFileInfoValue = CSVlineSplit[iCptColumnFileName].Replace("\"", "").ToLower();
-                                            if(sKBFileInfoValue.Contains(","))
-                                            {
-                                                //Fu**ing Shi**ty CSV
-                                                //Mscormmc.dll,2.0.50727.8671,"94,360",21-Oct-15,1:54,x86,None,Not applicable
-                                                CSVlineSplit = sCSVline.Split(',');
-                                                sKBFileInfoValue = CSVlineSplit[iCptColumnFileName].Replace("\"", "").ToLower();
-                                                //TODO What Date will we get?
-
-                                            }
-                                            */
-
                                             CSVlineSplit = fCSVParse(sCSVline).ToArray();
                                             string sKBFileInfoValue = CSVlineSplit[iCptColumnFileName]; //ToLower?
-
-
-
+                                            
                                             //Console.WriteLine("DEBUG sKBFileInfoValue=" + sKBFileInfoValue);
                                             bool bInterestingFile = false;
                                             if (sKBFileInfoValue.Trim() == "") sKBFileInfoValue = CSVlineSplit[iCptColumnFileIdentifier].Replace("\"", "").ToLower();
@@ -7833,8 +7434,7 @@ namespace OVALBuilder
                                                 //BAD
                                                 //bInterestingFile = true;
                                                 //lFilenames.Add(sKBFileInfoValue);
-
-
+                                                
                                                 if (sFileNameToSearchReplaced == "" || sFileNameToSearchReplaced == string.Empty)
                                                 {
                                                     if (lFilesForProduct.Count == 0 && lFileNamesToSearch.Count == 0)
@@ -7877,7 +7477,6 @@ namespace OVALBuilder
                                                         //We found (one of) our file
                                                         bInterestingFile = true;
                                                         lFilenames.Add(sKBFileInfoValue);
-
                                                     }
                                                     else
                                                     {
@@ -8050,10 +7649,8 @@ namespace OVALBuilder
                 Console.WriteLine("Exception: exParseKBCSV " + exParseKBCSV.Message + " " + exParseKBCSV.InnerException);
             }
             #endregion parsecsv
-
         }
 
-        //public static void fParseKBForFiles(string sKBFileContent, string sFileNameToSearchReplaced)
         public static void fParseKBForFiles(string sKBFileContent, List<string> lFileNamesToSearch, int iParseKBMode=1)
         {
             Console.WriteLine("DEBUG " + DateTimeOffset.Now);
@@ -8069,8 +7666,7 @@ namespace OVALBuilder
             string sColumnClassTR = " class=\"sbody-tr\"";  //HARDCODEDMS
             string sColumnClassTH = " class=\"sbody-th\"";
             string sColumnClassTD = " class=\"sbody-td\"";
-
-
+            
             int iCptFileLines = 0;
 
             #region parsekbforfiles
@@ -8089,9 +7685,6 @@ namespace OVALBuilder
                 sColumnClassTD = "";
             }
             
-            //Regex myRegexKBFile = new Regex("<tr class=\"sbody-tr\">(.*?)</tr>", RegexOptions.Singleline); //HARDCODEDMSHTML
-            //Regex myRegexKBFileInfoName = new Regex("<th class=\"sbody-th\">(.*?)</th>", RegexOptions.Singleline); //HARDCODEDMSHTML
-            //Regex myRegexKBFileInfoValue = new Regex("<td class=\"sbody-td\">(.*?)</td>", RegexOptions.Singleline); //HARDCODEDMSHTML
             Regex myRegexKBFile = new Regex("<tr"+sColumnClassTR+">(.*?)</tr>", RegexOptions.Singleline); //HARDCODEDMSHTML
             Regex myRegexKBFileInfoName = new Regex("<th" + sColumnClassTH + ">(.*?)</th>", RegexOptions.Singleline); //HARDCODEDMSHTML
             if(iParseKBMode==2)
@@ -8099,8 +7692,7 @@ namespace OVALBuilder
                 myRegexKBFileInfoName = new Regex("<td><strong class=\"sbody-strong\">(.*?)</strong></td>", RegexOptions.Singleline); //HARDCODEDMSHTML
             }
             Regex myRegexKBFileInfoValue = new Regex("<td" + sColumnClassTD + ">(.*?)</td>", RegexOptions.Singleline); //HARDCODEDMSHTML
-
-
+            
             MatchCollection myKBFiles = myRegexKBFile.Matches(sKBFileContent);
             if (myKBFiles.Count == 0) Console.WriteLine("ERROR: myKBFiles.Count=0");
             foreach (Match matchKBFile in myKBFiles)    //For each line/row/file
@@ -8296,8 +7888,7 @@ namespace OVALBuilder
             }
             #endregion parsekbforfiles
         }
-
-
+        
         public static string fSearchVulnerableFilename(string sTextInput)
         {
             string sFileNameFound = "";
@@ -8423,8 +8014,7 @@ namespace OVALBuilder
                 return sFileNameFound.ToLower();
             }
         }
-
-
+        
         public static OVALDEFINITION fGetOVALInventoryDefinitionForProduct(string sProductNameModified)
         {
             if (lOVALDefInventoryNotRetrieved.Contains(sProductNameModified) || sProductNameModified.Trim()=="") return null;
@@ -8491,7 +8081,6 @@ namespace OVALBuilder
             sProductNameModifiedTemp = sProductNameModified.Replace("microsoft excel web apps", "microsoft office web apps");   //
             if (!lProductNames.Contains(sProductNameModifiedTemp)) lProductNames.Add(sProductNameModifiedTemp);
             
-
             //Microsoft Windows Server 2003 SP1 for Itanium is installed
             //Microsoft Windows Server 2008 R2 Itanium-Based Edition Service Pack 1 Release Candidate is installed
 
@@ -8599,9 +8188,7 @@ namespace OVALBuilder
                     oOVALInventoryDefinition = oval_model.OVALDEFINITION.Where(o => o.OVALClassEnumerationID == iOVALClassEnumerationInventoryID && o.OSFamilyID == iOSFamilyWindowsID && o.OVALDefinitionTitle.ToLower().Contains(sProductNameTry) && o.OVALDefinitionTitle.ToLower().Contains(" installed") && o.deprecated != true && !o.OVALDefinitionTitle.ToLower().Contains(" sp") && !o.OVALDefinitionTitle.ToLower().Contains(" service pack")).OrderByDescending(o => o.OVALDefinitionVersion).FirstOrDefault(); //Hardcoded
                     if (oOVALInventoryDefinition == null)
                     {
-
                         oOVALInventoryDefinition = oval_model.OVALDEFINITION.Where(o => o.OVALClassEnumerationID == iOVALClassEnumerationInventoryID && o.OSFamilyID == iOSFamilyWindowsID && o.OVALDefinitionTitle.ToLower().Contains(sProductNameTry.Replace(" x64","").Replace(" x86","")) && o.OVALDefinitionTitle.ToLower().Contains(" installed") && o.deprecated != true && !o.OVALDefinitionTitle.ToLower().Contains(" sp") && !o.OVALDefinitionTitle.ToLower().Contains(" service pack")).OrderByDescending(o => o.OVALDefinitionVersion).FirstOrDefault(); //Hardcoded
-                    
                     }
                 }
                 if (oOVALInventoryDefinition != null)
@@ -8610,7 +8197,6 @@ namespace OVALBuilder
                     break;
                 }
                 
-
                 //lOVALInventoryDefinitions.Add()
             }
 
@@ -8641,7 +8227,6 @@ namespace OVALBuilder
 
                 oOVALInventoryDefinition = oval_model.OVALDEFINITION.Where(o => o.OVALClassEnumerationID == iOVALClassEnumerationInventoryID && o.OSFamilyID == iOSFamilyWindowsID && o.OVALDefinitionTitle.ToLower().Contains(sProductNameModified) && o.OVALDefinitionTitle.ToLower().Contains(" installed") && o.deprecated != true).OrderByDescending(o => o.OVALDefinitionVersion).FirstOrDefault(); //Hardcoded
                 
-
                 //Console.WriteLine("DEBUG sProductNameModifiedForOVALInventory=" + sProductNameModified);
                 /*
                 if (sProductNameModified.Contains(" sp") || sProductNameModified.Contains(" service pack"))
@@ -8740,293 +8325,13 @@ namespace OVALBuilder
             
             return oOVALInventoryDefinition;
         }
-
-        public static int fXORCISMAddPatch(string sKBnumber, string sMSCatalogSecurityUpdateText, string sMSCatalogFileName, int iPatchID = 0)
-        {
-            #region addpatchxorcism
-            //int iPatchID = 0;
-            try
-            {
-                if(iPatchID==0) iPatchID = model.PATCH.Where(o => o.PatchVocabularyID == sKBnumber).FirstOrDefault().PatchID;
-            }
-            catch (Exception ex)
-            {
-
-            }
-            if (iPatchID <= 0)
-            {
-                try
-                {
-                    Console.WriteLine("DEBUG Adding new PATCH");
-                    PATCH oPatch = new PATCH();
-                    oPatch.CreatedDate = DateTimeOffset.Now;
-                    oPatch.PatchVocabularyID = sKBnumber;
-                    //oPatch.VocabularyID=  //Microsoft?
-                    oPatch.PatchTitle = sMSCatalogSecurityUpdateText;
-                    model.PATCH.Add(oPatch);
-                    model.SaveChanges();
-                    bPatchJustAdded = true;
-                }
-                catch (Exception exAddingPATCH)
-                {
-                    Console.WriteLine("Exception: exAddingPATCH " + exAddingPATCH.Message + " " + exAddingPATCH.InnerException);
-                }
-            }
-
-            int iFileID = 0;
-            try
-            {
-                iFileID = model.FILE.Where(o => o.FileName == sMSCatalogFileName).FirstOrDefault().FileID;
-            }
-            catch (Exception ex)
-            {
-
-            }
-            if (iFileID <= 0)
-            {
-                Console.WriteLine("DEBUG Adding KBFILE " + sMSCatalogFileName);
-                try
-                {
-                    FILE oFile = new FILE();
-                    oFile.CreatedDate = DateTimeOffset.Now;
-                    oFile.FileName = sMSCatalogFileName;    //Original (MS site) KB Filename    or  Local KB Filename
-                                                            //oFile.VocabularyID=   //Microsoft?
-                    model.FILE.Add(oFile);
-                    model.SaveChanges();
-                    iFileID = oFile.FileID;
-                }
-                catch (Exception exAddKBFILE)
-                {
-                    Console.WriteLine("Exception: exAddKBFILE " + exAddKBFILE.Message + " " + exAddKBFILE.InnerException);
-                }
-
-            }
-            //TODO: FILEVERSION
-            if (iPatchID > 0 && iFileID > 0)
-            {
-                int iPatchFileID = 0;
-                try
-                {
-                    iPatchFileID = model.PATCHFILE.Where(o => o.PatchID == iPatchID && o.FileID == iFileID).FirstOrDefault().PatchFileID;
-                }
-                catch (Exception ex)
-                {
-
-                }
-                if (iPatchFileID <= 0)
-                {
-                    try
-                    {
-                        PATCHFILE oPatchFile = new PATCHFILE();
-                        oPatchFile.CreatedDate = DateTimeOffset.Now;
-                        oPatchFile.PatchID = iPatchID;
-                        oPatchFile.FileID = iFileID;
-                        //oPatchFile.VocabularyID=
-                        //oPatchFile.PlatformID=    //TODO
-                        //oPatchFile=   //TODO
-                        model.PATCHFILE.Add(oPatchFile);
-                        model.SaveChanges();
-                    }
-                    catch (Exception exAddPATCHFILE)
-                    {
-                        Console.WriteLine("Exception: exAddPATCHFILE " + exAddPATCHFILE.Message + " " + exAddPATCHFILE.InnerException);
-                    }
-                }
-                else
-                {
-                    //Update PATCHFILE
-                }
-            }
-            #endregion addpatchxorcism
-            return iPatchID;
-        }
-
-        public static int fXORCISMAddFILE(string sKBFileInfoValue, string sInterestingFileVersion="", string sDateForSorting="")
-        {
-            int iFileID = 0;
-            try
-            {
-                iFileID = model.FILE.FirstOrDefault(o => o.FileName == sKBFileInfoValue).FileID;
-            }
-            catch (Exception ex)
-            {
-
-            }
-            try
-            {
-                if (iFileID <= 0)
-                {
-                    Console.WriteLine("DEBUG Adding FILE2 " + sKBFileInfoValue);
-                    FILE oFile = new FILE();
-                    oFile.CreatedDate = DateTimeOffset.Now;
-                    oFile.FileName = sKBFileInfoValue;
-                    //oFile.VocabularyID=
-                    oFile.timestamp = DateTimeOffset.Now;
-                    model.FILE.Add(oFile);
-                    model.Entry(oFile).State = EntityState.Added;
-                    model.SaveChanges();
-                    iFileID = oFile.FileID;
-                }
-                //TODO
-                //FILEVERSION
-                /*
-                if (sFileNameToSearchReplaced != "")
-                {
-                    //PRODUCTFILE
-
-                }
-                */
-            }
-            catch (Exception exAddFile)
-            {
-                Console.WriteLine("Exception: exAddFile " + exAddFile.Message + " " + exAddFile.InnerException);
-            }
-            if (sInterestingFileVersion != "")
-            {
-                int iFileVersionID = 0;
-                try
-                {
-                    iFileVersionID = model.FILEVERSION.Where(o => o.FileID == iFileID && o.VersionValue == sInterestingFileVersion).FirstOrDefault().FileVersionID;
-                }
-                catch(Exception ex)
-                {
-
-                }
-                if(iFileVersionID<=0)
-                {
-                    try
-                    {
-                        FILEVERSION oFileVersion = new FILEVERSION();
-                        oFileVersion.CreatedDate = DateTimeOffset.Now;
-                        oFileVersion.FileID = iFileID;
-                        oFileVersion.VersionValue = sInterestingFileVersion;
-                        //oFileVersion.VersionID=
-                        //oFileVersion.FileDate?...
-                        //oFileVersion.VocabularyID=
-                        //Confidence
-                        oFileVersion.timestamp = DateTimeOffset.Now;
-                        model.FILEVERSION.Add(oFileVersion);
-                        model.Entry(oFileVersion).State = EntityState.Added;
-                        model.SaveChanges();
-                        //iFileVersionID = oFileVersion.FileVersionID;
-                    }
-                    catch(Exception exAddFILEVERSION)
-                    {
-                        Console.WriteLine("Exception: exAddFILEVERSION " + exAddFILEVERSION.Message + " " + exAddFILEVERSION.InnerException);
-                    }
-
-                    //TODO  PRODUCTFILEVERSION
-                }
-            }
-            return iFileID;
-        }
-
-
-        public static string fGetDateForSorting(string sKBFileInfoValue)
-        {
-            string sDateForSorting = "";
-            if (sKBFileInfoValue.Trim() == "")
-            {
-                //File date not specified by Microsoft
-                //sDateForSorting = "1970-01-01"; //Hardcoded default
-                sDateForSorting = "19700101"; //Hardcoded default
-            }
-            else
-            {
-                try
-                {
-                    //TODO...!
-                    string[] DateSplit = sKBFileInfoValue.ToLower().Split('-');   //16-nov-2016
-
-                    if (DateSplit[2].Length == 2)
-                    {
-                        sDateForSorting = "20"+DateSplit[2];  //Year    //Hardcoded
-                    }
-                    else
-                    {
-                        //DateSplit[2].Length == 4
-                        sDateForSorting = DateSplit[2];  //Year
-                    }
-
-                    switch (DateSplit[1])    //Month
-                    {
-                        case "dec":
-                            sDateForSorting = sDateForSorting + "12";
-                            break;
-                        case "nov":
-                            sDateForSorting = sDateForSorting + "11";
-                            break;
-                        case "oct":
-                            sDateForSorting = sDateForSorting + "10";
-                            break;
-                        case "sep":
-                            sDateForSorting = sDateForSorting + "09";
-                            break;
-                        case "aug":
-                            sDateForSorting = sDateForSorting + "08";
-                            break;
-                        case "jul":
-                            sDateForSorting = sDateForSorting + "07";
-                            break;
-                        case "jun":
-                            sDateForSorting = sDateForSorting + "06";
-                            break;
-                        case "may":
-                            sDateForSorting = sDateForSorting + "05";
-                            break;
-                        case "apr":
-                            sDateForSorting = sDateForSorting + "04";
-                            break;
-                        case "mar":
-                            sDateForSorting = sDateForSorting + "03";
-                            break;
-                        case "feb":
-                            sDateForSorting = sDateForSorting + "02";
-                            break;
-                        case "jan":
-                            sDateForSorting = sDateForSorting + "01";
-                            break;
-                        default:
-                            Console.WriteLine("ERROR: fGetDateForSorting sKBFileInfoValue=" + sKBFileInfoValue + " DateSplit[1]=" + DateSplit[1]);
-                            break;
-                    }
-                    if (DateSplit[0].Length == 1)
-                    {
-                        sDateForSorting += "0"+DateSplit[0];    //Day
-                    }
-                    else
-                    {
-                        sDateForSorting += DateSplit[0];    //Day
-                    }
-                }
-                catch(Exception exDateForSorting)
-                {
-                    Console.WriteLine("Exception: exDateForSorting sKBFileInfoValue=" + sKBFileInfoValue + " "+exDateForSorting.Message + " " + exDateForSorting.InnerException);
-                }
-            }
-            return sDateForSorting; //yyyyMMdd
-        }
-
-
-        public static string StripTagsRegexCompiled(string source)
-        {
-            return _htmlRegex.Replace(source, string.Empty);
-        }
-
-
-        public static string GetSafeFilename(string filename)
-        {
-            return string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
-        }
-
-
+        
         static async void fMakeMSRCRequest(string sCVE) //sCVEID)   //TODO
         {
             //*** WORK IN PROGRESS! ... ***
 
             try
             {
-
                 /*
                 var client = new HttpClient();
                 var queryString = HttpUtility.ParseQueryString(string.Empty);
@@ -9045,8 +8350,7 @@ namespace OVALBuilder
                 var response = await client.GetAsync(uri);
                 System.IO.File.WriteAllText(sCVEID + "-CVRF.xml", response.ToString());
                 */
-
-
+                
                 #region getMSRCAffectedSoftwares
                 try
                 {
@@ -9089,7 +8393,6 @@ namespace OVALBuilder
                             //Reinit
                             sKBArticle = string.Empty;
                             sMSCVE = string.Empty;
-
                         }
                         else
                         {
@@ -9279,23 +8582,13 @@ namespace OVALBuilder
                     Console.WriteLine("Exception: exgetMSRCAffectedSoftwares " + exgetMSRCAffectedSoftwares.Message + " " + exgetMSRCAffectedSoftwares.InnerException);
                 }
                 #endregion getMSRCAffectedSoftwares
-
-
             }
             catch (Exception exMakeMSRCRequest)
             {
                 Console.WriteLine("Exception: exMakeMSRCRequest " + exMakeMSRCRequest.Message + " " + exMakeMSRCRequest.InnerException);
             }
-
         }
-
-
-        public static string fGetSafeFilename(string filename)
-        {
-            return string.Join("", filename.Split(Path.GetInvalidFileNameChars()));
-        }
-
-
+        
         public static string fBluePill(string sKBnumber, string sFileNameToSearchReplaced, string sProductName)
         {
             Console.WriteLine("DEBUG "+DateTimeOffset.Now+" BluePillLoad");
@@ -9343,7 +8636,6 @@ namespace OVALBuilder
                 {
                     Console.WriteLine("Exception: exBluePillWriteMSCatalogPage " + exBluePillWriteMSCatalogPage.Message + " " + exBluePillWriteMSCatalogPage.InnerException);
                 }
-
             }
 
             //For saving bandwith and local space
@@ -9457,7 +8749,6 @@ namespace OVALBuilder
                                 continue;
                             }
                             
-
                             /*
                             //DEBUG <div class="textTopTitlePadding textBold textSubHeadingColor">Security Update for Lync 2010 Attendee - Administrator level installation (KB3188400)</div><
                             div><a title="attendeeadmin_673fbeec3476cc5abf80c1c03c668889ae8282ba.cab" href="
@@ -9685,7 +8976,7 @@ namespace OVALBuilder
                             if (sMSCatalogSecurityUpdateText.Contains("Microsoft Office Web Apps 2013")) sMainProductNameCatalog = "Microsoft Web Apps Server 2013";
 
                             Console.WriteLine("DEBUG sMainProductNameCatalog10=" + sMainProductNameCatalog);   //sMainProductName);
-                            
+                            if (sMainProductNameCatalog == "internet explorer" && !lFileNamesToSearch.Contains("iexplore.exe")) lFileNamesToSearch.Add("iexplore.exe");
                         }
                     }
 
@@ -9860,6 +9151,7 @@ namespace OVALBuilder
                                     
                                     Console.WriteLine("DEBUG sMainProductNameCatalog4=" + sMainProductNameCatalog);   //sMainProductName);
                                                                                                                       //if (sProductFoundDEADBEEFGlobal == "") 
+                                    if (sMainProductNameCatalog == "internet explorer" && !lFileNamesToSearch.Contains("iexplore.exe")) lFileNamesToSearch.Add("iexplore.exe");
 
                                     //TODO: (HERE?) PATCHPRODUCT
 
@@ -10358,7 +9650,6 @@ namespace OVALBuilder
 
                 driver.Close();
                 driver.SwitchTo().Window(baseWindowHandle);
-
             }
             driver.Dispose();
             #endregion bluepill
@@ -10372,11 +9663,16 @@ namespace OVALBuilder
         {
             //Decompress a downloaded KB and search for interesting files
             string sFileInfoNeededFound = string.Empty;
+
+            //Known errors
+            if (sMSKBFilePathTarget.Contains("KB3192441-Windows_10_Version_1511-x86")) return string.Empty; //HARDCODEDJA
+            if (sMSKBFilePathTarget.Contains("KB3191203-WES09_and_POSReady_2009-windowsxp-x86-embedded-enu")) return string.Empty; //HARDCODEDJA
+            
             #region decompresskbandfindfileandversion
             //string sMSKBFileExtension = Path.GetExtension(sMSCatalogFileName);  //.cab  .exe    .msi    .msp    .msu
             //string sMSKBFilePathTarget = sMSCatalogFileNameLocalPath.Replace(sMSKBFileExtension, "");
 
-            //For special cases
+            //Hack For special cases
             string sProductNameCustomized = sProductNameReduced;
             sProductNameCustomized = sProductNameCustomized.Replace("windows 7", "windows embedded standard 7");
             sProductNameCustomized = sProductNameCustomized.Replace("windows 8", "windows embedded 8");    //Windows_Embedded_8_Standard-rt-x64
@@ -10384,6 +9680,8 @@ namespace OVALBuilder
             //Shorten it a bit?
             //sMSKBFilePathTarget = fGetSafeFilename(sMSKBFilePathTarget);
             //TODO fGetSafeDirectoryname()
+
+            List<string> lFileInfoFound = new List<string>();
 
             #region decompresskb1
             try
@@ -10411,23 +9709,18 @@ namespace OVALBuilder
                 Console.WriteLine("Exception: exDecompressKB1 " + exDecompressKB1.Message + " " + exDecompressKB1.InnerException);
             }
             #endregion decompresskb1
-
+            
             //What's in this decompressed1 directory?
             // Process the list of files found in the directory.
-            #region searchindecompresskb1
+            #region searchARCHIVESindecompresskb1
             try
             {
-                Console.WriteLine("DEBUG Search in DecompressKB1 " + sMSKBFilePathTarget);
-                List<string> lFileInfoFound = new List<string>();
-                //string[] fileEntries = Directory.GetFiles(sMSKBFilePathTarget); //TODO? Directory.EnumerateFiles(sMSKBFilePathTarget, "*.*", SearchOption.AllDirectories))
-                //foreach (string fileName in fileEntries)
+                Console.WriteLine("DEBUG SearchARCHIVES in DecompressKB1 " + sMSKBFilePathTarget);
                 foreach (string fileName in Directory.EnumerateFiles(sMSKBFilePathTarget, "*", SearchOption.AllDirectories))
                 {
                     if (fileName.ToLower().Contains("wsusscan.cab")) continue;    //HARDCODEDMS we don't use it
                     if (fileName.ToLower().Contains("inventoryrules.cab")) continue;    //HARDCODEDMS we don't use it
 
-
-                    //ProcessFile(fileName);
                     string sMSKBFileExtension2 = Path.GetExtension(fileName);   //Could be empty
                                                                                 //string sMSKBFilePathTarget2 = fGetSafeFilename(fileName.Replace(sMSKBFileExtension2, ""));
                     string sMSKBFilePathTarget2 = string.Empty;
@@ -10447,17 +9740,8 @@ namespace OVALBuilder
                         if (!Directory.Exists(sMSKBFilePathTarget2) || bForceDecompression)
                         {
                             Console.WriteLine("DEBUG DecompressKB2");
-                            //2nd level of decompression
-
                             try
                             {
-                                //TODO Filter extensions correctly
-                                //fStartProcess(@"C:\Program Files\7-Zip\7z.exe", "e " + fileName + " -o" + sMSKBFilePathTarget2);// + " *.dll -r");    //Hardcoded Path
-                                //All files with extension
-                                //fStartProcess(@"C:\Program Files\7-Zip\7z.exe", "e " + fileName + " -o" + sMSKBFilePathTarget2 + " *.* -r");    //Hardcoded Path
-                                //fStartProcess(@"C:\Program Files\7-Zip\7z.exe", "e " + fileName + " -o" + sMSKBFilePathTarget2 + " -i!*.cab -i!*.msi -i!*.msp -i!*.msu -i!*"+ Path.GetFileNameWithoutExtension(sFileNameToSearchReplaced) +"*.manifest -i*" + sFileNameToSearchReplacedExtension + " -r");    //Hardcoded Path not .exe?
-
-                                //fStartProcess(@"C:\Program Files\7-Zip\7z.exe", "e " + fileName + " -o" + sMSKBFilePathTarget2 + " " + sFileNameToSearchReplaced + " -i!*CAB* -i!*.cab -i!*.msi -i!*.msp -i!*.msu -i!*" + Path.GetFileNameWithoutExtension(sFileNameToSearchReplaced) + "*.manifest" + " -aos -r");    //Hardcoded Path not .exe?
                                 if (sMSKBFileExtension2 == ".cab")   //Intra-Package Delta (IPD)
                                 {
                                     Directory.CreateDirectory(sMSKBFilePathTarget2);
@@ -10465,40 +9749,11 @@ namespace OVALBuilder
 
                                     foreach (string sFileNameSearched in lFilesToUse)
                                     {
-                                        //fStartProcess("expand", fileName + " -F:" + sFileNameSearched + " " + sMSKBFilePathTarget2);
                                         fStartProcess("expand", fileName + " -F:" + Path.GetFileNameWithoutExtension(sFileNameSearched) + "* " + sMSKBFilePathTarget2); //i.e. msxml30 vs msxml3.dll
-
-                                        /*
-                                        //Check if it worked
-                                        string[] FilesFound = Directory.GetFiles(sMSKBFilePathTarget2, sFileNameSearched, SearchOption.AllDirectories);
-                                        if(FilesFound.Count() > 0)
-                                        {
-
-                                        }
-                                        else{
-                                            //In case this did not work (0x80070002)    But less reliable
-                                            fStartProcess("expand", fileName + " -F:*" + Path.GetFileNameWithoutExtension(sFileNameSearched) + "*.manifest" + " " + sMSKBFilePathTarget2);   //sFileNameToSearchReplaced
-                                        }
-                                        */
                                     }
                                     foreach (string sFileNameSearched in lFileNamesToSearch)
                                     {
-                                        //fStartProcess("expand", fileName + " -F:" + sFileNameSearched + " " + sMSKBFilePathTarget2);
                                         fStartProcess("expand", fileName + " -F:" + Path.GetFileNameWithoutExtension(sFileNameSearched) + "* " + sMSKBFilePathTarget2); //i.e. msxml30 vs msxml3.dll
-
-                                        /*
-                                        //Check if it worked
-                                        string[] FilesFound = Directory.GetFiles(sMSKBFilePathTarget2, sFileNameSearched, SearchOption.AllDirectories);
-                                        if (FilesFound.Count() > 0)
-                                        {
-
-                                        }
-                                        else
-                                        {
-                                            //In case this did not work (0x80070002)    But less reliable
-                                            fStartProcess("expand", fileName + " -F:*" + Path.GetFileNameWithoutExtension(sFileNameSearched) + "*.manifest" + " " + sMSKBFilePathTarget2);   //sFileNameToSearchReplaced
-                                        }
-                                        */
                                     }
                                 }
                                 else//Not .cab
@@ -10539,392 +9794,27 @@ namespace OVALBuilder
                         //else  //already done decompress2
                         #endregion decompresskb2
 
-                        //if (Directory.Exists(sMSKBFilePathTarget2))
-                        //{
-                        //Search into it
-                        #region searchindecompresskb2
+                        #region searchARCHIVESindecompresskb2
                         try
                         {
                             Console.WriteLine("DEBUG Search in DecompressKB2 " + sMSKBFilePathTarget2);
-                            //string[] fileEntries2 = Directory.GetFiles(sMSKBFilePathTarget2); //TODO? Directory.EnumerateFiles(sMSKBFilePathTarget2, "*.*", SearchOption.AllDirectories))
-                            //foreach (string fileName2 in fileEntries2)
                             foreach (string fileName2 in Directory.EnumerateFiles(sMSKBFilePathTarget2, "*", SearchOption.AllDirectories))
                             {
                                 string sMyFilenameExtension2 = Path.GetExtension(fileName2);
-                                //HARDCODED Extensions
-                                if (sMyFilenameExtension2 == ".dll" || sMyFilenameExtension2 == ".sys" || sMyFilenameExtension2 == ".exe" || sMyFilenameExtension2 == ".ocx" || sMyFilenameExtension2 == ".flt") //.sapx? ...   .manifest
+                                if (Path.GetFileName(fileName2).Contains("_CAB") || fileName2.EndsWith(".cab")) //PATCH_CAB
                                 {
-                                    ////Ignore    .dll.mui    .man    .ptxml  ...
-                                    //Console.WriteLine("DEBUG filename2=" + fileName2);
-                                }
-                                else
-                                {
-                                    //Not interesting file
-                                    if (bSaveSpace && !fileName2.ToLower().Contains("cab"))
-                                    {
-                                        try
-                                        {
-                                            //Console.WriteLine("DEBUG DELETE22 " + fileName2);
-                                            File.Delete(fileName2);
-                                            continue;
-                                        }
-                                        catch (Exception exDeleteFile)
-                                        {
-
-                                        }
-                                    }
-                                }
-
-                                //TODO Review: here we assume that all the FileNamesToSearch in lFileNamesToSearch have the same extension (.dll, .ocx, .sys, .exe, .config)
-                                //if (1 == 1 || Path.GetExtension(fileName2) == Path.GetExtension(sFileNameToSearchReplaced))// || Path.GetExtension(fileName2) == ".manifest")    //Hardcoded
-                                if (!Path.GetFileName(fileName2).Contains("_CAB") && !fileName2.EndsWith(".cab")) //PATCH_CAB
-                                {
-                                    //TODO  Review this filter (better location elsewhere)
-                                    if (sProductName.Contains("x86") && !fileName2.Contains("x86") && !fileName2.ToLower().Contains("32-bit")) continue;
-                                    if (sProductName.Contains("x64") && !fileName2.Contains("x64") && !fileName2.Contains("amd64") && !fileName2.Contains("wow64") && !fileName2.ToLower().Contains("64-bit")) continue;    //amd64
-                                    if (sProductName.Contains("x64") && fileName2.Contains("x86_")) continue;   //i.e. Windows6.0-KB3208481-x64\x86_microsoft-windows-hlink_31bf3856ad364e35_6.0.6002.24043_none_5a09d1247a7d880d\hlink.dll
-                                    if (sProductName.Contains("itanium") && !fileName2.Contains("ia64") && !fileName2.ToLower().Contains("itanium"))
-                                    {
-                                        Console.WriteLine("DEBUG Reviewia-64");
-                                        continue;  //wow64
-                                    }                                                                                                                           //TODO "SP" (Service Pack)
-
-                                    //string sProductNameReduced = sProductName.ToLower().Replace("microsoft ", "").Replace("x86", "").Replace("x64", "").Trim();  //Hardcoded    //i.e. windows vista x86
-                                    //string sProductNameReduced = sProductName.Replace("x86", "").Replace("x64", "");  //Hardcoded
-                                    sProductNameReduced = sProductNameReduced.Replace("(", "").Replace(")", "").Replace("32-bit", "").Replace("64-bit", "").Trim();
-                                    sProductNameReduced = sProductNameReduced.Replace("adobe flash player", "adobe flash");
-                                    //Console.WriteLine("DEBUG sProductNameReduced=" + sProductNameReduced);
-                                    if (!fileName2.ToLower().Contains(sProductNameReduced.ToLower().Replace(" ", "_")) && !fileName2.ToLower().Contains(sProductNameReduced.ToLower().Replace(" ", "-")) && !fileName2.ToLower().Contains(sProductNameCustomized.ToLower().Replace(" ", "_")))  //TODO Review
-                                    {
-                                        //Not the right KBfile
-                                        Console.WriteLine("DEBUG Not the right KBfile2 " + fileName2);
-                                        continue;
-                                    }
-
-                                    try
-                                    {
-                                        //fCheckFileAndGetVersion(fileName2, sFileNameToSearchReplaced);
-                                        //We check if the current file is of interest (in our list of files to search for)
-                                        foreach (string sFileNameSearched in lFileNamesToSearch)    //TODO Review and Optimize
-                                        {
-                                            //Console.WriteLine("DEBUG CheckFile2 " + sFileNameSearched);
-                                            string sCurrentFilenameWithoutPath = Path.GetFileName(fileName2);
-                                            if (sCurrentFilenameWithoutPath.ToLower().Contains(sFileNameSearched.ToLower()) && !sCurrentFilenameWithoutPath.EndsWith(".mui"))   //Hardcoded exclusion   //TODO? version.txt / .manifest
-                                            {
-                                                sFileInfoNeededFound = fCheckFileAndGetVersion(fileName2, sFileNameSearched);
-                                                if (sFileInfoNeededFound != "" && bDebugFileSelection) Console.WriteLine("DEBUG BluePillsFileInfoNeededFoundTest=" + sFileInfoNeededFound);
-                                                //TODO Review sometimes multiple files, is that the good one/version?
-                                                if (sFileInfoNeededFound != string.Empty)
-                                                {
-                                                    //20170208 gdi32.dll 6.2.9200.22084
-                                                    if (!lFileInfoFound.Contains(sFileInfoNeededFound)) lFileInfoFound.Add(sFileInfoNeededFound);   //Note: We add Limited Distribution Release (LDR) file/version AND GDR
-                                                    if (!dProductFile.ContainsKey(sProductFoundDEADBEEFGlobal))
-                                                    {
-                                                        Console.WriteLine("DEBUG dProductFile.Add " + sProductFoundDEADBEEFGlobal);
-                                                        dProductFile.Add(sProductFoundDEADBEEFGlobal, sFileInfoNeededFound.ToLower());
-                                                        Console.WriteLine("DEBUG BluePillsFileInfoNeededFound2=" + sFileInfoNeededFound);
-                                                    }
-                                                    else
-                                                    {
-                                                        #region keeplowestversion8
-                                                        //TODO Review for LDR/GDR
-                                                        //Console.WriteLine("ERROR02: TODO dProductFile already contains " + sProduct);
-                                                        //Analyze the situation: at the end, we will keep the lowest version number
-                                                        if (dProductFile[sProductFoundDEADBEEFGlobal] == sFileInfoNeededFound.ToLower())
-                                                        {
-                                                            //No issue there*
-                                                        }
-                                                        else
-                                                        {
-                                                            //Get back the file's information previously collected
-                                                            string[] PreviousFileInfoNeededSplit = dProductFile[sProductFoundDEADBEEFGlobal].Split(' ');
-                                                            string[] CurrentFileInfoNeededSplit = sFileInfoNeededFound.ToLower().Split(' ');
-
-                                                            //Is it the same file name?
-                                                            if (PreviousFileInfoNeededSplit[1] == CurrentFileInfoNeededSplit[1])
-                                                            {
-                                                                #region comparefilesversions
-                                                                //Compare the versions  using Version class //https://stackoverflow.com/questions/7568147/compare-version-numbers-without-using-split-function
-                                                                string v1 = PreviousFileInfoNeededSplit[2]; //"1.23.56.1487";
-                                                                string v2 = CurrentFileInfoNeededSplit[2];   //"1.24.55.487";
-
-                                                                var version1 = new Version(v1);
-                                                                var version2 = new Version(v2);
-
-                                                                var result = version1.CompareTo(version2);
-                                                                if (result > 0)
-                                                                {
-                                                                    //Console.WriteLine("version1 is greater");
-                                                                    //We replace the value in the dictionary
-                                                                    if (bDebugFileSelection) Console.WriteLine("DEBUG: Previous version found " + v1 + " > new version found " + v2 + " so we keep the new one (lowest version)");
-                                                                    //TODO: LDR/GDR
-                                                                    //20160909 win32k.sys 6.0.6002.24017    >   20160910 win32k.sys 6.0.6002.19693
-                                                                    dProductFile[sProductFoundDEADBEEFGlobal] = sFileInfoNeededFound;
-                                                                }
-                                                                else if (result < 0)
-                                                                {
-                                                                    //Console.WriteLine("version2 is greater");
-                                                                    //We keep version1
-                                                                    //TODO: LDR/GDR
-                                                                }
-                                                                else
-                                                                {
-                                                                    //same as before*
-                                                                    //Console.WriteLine("versions are equal");
-                                                                    //We should be ok (we don't compare the dates)
-                                                                }
-                                                                #endregion comparefilesversions
-                                                            }
-                                                            else//different files
-                                                            {
-                                                                //TODO!!! Review this (we could use the Dates, or Hardcoding...)
-                                                                //TODO FavoriteFiles
-                                                                if (sFileNameToSearchReplaced != "" || (sFileNameToSearchGlobal != "" && CurrentFileInfoNeededSplit[1] == sFileNameToSearchGlobal))
-                                                                {
-                                                                    if (!lFileNamesNOTToSearch.Contains(CurrentFileInfoNeededSplit[1]))
-                                                                    {
-                                                                        //We keep the new one
-                                                                        //i.e.: usp10.dll   =>  mso.dll
-                                                                        dProductFile[sProductFoundDEADBEEFGlobal] = sFileInfoNeededFound;
-                                                                        if (bDebugFileSelection) Console.WriteLine("DEBUG BluePillsFileInfoNeededFound22=" + sFileInfoNeededFound);
-                                                                    }
-                                                                }
-                                                                else
-                                                                {
-                                                                    //HARDCODED
-                                                                    if (sFileInfoNeededFound.Contains("mso.dll")) dProductFile[sProductFoundDEADBEEFGlobal] = sFileInfoNeededFound;
-
-                                                                }
-                                                            }
-                                                        }
-                                                        #endregion keeplowestversion8
-                                                    }
-
-                                                    if (bDebugFilesFound) Console.WriteLine("DEBUG Break35");
-                                                    
-                                                    break;
-                                                }
-                                            }
-                                            //else
-                                            //{
-                                            //Not interesting file
-                                            //We don't delete it here
-                                            //}
-                                        }
-                                        if (bSaveSpace && lFileInfoFound.Count <= 0) // && !fileName2.ToLower().Contains("cab"))    //TODO? +!Contains
-                                        {
-                                            try
-                                            {
-                                                //Console.WriteLine("DEBUG DELETE23 " + fileName2);
-                                                File.Delete(fileName2);
-                                            }
-                                            catch (Exception exDeleteFile)
-                                            {
-
-                                            }
-                                        }
-
-                                    }
-                                    catch (Exception exCheckFileInDecompressKB2)
-                                    {
-                                        Console.WriteLine("Exception: exCheckFileInDecompressKB2 " + exCheckFileInDecompressKB2.Message + " " + exCheckFileInDecompressKB2.InnerException);
-                                    }
-
-                                }
-                                else//It is _CAB or .cab
-                                {
-                                    //if (Path.GetFileName(fileName2).Contains("_CAB") || fileName2.EndsWith(".cab"))   //HARDCODEDMS   //_CAB    i.e. PATCH_CAB
-                                    //{
                                     if (!fileName2.Contains("inventoryrules.cab"))  //HardcodedMS
                                     {
                                         Console.WriteLine("DEBUG " + DateTime.Now + " DecompressKB3 " + sMSKBFilePathTarget2);
                                         #region decompresskb3
                                         //http://www.sqldbadiaries.com/2014/08/22/how-to-extract-the-contents-of-msp-files/
-                                        //string sMSKBFilePathTarget3 = fileName2;
-
-                                        //3rd level of decompression
-                                        //fStartProcess(@"C:\Program Files\7-Zip\7z.exe", "e " + fileName2 + " -o" + sMSKBFilePathTarget3 + " " + sFileNameToSearchReplaced + " -i!*CAB* -i!*.cab -i!*.msi -i!*.msp -i!*.msu -i!*" + Path.GetFileNameWithoutExtension(sFileNameToSearchReplaced) + "*.manifest" + " -r");    //Hardcoded Path not .exe?
                                         //Extract evrything
                                         fStartProcess(@"C:\Program Files\7-Zip\7z.exe", "e " + fileName2 + " -o" + sMSKBFilePathTarget2 + " -aos -r");    //Hardcoded Path
-
                                         #endregion decompresskb3
                                         //Form there, we could find/use the (biggest extracted file), or *_CAB_*\.rsrc\version.txt
-
-                                        #region searchindecompresskb3
-                                        try
-                                        {
-                                            Console.WriteLine("DEBUG Search in DecompressKB3 " + sMSKBFilePathTarget2);
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("mso"))
-                                            {
-                                                if (!lFileNamesToSearch.Contains("mso.dll")) lFileNamesToSearch.Add("mso.dll");
-                                                //ietag.dll
-                                            }
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("mscomctl"))    //mscomctlocx
-                                            {
-                                                if (!lFileNamesToSearch.Contains("mscomctl.ocx")) lFileNamesToSearch.Add("mscomctl.ocx");
-                                                if (!lFileNamesToSearch.Contains("mscomctl.dll")) lFileNamesToSearch.Add("mscomctl.dll");
-                                            }
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("powerpoint"))
-                                            {
-                                                if (!lFileNamesToSearch.Contains("powerpnt.exe")) lFileNamesToSearch.Add("powerpnt.exe");
-                                                //ietag.dll
-                                            }
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("sts")) //sharepoint
-                                            {
-                                                if (!lFileNamesToSearch.Contains("stsom.dll")) lFileNamesToSearch.Add("stsom.dll");
-                                                //...
-                                            }
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("wasrvmui")) //sharepoint
-                                            {
-                                                if (!lFileNamesToSearch.Contains("waintlr.dll")) lFileNamesToSearch.Add("waintlr.dll");
-                                                //WDSRV.INTLRESOURCES.DLL
-                                                //WDSRV.CONVERSION.WORD.WWINTL.dll
-
-                                                //...
-                                            }
-                                            //wacwfe?
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("xlsrv")) //xlsrvmui
-                                            {
-                                                if (!lFileNamesToSearch.Contains("xlsrv.dll")) lFileNamesToSearch.Add("xlsrv.dll");
-                                                if (!lFileNamesToSearch.Contains("xlsrvintl.dll")) lFileNamesToSearch.Add("xlsrvintl.dll");
-                                                //...
-                                            }
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("webconsole")) //System Center 2012 SP1 - Operation Manager
-                                            {
-                                                if (!lFileNamesToSearch.Contains("Microsoft.EnterpriseManagement.Presentation.WebConsole.dll")) lFileNamesToSearch.Add("Microsoft.EnterpriseManagement.Presentation.WebConsole.dll");
-                                            }
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("vbe6")) //Office
-                                            {
-                                                if (!lFileNamesToSearch.Contains("vbe6.dll")) lFileNamesToSearch.Add("vbe6.dll");
-                                                //vbeui.dll
-                                            }
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("vbe7")) //Office
-                                            {
-                                                if (!lFileNamesToSearch.Contains("vbe7.dll")) lFileNamesToSearch.Add("vbe7.dll");
-                                                //vbeui.dll
-                                            }
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("word"))
-                                            {
-                                                if (!lFileNamesToSearch.Contains("winword.exe")) lFileNamesToSearch.Add("winword.exe");
-                                                //wrd12cnv.dll
-                                                //wwlib.dll
-                                            }
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("msptls"))
-                                            {
-                                                if (!lFileNamesToSearch.Contains("msptls.dll")) lFileNamesToSearch.Add("msptls.dll");
-                                            }
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("ieawsdc"))
-                                            {
-                                                if (!lFileNamesToSearch.Contains("ieawsdc.dll")) lFileNamesToSearch.Add("ieawsdc.dll");
-                                            }
-                                            if (sMSKBFilePathTarget2.ToLower().Contains("lddmcore"))
-                                            {
-                                                if (!lFileNamesToSearch.Contains("dxgkrnl.sys")) lFileNamesToSearch.Add("dxgkrnl.sys");
-                                            }
-
-                                            /*
-                                            string[] fileEntries3 = Directory.GetFiles(sMSKBFilePathTarget3);
-                                            foreach (string fileName3 in fileEntries3)
-                                            {
-                                                fCheckFileAndGetVersion(fileName2, sFileNameToSearchReplaced);
-                                            }
-                                            */
-                                            foreach (string fileName3 in Directory.EnumerateFiles(sMSKBFilePathTarget2, "*", SearchOption.AllDirectories))
-                                            {
-                                                //TODO  Review this filter (better location elsewhere)
-                                                if (sProductName.Contains("x86") && !fileName3.Contains("x86") && !fileName3.ToLower().Contains("32-bit")) continue;
-                                                if (sProductName.Contains("x64") && !fileName3.Contains("x64") && !fileName3.Contains("amd64") && !fileName3.Contains("wow64") && !fileName3.ToLower().Contains("64-bit")) continue;
-                                                if (sProductName.Contains("x64") && fileName3.Contains("x86_")) continue;
-                                                if (sProductName.Contains("itanium") && !fileName3.Contains("ia64") && !fileName3.ToLower().Contains("itanium")) continue;  //wow64
-                                                                                                                                                                            //TODO "SP" (Service Pack)
-
-                                                //string sProductNameReduced = sProductName.Replace("x86", "").Replace("x64", "");  //Hardcoded
-                                                if (!fileName3.ToLower().Contains(sProductNameReduced.ToLower().Replace(" ", "_")) && !fileName3.ToLower().Contains(sProductNameReduced.ToLower().Replace(" ", "-")) && !fileName3.ToLower().Contains(sProductNameCustomized.ToLower().Replace(" ", "_")))  //TODO Review    //Windows_Embedded_Standard_7
-                                                {
-                                                    //Not the right KBfile
-                                                    Console.WriteLine("DEBUG Not the right KBfile3 " + fileName3);
-                                                    continue;
-                                                    //Console.WriteLine("DEBUG ")
-                                                }
-
-                                                //fCheckFileAndGetVersion(fileName3, sFileNameToSearchReplaced);
-                                                string sFileInfoNeededFoundTemp = sFileInfoNeededFound;
-                                                foreach (string sFileNameSearched in lFileNamesToSearch)
-                                                {
-                                                    sFileInfoNeededFound = fCheckFileAndGetVersion(fileName3, sFileNameSearched);
-
-                                                    //Review
-                                                    if (sFileInfoNeededFound.EndsWith(".x86")) sFileInfoNeededFound = sFileInfoNeededFound.Replace(".x86", "");
-                                                    if (sFileInfoNeededFound.EndsWith(".x64")) sFileInfoNeededFound = sFileInfoNeededFound.Replace(".x64", "");
-
-                                                    //TODO Review sometimes multiple files, is that the good one/version?
-
-                                                    /*
-                                                    if (!dProductFile.ContainsKey(sProductFoundDEADBEEFGlobal))
-                                                    {
-                                                        Console.WriteLine("DEBUG dProductFile.Add " + sProductFoundDEADBEEFGlobal);
-                                                        dProductFile.Add(sProductFoundDEADBEEFGlobal, sFileInfoNeededFound.ToLower());
-                                                        Console.WriteLine("DEBUG BluePillsFileInfoNeededFound2=" + sFileInfoNeededFound);
-                                                    }
-                                                    */
-
-                                                    if (sFileInfoNeededFound != string.Empty)
-                                                    {
-                                                        if (sFileInfoNeededFoundTemp != "" && sFileInfoNeededFoundTemp != sFileInfoNeededFound)
-                                                        {
-                                                            //TODO FavoriteFile
-                                                            if (fileName3.ToLower().Contains("word") && !fileName3.ToLower().Contains("viewer") && sFileInfoNeededFoundTemp == "winword.exe")// && sFileInfoNeededFound == "winword.exe")
-                                                            {
-                                                                //We keep our favorite file
-                                                            }
-                                                            else
-                                                            {
-                                                                sFileInfoNeededFoundTemp = sFileInfoNeededFound;
-                                                            }
-                                                        }
-                                                        else
-                                                        {
-                                                            sFileInfoNeededFoundTemp = sFileInfoNeededFound;
-                                                        }
-
-                                                        if (!lFileInfoFound.Contains(sFileInfoNeededFound)) lFileInfoFound.Add(sFileInfoNeededFound);
-                                                        Console.WriteLine("DEBUG sFileInfoNeededFound3=" + sFileInfoNeededFound);
-                                                        break;
-                                                    }
-                                                    else
-                                                    {
-                                                        //Not interesting file      .cab
-                                                        //TODO Review
-                                                        /*
-                                                        if (bSaveSpace)
-                                                        {
-                                                            try
-                                                            {
-                                                                Console.WriteLine("DEBUG DELETE3 " + fileName);
-                                                                File.Delete(fileName3);
-                                                            }
-                                                            catch (Exception exDeleteFile)
-                                                            {
-
-                                                            }
-                                                        }
-                                                        */
-                                                    }
-                                                }
-                                                if (sFileInfoNeededFound == "" && sFileInfoNeededFoundTemp != "") sFileInfoNeededFound = sFileInfoNeededFoundTemp;
-
-                                            }
-                                        }
-                                        catch (Exception exSearchInDecompressKB3)
-                                        {
-                                            Console.WriteLine("Exception: exSearchInDecompressKB3 " + exSearchInDecompressKB3.Message + " " + exSearchInDecompressKB3.InnerException);
-                                        }
-                                        #endregion searchindecompresskb3
                                     }
-                                    //}
                                 }
                             }
-                            //}
                         }
                         catch (ArgumentException exSearchInDecompressKB2ArgumentException)
                         {
@@ -10939,139 +9829,279 @@ namespace OVALBuilder
                             Console.WriteLine("Exception: exSearchInDecompressKB2 " + exSearchInDecompressKB2.Message + " " + exSearchInDecompressKB2.InnerException);
                             Console.WriteLine("DEBUG s7zipArgument2=" + s7zipArgument);
                         }
-                        #endregion searchindecompresskb2
+                        #endregion searchARCHIVESindecompresskb2
                     }
                     else//not .cab .msi .msu .msp (.exe?)
                     {
-                        //.dll? .ocx?   .sys?...
-                        //TODO Review: here we assume that all the FileNamesToSearch in lFileNamesToSearch have the same extension (.dll, .ocx, .sys, .exe)
-                        //TODO Review   Contains(sFileNameToSearchReplaced)?
-                        if (Path.GetExtension(fileName) == Path.GetExtension(sFileNameToSearchReplaced))// || Path.GetExtension(fileName) == ".manifest")  //Hardcoded
+                        //We deal with it later
+                    }
+                }
+            }
+            catch (Exception exsearchARCHIVESindecompresskb1)
+            {
+                Console.WriteLine("Exception: exsearchARCHIVESindecompresskb1 " + exsearchARCHIVESindecompresskb1.Message + " " + exsearchARCHIVESindecompresskb1.InnerException);
+            }
+            #endregion searchARCHIVESindecompresskb1
+
+            #region searchindecompresskb1
+            try
+            {
+                Console.WriteLine("DEBUG Search in DecompressKB1 " + sMSKBFilePathTarget);
+                sProductNameReduced = sProductNameReduced.Replace("adobe flash player", "adobe flash");
+
+                foreach (string fileName in Directory.EnumerateFiles(sMSKBFilePathTarget, "*", SearchOption.AllDirectories))
+                {
+                    if (fileName.ToLower().Contains("wsusscan.cab")) continue;    //HARDCODEDMS we don't use it
+                    if (fileName.ToLower().Contains("inventoryrules.cab")) continue;    //HARDCODEDMS we don't use it
+
+                    string sMSKBFileExtension2 = Path.GetExtension(fileName);   //Could be empty
+                                                                                //string sMSKBFilePathTarget2 = fGetSafeFilename(fileName.Replace(sMSKBFileExtension2, ""));
+                    string sMSKBFilePathTarget2 = string.Empty;
+                    if (sMSKBFileExtension2 != string.Empty)
+                    {
+                        sMSKBFilePathTarget2 = fileName.Replace(sMSKBFileExtension2, ""); //TODO IMPROVE
+                    }
+                    else
+                    {
+                        sMSKBFilePathTarget2 = fileName;
+                    }
+                    
+                    string sMyFilenameExtension2 = Path.GetExtension(fileName);
+                    //HARDCODED Extensions
+                    if (sMyFilenameExtension2 == ".dll" || sMyFilenameExtension2 == ".sys" || sMyFilenameExtension2 == ".exe" || sMyFilenameExtension2 == ".ocx" || sMyFilenameExtension2 == ".flt") //.sapx? ...   .manifest   version.txt
+                    {
+                        ////Ignore    .dll.mui    .man    .ptxml  ...
+                        //Console.WriteLine("DEBUG filename2=" + fileName2);
+                    }
+                    else
+                    {
+                        //Not interesting file
+                        if (bSaveSpace && !fileName.ToLower().Contains("cab"))
                         {
-                            //TODO  Review this filter (better location elsewhere)
-                            if (sProductName.Contains("x86") && !fileName.Contains("x86") && !fileName.ToLower().Contains("32-bit")) continue;
-                            if (sProductName.Contains("x64") && !fileName.Contains("x64") && !fileName.Contains("amd64") && !fileName.Contains("wow64") && !fileName.ToLower().Contains("64-bit")) continue;
-                            if (sProductName.Contains("x64") && fileName.Contains("x86_")) continue;
-                            if (sProductName.Contains("itanium") && !fileName.Contains("ia64") && !fileName.ToLower().Contains("itanium")) continue;    //wow64
-                            sProductNameReduced = sProductNameReduced.Replace("adobe flash player", "adobe flash");
-
-                            //string sProductNameReduced = sProductName.Replace("x86", "").Replace("x64", "");  //Hardcoded
                             try
                             {
-                                if (!fileName.ToLower().Contains(sProductNameReduced.Replace(" ", "_").ToLower()) && !fileName.ToLower().Contains(sProductNameReduced.Replace(" ", "-").ToLower()) && !fileName.ToLower().Contains(sProductNameCustomized.Replace(" ", "_").ToLower()))  //TODO Review
-                                {
-                                    //Not the right KBfile
-                                    Console.WriteLine("DEBUG Not the right KBfile0 " + fileName);
-                                    continue;
-                                    //Console.WriteLine("DEBUG ")
-                                }
+                                //Console.WriteLine("DEBUG DELETE22 " + fileName2);
+                                File.Delete(fileName);
+                                continue;
                             }
-                            catch (Exception exContinue1)
+                            catch (Exception exDeleteFile)
                             {
-                                Console.WriteLine("Exception: exContinue1 " + exContinue1.Message + " " + exContinue1.InnerException);
-                            }
 
-                            try
+                            }
+                        }
+                    }
+                    
+                    #region searchindecompresskb3
+                    try
+                    {
+                        #region hardcoding3
+                        if (sMSKBFilePathTarget2.ToLower().Contains("mso"))
+                        {
+                            if (!lFileNamesToSearch.Contains("mso.dll")) lFileNamesToSearch.Add("mso.dll");
+                            //ietag.dll
+                        }
+                        if (sMSKBFilePathTarget2.ToLower().Contains("mscomctl"))    //mscomctlocx
+                        {
+                            if (!lFileNamesToSearch.Contains("mscomctl.ocx")) lFileNamesToSearch.Add("mscomctl.ocx");
+                            if (!lFileNamesToSearch.Contains("mscomctl.dll")) lFileNamesToSearch.Add("mscomctl.dll");
+                        }
+                        if (sMSKBFilePathTarget2.ToLower().Contains("powerpoint"))
+                        {
+                            if (!lFileNamesToSearch.Contains("powerpnt.exe")) lFileNamesToSearch.Add("powerpnt.exe");
+                            //ietag.dll
+                        }
+                        if (sMSKBFilePathTarget2.ToLower().Contains("lync"))
+                        {
+                            if (!lFileNamesToSearch.Contains("lync.exe")) lFileNamesToSearch.Add("lync.exe");
+                            if (!lFileNamesToSearch.Contains("lync.lync.exe")) lFileNamesToSearch.Add("lync.lync.exe");
+                        }
+                        if (sMSKBFilePathTarget2.ToLower().Contains("sts")) //sharepoint
+                        {
+                            if (!lFileNamesToSearch.Contains("stsom.dll")) lFileNamesToSearch.Add("stsom.dll");
+                            //...
+                        }
+                        if (sMSKBFilePathTarget2.ToLower().Contains("wasrvmui")) //sharepoint
+                        {
+                            if (!lFileNamesToSearch.Contains("waintlr.dll")) lFileNamesToSearch.Add("waintlr.dll");
+                            //WDSRV.INTLRESOURCES.DLL
+                            //WDSRV.CONVERSION.WORD.WWINTL.dll
+
+                            //...
+                        }
+                        //wacwfe?
+                        if (sMSKBFilePathTarget2.ToLower().Contains("xlsrv")) //xlsrvmui
+                        {
+                            if (!lFileNamesToSearch.Contains("xlsrv.dll")) lFileNamesToSearch.Add("xlsrv.dll");
+                            if (!lFileNamesToSearch.Contains("xlsrvintl.dll")) lFileNamesToSearch.Add("xlsrvintl.dll");
+                            //...
+                        }
+                        if (sMSKBFilePathTarget2.ToLower().Contains("webconsole")) //System Center 2012 SP1 - Operation Manager
+                        {
+                            if (!lFileNamesToSearch.Contains("Microsoft.EnterpriseManagement.Presentation.WebConsole.dll")) lFileNamesToSearch.Add("Microsoft.EnterpriseManagement.Presentation.WebConsole.dll");
+                        }
+                        if (sMSKBFilePathTarget2.ToLower().Contains("vbe6")) //Office
+                        {
+                            if (!lFileNamesToSearch.Contains("vbe6.dll")) lFileNamesToSearch.Add("vbe6.dll");
+                            //vbeui.dll
+                        }
+                        if (sMSKBFilePathTarget2.ToLower().Contains("vbe7")) //Office
+                        {
+                            if (!lFileNamesToSearch.Contains("vbe7.dll")) lFileNamesToSearch.Add("vbe7.dll");
+                            //vbeui.dll
+                        }
+                        if (sMSKBFilePathTarget2.ToLower().Contains("word"))
+                        {
+                            if (!lFileNamesToSearch.Contains("winword.exe")) lFileNamesToSearch.Add("winword.exe");
+                            //wrd12cnv.dll
+                            //wwlib.dll
+                        }
+                        if (sMSKBFilePathTarget2.ToLower().Contains("msptls"))
+                        {
+                            if (!lFileNamesToSearch.Contains("msptls.dll")) lFileNamesToSearch.Add("msptls.dll");
+                        }
+                        if (sMSKBFilePathTarget2.ToLower().Contains("ieawsdc"))
+                        {
+                            if (!lFileNamesToSearch.Contains("ieawsdc.dll")) lFileNamesToSearch.Add("ieawsdc.dll");
+                        }
+                        if (sMSKBFilePathTarget2.ToLower().Contains("lddmcore"))
+                        {
+                            if (!lFileNamesToSearch.Contains("dxgkrnl.sys")) lFileNamesToSearch.Add("dxgkrnl.sys");
+                        }
+                        #endregion hardcoding3
+                        
+                        //TODO  Review this filter
+                        if (sProductName.Contains("x86") && !fileName.Contains("x86") && !fileName.ToLower().Contains("32-bit")) continue;
+                        if (sProductName.Contains("x64") && !fileName.Contains("x64") && !fileName.Contains("amd64") && !fileName.Contains("wow64") && !fileName.ToLower().Contains("64-bit")) continue;
+                        if (sProductName.Contains("x64") && fileName.Contains("x86_")) continue;
+                        if (sProductName.Contains("itanium") && !fileName.Contains("ia64") && !fileName.ToLower().Contains("itanium")) continue;  //wow64
+                                                                                                                                                    //TODO "SP" (Service Pack)
+
+                        //string sProductNameReduced = sProductName.Replace("x86", "").Replace("x64", "");  //Hardcoded
+                        if (!fileName.ToLower().Contains(sProductNameReduced.ToLower().Replace(" ", "_")) && !fileName.ToLower().Contains(sProductNameReduced.ToLower().Replace(" ", "-")) && !fileName.ToLower().Contains(sProductNameCustomized.ToLower().Replace(" ", "_")))  //TODO Review    //Windows_Embedded_Standard_7
+                        {
+                            Console.WriteLine("DEBUG Not the right KBfile3 " + fileName);
+                            continue;
+                        }
+                        
+                        string sFileInfoNeededFoundTemp = sFileInfoNeededFound;
+                        foreach (string sFileNameSearched in lFileNamesToSearch)
+                        {
+                            sFileInfoNeededFound = fCheckFileAndGetVersion(fileName, sFileNameSearched);
+
+                            //Review
+                            if (sFileInfoNeededFound.EndsWith(".x86")) sFileInfoNeededFound = sFileInfoNeededFound.Replace(".x86", "");
+                            if (sFileInfoNeededFound.EndsWith(".x64")) sFileInfoNeededFound = sFileInfoNeededFound.Replace(".x64", "");
+
+                            if (sFileInfoNeededFound != string.Empty)
                             {
-                                string sFileInfoNeededFoundTemp = sFileInfoNeededFound;
-                                //ziza
-                                //fCheckFileAndGetVersion(fileName, sFileNameToSearchReplaced);
-                                foreach (string sFileNameSearched in lFileNamesToSearch)
+                                if (sFileInfoNeededFoundTemp != "" && sFileInfoNeededFoundTemp != sFileInfoNeededFound)
                                 {
-                                    sFileInfoNeededFound = fCheckFileAndGetVersion(fileName, sFileNameSearched);
-                                    //TODO Review sometimes multiple files, is that the good one/version?
-                                    if (sFileInfoNeededFound != string.Empty)
+                                    //TODO FavoriteFile
+                                    if (fileName.ToLower().Contains("word") && !fileName.ToLower().Contains("viewer") && sFileInfoNeededFoundTemp == "winword.exe")// && sFileInfoNeededFound == "winword.exe")
+                                    {
+                                        //We keep our favorite file
+                                    }
+                                    else
                                     {
                                         sFileInfoNeededFoundTemp = sFileInfoNeededFound;
-                                        Console.WriteLine("DEBUG BluePillsFileInfoNeededFound1=" + sFileInfoNeededFound);
-                                        if (!lFileInfoFound.Contains(sFileInfoNeededFound)) lFileInfoFound.Add(sFileInfoNeededFound);
-
-                                        if (!dProductFile.ContainsKey(sProductFoundDEADBEEFGlobal))
-                                        {
-                                            Console.WriteLine("DEBUG dProductFile.Add1 " + sProductFoundDEADBEEFGlobal);
-                                            dProductFile.Add(sProductFoundDEADBEEFGlobal, sFileInfoNeededFound.ToLower());
-                                        }
-
-                                        Console.WriteLine("DEBUG break1");
-                                        break;
                                     }
-
                                 }
-                                if (sFileInfoNeededFound == "" && sFileInfoNeededFoundTemp != "") sFileInfoNeededFound = sFileInfoNeededFoundTemp;
-
-                            }
-                            catch (Exception exCheckFileInDecompressKB1)
-                            {
-                                Console.WriteLine("Exception: exCheckFileInDecompressKB1 " + exCheckFileInDecompressKB1.Message + " " + exCheckFileInDecompressKB1.InnerException);
-                            }
-                        }
-                        else
-                        {
-                            //TODO Review
-
-                            //Not interesting file
-                            string sMyFilenameExtension = Path.GetExtension(fileName);
-                            //if (bSaveSpace && (sMyFilenameExtension == string.Empty || sMyFilenameExtension == null))  //... not .dll, .exe, .sys ...
-                            if (bSaveSpace && (sMyFilenameExtension != ".exe" && sMyFilenameExtension != ".dll" && sMyFilenameExtension != ".ocx" && sMyFilenameExtension != ".sys"))  //... .flt? .aspx?
-                            {
-                                try
+                                else
                                 {
-                                    //Console.WriteLine("DEBUG DELETE1 " + fileName);
-                                    File.Delete(fileName);
+                                    sFileInfoNeededFoundTemp = sFileInfoNeededFound;
                                 }
-                                catch (Exception exDeleteFile)
-                                {
 
+                                if (!lFileInfoFound.Contains(sFileInfoNeededFound)) lFileInfoFound.Add(sFileInfoNeededFound);
+                                Console.WriteLine("DEBUG sFileInfoNeededFound3=" + sFileInfoNeededFound);
+                                if (!dProductFile.ContainsKey(sProductFoundDEADBEEFGlobal))
+                                {
+                                    Console.WriteLine("DEBUG dProductFile.Add3 " + sProductFoundDEADBEEFGlobal);
+                                    dProductFile.Add(sProductFoundDEADBEEFGlobal, sFileInfoNeededFound.ToLower());
                                 }
+                                Console.WriteLine("DEBUG break3");
+                                break;
+                            }
+                            else
+                            {
+                                //Not interesting file      .cab
+                                //TODO Review
+                                /*
+                                if (bSaveSpace)
+                                {
+                                    try
+                                    {
+                                        Console.WriteLine("DEBUG DELETE3 " + fileName);
+                                        File.Delete(fileName3);
+                                    }
+                                    catch (Exception exDeleteFile)
+                                    {
+
+                                    }
+                                }
+                                */
                             }
 
                         }
+                        if (sFileInfoNeededFound == "" && sFileInfoNeededFoundTemp != "") sFileInfoNeededFound = sFileInfoNeededFoundTemp;
                     }
-
-                }
-                try
-                {
-                    string[] FileInfoNeededFoundSplit = sFileInfoNeededFound.Split(' ');
-                    if (lFileInfoFound.Count == 1)
+                    catch (Exception exSearchInDecompressKB3)
                     {
-                        if (FileInfoNeededFoundSplit[1] != "")
-                        {
-                            //TODO FavoriteFile
-                            //20160924 ogl.dll 4.0.7577.4521
-                            Console.WriteLine("DEBUG sFileNameToSearchReplacedByFound1=" + sFileNameToSearchReplaced);
-                            sFileNameToSearchReplaced = FileInfoNeededFoundSplit[1];
-                        }
+                        Console.WriteLine("Exception: exSearchInDecompressKB3 " + exSearchInDecompressKB3.Message + " " + exSearchInDecompressKB3.InnerException);
                     }
-                    if (lFileInfoFound.Count > 1 && sFileNameToSearchReplaced != "")
-                    {
-                        lFileInfoFound = lFileInfoFound.OrderByDescending(o => o).ToList(); //date  filename    version
-                        foreach (string sFileInfoReviewed in lFileInfoFound) //TODO: Here we could manage LDR/GDR
-                        {
-                            FileInfoNeededFoundSplit = sFileInfoReviewed.Split(' ');
-                            if (!lFileNamesNOTToSearch.Contains(FileInfoNeededFoundSplit[1]))
-                            {
-                                if (sFileInfoReviewed.Contains(sFileNameToSearchReplaced))
-                                {
-                                    sFileInfoNeededFound = sFileInfoReviewed;   //Will be the final one
-                                    Console.WriteLine("DEBUG sFileInfoNeededFoundFinal=" + sFileInfoNeededFound);
-                                    break;
-                                }
-                            }
-                        }
-                    }
+                    #endregion searchindecompresskb3
                 }
-                catch (Exception exFileInfoNeededFoundSplit)
-                {
-                    Console.WriteLine("Exception: exFileInfoNeededFoundSplit " + exFileInfoNeededFoundSplit.Message + " " + exFileInfoNeededFoundSplit.InnerException);
-                }
-
             }
             catch (Exception exSearchInDecompressKB1)
             {
                 Console.WriteLine("Exception: exSearchInDecompressKB1 " + exSearchInDecompressKB1.Message + " " + exSearchInDecompressKB1.InnerException);
             }
             #endregion searchindecompresskb1
+
             #endregion decompresskbandfindfileandversion
+
+            try
+            {
+                if (sProductFoundDEADBEEFGlobal!="" && sFileInfoNeededFound!="" && !dProductFile.ContainsKey(sProductFoundDEADBEEFGlobal))
+                {
+                    Console.WriteLine("DEBUG dProductFile.Add11 " + sProductFoundDEADBEEFGlobal);
+                    dProductFile.Add(sProductFoundDEADBEEFGlobal, sFileInfoNeededFound.ToLower());
+                }
+
+                string[] FileInfoNeededFoundSplit = sFileInfoNeededFound.Split(' ');
+                if (lFileInfoFound.Count == 1)
+                {
+                    if (FileInfoNeededFoundSplit[1] != "")
+                    {
+                        //TODO FavoriteFile
+                        //20160924 ogl.dll 4.0.7577.4521
+                        Console.WriteLine("DEBUG sFileNameToSearchReplacedByFound1=" + sFileNameToSearchReplaced);
+                        sFileNameToSearchReplaced = FileInfoNeededFoundSplit[1];
+                    }
+                }
+                if (lFileInfoFound.Count > 1 && sFileNameToSearchReplaced != "")
+                {
+                    lFileInfoFound = lFileInfoFound.OrderByDescending(o => o).ToList(); //date  filename    version
+                    foreach (string sFileInfoReviewed in lFileInfoFound) //TODO: Here we could manage LDR/GDR
+                    {
+                        FileInfoNeededFoundSplit = sFileInfoReviewed.Split(' ');
+                        if (!lFileNamesNOTToSearch.Contains(FileInfoNeededFoundSplit[1]))
+                        {
+                            if (sFileInfoReviewed.Contains(sFileNameToSearchReplaced))
+                            {
+                                sFileInfoNeededFound = sFileInfoReviewed;   //Will be the final one
+                                Console.WriteLine("DEBUG sFileInfoNeededFoundFinal1=" + sFileInfoNeededFound);
+                                dProductFile[sProductFoundDEADBEEFGlobal] = sFileInfoNeededFound;
+                                Console.WriteLine("DEBUG break1");
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception exFileInfoNeededFoundSplit)
+            {
+                Console.WriteLine("Exception: exFileInfoNeededFoundSplit " + exFileInfoNeededFoundSplit.Message + " " + exFileInfoNeededFoundSplit.InnerException);
+            }
 
             return sFileInfoNeededFound;
         }
@@ -11079,9 +10109,10 @@ namespace OVALBuilder
         public static string fCheckFileAndGetVersion(string fileName, string sFileNameToSearchReplaced)
         {
             //Console.WriteLine("DEBUG fCheckFileAndGetVersion " + DateTimeOffset.Now);
-            //Note: fileName is a path
+            //Note: fileName is a fullpath
             string sCurrentFilenameWithoutPath = Path.GetFileName(fileName);
             //Console.WriteLine("DEBUG fCheckFileAndGetVersionfileName=" + sCurrentFilenameWithoutPath);
+            if (sCurrentFilenameWithoutPath.ToLower() == "cortanaapi.dll") return string.Empty; //Known? error (no version)
 
             string sFilenameFound = string.Empty;
             string sFileFoundVersionNumber = string.Empty;// "";
@@ -11216,7 +10247,6 @@ namespace OVALBuilder
                 else
                 {
                     //if (Path.GetExtension(fileName)==".manifest" && fileName.ToLower().Contains(Path.GetFileNameWithoutExtension(sFileNameToSearchReplaced)))
-                    
                     if (bUseManifestFilesVersions && Path.GetExtension(sCurrentFilenameWithoutPath) == ".manifest" && sCurrentFilenameWithoutPath.ToLower().Contains(Path.GetFileNameWithoutExtension(sFileNameToSearchReplaced.ToLower())))    //os-kernel
                     {
                         //i.e.: amd64_microsoft.windows.gdiplus.systemcopy_31bf3856ad364e35_6.3.9600.18470_none_d79f99a9ca00398e.manifest
@@ -11241,7 +10271,7 @@ namespace OVALBuilder
                         if (myFileVersionInfo.OriginalFilename == sFileNameToSearchReplaced)    //TODO? Contains
                         {
                             //Bingo
-                            sFilenameFound = sCurrentFilenameWithoutPath.ToLower();
+                            sFilenameFound = sFileNameToSearchReplaced; // sCurrentFilenameWithoutPath.ToLower();   //We could get issue otherwise i.e E:\MSKB\KB3118394-Word_Viewer-gdiplus\GDIPLUS\_3c144d0d917c41e981e59d9c18e43e88.40d5ce2532074296b6dd2138d9286013
                             if (sFilenameFound.EndsWith(".x86")) sFilenameFound = sFilenameFound.Replace(".x86", "");
                             if (sFilenameFound.EndsWith(".x64")) sFilenameFound = sFilenameFound.Replace(".x64", "");
 
@@ -11253,7 +10283,6 @@ namespace OVALBuilder
 
                             FileInfo myFileInfo = new System.IO.FileInfo(fileName);
                             sFileFoundDate = myFileInfo.LastWriteTime.ToString("yyyyMMdd");
-
                         }
                         else
                         {
@@ -11277,8 +10306,7 @@ namespace OVALBuilder
                     }
                 }
             }
-
-            //return sFileFoundVersionNumber;
+            
             if (sFileFoundVersionNumber == string.Empty)
             {
                 //Console.WriteLine("DEBUG FileVersionNumberUnknown");
@@ -11293,8 +10321,7 @@ namespace OVALBuilder
                 return sFileInfoFound;
             }
         }
-
-
+        
         public static List<string> fCSVParse(string line)
         {
             const char escapeChar = '"';
@@ -11348,183 +10375,7 @@ namespace OVALBuilder
 
             return result;
         }
-
-        /*
-        public static string fFilenameToSearchReplacedHardcoded(string sFileNameToSearchReplaced, string sProductFound)
-        {
-            #region filenametosearchhardcoded
-
-            if (sFileNameToSearchReplaced == "" && sProductFound.Contains("excel viewer"))
-            {
-                sFileNameToSearchReplaced = "xlview.exe"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            if (sFileNameToSearchReplaced == "" && sProductFound.Contains("excel services"))
-            {
-                sFileNameToSearchReplaced = "xlsrvintl.dll"; //Hardcoded    (good luck with .resx...)
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-                sFileNameToSearchReplaced = "xlsrv.dll"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            //word automation services
-            if (sFileNameToSearchReplaced == "" && sProductFound.Contains("excel"))
-            {
-                sFileNameToSearchReplaced = "excel.exe"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            if (sFileNameToSearchReplaced == "" && sProductFound.Contains("powerpoint"))
-            {
-                sFileNameToSearchReplaced = "ppcore.dll"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-                sFileNameToSearchReplaced = "powerpnt.exe"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-
-            }
-
-            if (sFileNameToSearchReplaced == "" && sProductFound.Contains("word viewer"))
-            {
-                sFileNameToSearchReplaced = "wordview.exe"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            if (sProductFound.Contains("word"))
-            {
-                sFileNameToSearchReplaced = "winword.exe"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            if (sFileNameToSearchReplaced == "" && sProductFound.Contains("publisher"))
-            {
-                sFileNameToSearchReplaced = "mspub.exe"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            if (sFileNameToSearchReplaced == "" && (sProductFound.Contains("skype") || sProductFound.Contains("lync")))
-            {
-                sFileNameToSearchReplaced = "lync.exe"; //Hardcoded     lync99.exe      lynchtmlconv.exe        lmaddins.dll
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            if (sFileNameToSearchReplaced == "" && sProductFound.Contains("access"))
-            {
-                sFileNameToSearchReplaced = "msaccess.exe"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            if (sFileNameToSearchReplaced == "" && sProductFound.Contains("infopath"))
-            {
-                sFileNameToSearchReplaced = "infopath.exe"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            if (sFileNameToSearchReplaced == "" && sProductFound.Contains("onenote"))
-            {
-                sFileNameToSearchReplaced = "onenote.exe"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            if (sProductFound.Contains("project"))
-            {
-                sFileNameToSearchReplaced = "winproj.exe"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            if (sProductFound.Contains("visio"))
-            {
-                sFileNameToSearchReplaced = "visio.exe"; //Hardcoded
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            if (sFileNameToSearchReplaced == "" && sProductFound.Contains("office compatibility pack"))// || sProductFound.Contains("pack de compatibilite")))    //Hardcoded + French
-            {
-                //TODO: was it Excel?
-                //xlconv2007-kb3128022-fullfile-x86-glb.exe
-                if (sKBSecurityUpdateLower.Contains("xlconv"))
-                {
-                    sFileNameToSearchReplaced = "xl12cnv.exe"; //Hardcoded
-                    if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-
-                    sFileNameToSearchReplaced = "excelcnv.exe"; //Hardcoded //excelcnv.exe|excelconv.exe
-                    if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-                }
-                //wordconv2007-kb3128024-fullfile-x86-glb.exe
-                if (sKBSecurityUpdateLower.Contains("wordconv"))
-                {
-                    sFileNameToSearchReplaced = "wrd12cnv.dll"; //Hardcoded
-                    if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-
-                    sFileNameToSearchReplaced = "wordcnv.dll"; //Hardcoded
-                    if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-                }
-            }
-            //Microsoft Office Web Apps 2010 (all versions)
-            if (sKBSecurityUpdateLower.Contains("web apps"))
-            {
-                sFileNameToSearchReplaced = "msoserver.dll"; //Hardcoded
-                                                             //sword.dll
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-                //Wdsrv.conversion.office.msoserver.dll
-            }
-            if (sFileNameToSearchReplaced == "" && sProductFound.Contains("sharepoint server")) //sharepoint foundation?
-            {
-                if (sKBSecurityUpdateLower.Contains("xlsrv"))
-                {
-                    sFileNameToSearchReplaced = "xlsrv.dll";
-                    if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-                }
-                if (sKBSecurityUpdateLower.Contains("wdsrv"))
-                {
-                    sFileNameToSearchReplaced = "sword.dll";
-                    if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-                }
-                if (sKBSecurityUpdateLower.Contains("word automation"))
-                {
-                    sFileNameToSearchReplaced = "sword.dll";
-                    if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-                }
-                if (sFileNameToSearchReplaced == "" && oVulnerability.VULDescription.ToLower().Contains("word")) sFileNameToSearchReplaced = "sword.dll";
-                //TODO: if other Products Found contains word/excel
-                if (sFileNameToSearchReplaced == "")
-                {
-                    sFileNameToSearchReplaced = "sword.dll";
-                    if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-                    //Wdsrv.conversion.sword.dll
-                }
-                //stswel.dll
-                //wwintl.dll
-                //vutils.dll
-            }
-            if (sFileNameToSearchReplaced == "" && sKBSecurityUpdateLower.Contains("mso"))
-            {
-                sFileNameToSearchReplaced = "mso.dll";
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            //oart.dll
-            //oartconv.dll
-
-
-            //For Word Automation Services on supported editions of Microsoft SharePoint Server 2010 Service Pack 2:
-            //msoserver.dll     sword.dll
-            //For Excel Services on supported editions of Microsoft SharePoint Server 2010 Service Pack 2:
-            //xlsrv.dll
-
-            if (sKBSecurityUpdateLower.Contains("hyperlink object library"))
-            {
-                sFileNameToSearchReplaced = "hlink.dll";
-                if (!lFileNamesToSearch.Contains(sFileNameToSearchReplaced)) lFileNamesToSearch.Add(sFileNameToSearchReplaced);
-            }
-            if (sKBSecurityUpdateLower.Contains("skype") || sKBSecurityUpdateLower.Contains("lync"))
-            {
-
-                if (!lFileNamesToSearch.Contains("lync.lync.exe")) lFileNamesToSearch.Add("lync.lync.exe");
-            }
-
-            if (sKBSecurityUpdateLower.Contains("office"))
-            {
-                if (!lFileNamesToSearch.Contains("wwlibcxm.dll")) lFileNamesToSearch.Add("wwlibcxm.dll");
-                if (sFileNameToSearchReplaced == "")
-                {
-                    sFileNameToSearchReplaced = "usp10.dll";
-                }
-                if (!lFileNamesToSearch.Contains("usp10.dll")) lFileNamesToSearch.Add("usp10.dll");
-            }
-            #endregion filenametosearchhardcoded
-
-            return lFileNamesToSearch;
-        }
-        */
-
+        
         public static void fStartProcess(string sEXEFilePath, string sArguments)
         {
             try
@@ -11567,5 +10418,285 @@ namespace OVALBuilder
             }
             //Thread.Sleep(60000); //Hardcoded
         }
+
+        public static string fGetSafeFilename(string filename)
+        {
+            return string.Join("", filename.Split(Path.GetInvalidFileNameChars()));
+        }
+        
+        public static int fXORCISMAddPatch(string sKBnumber, string sMSCatalogSecurityUpdateText, string sMSCatalogFileName, int iPatchID = 0)
+        {
+            #region addpatchxorcism
+            //int iPatchID = 0;
+            try
+            {
+                if (iPatchID == 0) iPatchID = model.PATCH.Where(o => o.PatchVocabularyID == sKBnumber).FirstOrDefault().PatchID;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            if (iPatchID <= 0)
+            {
+                try
+                {
+                    Console.WriteLine("DEBUG Adding new PATCH");
+                    PATCH oPatch = new PATCH();
+                    oPatch.CreatedDate = DateTimeOffset.Now;
+                    oPatch.PatchVocabularyID = sKBnumber;
+                    //oPatch.VocabularyID=  //Microsoft?
+                    oPatch.PatchTitle = sMSCatalogSecurityUpdateText;
+                    model.PATCH.Add(oPatch);
+                    model.SaveChanges();
+                    bPatchJustAdded = true;
+                }
+                catch (Exception exAddingPATCH)
+                {
+                    Console.WriteLine("Exception: exAddingPATCH " + exAddingPATCH.Message + " " + exAddingPATCH.InnerException);
+                }
+            }
+
+            int iFileID = 0;
+            try
+            {
+                iFileID = model.FILE.Where(o => o.FileName == sMSCatalogFileName).FirstOrDefault().FileID;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            if (iFileID <= 0)
+            {
+                Console.WriteLine("DEBUG Adding KBFILE " + sMSCatalogFileName);
+                try
+                {
+                    FILE oFile = new FILE();
+                    oFile.CreatedDate = DateTimeOffset.Now;
+                    oFile.FileName = sMSCatalogFileName;    //Original (MS site) KB Filename    or  Local KB Filename
+                                                            //oFile.VocabularyID=   //Microsoft?
+                    model.FILE.Add(oFile);
+                    model.SaveChanges();
+                    iFileID = oFile.FileID;
+                }
+                catch (Exception exAddKBFILE)
+                {
+                    Console.WriteLine("Exception: exAddKBFILE " + exAddKBFILE.Message + " " + exAddKBFILE.InnerException);
+                }
+            }
+            //TODO: FILEVERSION
+            if (iPatchID > 0 && iFileID > 0)
+            {
+                int iPatchFileID = 0;
+                try
+                {
+                    iPatchFileID = model.PATCHFILE.Where(o => o.PatchID == iPatchID && o.FileID == iFileID).FirstOrDefault().PatchFileID;
+                }
+                catch (Exception ex)
+                {
+
+                }
+                if (iPatchFileID <= 0)
+                {
+                    try
+                    {
+                        PATCHFILE oPatchFile = new PATCHFILE();
+                        oPatchFile.CreatedDate = DateTimeOffset.Now;
+                        oPatchFile.PatchID = iPatchID;
+                        oPatchFile.FileID = iFileID;
+                        //oPatchFile.VocabularyID=
+                        //oPatchFile.PlatformID=    //TODO
+                        //oPatchFile=   //TODO
+                        model.PATCHFILE.Add(oPatchFile);
+                        model.SaveChanges();
+                    }
+                    catch (Exception exAddPATCHFILE)
+                    {
+                        Console.WriteLine("Exception: exAddPATCHFILE " + exAddPATCHFILE.Message + " " + exAddPATCHFILE.InnerException);
+                    }
+                }
+                else
+                {
+                    //Update PATCHFILE
+                }
+            }
+            #endregion addpatchxorcism
+            return iPatchID;
+        }
+
+        public static int fXORCISMAddFILE(string sKBFileInfoValue, string sInterestingFileVersion = "", string sDateForSorting = "")
+        {
+            int iFileID = 0;
+            try
+            {
+                iFileID = model.FILE.FirstOrDefault(o => o.FileName == sKBFileInfoValue).FileID;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            try
+            {
+                if (iFileID <= 0)
+                {
+                    Console.WriteLine("DEBUG Adding FILE2 " + sKBFileInfoValue);
+                    FILE oFile = new FILE();
+                    oFile.CreatedDate = DateTimeOffset.Now;
+                    oFile.FileName = sKBFileInfoValue;
+                    //oFile.VocabularyID=
+                    oFile.timestamp = DateTimeOffset.Now;
+                    model.FILE.Add(oFile);
+                    model.Entry(oFile).State = EntityState.Added;
+                    model.SaveChanges();
+                    iFileID = oFile.FileID;
+                }
+                //TODO
+                //FILEVERSION
+                /*
+                if (sFileNameToSearchReplaced != "")
+                {
+                    //PRODUCTFILE
+
+                }
+                */
+            }
+            catch (Exception exAddFile)
+            {
+                Console.WriteLine("Exception: exAddFile " + exAddFile.Message + " " + exAddFile.InnerException);
+            }
+            if (sInterestingFileVersion != "")
+            {
+                int iFileVersionID = 0;
+                try
+                {
+                    iFileVersionID = model.FILEVERSION.Where(o => o.FileID == iFileID && o.VersionValue == sInterestingFileVersion).FirstOrDefault().FileVersionID;
+                }
+                catch (Exception ex)
+                {
+
+                }
+                if (iFileVersionID <= 0)
+                {
+                    try
+                    {
+                        FILEVERSION oFileVersion = new FILEVERSION();
+                        oFileVersion.CreatedDate = DateTimeOffset.Now;
+                        oFileVersion.FileID = iFileID;
+                        oFileVersion.VersionValue = sInterestingFileVersion;
+                        //oFileVersion.VersionID=
+                        //oFileVersion.FileDate?...
+                        //oFileVersion.VocabularyID=
+                        //Confidence
+                        oFileVersion.timestamp = DateTimeOffset.Now;
+                        model.FILEVERSION.Add(oFileVersion);
+                        model.Entry(oFileVersion).State = EntityState.Added;
+                        model.SaveChanges();
+                        //iFileVersionID = oFileVersion.FileVersionID;
+                    }
+                    catch (Exception exAddFILEVERSION)
+                    {
+                        Console.WriteLine("Exception: exAddFILEVERSION " + exAddFILEVERSION.Message + " " + exAddFILEVERSION.InnerException);
+                    }
+
+                    //TODO  PRODUCTFILEVERSION
+                }
+            }
+            return iFileID;
+        }
+
+        public static string fGetDateForSorting(string sKBFileInfoValue)
+        {
+            string sDateForSorting = "";
+            if (sKBFileInfoValue.Trim() == "")
+            {
+                //File date not specified by Microsoft
+                //sDateForSorting = "1970-01-01"; //Hardcoded default
+                sDateForSorting = "19700101"; //Hardcoded default
+            }
+            else
+            {
+                try
+                {
+                    //TODO...!
+                    string[] DateSplit = sKBFileInfoValue.ToLower().Split('-');   //16-nov-2016
+
+                    if (DateSplit[2].Length == 2)
+                    {
+                        sDateForSorting = "20" + DateSplit[2];  //Year    //Hardcoded
+                    }
+                    else
+                    {
+                        //DateSplit[2].Length == 4
+                        sDateForSorting = DateSplit[2];  //Year
+                    }
+
+                    switch (DateSplit[1])    //Month
+                    {
+                        case "dec":
+                            sDateForSorting = sDateForSorting + "12";
+                            break;
+                        case "nov":
+                            sDateForSorting = sDateForSorting + "11";
+                            break;
+                        case "oct":
+                            sDateForSorting = sDateForSorting + "10";
+                            break;
+                        case "sep":
+                            sDateForSorting = sDateForSorting + "09";
+                            break;
+                        case "aug":
+                            sDateForSorting = sDateForSorting + "08";
+                            break;
+                        case "jul":
+                            sDateForSorting = sDateForSorting + "07";
+                            break;
+                        case "jun":
+                            sDateForSorting = sDateForSorting + "06";
+                            break;
+                        case "may":
+                            sDateForSorting = sDateForSorting + "05";
+                            break;
+                        case "apr":
+                            sDateForSorting = sDateForSorting + "04";
+                            break;
+                        case "mar":
+                            sDateForSorting = sDateForSorting + "03";
+                            break;
+                        case "feb":
+                            sDateForSorting = sDateForSorting + "02";
+                            break;
+                        case "jan":
+                            sDateForSorting = sDateForSorting + "01";
+                            break;
+                        default:
+                            Console.WriteLine("ERROR: fGetDateForSorting sKBFileInfoValue=" + sKBFileInfoValue + " DateSplit[1]=" + DateSplit[1]);
+                            break;
+                    }
+                    if (DateSplit[0].Length == 1)
+                    {
+                        sDateForSorting += "0" + DateSplit[0];    //Day
+                    }
+                    else
+                    {
+                        sDateForSorting += DateSplit[0];    //Day
+                    }
+                }
+                catch (Exception exDateForSorting)
+                {
+                    Console.WriteLine("Exception: exDateForSorting sKBFileInfoValue=" + sKBFileInfoValue + " " + exDateForSorting.Message + " " + exDateForSorting.InnerException);
+                }
+            }
+            return sDateForSorting; //yyyyMMdd
+        }
+
+        public static string StripTagsRegexCompiled(string source)
+        {
+            return _htmlRegex.Replace(source, string.Empty);
+        }
+
+        public static string GetSafeFilename(string filename)
+        {
+            return string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
+        }
+
     }
 }
