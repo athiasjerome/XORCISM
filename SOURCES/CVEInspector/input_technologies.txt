@@ -1,0 +1,11 @@
+7-Zip
+Acrobat Reader
+FoxitPDF
+Google Chrome
+Jenkins
+Kubernetes
+Microsoft Office
+Microsoft SQL Server
+Microsoft Teams
+Mozilla Firefox
+Zoom
